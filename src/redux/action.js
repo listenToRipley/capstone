@@ -12,9 +12,16 @@ export const logIn = (status) => {
   }
 }
 
-export const addItem = (input) => {
+export const addToShoppingList = (input) => {
   return {
-    type: 'ADD_ITEM',
+    type: 'ADD_TO_SHOPPING_LIST',
+    value: input //should this be a class? 
+  }
+}
+
+export const addToPantry = (input) => {
+  return {
+    type: 'ADD_TO_PANTRY',
     value: input //should this be a class? 
   }
 }

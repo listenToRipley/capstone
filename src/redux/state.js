@@ -9,4 +9,5 @@ export default {
     password: 'I<323at'
   },
   shoppingList: [],
+  pantryList:[]
 }

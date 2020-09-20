@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
 
-//add content 
+//add content for each action 
 
 export default combineReducers({})
