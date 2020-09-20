@@ -12,47 +12,47 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 
 //the main page, go not pass go, to not collect $200 without login in or creating a login
-const useStyles = makeStyles((theme) => ({
-  root: {
+const useStyles = makeStyles((theme, props) => ({
+  root: props => ({
     height: '100vh',
-  },
-  image: {
+  }),
+  image: props =>({
     backgroundImage: 'url(https://unsplash.com/photos/FDQFZHY9iG4)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-  },
-  paper: {
+  }),
+  paper: props =>({
     margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  avatar: {
+  }),
+  avatar: props => ({
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
+  }),
+  form: props => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
-  },
-  submit: {
+  }),
+  submit: props => ({
     margin: theme.spacing(3, 0, 2),
-  },
+  }),
 }));
-
-const classes = useStyles();
 
 class LogIn extends Component {
   state = {
     username: '',
     password: '',
-    loggedIn: false 
+    loggedIn: false, 
   }
+
 
   handleText = e => {
     const state = {...this.state}
@@ -72,6 +72,7 @@ class LogIn extends Component {
   }
 
   render() {
+    const {classes} = this.props
     return(
 
       <Grid container component="main" className={classes.root}>
@@ -133,7 +134,7 @@ class LogIn extends Component {
               </Grid>
             </Grid>
             <Box mt={5}>
-              <Copyright />
+             
             </Box>
           </form>
         </div>
@@ -147,4 +148,4 @@ class LogIn extends Component {
 
 }
 
-export default LogIn
+export default withStyles(useStyles)(LogIn)
