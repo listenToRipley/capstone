@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router';
+import LogIn from './components/LogIn'
 import Home from './components/Home';
 import Shoppinglist from './components/ShoppingList';
 import Pantry from './components/Pantry';
