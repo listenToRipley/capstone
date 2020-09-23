@@ -5,7 +5,8 @@ import Home from './Components/Home';
 import Shoppinglist from './Components/ShoppingList';
 import Pantry from './Components/Pantry';
 import FriendsList from './Components/FriendsList';
-import UserProfile from './Components/UserProfile'
+import UserProfile from './Components/UserProfile';
+import SignUp from './Components/SignUp';
 import cookie from 'cookie'
 
 //this will be for when you move to login required status
@@ -34,6 +35,7 @@ const Router = () => {
       <Route path='/pantry' component={Pantry}/>
       <Route path='/friendsList' component={FriendsList}/>
       <Route path='/userProfile' component={UserProfile}/>
+      <Route path='/createNewUser' component={SignUp}/>
     </Switch>
   )
 }
