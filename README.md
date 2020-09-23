@@ -68,3 +68,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # capstone
 Get request comes from: "https://api.spoonacular.com/recipes/complexSearch" 
+
+svg icons to use: 
+pantry merge request: <i class="fas fa-door-open"></i> 
+allergies: <i class="fas fa-allergies"></i> 

@@ -20,6 +20,14 @@ import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
+import { faSmileBeam, faUserCircle }from '@fortawesome/free-regular-svg-icons'
+
+//svg icons 
+library.add(faShoppingBasket,faDoorClosed, faUsers, faHome, faUtensils, faSmileBeam, faUserCircle, faSignOutAlt)
+dom.watch()
 
 const drawerWidth = 240;
 
@@ -184,21 +192,27 @@ const NavBar = () => {
         <Divider />
         <List>
           {/* main app content available on the home page - needs to be links*/}
+          <ListItem>
+              <ListItemIcon>
+              <svg class="fas fa-home"></svg>
+              </ListItemIcon>
+                <ListItemText primary={'Home'} />
+            </ListItem>
             <ListItem>
               <ListItemIcon>
-                <InboxIcon/> 
+              <svg class="fas fa-shopping-basket"></svg>
               </ListItemIcon>
                 <ListItemText primary={'Shopping List'} />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <InboxIcon/> 
+              <svg class="fas fa-door-closed"></svg>
               </ListItemIcon>
                 <ListItemText primary={'Pantry'} />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <InboxIcon/> 
+              <svg class="fas fa-users"></svg>
               </ListItemIcon>
                 <ListItemText primary={`Friend's List`} />
             </ListItem>
@@ -208,14 +222,14 @@ const NavBar = () => {
         <List>
           {/* main app content available on the home page - elements related to list functionality*/}
             <ListItem>
-              <ListItemIcon>
-                <InboxIcon/> 
+             <ListItemIcon>
+                <svg class="fas fa-utensils"></svg>
               </ListItemIcon>
                 <ListItemText primary={'Shopping Requests'} />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <InboxIcon/> 
+              <svg class="far fa-smile-beam"></svg>
               </ListItemIcon>
                 <ListItemText primary={'Friend Requests'} />
             </ListItem>
@@ -225,13 +239,13 @@ const NavBar = () => {
           {/* functional routes related to the user - needs to be links */}
           <ListItem>
               <ListItemIcon>
-                <ExitToAppIcon/>
+              <svg class="far fa-user-circle"></svg>
               </ListItemIcon>
               <ListItemText primary={'Profile'} />
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <ExitToAppIcon/>
+              <svg class="fas fa-sign-out-alt"></svg>
               </ListItemIcon>
               <ListItemText primary={'Sign Out'} />
             </ListItem>
