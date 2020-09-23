@@ -14,54 +14,63 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 
+
 //the main page, go not pass go, to not collect $200 without login in or creating a login
-const useStyles = makeStyles((theme, props) => ({
-  root: props => ({
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Just kidding, I don't have this copyright - that costs money 
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
     height: '100vh',
-  }),
-  image: props =>({
-    backgroundImage: 'url(https://unsplash.com/photos/FDQFZHY9iG4)',
+  },
+  image: {
+    backgroundImage: 'url(https://images.unsplash.com/photo-1590311824865-bac58a024e51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-  }),
-  paper: props =>({
+  },
+  paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  }),
-  avatar: props => ({
+  },
+  avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
-  }),
-  form: props => ({
+  },
+  form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
-  }),
-  submit: props => ({
+  },
+  submit: {
     margin: theme.spacing(3, 0, 2),
-  }),
+  },
 }));
 
-class LogIn extends Component {
-  state = {
-    username: '',
-    password: '',
-    loggedIn: false, 
-  }
+const LogIn = () => {
+  const classes = useStyles();
 
-
-  handleText = e => {
+  const handleText = e => {
     const state = {...this.state}
     state[e.target.name] = e.target.value
     this.setState(state)
     console.log(state)
   }
-
-  loggedIn = e => {
+  
+  const loggedIn = e => {
     e.preventDefault()
     document.cookie = "businessCookies="+JSON.stringify({
       "username":this.state.username,
@@ -71,16 +80,14 @@ class LogIn extends Component {
     window.location.replace('/listings')
   }
 
-  render() {
-    const {classes} = this.props
-    return(
-
-      <Grid container component="main" className={classes.root}>
+  return (
+    <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -134,18 +141,13 @@ class LogIn extends Component {
               </Grid>
             </Grid>
             <Box mt={5}>
-             
+              <Copyright />
             </Box>
           </form>
         </div>
       </Grid>
     </Grid>
-
-
-    )
-  }
-
-
+  );
 }
 
 export default withStyles(useStyles)(LogIn)
