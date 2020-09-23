@@ -123,6 +123,8 @@ const NavBar = () => {
     </Menu>
   );
 
+
+  //need to add conditional rendering for logged or logged out 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -135,7 +137,7 @@ const NavBar = () => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
+        <IconButton aria-label="Friends Request" color="inherit">
           <Badge badgeContent={0} color="secondary">
             <MailIcon />
           </Badge>
@@ -143,7 +145,7 @@ const NavBar = () => {
         <p>Friend Requests</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
+        <IconButton aria-label="notifications" color="inherit">
           <Badge badgeContent={0} color="secondary">
             <NotificationsIcon />
           </Badge>
@@ -205,26 +207,44 @@ const NavBar = () => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
+          <MenuItem>
+            <IconButton aria-label="Friends Request" color="inherit">
+              <Badge badgeContent={0} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
+            <p>Friend Requests</p>
+          </MenuItem>
+          <MenuItem>
+            <IconButton aria-label="notifications" color="inherit">
               <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+            <p>Food Requests</p>
+          </MenuItem>
+          <MenuItem onClick={handleProfileMenuOpen}>
             <IconButton
-              edge="end"
               aria-label="account of current user"
-              aria-controls={menuId}
+              aria-controls="primary-search-account-menu"
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
               color="inherit"
             >
               <AccountCircle />
             </IconButton>
+            <Link to='/userProfile'>Profile</Link>
+          </MenuItem>
+          <MenuItem >
+            <IconButton
+              aria-label="sign out of app"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <ExitToAppIcon />
+            </IconButton>
+            <Link to='/'>Sign Out</Link>
+        </MenuItem>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
