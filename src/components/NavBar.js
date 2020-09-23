@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import { fade , makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -17,6 +16,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import CssBaseline from '@material-ui/icons/Menu'; 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt, faPeopleArrows} from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
@@ -32,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
+  toolbar: theme.mixins.toolbar,
   appBar: {
+    toolbar: theme.mixins.tool,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -125,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -136,15 +138,17 @@ const NavBar = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
+    <div>
+          <div className={classes.root} style={{position: "fixed"}}>
+    
+    <CssBaseline/>
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar position="fixed">
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -270,6 +274,8 @@ const NavBar = () => {
             </ListItem>
         </List>
       </Drawer>
+    </div>
+    <div className={classes.toolbar} />
     </div>
   );
 }
