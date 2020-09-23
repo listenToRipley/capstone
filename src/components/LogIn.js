@@ -77,7 +77,7 @@ const LogIn = () => {
       "loggedIn":true,
     })
     document.cookie="max-Age:60*10000"
-    window.location.replace('/listings')
+    window.location.replace('/home')
   }
 
   return (
