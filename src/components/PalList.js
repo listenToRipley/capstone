@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 //this is where you will display possible content 
 
-const FriendsList = () => {
+const PalList = () => {
 
   return (
     <h1>This is the friend's list</h1>
@@ -10,4 +10,4 @@ const FriendsList = () => {
 
 }
 
-export default FriendsList
+export default PalList

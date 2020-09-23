@@ -4,7 +4,7 @@ import LogIn from './Components/LogIn'
 import Home from './Components/Home';
 import Shoppinglist from './Components/ShoppingList';
 import Pantry from './Components/Pantry';
-import FriendsList from './Components/FriendsList';
+import FriendsList from './Components/PalList';
 import UserProfile from './Components/UserProfile';
 import SignUp from './Components/SignUp';
 import cookie from 'cookie'
@@ -33,7 +33,7 @@ const Router = () => {
       <Route path='/home' component={Home}/>
       <Route path='/shoppingList' component={Shoppinglist}/>
       <Route path='/pantry' component={Pantry}/>
-      <Route path='/friendsList' component={FriendsList}/>
+      <Route path='/palList' component={PalList}/>
       <Route path='/userProfile' component={UserProfile}/>
       <Route path='/createNewUser' component={SignUp}/>
     </Switch>

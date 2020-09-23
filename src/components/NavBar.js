@@ -19,11 +19,11 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import SvgIcon from '@material-ui/core/SvgIcon';
-import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt, faPeopleArrows} from '@fortawesome/free-solid-svg-icons'
-import { faUserCircle }from '@fortawesome/free-regular-svg-icons'
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt, faPeopleArrows} from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core/Button';
 
 //svg icons 
 library.add(faShoppingBasket,faDoorClosed, faUsers, faHome, faUtensils, faUserCircle, faSignOutAlt, faPeopleArrows)
@@ -192,42 +192,47 @@ const NavBar = () => {
         <Divider />
         <List>
           {/* main app content available on the home page - needs to be links*/}
-          <ListItem>
+
+              <ListItem button onClick={<Link to='/home'/>}>
               <ListItemIcon>
-              <svg class="fas fa-home"></svg>
+                 <svg class="fas fa-home"></svg>
               </ListItemIcon>
-                <ListItemText primary={'Home'} />
+              <ListItemText primary={'Home'} />
             </ListItem>
-            <ListItem>
+   
+            <ListItem button onClick={<Link to='/shoppingList'/>}>
               <ListItemIcon>
               <svg class="fas fa-shopping-basket"></svg>
               </ListItemIcon>
-                <ListItemText primary={'Shopping List'} />
+              <ListItemText primary={'Shopping List'} />
             </ListItem>
-            <ListItem>
+
+            <ListItem button onClick={<Link to='/pantry'/>}>
               <ListItemIcon>
               <svg class="fas fa-door-closed"></svg>
               </ListItemIcon>
                 <ListItemText primary={'Pantry'} />
             </ListItem>
-            <ListItem>
+
+            <ListItem button onClick={<Link to='/palList'/>}>
               <ListItemIcon>
               <svg class="fas fa-users"></svg>
               </ListItemIcon>
-                <ListItemText primary={`Friend's List`} />
+                <ListItemText primary={`Pal's List`} />
             </ListItem>
         </List>
         <Divider />
         <Divider />
         <List>
           {/* main app content available on the home page - elements related to list functionality*/}
-            <ListItem>
+            <ListItem button onClick={<Link to='/shoppingList/requests'/>}>
              <ListItemIcon>
                 <svg class="fas fa-utensils"></svg>
               </ListItemIcon>
                 <ListItemText primary={'Shopping Requests'} />
             </ListItem>
-            <ListItem>
+
+            <ListItem button onClick={<Link to='/palList/requests'/>}>
               <ListItemIcon>
               <svg class="fas fa-people-arrows"></svg>
               </ListItemIcon>
@@ -237,13 +242,14 @@ const NavBar = () => {
         <Divider />
         <List>
           {/* functional routes related to the user - needs to be links */}
-          <ListItem>
+          <ListItem button onClick={<Link to='/userProfile'/>}>
               <ListItemIcon>
               <svg class="far fa-user-circle"></svg>
               </ListItemIcon>
               <ListItemText primary={'Profile'} />
             </ListItem>
-            <ListItem>
+
+            <ListItem button onClick={<Link to='/'/>}>
               <ListItemIcon>
               <svg class="fas fa-sign-out-alt"></svg>
               </ListItemIcon>
