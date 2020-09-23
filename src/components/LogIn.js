@@ -63,6 +63,8 @@ const useStyles = makeStyles((theme) => ({
 const LogIn = () => {
   const classes = useStyles();
 
+  //need to set state on text before I add handlers 
+
   const handleText = e => {
     const state = {...this.state}
     state[e.target.name] = e.target.value
@@ -125,6 +127,7 @@ const LogIn = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              
             >
               Sign In
             </Button>
