@@ -27,15 +27,16 @@ import SignUp from './Components/SignUp';
 
 //would like everything but the login to be protected routes, the route can be protected through the user name, if I can pass it correctly 
 const Router = () => {
+  console.log('go you see this on change?')
   return(
     <Switch>
       <Route  exact path="/" component={LogIn}/>
       <Route path="/home" component={Home}/>
       <Route path="/shoppingList" component={ShoppingList}/>
-      <Route path='/pantry' component={Pantry}/>
-      <Route path='/palList' component={PalList}/>
-      <Route path='/userProfile' component={UserProfile}/>
-      <Route path='/createNewUser' component={SignUp}/>
+      <Route path="/pantry" component={Pantry}/>
+      <Route path="/palList" component={PalList}/>
+      <Route path="/userProfile" component={UserProfile}/>
+      <Route path="/createNewUser" component={SignUp}/>
     </Switch>
   )
 }
