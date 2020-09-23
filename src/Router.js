@@ -4,7 +4,7 @@ import LogIn from './Components/LogIn'
 import Home from './Components/Home';
 import Shoppinglist from './Components/ShoppingList';
 import Pantry from './Components/Pantry';
-import FriendsList from './Components/PalList';
+import PalList from './Components/PalList';
 import UserProfile from './Components/UserProfile';
 import SignUp from './Components/SignUp';
 import cookie from 'cookie'

@@ -71,4 +71,33 @@ Get request comes from: "https://api.spoonacular.com/recipes/complexSearch"
 
 svg icons to use: 
 pantry merge request: <i class="fas fa-door-open"></i> 
-allergies: <i class="fas fa-allergies"></i> 
+shopping list merge request: <i class="fas fa-exchange-alt"></i> ? 
+sync: <i class="fas fa-thumbtack"></i> v
+block user: <i class="fas fa-ban"></i>  or <i class="fas fa-user-slash"></i>
+removed friend: <i class="fas fa-house-damage"></i>  
+birthday: <i class="fas fa-birthday-cake"></i> 
+allergies: <i class="fas fa-allergies"></i>
+  deadly: <i class="far fa-dizzy"></i> or <i class="fas fa-skull-crossbones"></i> 
+shopping: <i class="fas fa-cart-arrow-down"></i> or 
+settings list and pantry : <i class="fab fa-whmcs"></i> 
+user settings: <i class="fas fa-users-cog"></i> 
+remove: <i class="fas fa-trash-alt"></i> 
+reject: <i class="fas fa-thumbs-down"></i> 
+approve: <i class="fas fa-thumbs-up"></i> 
+favorites: <i class="far fa-star"></i> 
+dislike: <i class="fas fa-poop"></i> 
+save: <i class="far fa-save"></i> 
+send request: <i class="far fa-paper-plane"></i> 
+list owner: <i class="fas fa-house-user"></i> ? <i class="fas fa-hat-wizard"></i> 
+
+future use? 
+recipes: <i class="fas fa-book"></i> 
+beer: <i class="fas fa-beer"></i>
+wine: <i class="fas fa-wine-bottle"></i> or <i class="fas fa-wine-glass-alt"></i> 
+barcode: <i class="fas fa-barcode"></i> 
+bread: <i class="fas fa-bread-slice"></i> 
+kids: <i class="fas fa-child"></i> 
+costs: <i class="fas fa-dollar-sign"></i> or <i class="fas fa-wallet"></i> 
+chat: <i class="fab fa-weixin"></i> 
+save for later: <i class="fas fa-thumbtack"></i> 
+donate: <i class="fas fa-parachute-box"></i> 
