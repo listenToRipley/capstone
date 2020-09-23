@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router';
-import LogIn from './components/LogIn'
-import Home from './components/Home';
-import Shoppinglist from './components/ShoppingList';
-import Pantry from './components/Pantry';
-import FriendsList from './components/FriendsList';
-import UserProfile from './components/UserProfile'
+import LogIn from './Components/LogIn'
+import Home from './Components/Home';
+import Shoppinglist from './Components/ShoppingList';
+import Pantry from './Components/Pantry';
+import FriendsList from './Components/FriendsList';
+import UserProfile from './Components/UserProfile'
 import cookie from 'cookie'
 
 //this will be for when you move to login required status
