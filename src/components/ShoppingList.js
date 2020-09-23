@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 //will need to pull in information from mySQL 
 const ShoppingList = () => {

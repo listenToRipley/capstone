@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 //this will be where we create new users 
 

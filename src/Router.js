@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Switch, Route} from 'react-router';
 import LogIn from './Components/LogIn'
 import Home from './Components/Home';
-import Shoppinglist from './Components/ShoppingList';
+import ShoppingList from './Components/ShoppingList';
 import Pantry from './Components/Pantry';
 import PalList from './Components/PalList';
 import UserProfile from './Components/UserProfile';
 import SignUp from './Components/SignUp';
-import cookie from 'cookie'
+// import cookie from 'cookie'
 
 //this will be for when you move to login required status
 // const checkAuth = () => {
@@ -29,9 +29,9 @@ import cookie from 'cookie'
 const Router = () => {
   return(
     <Switch>
-      <Route  exact path='/' component={LogIn}/>
-      <Route path='/home' component={Home}/>
-      <Route path='/shoppingList' component={Shoppinglist}/>
+      <Route  exact path="/" component={LogIn}/>
+      <Route path="/home" component={Home}/>
+      <Route path="/shoppingList" component={ShoppingList}/>
       <Route path='/pantry' component={Pantry}/>
       <Route path='/palList' component={PalList}/>
       <Route path='/userProfile' component={UserProfile}/>
