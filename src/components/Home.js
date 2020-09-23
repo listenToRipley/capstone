@@ -2,7 +2,7 @@ import React from 'react';
 
 //this is where you will display possible content 
 
-const Home = (props) => {
+const Home = () => {
   console.log('do you see home?')
 
 

@@ -7,6 +7,7 @@ import Pantry from './Components/Pantry';
 import PalList from './Components/PalList';
 import UserProfile from './Components/UserProfile';
 import SignUp from './Components/SignUp';
+import About from './Components/About'
 // import cookie from 'cookie'
 
 //this will be for when you move to login required status
@@ -34,9 +35,10 @@ const Router = () => {
       <Route path="/home" component={Home}/>
       <Route path="/shoppingList" component={ShoppingList}/>
       <Route path="/pantry" component={Pantry}/>
-      <Route path="/palList" component={PalList}/>
+      <Route path="/palsList" component={PalList}/>
       <Route path="/userProfile" component={UserProfile}/>
       <Route path="/createNewUser" component={SignUp}/>
+      <Route path="/about" component={About}/>
     </Switch>
   )
 }
