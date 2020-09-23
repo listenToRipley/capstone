@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { fade ,makeStyles, useTheme } from '@material-ui/core/styles';
+import { fade , makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -22,11 +22,11 @@ import InputBase from '@material-ui/core/InputBase';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
-import { faSmileBeam, faUserCircle }from '@fortawesome/free-regular-svg-icons'
+import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt, faPeopleArrows} from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle }from '@fortawesome/free-regular-svg-icons'
 
 //svg icons 
-library.add(faShoppingBasket,faDoorClosed, faUsers, faHome, faUtensils, faSmileBeam, faUserCircle, faSignOutAlt)
+library.add(faShoppingBasket,faDoorClosed, faUsers, faHome, faUtensils, faUserCircle, faSignOutAlt, faPeopleArrows)
 dom.watch()
 
 const drawerWidth = 240;
@@ -229,9 +229,9 @@ const NavBar = () => {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-              <svg class="far fa-smile-beam"></svg>
+              <svg class="fas fa-people-arrows"></svg>
               </ListItemIcon>
-                <ListItemText primary={'Friend Requests'} />
+                <ListItemText primary={'Pal Requests'} />
             </ListItem>
         </List>
         <Divider />
