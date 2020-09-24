@@ -14,7 +14,17 @@ import { withStyles } from '@material-ui/styles';
 import { Container, Grid } from '@material-ui/core';
 import './ComponentCSS.css'
 
+
+const useStyles = makeStyles((theme) => ({
+  fields: {
+    margin: theme.spacing(1),
+    width: '25ch',
+    },
+}));
+
 const SignUp = () => {
+
+  const classes = useStyles();
 
   return(
    <Container className="createUserContainer">
@@ -30,12 +40,11 @@ const SignUp = () => {
               Create Login 
             </Typography>
         </div>
-        <form>
+        <form className={classes.fields}> 
           <TextField
             variant="outlined"
             margin="normal"
             required
-            fullWidth
             id="firstName"
             label="First Name"
             name="firstName"
@@ -45,7 +54,6 @@ const SignUp = () => {
             variant="outlined"
             margin="normal"
             required
-            fullWidth
             id="lastName"
             label="Last Name"
             name="lastName"
@@ -55,14 +63,34 @@ const SignUp = () => {
             variant="outlined"
             margin="normal"
             required
-            fullWidth
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
             autoFocus
             />
+
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            id="password"
+            label="Password"
+            name="password"
+            />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            id="passwordVerify"
+            label="Password Verification"
+            name="password"
+            />
+          
         </form>
+        <Button style={{margin: '15px'}} type="submit" variant="contained" color="primary">
+           Submit
+        </Button>
       </Grid>
       </Paper>
    </Container>
