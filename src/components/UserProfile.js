@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const UserProfile = () => {
+
   return (
-    <h1>You found the user profile page</h1>
+    <div>User Profile</div>
   )
 }
 
