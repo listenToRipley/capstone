@@ -194,8 +194,10 @@ const NavBar = () => {
         <List>
           {/* main app content available on the home page - needs to be links*/}
 
-              <ListItem button 
-              // onClick={<Link to='/home'/>}
+              <ListItem 
+              button 
+              component={Link} 
+              to='/home'
               >
               <ListItemIcon>
                  <svg className="fas fa-home"></svg>
@@ -203,8 +205,10 @@ const NavBar = () => {
               <ListItemText primary={'Home'} />
             </ListItem>
    
-            <ListItem button 
-            // onClick={<Link to='/shoppingList'/>}
+            <ListItem 
+            button 
+            component={Link}
+            to='/shoppingList'
             >
               <ListItemIcon>
               <svg className="fas fa-shopping-basket"></svg>
@@ -212,8 +216,10 @@ const NavBar = () => {
               <ListItemText primary={'Shopping List'} />
             </ListItem>
 
-            <ListItem button 
-            // onClick={<Link to='/pantry'/>}
+            <ListItem 
+            button 
+            component={Link}
+            to='/pantry'
             >
               <ListItemIcon>
               <svg className="fas fa-door-closed"></svg>
@@ -221,8 +227,10 @@ const NavBar = () => {
                 <ListItemText primary={'Pantry'} />
             </ListItem>
 
-            <ListItem button 
-            // onClick={<Link to='/palList'/>}
+            <ListItem 
+            button 
+            component={Link}
+            to='/palList'
             >
               <ListItemIcon>
               <svg className="fas fa-users"></svg>
@@ -234,8 +242,10 @@ const NavBar = () => {
         <Divider />
         <List>
           {/* main app content available on the home page - elements related to list functionality*/}
-            <ListItem button 
-            // onClick={<Link to='/shoppingList/requests'/>}
+            <ListItem 
+            button 
+            component={Link}
+            to='/shoppingList/requests'
             >
              <ListItemIcon>
                 <svg className="fas fa-utensils"></svg>
@@ -243,8 +253,10 @@ const NavBar = () => {
                 <ListItemText primary={'Shopping Requests'} />
             </ListItem>
 
-            <ListItem button 
-            // onClick={<Link to='/palList/requests'/>}
+            <ListItem 
+            button 
+            component={Link}
+            to='/palList/requests'
             >
               <ListItemIcon>
               <svg className="fas fa-people-arrows"></svg>
@@ -264,8 +276,10 @@ const NavBar = () => {
               <ListItemText primary={'Profile'} />
             </ListItem>
 
-            <ListItem button 
-            // onClick={<Link to='/'/>}
+            <ListItem 
+            button 
+            component={Link}
+            to='/'
             >
               <ListItemIcon>
               <svg className="fas fa-sign-out-alt"></svg>
