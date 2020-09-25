@@ -1,6 +1,11 @@
 import React from 'react';
 
 //this is where you will display possible content 
+//needs to include 
+  //accept request
+  //decline requests
+  //block users
+  //search users
 
 const PalList = () => {
 
