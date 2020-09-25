@@ -267,8 +267,10 @@ const NavBar = () => {
         <Divider />
         <List>
           {/* functional routes related to the user - needs to be links */}
-          <ListItem button 
-          // onClick={<Link to='/userProfile'/>}
+          <ListItem 
+          button 
+          component={Link}
+          to='/userProfile'
           >
               <ListItemIcon>
               <svg className="far fa-user-circle"></svg>
