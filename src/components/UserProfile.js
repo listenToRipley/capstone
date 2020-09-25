@@ -5,13 +5,14 @@ import React from 'react';
   //email
   //password 
   //birthday
-//option to update information 
-  //setting for others to view
+//option to update information - button for update and save those updates 
+  //setting for others to view -toggles 
 
 //likes  - favorites 
 //dislikes 
 //diets 
 //allergies 
+//need a view mode 
 
 const UserProfile = () => {
 

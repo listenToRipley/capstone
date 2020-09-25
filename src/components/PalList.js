@@ -6,6 +6,7 @@ import React from 'react';
   //decline requests
   //block users
   //search users
+  //link to individual users' profile 
 
 const PalList = () => {
 

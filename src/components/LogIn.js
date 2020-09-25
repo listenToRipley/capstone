@@ -64,6 +64,7 @@ const LogIn = () => {
   const classes = useStyles();
 
   //need to set state on text before I add handlers 
+    //validate password and username 
 
   const handleText = e => {
     const state = {...this.state}

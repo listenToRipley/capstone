@@ -22,6 +22,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+//information that needs to be captured 
+  //name
+    //first 
+    //last
+  //birthday
+  //email address 
+  //password
+  //password confirmation 
+
 const SignUp = () => {
 
   const classes = useStyles();

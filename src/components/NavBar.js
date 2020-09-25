@@ -124,6 +124,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+  //must include validation of currently logged in
+    //if not logged in only display: 
+     //add about page
+     //login 
+//search needs help,
+  //search should be able to find food and users 
+
 const NavBar = () => {
   const classes = useStyles();
   const theme = useTheme();
@@ -131,7 +138,7 @@ const NavBar = () => {
 
   const handleDrawerOpen = () => {
     setOpen(true);
-  };
+  }; //need to add something for when this is open, make the view of the component adjusts 
 
   const handleDrawerClose = () => {
     setOpen(false);
