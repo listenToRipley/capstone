@@ -8,6 +8,7 @@ import PalList from './Components/PalList';
 import UserProfile from './Components/UserProfile';
 import SignUp from './Components/SignUp';
 import About from './Components/About'
+import ForgotPassword from './Components/ForgotPassword'
 // import cookie from 'cookie'
 
 //this will be for when you move to login required status
@@ -39,6 +40,7 @@ const Router = () => {
       <Route path="/userProfile" component={UserProfile}/>
       <Route path="/createNewUser" component={SignUp}/>
       <Route path="/about" component={About}/>
+      <Route path="/forgotpassword" component={ForgotPassword}/>
     </Switch>
   )
 }
