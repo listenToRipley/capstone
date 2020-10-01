@@ -5,29 +5,18 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import ListItem from '@material-ui/core/ListItem';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 
 
 //the main page, go not pass go, to not collect $200 without login in or creating a login
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Just kidding, I don't have this copyright - that costs money 
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -134,18 +123,23 @@ const LogIn = () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to="/forgotPassword" variant="body2">
-                  Forgot password?
-                </Link>
+                <ListItem
+                button
+                component={Link}
+                to="/forgotPassword" 
+                primary={'Forgot password'}>Forgot Password</ListItem>
               </Grid>
               <Grid item>
-                <Link to="/createNewUser" variant="body2">
+                <ListItem
+                button
+                component={Link}
+                to="/createNewUser" 
+                >
                   {"Don't have an account? Sign Up"}
-                </Link>
+                </ListItem>
               </Grid>
             </Grid>
             <Box mt={5}>
-              <Copyright />
             </Box>
           </form>
         </div>
