@@ -205,6 +205,7 @@ const NavBar = () => {
               button 
               component={Link} 
               to='/home'
+              aria-label='home'
               >
               <ListItemIcon>
                  <svg className="fas fa-home"></svg>
@@ -216,6 +217,7 @@ const NavBar = () => {
             button 
             component={Link}
             to='/shoppingList'
+            aria-label='shopping list'
             >
               <ListItemIcon>
               <svg className="fas fa-shopping-basket"></svg>
@@ -227,7 +229,8 @@ const NavBar = () => {
             button 
             component={Link}
             to='/pantry'
-            >
+            aria-label='pantry'
+              >
               <ListItemIcon>
               <svg className="fas fa-door-closed"></svg>
               </ListItemIcon>
@@ -238,6 +241,7 @@ const NavBar = () => {
             button 
             component={Link}
             to='/palList'
+            aria-label='pal list'
             >
               <ListItemIcon>
               <svg className="fas fa-users"></svg>
@@ -253,6 +257,7 @@ const NavBar = () => {
             button 
             component={Link}
             to='/shoppingList/requests'
+            aria-label='shopping request'
             >
              <ListItemIcon>
                 <svg className="fas fa-utensils"></svg>
@@ -264,6 +269,7 @@ const NavBar = () => {
             button 
             component={Link}
             to='/palList/requests'
+            aria-label='pal request'
             >
               <ListItemIcon>
               <svg className="fas fa-people-arrows"></svg>
@@ -278,6 +284,7 @@ const NavBar = () => {
           button 
           component={Link}
           to='/userProfile'
+          aria-label='your profile'
           >
               <ListItemIcon>
               <svg className="far fa-user-circle"></svg>
@@ -289,6 +296,7 @@ const NavBar = () => {
             button 
             component={Link}
             to='/'
+            aria-label='sign out'
             >
               <ListItemIcon>
               <svg className="fas fa-sign-out-alt"></svg>

@@ -81,7 +81,9 @@ const LogIn = () => {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" 
+          variant="h5"
+          aria-label='sign in for pantry pals'>
             Sign in
           </Typography>
           <form className={classes.form} noValidate>
@@ -95,6 +97,7 @@ const LogIn = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              aria-label='your email address'
             />
             <TextField
               variant="outlined"
@@ -106,10 +109,7 @@ const LogIn = () => {
               type="password"
               id="password"
               autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              aria-label='your password'
             />
             <Button
               type="submit"
@@ -117,6 +117,7 @@ const LogIn = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              aria-label='sign in button'
               
             >
               Sign In
@@ -127,13 +128,16 @@ const LogIn = () => {
                 button
                 component={Link}
                 to="/forgotPassword" 
-                primary={'Forgot password'}>Forgot Password</ListItem>
+                primary={'Forgot password'}
+                aria-label='forgot password?'
+                >Forgot Password</ListItem>
               </Grid>
               <Grid item>
                 <ListItem
                 button
                 component={Link}
                 to="/createNewUser" 
+                aria-label='create a login for pantry pals'
                 >
                   {"Don't have an account? Sign Up"}
                 </ListItem>
