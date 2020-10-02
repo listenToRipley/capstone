@@ -65,12 +65,16 @@ const LogIn = () => {
       "username":bindUsername,
       //will have to add validate for username and password, then can be true 
       "loggedIn":bindLoggedIn,
-      "max-Age":60*10000
+      "max-Age":60*10000,
+      "reset": {
+        "resetUsername": resetUsername,
+        "resetLoggedIn": resetLoggedIn
+      }
     })
     window.location.replace('/home')
   }
 
-  return bindLoggedIn ? <Home {...bindUsername} {...bindLoggedIn}/> :(
+  return loggedIn ? <Home {...bindUsername} {...bindLoggedIn} /> :(
       <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -91,7 +95,7 @@ const LogIn = () => {
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="username"
               label="Username"
               name="username"
               type="text"
@@ -104,11 +108,9 @@ const LogIn = () => {
               margin="normal"
               required
               fullWidth
-              name="password"
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
               aria-label='your password'
             />
             <Button
@@ -119,6 +121,7 @@ const LogIn = () => {
               className={classes.submit}
               aria-label='sign in button'
               username={bindUsername}
+              loggedIn={true}
             >
               Sign In
             </Button>

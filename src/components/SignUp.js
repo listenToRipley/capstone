@@ -5,45 +5,56 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container, Grid } from '@material-ui/core';
 import './ComponentCSS.css'
 
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100vh',
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   fields: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(4),
     width: '25ch',
     },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
 }));
-
-//information that needs to be captured 
-  //name
-    //first 
-    //last
-  //birthday
-  //email address 
-  //password
-  //password confirmation 
 
 const SignUp = () => {
 
   const classes = useStyles();
 
   return(
-   <Container className="createUserContainer">
-      <Paper classes="createUserPaper">
+
       <Grid
         container
-        direction="row"
+        component="main" 
+        direction="column"
         justify="center"
         alignItems="center"
+        className={classes.root}
       >
         <div>
         <Typography className="userTitle" component="h1" variant="h5">
               Create Login 
             </Typography>
         </div>
-        <form className={classes.fields}> 
+        <CssBaseline/>
+       <Grid
+       item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+       <form 
+        className={classes.form} 
+        > 
           <TextField
             variant="outlined"
             margin="normal"
@@ -52,6 +63,7 @@ const SignUp = () => {
             label="First Name"
             name="firstName"
             autoFocus
+            className={classes.fields}
           />
           <TextField
             variant="outlined"
@@ -61,6 +73,7 @@ const SignUp = () => {
             label="Last Name"
             name="lastName"
             autoFocus
+            className={classes.fields}
           />
           <TextField
             variant="outlined"
@@ -71,6 +84,7 @@ const SignUp = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            className={classes.fields}
             />
 
           <TextField
@@ -80,6 +94,7 @@ const SignUp = () => {
             id="password"
             label="Password"
             name="password"
+            className={classes.fields}
             />
           <TextField
             variant="outlined"
@@ -88,15 +103,28 @@ const SignUp = () => {
             id="passwordVerify"
             label="Password Verification"
             name="password"
+            className={classes.fields}
+            />
+            <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            id="birthday"
+            label="Birthday"
+            name="birthday"
+            className={classes.fields}
             />
           
         </form>
-        <Button style={{margin: '15px'}} type="submit" variant="contained" color="primary">
-           Submit
+        <Button    
+          style={{margin: '15px'}} 
+          type="submit" 
+          variant="contained" 
+          color="primary">
+           Sign Up
         </Button>
+       </Grid>
       </Grid>
-      </Paper>
-   </Container>
      
   )
 }
