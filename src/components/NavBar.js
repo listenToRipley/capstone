@@ -18,12 +18,14 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import CssBaseline from '@material-ui/icons/Menu'; 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt, faPeopleArrows} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt, faPeopleArrows, faCarrot} from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
+import cookie from 'cookie'
 
 //svg icons 
-library.add(faShoppingBasket,faDoorClosed, faUsers, faHome, faUtensils, faUserCircle, faSignOutAlt, faPeopleArrows)
+library.add(faShoppingBasket,faDoorClosed, faUsers, faHome, faUtensils, faUserCircle, faSignOutAlt, faPeopleArrows, faCarrot)
 dom.watch()
 
 const drawerWidth = 240;
@@ -39,6 +41,13 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+  },
+  title:{
+    marginLeft: `calc(100% - ${window.innerWidth/1.5}px)`,
+  },
+  about:{
+    width: '25px',
+    color: 'orange'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -132,6 +141,10 @@ const NavBar = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
+  const cookies = cookie.parse(document.cookie)
+  const status = cookies.loggedInCookie
+  console.log('current status is :',status)
+
   const handleDrawerOpen = () => {
     setOpen(true);
   }; //need to add something for when this is open, make the view of the component adjusts 
@@ -161,7 +174,7 @@ const NavBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography className={classes.title} variant="h6" noWrap>
             Pantry Pals
           </Typography>
           <div className={classes.search}>
@@ -179,6 +192,7 @@ const NavBar = () => {
           </div>
         </Toolbar>
       </AppBar>
+      {status === true ? 
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -301,6 +315,16 @@ const NavBar = () => {
             </ListItem>
         </List>
       </Drawer>
+      :
+      <Button
+              component={Link} 
+              to='/about'
+              aria-label='about'
+              className={classes.about}
+              >
+              <p><svg className="fas fa-carrot"></svg></p>
+        </Button> 
+  }    
     </div>
     <div className={classes.toolbar} />
     </div>

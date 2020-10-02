@@ -59,7 +59,7 @@ const LogIn = () => {
   //need to set state on text before I add handlers 
     //validate password and username 
   
-  const nowLoggedIn = e => {
+  const loggedInCookie = e => {
     e.preventDefault()
     document.cookie = "businessCookies="+JSON.stringify({
       "username":bindUsername,
