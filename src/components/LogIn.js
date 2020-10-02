@@ -3,8 +3,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -14,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
+import Home from './Home'
+import {useInput} from '../Hooks/inputHook'
 
 
 //the main page, go not pass go, to not collect $200 without login in or creating a login
@@ -51,29 +51,27 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = () => {
   const classes = useStyles();
+  //states sets
+  const {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
+  const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
+  const {value: loggedIn, bind: bindLoggedIn, reset: resetLoggedIn} = useInput('')
 
   //need to set state on text before I add handlers 
     //validate password and username 
-
-  const handleText = e => {
-    const state = {...this.state}
-    state[e.target.name] = e.target.value
-    this.setState(state)
-    console.log(state)
-  }
   
-  const loggedIn = e => {
+  const nowLoggedIn = e => {
     e.preventDefault()
     document.cookie = "businessCookies="+JSON.stringify({
-      "username":this.state.username,
-      "loggedIn":true,
+      "username":bindUsername,
+      //will have to add validate for username and password, then can be true 
+      "loggedIn":bindLoggedIn,
+      "max-Age":60*10000
     })
-    document.cookie="max-Age:60*10000"
     window.location.replace('/home')
   }
 
-  return (
-    <Grid container component="main" className={classes.root}>
+  return bindLoggedIn ? <Home {...bindUsername} {...bindLoggedIn}/> :(
+      <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -86,20 +84,22 @@ const LogIn = () => {
           aria-label='sign in for pantry pals'>
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} onSubmit={e=> bindLoggedIn= true} noValidate>
             <TextField
+              {...bindUsername}
               variant="outlined"
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              label="Username"
+              name="username"
+              type="text"
               autoFocus
-              aria-label='your email address'
+              aria-label='your username'
             />
             <TextField
+              {...bindPassword}
               variant="outlined"
               margin="normal"
               required
@@ -118,7 +118,7 @@ const LogIn = () => {
               color="primary"
               className={classes.submit}
               aria-label='sign in button'
-              
+              username={bindUsername}
             >
               Sign In
             </Button>

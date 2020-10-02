@@ -124,12 +124,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-  //must include validation of currently logged in
-    //if not logged in only display: 
-     //add about page
-     //login 
-//search needs help,
-  //search should be able to find food and users 
+//if not logged in, the top panel should only have the name and about. 
+//the content on the page should also shift if the drawer is expanded  
 
 const NavBar = () => {
   const classes = useStyles();
