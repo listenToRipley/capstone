@@ -1,72 +1,66 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# RULES
+Pantry Pals is intended to help making shopping for large groups, or small, easier. 
 
-## Available Scripts
+# DEFAULTS 
+When a user is first created, pal's list, pantry and shopping list should be empty.
 
-In the project directory, you can run:
+All pals will default as having a requester role.
+All requests must be approved by shopping list owner.
 
-### `npm start`
+  # DISPLAYS DEFAULTS - All users can see from profile page  
+  SEEN: Username, email, DOB date, DOB month, 
+  UNSEEN: likes, dislikes, diets, allergies, city, state, country, DOB year
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# ROLES
+MOU - Master of the Universe, admin role, developer mode, has all permissions. 
+OWNER - the person who original created the list you are working off of. 
+CO-OWNER - someone who has made a merge request on your lists and the request has been approved. Has all the same permissions as a list owner. 
+EDITOR - has the ability to add and remove items from all lists. 
+REQUESTER - has the ability to request items from the shopping list. It able to remove items from the pantry, but not add add. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+__list roles:
+  roles are assigned by pantry and shopping list. 
+    EX: You can be an editor for the shopping list, but not the pantry.
 
-### `npm test`
+__all roles:
+  can go shopping, meaning can mark item off on the shopping list 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+__Only Owners 
+  Can change the Pal's list name
 
-### `npm run build`
+__Owner and Co-owner
+  Can change the name of pantry and shopping list 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# ADDING PALS
+  Steps
+    1. Send request
+    2. request approve or declined 
+      3. if approved, add user to requestors list and new pal's list. 
+      4. default all role set to requester on new pal for lists. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# MERGING
 
-### `npm run eject`
+__how to do merges work
+  Merge appears on the Pal's list. If a person does not appear on the Pal's list a merge cannot occur. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  Steps 
+    1. The requests, (list OWNERS), send a request to a friend. 
+    2. The request appear in the Pal's inbox. 
+      3. If approved, the Pal becomes an CO-OWNER. 
+        a. The Pal's lists content is copied into the OWNER's lists 
+        b. The Pal's lists are deactivated - the Pal will view all list by Pal's list. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+__how to merges work when the person requesting the merge doesn't appear on the owner or co-owners pal's list? 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  If a list is currently merged and the individual requesting the merge does not appear on both the OWNER's and CO-OWNER's Pal's list, the merge request will be declined. 
+    A message should appear to the requesters stating the must be added to either the OWNER's or CO-OWNER's list before they will be able to work merge.  
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+__blocking OR unfriending 
+  If you currently have merged lists and unfriend or block someone, a new pantry and shopping list should be created for the non-owner based on the last state of the list and pantry 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# capstone
+# API
 Get request comes from: "https://api.spoonacular.com/recipes/complexSearch" 
 
 svg icons to use: 
