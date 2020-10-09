@@ -16,6 +16,7 @@ import ForgotPassword from './Components/ForgotPassword'
 //   const cookies = cookies.parse(document.cookie)
 //   const status = JSON.parse(cookies."cookie object name here"). "element related to login"
 // }
+//~~ have protected route for a specific login id since that path should be defined with that cookies. 
 
 // const ProtectedRoute = ({component: Component, ...rest}) => {
 //   return (
@@ -27,9 +28,11 @@ import ForgotPassword from './Components/ForgotPassword'
 // }
 
 
+
 //would like everything but the login to be protected routes, the route can be protected through the user name, if I can pass it correctly 
 const Router = () => {
   console.log('go you see this on change?')
+  //should we add the username as part of the path as a means of protections? 
   return(
     <Switch>
       <Route  exact path="/" component={LogIn}/>
