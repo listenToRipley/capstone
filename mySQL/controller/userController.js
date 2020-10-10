@@ -6,8 +6,9 @@ const { handleSQLError } = require('../sql/error')
 
 //GET 
 const getAllUsers = (req, res) => {
+  console.log('what is the req...', req)
   //write a query that returns all the users 
-  pool.query("SELECT * FROM users", (err, rows) => {
+  pool.query("SELECT * FROM kitchenSink.users", (err, rows) => {
     if(err) return handleSQLError(res, err)
     return res.json(rows); 
   })
