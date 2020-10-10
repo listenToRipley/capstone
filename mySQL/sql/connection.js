@@ -6,12 +6,12 @@ class Connection {
   constructor() {
     if(!this.pool) {
       console.log('create connection...')
-      this.pool.mysql.createPool({
-        connectionLimit:10,
+      this.pool = mysql.createPool({
+        connectionLimit:100,
         host: process.env.MYSQL_HOSTNAME,
         user: process.env.MYSQL_USERNAME,
         password: process.env.MYSQL_PASSWORD,
-        database: PantryPal
+        database: 'PantryPal'
       })
       return this.pool
     }

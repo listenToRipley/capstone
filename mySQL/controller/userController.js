@@ -1,9 +1,18 @@
+const mysql = require('mysql')
+const pool = require('../sql/connection')
+const { handleSQLError } = require('../sql/error')
 //this will pull the user's information
 //will also help with finding users
 
 //GET 
+const getAllUsers = (req, res) => {
+  //write a query that returns all the users 
+  pool.query("SELECT * FROM users", (err, rows) => {
+    if(err) return handleSQLError(res, err)
+    return res.json(rows); 
+  })
+}
 
-//write a query that returns all the users 
 
 //write a query the returns a requested user - used to validate login 
 //app info table 
@@ -25,3 +34,7 @@
 //PUT 
 
 //write a query that updates content for a user 
+
+module.exports = { 
+  getAllUsers
+}
