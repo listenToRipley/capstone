@@ -31,10 +31,16 @@ const updateListName = (req, res) => {
   //write a query that update the list name
 }
 
+const updateAutoAddPantry = (req, res) => {
+  console.log('update the auto add to pantry to be off');
+//write a query that turns off that auto add. 
+}
+
 module.exports = { 
   getShopList,
   addToShopList,
   removeFromShopList,
   updateLiItem,
-  updateListName
+  updateListName,
+  updateAutoAddPantry
 }

@@ -32,11 +32,17 @@ const updatePantryItem = (req, res) => {
     //should there be a put for each column? 
 }
 
+const updateAutoAddShop = (req, res) => {
+    console.log('update the auto add to the shopping list')
+//update the auto add to shopping list is turned off or on 
+}
+
 
 module.exports = {
     getAllPantries,
     getPantry,
     addToPantry,
     removeFromPantry,
-    updatePantryItem
+    updatePantryItem,
+    updateAutoAddShop
 }
