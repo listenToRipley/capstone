@@ -14,12 +14,13 @@ const getAllUsers = (req, res) => {
   })
 }
 
-const validateUser = (req, res) => { 
+const validateLogIn = (req, res) => { 
   console.log('validate email and password pair match')
-  //write a query the returns a requested user - used to validate login 
-//app info table 
-  //username
-  //password
+  //write a query the returns a requested user so we can validate the username and password provided are listed in the SQL and they match 
+  pool.query("SELECT * FROM kitchenSink.appInfo", (err, row) => {
+    if(err) return handleSQLError(res, err)
+    return res.json(row); 
+  })
 }
 
 
@@ -60,7 +61,7 @@ console.log('update this users information')
 
 module.exports = { 
   getAllUsers,
-  validateUser,
+  validateLogIn,
   infoOfUser,
   createUser,
   updateInfoOfUser
