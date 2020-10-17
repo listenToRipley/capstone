@@ -21,6 +21,10 @@ const validateLogIn = (req, res) => {
   })
 }
 
+//counts: 
+const countSummary = (req, res) => {
+  console.log('this is the summary count on all records on my table right now')
+}
 
 //PUSH
 const addMeasurement = (req, res) => {
@@ -55,6 +59,7 @@ const reactivateUser = (req, res) => {
 module.exports = {
   getAllUsers,  
   validateLogIn,
+  countSummary,
   addMeasurement,
   addAllergy,
   addDiet,

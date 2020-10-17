@@ -3,10 +3,11 @@ const pool = require('../sql/connection')
 //this will pull the shopping list
 
 //GET
-const getShopList = (req, res) => {
+const getMyShopList = (req, res) => {
   console.log('get the shoppingList for this user')
 //write a query that returns the shopping List for the user currently logged in  
 }
+
 
 //POST 
 const addToShopList = (req, res) => {
@@ -49,7 +50,7 @@ const updateAutoAddPantry = (req, res) => {
 }
 
 module.exports = { 
-  getShopList,
+  getMyShopList,
   addToShopList,
   addShopRequest,
   approveShopRequest,
