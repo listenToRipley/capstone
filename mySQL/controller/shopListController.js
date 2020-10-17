@@ -14,13 +14,25 @@ const addToShopList = (req, res) => {
 //write a query that add items to the list
 }
 
+const addShopRequest = (req, res) => {
+  console.log('add item to be requested')
+}
+
+const approveShopRequest = (req, res) => {
+  console.log('approved the request') 
+}
+
+const declineShopRequest = (req, res) => {
+  console.log('sorry, we are not going to get that')
+}
+
+//PUT 
+
 const removeFromShopList = (req, res) => {
   console.log('remove item to the shopping list')
 //write a query that add items to the list
 }
 
-
-//PUT 
 const updateLiItem = (req, res) => {
   console.log('update item on list')
   //write a query that updates an item on the list 
@@ -39,6 +51,9 @@ const updateAutoAddPantry = (req, res) => {
 module.exports = { 
   getShopList,
   addToShopList,
+  addShopRequest,
+  approveShopRequest,
+  declineShopRequest, 
   removeFromShopList,
   updateLiItem,
   updateListName,

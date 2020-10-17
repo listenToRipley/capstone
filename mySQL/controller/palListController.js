@@ -42,6 +42,14 @@ const unblockPal = (req, res) => {
 //write a query for blocking a user 
 }
 
+const updatePalListName = (req, res) => {
+  console.log('update the list name  now')
+}
+
+const updatePalRole = (req, res) => {
+  console.log('you have update what the pal can do on your list')
+
+}
 
 
 module.exports = {
@@ -51,5 +59,7 @@ module.exports = {
   acceptPalReq,
   declinePalReq,
   blockPal,
-  unblockPal
+  unblockPal,
+  updatePalListName,
+  updatePalRole
 }
