@@ -5,26 +5,8 @@ const { handleSQLError } = require('../sql/error')
 //will also help with finding users
 
 //GET 
-const getAllUsers = (req, res) => {
-  console.log('what is the req...', req)
-  //write a query that returns all the users 
-  pool.query("SELECT * FROM kitchenSink.users", (err, rows) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(rows); 
-  })
-}
 
-const validateLogIn = (req, res) => { 
-  console.log('validate email and password pair match')
-  //write a query the returns a requested user so we can validate the username and password provided are listed in the SQL and they match 
-  pool.query("SELECT * FROM kitchenSink.appInfo", (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })
-}
-
-
-const infoOfUser = (req, res) => {
+const justUserInfo = (req, res) => {
   console.log('get all the users information')
   //write a query the returns all information related to a specific user - used to create user profile 
   //from the following tables 
@@ -33,6 +15,50 @@ const infoOfUser = (req, res) => {
   //app info 
   //likes, dislikes, diet and allergies 
   //write a query that updates content for a user 
+}
+
+const justDisplayPreferences = (req, res) => {
+  console.log('this are just the display preferences for this user')
+
+  let sql = 'SELECT * FROM kitchenSink.displayPreferences WHERE user=?'
+
+  sql=mysql.format(sql,[req.params.user])
+
+  pool.query(sql, (err, row) => {
+    if(err) return handleSQLError(res, err)
+    return res.json(row); 
+  })  
+
+}
+
+const justLocation = (req, res) => {
+  console.log('this is just the user location')
+
+  let sql = 'SELECT * FROM kitchenSink.userLocations WHERE user=?'
+
+  sql=mysql.format(sql,[req.params.user])
+
+  pool.query(sql, (err, row) => {
+    if(err) return handleSQLError(res, err)
+    return res.json(row); 
+  })  
+
+}
+
+const justLikes = (req, res) => {
+  console.log('this is just your likes')
+} 
+
+const justDislikes = (req, res) => {
+  console.log('this is just your dislikes')
+} 
+
+const justDiets = (req, res) => {
+  console.log('this is just your diets')
+} 
+
+const justAllergies = (req, res) => {
+  console.log('this is just your allergies')
 }
 
 //POST
@@ -48,21 +74,83 @@ const createUser = (req, res) => {
   //pantrySettings
 }
 
+const addLike = (req, res) => {
+  console.log('you have now added a like')
+}
+
+const addDislike = (req, res) => {
+  console.log('you have now added a like')
+}
+
+const addDiet = (req, res) => {
+  console.log('you have now added a like')
+}
+
+const addAllergy = (req, res) => {
+  console.log('you have now added a like')
+}
 
 
 //PUT 
-const updateInfoOfUser = (req, res) => {
-//write a query that updates content for a user 
-console.log('update this users information')
-  //appInfo
-  //displayPreferences 
+const updatePassword = (req, res) => {
+  console.log('you have now update the password for this user')
+}
+
+const updateEmail = (req, res) => {
+  console.log('you have how update the user information')
+}
+
+const updateDisplayPreferences = (req, res) => {
+  console.log('you have now updated your display preferences')
+}
+
+const updateBirthday = (req, res) => {
+  console.log('you have now updated your birthday')
+}
+
+const updateLocation = (req, res) => {
+  console.log('you have now update your location')
+}
+
+//DELETE
+const removeLike = (req, res) => {
+  console.log('you have now removed a like from this user')
+}
+
+const removeDislike = (req, res) => {
+  console.log('you have now removed a like from this user')
+}
+
+const removeDiet = (req, res) => {
+  console.log('you have now removed a like from this user')
+}
+
+const removeAllergy = (req, res) => {
+  console.log('you have now removed a like from this user')
 }
 
 
 module.exports = { 
-  getAllUsers,
-  validateLogIn,
   infoOfUser,
+  justUserInfo,
+  justDisplayPreferences,
+  justLocation,
+  justLikes,
+  justDislikes,
+  justDiets,
+  justAllergies,
   createUser,
-  updateInfoOfUser
+  addLike, 
+  addDislike, 
+  addDiet,
+  addAllergy,
+  updatePassword,
+  updateEmail, 
+  updateDisplayPreferences, 
+  updateBirthday,
+  updateLocation,  
+  removeLike,
+  removeDislike,
+  removeDiet,
+  removeAllergy
 }
