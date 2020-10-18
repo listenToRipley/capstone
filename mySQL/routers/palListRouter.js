@@ -3,15 +3,19 @@ const palListController = require('../controller/palListController')
 const router = express.Router()
 
 //GET
-router.get('/', )
+router.get('/pals/:user', palListController.myPalList)
+
+//POST
+router.post('/req/:user',palListController.sendPalReq)
+router.post('/block/:user', palListController.blockPal)
 
 //PUT
-router.put('/', )
-
-//PUSH
-router.push('/', )
+router.put('/accept/:boo', palListController.acceptPalReq)
+router.put('/decline/:boo', palListController.declinePalReq)
+router.put('/unblock/:boo', palListController.unblockPal)
+router.put('/updateName/:name', palListController.updatePalListName)
+router.put('/updateRoles', palListController.updatePalRole)
 
 //DELETE
-router.delete('/', )
 
 module.exports = router

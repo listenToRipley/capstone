@@ -3,25 +3,18 @@ const pantryController = require('../controller/pantryController')
 const router = express.Router()
 
 //GET
-router.get('/', )
+router.get('/myPantry/:user', pantryController.myPantry)
 
-getAllPantries,
-getPantry,
+//POST
+router.post('/add/:id', pantryController.addToPantry)
 
 //PUT
-router.put('/', )
-
-addToPantry,
-
-//PUSH
-router.push('/', )
-
-removeFromPantry,
-updatePantryItem,
-updateAutoAddShop
+router.put('/remove/:id', pantry.removeFromPantry)
+router.put('/upItem/:id', pantryController.updateAutoAddShop)
+router.put('/upAutoAddShop/:boo', pantryController.updateAutoAddShop)
 
 //DELETE
-router.delete('/', )
+
 
 module.exports = router
 

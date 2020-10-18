@@ -226,6 +226,7 @@ const updateEmail = (req, res) => {
 
 }
 
+//are we going to be able to do this as a bulk thing or are we going to need to address this of every individual item? 
 const updateDisplayPreferences = (req, res) => {
   console.log('you have now updated your display preferences')
 

@@ -7,11 +7,21 @@ const { handleSQLError } = require('../sql/error')
 const getAllPantries = (req, res) => {
     console.log('get all pantries')
 //write a query to returns all the pantries
+
 }
 
 const getPantry = (req, res) => {
     console.log('return the pantry of the user currently logged in')
 //write a query the returns the pantry of the current user
+let sql = 'SELECT sL.quanity, sL.item, sL.meas, sL.spoonId, sL.activeItem, sLS.owner, sLS.listName, sLS.active AS listActive, sLS.mergeStatus, sLS.autoAdd AS autoAddToPantry FROM shoppingLists AS sL JOIN shopListSettings AS sLS JOIN palListSettings AS pLS ON sL.listOwner=sLS.shopList AND sLS.owner=? AND sL.activeItem=1; '
+
+sql=mysql.format(sql,[req.params.user])
+
+pool.query(sql, (err, row) => {
+  if(err) return handleSQLError(res, err)
+  return res.json(row); 
+})  
+
 }
 
 //POST

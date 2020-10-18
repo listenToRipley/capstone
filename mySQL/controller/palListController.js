@@ -5,22 +5,23 @@ const {handleSQLError} = require('../sql/error')
 //all will pull from pals lists 
 
 //GET
-const getAllPals = (req, res) => {
-  console.log('return all my pals lists')
-//write a query that returns all the pals lists 
-}
-
-const getPalList = (req, res) => {
+const myPalList = (req, res) => {
   console.log('get the pal list of the current user ')
 //write a query the returns all the friends on the list of the current user
 }
 
 //POST
 const sendPalReq = (req, res) => {
-  console.log('a place to hold request to become friends ')
+  console.log('send a request to become friends ')
 //write a query for approving or rejects a request 
 }
 
+const blockPal = (req, res) => {
+  console.log('block a user')
+//write a query for blocking a user 
+}
+
+//PUT
 const acceptPalReq = (req, res) => {
   console.log('accept a pal request')
 //write a query that accepts a pal req
@@ -31,12 +32,6 @@ const declinePalReq = (req, res) => {
 //write a query that decline a pal request
 }
 
-const blockPal = (req, res) => {
-  console.log('block a user')
-//write a query for blocking a user 
-}
-
-//PUT
 const unblockPal = (req, res) => {
   console.log('unblock a user')
 //write a query for blocking a user 
@@ -53,8 +48,7 @@ const updatePalRole = (req, res) => {
 
 
 module.exports = {
-  getAllPals,
-  getPalList,
+  myPalList,
   sendPalReq,
   acceptPalReq,
   declinePalReq,

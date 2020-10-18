@@ -4,12 +4,6 @@ const {handleSQLError} = require('../sql/error')
 //items related to merges 
 
 //GET
-const allMerges = (req, res) => {
-  console.log('my whole merge table')
-//write a query that returns all your merges 
-  //call on table mergeRequest
-}
-
 const mergeStatus = (req, res) => {
   console.log('return the status of the user`s merge')
 //write a query that returns the merge status of the current user  -
@@ -55,7 +49,6 @@ const reverseMerge = (req, res) => {
 }
 
 module.exports = {
-  allMerges,
   mergeStatus,
   mergePantry, 
   mergedShopList,
