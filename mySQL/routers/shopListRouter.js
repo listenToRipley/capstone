@@ -6,8 +6,8 @@ const router = express.Router()
 router.get('/myShopping/:user', shopListController.myShopList)
 
 //POST
-router.post('/add/:item', shopListController.addToShopList)
-router.post('/addReq/:item', shopListController.addShopRequest)
+router.post('/add/', shopListController.addToShopList)
+router.post('/addReq/', shopListController.addShopRequest)
 
 //PUT
 router.put('/appReq/:boo', shopListController.approveShopRequest)

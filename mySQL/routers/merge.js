@@ -10,7 +10,7 @@ router.get('/pantry/:user', merge.mergePantry)
 router.get('/shopList/:user', merge.mergedShopList)
 
 //POST
-router.post('/sendRequest/:user', merge.sendMergeReq )
+router.post('/sendRequest/', merge.sendMergeReq )
 
 //PUT
 router.put('/accept/:boo', merge.acceptMergeReq)

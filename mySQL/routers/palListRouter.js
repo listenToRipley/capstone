@@ -6,8 +6,8 @@ const router = express.Router()
 router.get('/pals/:user', palListController.myPalList)
 
 //POST
-router.post('/req/:user',palListController.sendPalReq)
-router.post('/block/:user', palListController.blockPal)
+router.post('/req/',palListController.sendPalReq)
+router.post('/block/', palListController.blockPal)
 
 //PUT
 router.put('/accept/:boo', palListController.acceptPalReq)

@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/myPantry/:user', pantryController.myPantry)
 
 //POST
-router.post('/add/:id', pantryController.addToPantry)
+router.post('/add/', pantryController.addToPantry)
 
 //PUT
 router.put('/remove/:id', pantry.removeFromPantry)
