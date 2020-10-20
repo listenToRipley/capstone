@@ -9,7 +9,7 @@ const { handleSQLError } = require('../sql/error')
 const justUserInfo = (req, res) => {
   console.log('get all the users information')
   //write a query the returns all information related to a specific
-  let sql = 'SELECT u.userId, aI.username, u.firstName, u.lastName, aI.email, u.dobYear, u.dobMonth, u.dobDate, uL.address, uL.city, uL.state, uL.zipcode, uL.country ,aI.phone, u.active, u.signUpDate FROM users AS u JOIN appInfo AS aI JOIN userLocations AS uL ON u.userId=aI.userId AND aI.username=? AND uL.user=?' 
+  let sql = 'SELECT aI.username, u.firstName, u.lastname, u.dobMonth, u.dobDate, u.dobYear, aI.email, aI.phone, uL.address, uL.city, uL.state, uL.zipcode, uL.country, u.signUpDate FROM appInfo AS aI JOIN users AS u JOIN userLocations AS uL ON u.userId=aI.user WHERE uL.userId=u.userId AND aI.username=?' 
 // since the input on both ? is the same, can we use on param? 
   sql=mysql.format(sql, [req.params.username], [req.params.user])
 

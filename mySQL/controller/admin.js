@@ -53,7 +53,7 @@ const validateLogIn = (req, res) => {
   pool.query("SELECT * FROM kitchenSink.appInfo", (err, row) => {
     if(err) return handleSQLError(res, err)
     return res.json(row); 
-  })
+  })   
 }
 
 //counts: 
