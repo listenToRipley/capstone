@@ -6,7 +6,7 @@ const pool = require('../sql/connection')
 const myShopList = (req, res) => {
   console.log('get the shoppingList for this user')
 //write a query that returns the shopping List for the user currently logged in  
-let sql = 'SELECT sL.quanity, sL.item, sL.meas, sL.spoonId, sL.activeItem, sLS.owner, sLS.listName, sLS.active AS listActive, sLS.mergeStatus, sLS.autoAdd AS autoAddToPantry FROM shoppingLists AS sL JOIN shopListSettings AS sLS JOIN palListSettings AS pLS ON sL.listOwner=sLS.shopList AND sLS.owner=? AND sL.activeItem=1; '
+let sql = ''
 
 sql=mysql.format(sql,[req.params.user])
 

@@ -6,7 +6,7 @@ const { handleSQLError } = require('../sql/error')
 const allUsers = (req, res) => {
   console.log('what is the req...', req)
   //write a query that returns all the users 
-  pool.query('SELECT * FROM users', (err, rows) => {
+  pool.query('', (err, rows) => {
     if(err) return handleSQLError(res, err)
     return res.json(rows); 
   })
@@ -15,7 +15,7 @@ const allUsers = (req, res) => {
 const allMerges = (req, res) => {
   console.log('my whole merge table')
 //write a query that returns all your merges 
-  pool.query('SELECT * FROM mergeRequest', (err, rows) => {
+  pool.query('SELECT * FROM mergeRequests', (err, rows) => {
     if(err) return handleSQLError(res, err)
     return res.json(rows); 
   })
@@ -32,7 +32,7 @@ const allPalLists = (req, res) => {
 const allPantries = (req, res) => {
   console.log('all pantries')
 
-  pool.query('SELECT * FROM pantrySettings', (err, row) => {
+  pool.query('SELECT * FROM pantriesSettings', (err, row) => {
     if(err) return handleSQLError(res, err)
     return res.json(rows); 
   })

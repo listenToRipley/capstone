@@ -8,10 +8,10 @@ const { handleSQLError } = require('../sql/error')
 
 const justUserInfo = (req, res) => {
   console.log('get all the users information')
-  //write a query the returns all information related to a specific
-  let sql = 'SELECT aI.username, u.firstName, u.lastname, u.dobMonth, u.dobDate, u.dobYear, aI.email, aI.phone, uL.address, uL.city, uL.state, uL.zipcode, uL.country, u.signUpDate FROM appInfo AS aI JOIN users AS u JOIN userLocations AS uL ON u.userId=aI.user WHERE uL.userId=u.userId AND aI.username=?' 
-// since the input on both ? is the same, can we use on param? 
-  sql=mysql.format(sql, [req.params.username], [req.params.user])
+  //may need to rewrite to consider merge status for pantry and shop list name, should be include this in the primary information? 
+  let sql = 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, uD.signedUp, pLS.palListSettingsId AS palListId, pLS.palListName, pS.pantrySettingId AS pantryId, pS.pantryName, sLS.shopListSetId AS shopListId, sLS.shopListName FROM appInfo aI JOIN palListSettings AS pLS JOIN usersDetails uD JOIN pantriesSettings AS pS JOIN shopListsSettings as sLS WHERE aI.username = uD.username AND aI.username = pS.owner AND aI.username = sLS.owner AND  aI.username = pLS.owner AND aI.username = ?;'
+ 
+  sql=mysql.format(sql, [req.params.username])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -22,7 +22,7 @@ const justUserInfo = (req, res) => {
 const justDisplayPreferences = (req, res) => {
   console.log('this are just the display preferences for this user')
 
-  let sql = 'SELECT * FROM displayPreferences WHERE user=?'
+  let sql = 'SELECT * FROM usersDisplayPreferences WHERE user=?'
 
   sql=mysql.format(sql,[req.params.user])
 
@@ -36,7 +36,7 @@ const justDisplayPreferences = (req, res) => {
 const justLocation = (req, res) => {
   console.log('this is just the user location')
 
-  let sql = 'SELECT * FROM userLocations WHERE user=?'
+  let sql = 'SELECT * FROM usersLocations WHERE user=?'
 
   sql=mysql.format(sql,[req.params.user])
 
@@ -78,7 +78,7 @@ const justLikes = (req, res) => {
 const justDislikes = (req, res) => {
   console.log('this is just your dislikes')
 
-  let sql='SELECT d.dislike, d.spoonId FROM dislikes AS d WHERE d.user=?'
+  let sql='SELECT item, spoonId FROM dislikes WHERE username=?'
 
   sql=mysql.format(sql,[req.params.user])
 
@@ -92,7 +92,7 @@ const justDislikes = (req, res) => {
 const justDiets = (req, res) => {
   console.log('this is just your diets')
 
-  let sql='SELECT dt.name FROM diets AS dt JOIN usersDiets AS udt ON udt.diet=dt.dietId AND udt.user=?'
+  let sql=''
 
   sql=mysql.format(sql,[req.params.user])
 
@@ -121,17 +121,11 @@ const justAllergies = (req, res) => {
 const createUser = (req, res) => {
   //write a query the creates a new user 
   console.log('create a new user')
-  //user
-  //appInfo
-  //displayPreference
-  //userLocation
-  //palList
-  //shoppingListSettings
-  //pantrySettings
 
-  let sql=''
+  let sql=	'INSERT INTO `appInfo` (username, password, email ) VALUES (? ,?, ?); INSERT INTO `usersDetails` (username, firstName, lastName, dobMonth, dobDate, dobYear, signedUp) VALUES (?, ?, ?, ?, ?, ?, NOW()); INSERT INTO `usersDisplayPreferences` (username) VALUES (?); INSERT INTO `pantriesSettings` (owner) VALUES (?); INSERT INTO `shopListsSettings` (owner) VALUES (?); INSERT INTO `palListsSettings` (owner) VALUES (?); INSERT INTO `usersLocations` (username) VALUES (?); INSERT INTO `access` (username, pantry, pantryRole, shopList, shopListRole) VALUES (?,(SELECT pantrySettingId FROM pantriesSettings WHERE owner=?), 2, (SELECT shopListSetId FROM shopListsSettings WHERE owner=?), 2);'
 
-  sql=mysql.format(sql,[req.params])
+  //there are a lot of entries that inputs that are repeated, is there a way to only use it once instead of having to have the same input over and over again? 
+  sql=mysql.format(sql,[req.body.username], [req.body.password], [req.body.password], [req.body.username], [req.body.firstName], [req.body.lastName], [req.body.dobYear], [req.body.dobDate], [req.body.dobMonth], [req.body.owner], [req.body.owner], [req.body.owner],[req.body.username], [req.body.owner], [req.body.owner] )
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
