@@ -6,6 +6,7 @@ const router = express.Router()
 router.get('/' , admin.allUsers)
 router.get('/merges', admin.allMerges)
 router.get('/palList', admin.allPalLists)
+router.get('/diets', admin.allDiets)
 router.get('/validation', admin.validateLogIn)
 router.get('/counts', admin.countSummary)
 

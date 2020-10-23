@@ -50,7 +50,7 @@ const justLocation = (req, res) => {
 const justBirthday = (req, res) => {
   console.log('you got back just the users birthday')
 
-  let sql = 'SELECT aI.username, u.dobYear, u.dobMonth, u.dobDate FROM users AS u JOIN appInfo AS aI ON u.userId=aI.userId AND aI.username=?'
+  let sql = 'SELECT username, dobYear, dobMonth, dobDate FROM usersDetails WHERE username=?'
 
   sql=mysql.format(sql,[req.params.username])
 
@@ -108,7 +108,7 @@ const justAllergies = (req, res) => {
 
   let sql='SELECT al.entry, al.spoonId FROM allergies AS al JOIN userAllergies AS uAl ON uAl.allergy=al.allergyId AND uAl.user=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.params.username])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -127,9 +127,9 @@ const createUser = (req, res) => {
   //there are a lot of entries that inputs that are repeated, is there a way to only use it once instead of having to have the same input over and over again? 
   sql=mysql.format(sql,[req.body.username], [req.body.password], [req.body.password], [req.body.username], [req.body.firstName], [req.body.lastName], [req.body.dobYear], [req.body.dobDate], [req.body.dobMonth], [req.body.owner], [req.body.owner], [req.body.owner],[req.body.username], [req.body.owner], [req.body.owner] )
 
-  pool.query(sql, (err, row) => {
+  pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json(row); 
+    return res.json({ newId: results.insertId}); //need to verify this
   })  
   
 }
@@ -137,13 +137,13 @@ const createUser = (req, res) => {
 const addLike = (req, res) => {
   console.log('you have now added a like')
 
-  let sql=''
+  let sql='INSERT INTO likes (username, item, spoonId) VALUES (?, ?, ?)'
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body.username], [req.body.item], [req.body.spoonId])
 
-  pool.query(sql, (err, row) => {
+  pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json(row); 
+    return res.json( { newId: results.insertId} ); //double check this
   })  
 
 }
@@ -151,13 +151,13 @@ const addLike = (req, res) => {
 const addDislike = (req, res) => {
   console.log('you have now added a like')
 
-  let sql=''
+  let sql='INSERT INTO dislikes (username, item, spoonId) VALUES (?, ?, ?)'
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body.username], [req.body.item], [req.body.spoonId])
 
-  pool.query(sql, (err, row) => {
+  pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json(row); 
+    return res.json( { newId: results.insertId} ); //double check this
   })  
 
 }
@@ -165,9 +165,9 @@ const addDislike = (req, res) => {
 const addDiet = (req, res) => {
   console.log('you have now added a like')
 
-  let sql=''
+  let sql='INSERT INTO usersDiets (username, diet) VALUES (?, ?)'
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body.username], [req.body.dietId])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -181,11 +181,11 @@ const addAllergy = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
+  pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json(row); 
+    return res.json( { newId: results.insertId} ); //double check this
   })  
 
 }
@@ -197,12 +197,12 @@ const updatePassword = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 
 }
 
@@ -211,12 +211,13 @@ const updateEmail = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
+
 
 }
 
@@ -226,26 +227,26 @@ const updateDisplayPreferences = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
-  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 }
 
+//might have to break it down to each item?
 const updateBirthday = (req, res) => {
   console.log('you have now updated your birthday')
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 
 }
 
@@ -254,12 +255,12 @@ const updateLocation = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 
 }
 
@@ -270,25 +271,24 @@ const updatePhoneNum = (req, res) => {
 
   sql=mysql.format(sql,[req.params])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 
 }
 
-//DELETE
 const removeLike = (req, res) => {
   console.log('you have now removed a like from this user')
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 }
 
 const removeDislike = (req, res) => {
@@ -296,12 +296,12 @@ const removeDislike = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 }
 
 const removeDiet = (req, res) => {
@@ -309,12 +309,12 @@ const removeDiet = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 }
 
 const removeAllergy = (req, res) => {
@@ -322,12 +322,12 @@ const removeAllergy = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params])
+  sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })  
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 
 }
 

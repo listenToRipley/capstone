@@ -5,8 +5,9 @@ const { handleSQLError } = require('../sql/error')
 //GET 
 const allUsers = (req, res) => {
   console.log('what is the req...', req)
+  let sql= 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username = uD.username; '
   //write a query that returns all the users 
-  pool.query('', (err, rows) => {
+  pool.query(sql, (err, rows) => {
     if(err) return handleSQLError(res, err)
     return res.json(rows); 
   })
@@ -47,10 +48,19 @@ const allShoppingLists = (req, res) => {
   })
 }
 
+const allDiets = (req, res) => {
+  console.log('all the diets, to be use to drop down lists')
+
+  pool.query('SELECT * FROM diets', (err, rows) => {
+    if (err) return handleSQLError(res, err)
+    return res.json(rows);
+  })
+}
+
 const validateLogIn = (req, res) => { 
   console.log('validate email and password pair match')
   //write a query the returns a requested user so we can validate the username and password provided are listed in the SQL and they match 
-  pool.query("SELECT * FROM kitchenSink.appInfo", (err, row) => {
+  pool.query("SELECT * FROM appInfo", (err, row) => {
     if(err) return handleSQLError(res, err)
     return res.json(row); 
   })   
@@ -95,6 +105,7 @@ module.exports = {
   allUsers,  
   allMerges,
   allPalLists,
+  allDiets,
   validateLogIn,
   countSummary,
   addMeasurement,
