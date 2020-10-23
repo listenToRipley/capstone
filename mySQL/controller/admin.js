@@ -3,16 +3,6 @@ const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 
 //GET 
-const allUsers = (req, res) => {
-  console.log('what is the req...', req)
-  let sql= 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username = uD.username; '
-  //write a query that returns all the users 
-  pool.query(sql, (err, rows) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(rows); 
-  })
-}
-
 const allMerges = (req, res) => {
   console.log('my whole merge table')
 //write a query that returns all your merges 
@@ -71,22 +61,6 @@ const countSummary = (req, res) => {
   console.log('this is the summary count on all records on my table right now')
 }
 
-//POST
-const addMeasurement = (req, res) => {
-  console.log('you have now added a unit of measurement')
-  //call on table measurements 
-}
-
-const addAllergy = (req, res) => {
-  console.log('you have now added an allergy to your list')
-  //call on table allergies
-}
-
-const addDiet = (req, res) => {
-  console.log('you have now added a new diet')
-  //call on table diets
-}
-
 //PUT
 const deactivateUser = (req, res) => {
   console.log('you have not deactivated a user')
@@ -101,16 +75,12 @@ const reactivateUser = (req, res) => {
 //DELETE
 
 
-module.exports = {
-  allUsers,  
+module.exports = { 
   allMerges,
   allPalLists,
   allDiets,
   validateLogIn,
   countSummary,
-  addMeasurement,
-  addAllergy,
-  addDiet,
   deactivateUser,
   reactivateUser
 }

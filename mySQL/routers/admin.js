@@ -1,23 +1,27 @@
 const express = require('express')
-const admin = require('../controller/admin')
+const {
+  allMerges,
+  allPalLists,
+  allDiets,
+  validateLogIn,
+  countSummary,
+  deactivateUser,
+  reactivateUser
+} = require('../controller/admin')
 const router = express.Router()
 
 //GET
-router.get('/' , admin.allUsers)
-router.get('/merges', admin.allMerges)
-router.get('/palList', admin.allPalLists)
-router.get('/diets', admin.allDiets)
-router.get('/validation', admin.validateLogIn)
-router.get('/counts', admin.countSummary)
+router.get('/merges', allMerges)
+router.get('/palList', allPalLists)
+router.get('/diets', allDiets)
+router.get('/validation', validateLogIn)
+router.get('/counts', countSummary)
 
 //POST
-router.post('/addMeasure', admin.addMeasurement)
-router.post('/addAllergy', admin.addAllergy)
-router.post('/addDiets', admin.addDiet)
 
 //PUT
-router.put('/deactivate', admin.deactivateUser)
-router.put('/reactivate', admin.reactivateUser)
+router.put('/deactivate', deactivateUser)
+router.put('/reactivate', reactivateUser)
 
 //DELETE
 
