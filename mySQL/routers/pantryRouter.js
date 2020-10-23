@@ -1,17 +1,24 @@
 const express = require('express')
-const pantryController = require('../controller/pantryController')
+const {
+  getAllPantries,
+  getPantry,
+  addToPantry,
+  removeFromPantry,
+  updatePantryItem,
+  updateAutoAddShop
+} = require('../controller/pantryController')
 const router = express.Router()
 
 //GET
-router.get('/myPantry/:user', pantryController.myPantry)
+router.get('/myPantry/:user', myPantry)
 
 //POST
-router.post('/add/', pantryController.addToPantry)
+router.post('/add/', addToPantry)
 
 //PUT
-router.put('/remove/:id', pantry.removeFromPantry)
-router.put('/upItem/:id', pantryController.updateAutoAddShop)
-router.put('/upAutoAddShop/:boo', pantryController.updateAutoAddShop)
+router.put('/remove/:id', removeFromPantry)
+router.put('/upItem/:id', updateAutoAddShop)
+router.put('/upAutoAddShop/:boo', updateAutoAddShop)
 
 //DELETE
 

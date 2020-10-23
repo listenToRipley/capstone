@@ -1,21 +1,28 @@
 const express = require('express')
 const { mergedShopList } = require('../controller/merge')
-const merge = require('../controller/merge')
-const { route } = require('./admin')
+const {
+  mergeStatus,
+  mergePantry, 
+  mergedShopList,
+  sendMergeReq,
+  acceptMergeReq,
+  declineMergeReq,
+  reverseMerge
+} = require('../controller/merge')
 const router = express.Router()
 
 //GET
-router.get('/status/:user', merge.mergeStatus)
-router.get('/pantry/:user', merge.mergePantry)
-router.get('/shopList/:user', merge.mergedShopList)
+router.get('/status/:user', mergeStatus)
+router.get('/pantry/:user', mergePantry)
+router.get('/shopList/:user', mergedShopList)
 
 //POST
-router.post('/sendRequest/', merge.sendMergeReq )
+router.post('/sendRequest/', sendMergeReq )
 
 //PUT
-router.put('/accept/:boo', merge.acceptMergeReq)
-router.put('/decline/:boo', merge.declineMergeReq)
-route.put('/reverse/:boo', merge.reverseMerge)
+router.put('/accept/:boo', acceptMergeReq)
+router.put('/decline/:boo', declineMergeReq)
+route.put('/reverse/:boo', reverseMerge)
 
 //DELETE
 
