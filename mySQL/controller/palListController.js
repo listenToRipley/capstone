@@ -8,6 +8,15 @@ const {handleSQLError} = require('../sql/error')
 const myPalList = (req, res) => {
   console.log('get the pal list of the current user ')
 //write a query the returns all the friends on the list of the current user
+let sql = 'SELECT * FROM palListsSettings WHERE owner=?'
+
+sql=mysql.format(sql, [req.params.owner])
+
+pool.query(sql, (err, row) => {
+  if(err) handleSQLError(res, err)
+  return res.json(row)
+})
+
 }
 
 //POST
@@ -39,6 +48,16 @@ const unblockPal = (req, res) => {
 
 const updatePalListName = (req, res) => {
   console.log('update the list name  now')
+  //write a query to update the users palListName
+  sql='UPDATE palListsSettings SET palListName=? WHERE owner=?'
+
+  sql=mysql.format(sql, [req.body.name], [req.body.owner])
+
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    return res.json({newId: results.insertId});
+  })
+  
 }
 
 const updatePalRole = (req, res) => {
