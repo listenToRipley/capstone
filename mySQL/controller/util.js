@@ -22,6 +22,12 @@ const addMeasurement = (req, res) => {
 const addAllergy = (req, res) => {
   console.log('you have now added an allergy to your list')
   //call on table allergies
+  let sql='INSERT INTO allergies (allergy) VALUES (?)'
+  sql=mysql.format(sql,[req.body])
+  pool.query(sql, (err, rows) => {
+    if(err) return handleSQLError(res, err)
+    return res.json( { newId: results.insertId} );
+  })
 }
 
 const addDiet = (req, res) => {
