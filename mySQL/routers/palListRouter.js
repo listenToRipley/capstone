@@ -1,6 +1,8 @@
 const express = require('express')
 const {
   myPalList,
+  viewSentReq,
+  viewPendingReq,
   sendPalReq,
   acceptPalReq,
   declinePalReq,
@@ -9,10 +11,13 @@ const {
   updatePalListName,
   updatePalRole
 } = require('../controller/palListController')
+const { route } = require('./admin')
 const router = express.Router()
 
 //GET
-router.get('/pals/:user', myPalList)
+router.get('/pals/:username', myPalList)
+router.get('/viewSent/:username', viewSentReq)
+route.get('/viewPending/:username', viewPendingReq)
 
 //POST
 router.post('/req/',sendPalReq)

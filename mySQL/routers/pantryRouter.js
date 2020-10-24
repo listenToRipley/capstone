@@ -10,7 +10,7 @@ const {
 const router = express.Router()
 
 //GET
-router.get('/myPantry/:user', myPantry)
+router.get('/myPantry/:username', myPantry)
 
 //POST
 router.post('/add/', addToPantry)
