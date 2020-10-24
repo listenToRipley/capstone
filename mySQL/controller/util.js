@@ -17,22 +17,34 @@ const allUsers = (req, res) => {
 const addMeasurement = (req, res) => {
   console.log('you have now added a unit of measurement')
   //call on table measurements 
+  let sql='INSERT INTO `measurements` (short, size) VALUES (?,?)'
+  sql=mysql.format(sql,[req.body.abb], [req.body.measure])
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    return res.json({newId: results.insertId});
+  })
 }
 
 const addAllergy = (req, res) => {
   console.log('you have now added an allergy to your list')
   //call on table allergies
   let sql='INSERT INTO allergies (allergy) VALUES (?)'
-  sql=mysql.format(sql,[req.body])
-  pool.query(sql, (err, rows) => {
+  sql=mysql.format(sql,[req.body.allergy])
+  pool.query(sql, (err, results => {
     if(err) return handleSQLError(res, err)
     return res.json( { newId: results.insertId} );
-  })
+  }))
 }
 
 const addDiet = (req, res) => {
   console.log('you have now added a new diet')
-  //call on table diets
+  //add new table diets
+  let sql='INSERT INTO diets (diet) VALUES (?)'
+  sql=mysql.format(sql,[req.body.diet])
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    return res.json( { newId: results.insertId} );
+  })
 }
 
 

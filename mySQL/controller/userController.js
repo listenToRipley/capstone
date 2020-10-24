@@ -66,7 +66,7 @@ const justLikes = (req, res) => {
 
   let sql='SELECT l.like, l.spoonId FROM likes AS l WHERE l.user=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.params.username])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -80,7 +80,7 @@ const justDislikes = (req, res) => {
 
   let sql='SELECT item, spoonId FROM dislikes WHERE username=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.params.username])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
