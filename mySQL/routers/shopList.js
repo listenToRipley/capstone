@@ -13,7 +13,7 @@ const {
 const router = express.Router()
 
 //GET
-router.get('/myShopping/:user', myShopList)
+router.get('/myShopping', myShopList)
 
 //POST
 router.post('/add/', addToShopList)

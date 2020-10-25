@@ -10,7 +10,7 @@ const myPalList = (req, res) => {
 //write a query the returns all the friends on the list of the current user
 let sql = 'SELECT palListName FROM palListsSettings WHERE owner=?'
 
-sql=mysql.format(sql, [req.params.owner])
+sql=mysql.format(sql, [req.params.username])
 
 pool.query(sql, (err, row) => {
   if(err) handleSQLError(res, err)
@@ -33,7 +33,7 @@ const viewSentReq = () => {
 
 const viewPendingReq = () => {
   //this are request sent by another user and can be approved.
-  sql='SELECT requesterUser FROM palListsRequests WHERE active=1 AND pal=?'
+  sql='SELECT palRequestId, requesterUser FROM palListsRequests WHERE active=1 AND pal=?'
 
   sql.mysql.format(sql, [req.params.username])
 
@@ -73,6 +73,10 @@ const declinePalReq = (req, res) => {
 //write a query that decline a pal request
 }
 
+const cancelPalReq = (req, res) => {
+  console.log('never mind, I did not want to sent that')
+}
+
 const unblockPal = (req, res) => {
   console.log('unblock a user')
 //write a query for blocking a user 
@@ -83,7 +87,7 @@ const updatePalListName = (req, res) => {
   //write a query to update the users palListName
   sql='UPDATE palListsSettings SET palListName=? WHERE owner=?'
 
-  sql=mysql.format(sql, [req.body.name], [req.body.owner])
+  sql=mysql.format(sql, [req.body.name], [req.body.username])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -105,6 +109,7 @@ module.exports = {
   sendPalReq,
   acceptPalReq,
   declinePalReq,
+  cancelPalReq,
   blockPal,
   unblockPal,
   updatePalListName,

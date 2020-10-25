@@ -1,6 +1,5 @@
 const express = require('express')
 const {
-  getAllPantries,
   getPantry,
   addToPantry,
   removeFromPantry,
@@ -10,14 +9,14 @@ const {
 const router = express.Router()
 
 //GET
-router.get('/myPantry/:username', myPantry)
+router.get('/myPantry', getPantry)
 
 //POST
 router.post('/add/', addToPantry)
 
 //PUT
 router.put('/remove/:id', removeFromPantry)
-router.put('/upItem/:id', updateAutoAddShop)
+router.put('/upItem/:id', updatePantryItem)
 router.put('/upAutoAddShop/:boo', updateAutoAddShop)
 
 //DELETE

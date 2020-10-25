@@ -24,7 +24,7 @@ const justDisplayPreferences = (req, res) => {
 
   let sql = 'SELECT * FROM usersDisplayPreferences WHERE user=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.params.username])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -94,7 +94,7 @@ const justDiets = (req, res) => {
 
   let sql=''
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.params.username])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)

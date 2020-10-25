@@ -3,6 +3,10 @@ const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 
 //GET 
+const testing = (req, res) => {
+  res.send('You found the admin view')
+}
+
 const allMerges = (req, res) => {
   console.log('my whole merge table')
 //write a query that returns all your merges 
@@ -76,6 +80,8 @@ const reactivateUser = (req, res) => {
 
 
 module.exports = { 
+  testing,
+  allPantries,
   allMerges,
   allPalLists,
   allDiets,

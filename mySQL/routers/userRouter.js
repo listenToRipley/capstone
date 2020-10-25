@@ -23,25 +23,25 @@ const {
   removeDislike,
   removeDiet,
   removeAllergy
-} = require('../controller/userController')
-const router = express.Router()
+} = require('../controller/currentUserController')
+const router = express.Router({mergeParams: true})
 
 //GET
-router.get('/myInfo/:user', justUserInfo)
-router.get('/displayPref/:user', justDisplayPreferences)
-router.get('/myLoc/:user', justLocation)
-router.get('/myDOB/:user', justBirthday)
-router.get('/myLikes/:user', ustLikes)
-router.get('/myDislikes/:user', ustDislikes)
-router.get('/myDiets/:user', justDiets)
-router.get('/myAllergies/:user', justAllergies)
+router.get('/info', justUserInfo)
+router.get('/displayPref', justDisplayPreferences)
+router.get('/location', justLocation)
+router.get('/DOB', justBirthday)
+router.get('/likes', justLikes)
+router.get('/dislikes', justDislikes)
+router.get('/diets', justDiets)
+router.get('/allergies', justAllergies)
 
 //POST
-router.post('/newUser/', createUser)
-router.post('/addLike/', addLike)
-router.post('/addDislike/', addDislike)
-router.post('/addDiet/', addDiet)
-router.post('/addAllergy/', addAllergy)
+router.post('/newUser', createUser)
+router.post('/addLike', addLike)
+router.post('/addDislike', addDislike)
+router.post('/addDiet', addDiet)
+router.post('/addAllergy', addAllergy)
 
 //PUT
 router.put('/upPassword/:word', updatePassword )

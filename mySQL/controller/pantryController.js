@@ -15,7 +15,7 @@ const getPantry = (req, res) => {
 //write a query the returns the pantry of the current user
 let sql = ''
 
-sql=mysql.format(sql,[req.params.user])
+sql=mysql.format(sql,[req.params.username])
 
 pool.query(sql, (err, row) => {
   if(err) return handleSQLError(res, err)

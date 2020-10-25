@@ -8,7 +8,7 @@ const myShopList = (req, res) => {
 //write a query that returns the shopping List for the user currently logged in  
 let sql = ''
 
-sql=mysql.format(sql,[req.params.user])
+sql=mysql.format(sql,[req.params.username])
 
 pool.query(sql, (err, row) => {
   if(err) return handleSQLError(res, err)
