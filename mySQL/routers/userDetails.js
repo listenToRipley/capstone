@@ -1,7 +1,8 @@
 const express = require('express')
 const {
   justUserInfo,
-  justDisplayPreferences,
+  justUserInfo,
+  justDisplayPrefer,
   justLocation,
   justBirthday,
   justLikes,
@@ -15,7 +16,10 @@ const {
   addAllergy,
   updatePassword,
   updateEmail, 
-  updateDisplayPreferences, 
+  updateDisplayPrefAll,
+  updateDisplayPrefEach,
+  updateDisplayPrefDefault,
+  updateDisplayPrivate,
   updateBirthday,
   updateLocation,  
   updatePhoneNum,
@@ -28,7 +32,7 @@ const router = express.Router({mergeParams: true})
 
 //GET
 router.get('/info', justUserInfo)
-router.get('/displayPref', justDisplayPreferences)
+router.get('/displayPref', justDisplayPrefer)
 router.get('/location', justLocation)
 router.get('/DOB', justBirthday)
 router.get('/likes', justLikes)
@@ -44,12 +48,18 @@ router.post('/addDiet', addDiet)
 router.post('/addAllergy', addAllergy)
 
 //PUT
-router.put('/upPassword/:word', updatePassword )
-router.put('/upEmail/:email', updateEmail)
-router.put('/upDisplayPref/:boo', updateDisplayPreferences)
-router.put('/upDOB/:dob', updateBirthday)
-router.put('/upLoc/:location', updateLocation)
-router.put('/upPhone/:phone', updatePhoneNum)
+router.put('/upPassword/', updatePassword )
+router.put('/upEmail/', updateEmail)
+
+router.put('/upDisplayPref/', updateDisplayPrefAll)
+router.put('/upDisplayPrefEa/', updateDisplayPrefEach)
+router.put('/upDisplayDefault/', updateDisplayPrefDefault)
+router.put('/upDis/private', updateDisplayPrivate)
+
+router.put('/upDOB/', updateBirthday)
+router.put('/upLoc/', updateLocation)
+router.put('/upPhone/', updatePhoneNum)
+
 router.put('/reLike/:id', removeLike)
 router.put('/reDislike/:id', removeDislike)
 router.put('/reDiet/:id', removeDiet)

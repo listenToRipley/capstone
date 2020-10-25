@@ -1,4 +1,5 @@
 const mysql = require('mysql')
+const { shallowEqual } = require('react-redux')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 
@@ -51,12 +52,21 @@ const allDiets = (req, res) => {
   })
 }
 
-const validateLogIn = (req, res) => { 
+const validateLogIn = (req, res, next) => { 
   console.log('validate email and password pair match')
-  //write a query the returns a requested user so we can validate the username and password provided are listed in the SQL and they match 
-  pool.query('SELECT * FROM appInfo', (err, row) => {
+  //write a query the returns a requested user so we can validate the username and password provided are listed in the SQL and they match
+
+  let sql = 'SELECT username FROM appInfo WHERE active=1 AND username=? AND password=?'
+
+  sql= mysql.format([req.params.user], [req.params.password])
+  
+  pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
-    return res.json(row); 
+      if (res.json(row) === null) {
+        res.send('Sorry, we cannot find that login')
+      } else {
+        res.json(row)
+      }
   })   
 }
 

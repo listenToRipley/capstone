@@ -4,7 +4,7 @@ const router = express.Router({mergeParams: true})
 const bodyParser = require('body-parser')
 
 const {login} = require('../controller/userId')
-const user = require('./userRouter')
+const user = require('./userDetails')
 const merge = require('./merge')
 const palList = require('./palList')
 const pantry = require('./pantry')

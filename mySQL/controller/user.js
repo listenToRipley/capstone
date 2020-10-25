@@ -9,7 +9,8 @@ const { handleSQLError } = require('../sql/error')
 const justUserInfo = (req, res) => {
   console.log('get all the users information')
   //may need to rewrite to consider merge status for pantry and shop list name, should be include this in the primary information? 
-  let sql = 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, uD.signedUp, pLS.palListSettingsId AS palListId, pLS.palListName, pS.pantrySettingId AS pantryId, pS.pantryName, sLS.shopListSetId AS shopListId, sLS.shopListName FROM appInfo aI JOIN palListSettings AS pLS JOIN usersDetails uD JOIN pantriesSettings AS pS JOIN shopListsSettings as sLS WHERE aI.username = uD.username AND aI.username = pS.owner AND aI.username = sLS.owner AND  aI.username = pLS.owner AND aI.username = ?;'
+
+  let sql = 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, uD.signedUp, pLS.palListSettingsId AS palListId, pLS.palListName, pS.pantrySettingId AS pantryId, pS.pantryName, sLS.shopListSetId AS shopListId, sLS.shopListName FROM appInfo aI JOIN palListSettings AS pLS JOIN usersDetails uD JOIN pantriesSettings AS pS JOIN shopListsSettings as sLS WHERE aI.username = uD.username AND aI.username = pS.owner AND aI.username = sLS.owner AND  aI.username = pLS.owner AND aI.username = ?'
   console.log('can you still see the username?', [req.params.username])
   sql=mysql.format(sql, [req.params.username])
 
@@ -19,10 +20,10 @@ const justUserInfo = (req, res) => {
   })
 }
 
-const justDisplayPreferences = (req, res) => {
+const justDisplayPrefer = (req, res) => {
   console.log('this are just the display preferences for this user')
 
-  let sql = 'SELECT * FROM usersDisplayPreferences WHERE user=?'
+  let sql = 'SELECT * FROM usersDisplayPreferences WHERE username=?'
 
   sql=mysql.format(sql,[req.params.username])
 
@@ -36,9 +37,9 @@ const justDisplayPreferences = (req, res) => {
 const justLocation = (req, res) => {
   console.log('this is just the user location')
 
-  let sql = 'SELECT * FROM usersLocations WHERE user=?'
+  let sql = 'SELECT * FROM usersLocations WHERE username=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.params.username])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -64,7 +65,7 @@ const justBirthday = (req, res) => {
 const justLikes = (req, res) => {
   console.log('this is just your likes')
 
-  let sql='SELECT l.like, l.spoonId FROM likes AS l WHERE l.user=?'
+  let sql='SELECT likeId AS id, item, spoonId FROM likes WHERE active=1 AND username=?'
 
   sql=mysql.format(sql,[req.params.username])
 
@@ -78,7 +79,7 @@ const justLikes = (req, res) => {
 const justDislikes = (req, res) => {
   console.log('this is just your dislikes')
 
-  let sql='SELECT item, spoonId FROM dislikes WHERE username=?'
+  let sql='SELECT dislikeId AS id, item, spoonId FROM dislikes WHERE active=1 AND username=?'
 
   sql=mysql.format(sql,[req.params.username])
 
@@ -92,7 +93,7 @@ const justDislikes = (req, res) => {
 const justDiets = (req, res) => {
   console.log('this is just your diets')
 
-  let sql=''
+  let sql='SELECT uD.uDietId AS id, d.diet FROM usersDiets AS uD JOIN diets AS d ON uD.diet=d.dietId WHERE uD.active=1 AND uD.username=?'
 
   sql=mysql.format(sql,[req.params.username])
 
@@ -106,7 +107,7 @@ const justDiets = (req, res) => {
 const justAllergies = (req, res) => {
   console.log('this is just your allergies')
 
-  let sql='SELECT al.entry, al.spoonId FROM allergies AS al JOIN userAllergies AS uAl ON uAl.allergy=al.allergyId AND uAl.user=?'
+  let sql='SELECT al.allergy, al.spoonId FROM  usersAllergies AS uAl JOIN allergies AS al ON uAl.allergy=al.allergyId WHERE uAl.active=1 AND uAl.username=?'
 
   sql=mysql.format(sql,[req.params.username])
 
@@ -117,15 +118,20 @@ const justAllergies = (req, res) => {
 
 }
 
+//should my post and put get rerouted to the calls so we can see the updates? 
+
 //POST
 const createUser = (req, res) => {
   //write a query the creates a new user 
   console.log('create a new user')
 
+  const { username, password, email, firstName, lastName, dobMonth, dobDate, dobYear} = req.body
+  //look at the display preferences all and see if we can use similar function for inserting into tables 
   let sql=	'INSERT INTO `appInfo` (username, password, email ) VALUES (? ,?, ?); INSERT INTO `usersDetails` (username, firstName, lastName, dobMonth, dobDate, dobYear, signedUp) VALUES (?, ?, ?, ?, ?, ?, NOW()); INSERT INTO `usersDisplayPreferences` (username) VALUES (?); INSERT INTO `pantriesSettings` (owner) VALUES (?); INSERT INTO `shopListsSettings` (owner) VALUES (?); INSERT INTO `palListsSettings` (owner) VALUES (?); INSERT INTO `usersLocations` (username) VALUES (?); INSERT INTO `access` (username, pantry, pantryRole, shopList, shopListRole) VALUES (?,(SELECT pantrySettingId FROM pantriesSettings WHERE owner=?), 2, (SELECT shopListSetId FROM shopListsSettings WHERE owner=?), 2);'
 
-  //there are a lot of entries that inputs that are repeated, is there a way to only use it once instead of having to have the same input over and over again? 
-  sql=mysql.format(sql,[req.body.username], [req.body.password], [req.body.password], [req.body.username], [req.body.firstName], [req.body.lastName], [req.body.dobYear], [req.body.dobDate], [req.body.dobMonth], [req.body.owner], [req.body.owner], [req.body.owner],[req.body.username], [req.body.owner], [req.body.owner] )
+  //there are a lot of entries that inputs that are repeated, is there a way to only use it once instead of having to have the same input over and over again?
+
+  sql = mysql.format(sql, [username, password, email, firstName, lastName, dobMonth, dobDate, dobYear, username, username, username, username, username, username, username])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -137,9 +143,11 @@ const createUser = (req, res) => {
 const addLike = (req, res) => {
   console.log('you have now added a like')
 
+  const {item, spoon} = req.body
+
   let sql='INSERT INTO likes (username, item, spoonId) VALUES (?, ?, ?)'
 
-  sql=mysql.format(sql,[req.body.username], [req.body.item], [req.body.spoonId])
+  sql=mysql.format(sql,[req.params.username, item, spoon])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -151,9 +159,11 @@ const addLike = (req, res) => {
 const addDislike = (req, res) => {
   console.log('you have now added a like')
 
+  const {item, spoon} = req.body
+
   let sql='INSERT INTO dislikes (username, item, spoonId) VALUES (?, ?, ?)'
 
-  sql=mysql.format(sql,[req.body.username], [req.body.item], [req.body.spoonId])
+  sql=mysql.format(sql,[ req.params.username, item, spoon])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -165,9 +175,11 @@ const addDislike = (req, res) => {
 const addDiet = (req, res) => {
   console.log('you have now added a like')
 
+  const {dietId} = req.body
+
   let sql='INSERT INTO usersDiets (username, diet) VALUES (?, ?)'
 
-  sql=mysql.format(sql,[req.body.username], [req.body.dietId])
+  sql=mysql.format(sql,[ req.params.username ,dietId])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -179,9 +191,11 @@ const addDiet = (req, res) => {
 const addAllergy = (req, res) => {
   console.log('you have now added a like')
 
-  let sql=''
+  const { allergy } = req.body
 
-  sql=mysql.format(sql,[req.body])
+  let sql='INSERT INTO usersAllergies (username, allergy) VALUES (?, ?); '
+
+  sql=mysql.format(sql, [req.params.username , allergy])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -190,14 +204,15 @@ const addAllergy = (req, res) => {
 
 }
 
-
 //PUT 
 const updatePassword = (req, res) => {
   console.log('you have now update the password for this user')
 
-  let sql=''
+  const { password } = req.body
 
-  sql=mysql.format(sql,[req.body])
+  let sql='UPDATE appInfo SET password=? WHERE username=?'
+
+  sql=mysql.format(sql,[password,  req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -209,25 +224,28 @@ const updatePassword = (req, res) => {
 const updateEmail = (req, res) => {
   console.log('you have how update the user information')
 
-  let sql=''
+  const {email} = req.body
 
-  sql=mysql.format(sql,[req.body])
+  let sql='UPDATE appInfo SET email=? WHERE username=?'
+
+  sql=mysql.format(sql,[email, req.password.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
     return res.status(204).json();
   })
-
 
 }
 
 //are we going to be able to do this as a bulk thing or are we going to need to address this of every individual item? 
-const updateDisplayPreferences = (req, res) => {
-  console.log('you have now updated your display preferences')
+const updateDisplayPrefAll = (req, res) => {
+  console.log('update all of your displays to on or off')
 
-  let sql=''
+  const {boo} = req.body
 
-  sql=mysql.format(sql,[req.body])
+  let sql='UPDATE usersDisplayPreferences SET likes=?, dislikes=likes, diets=likes, allergies=likes, city=likes, state=likes, country=likes, email=likes, dobMonth=likes, dobDate=likes, dobYear=likes, phone=likes  WHERE username=?'
+
+  sql=mysql.format(sql,[boo, req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -235,13 +253,61 @@ const updateDisplayPreferences = (req, res) => {
   })
 }
 
-//might have to break it down to each item?
+const updateDisplayPrefEach = (req, res) => {
+  console.log('update each of your display preferences, one at a time')
+
+  //if dobMonth is turned off, then you should not be able to display the dobDate
+  const {likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone} = req.body
+
+  //make sure if not changes occur, then the body reads as null
+  let sql='UPDATE usersDisplayPreferences SET likes=COALESCE(?, likes), dislikes=COALESCE(?, dislikes), diets=COALESCE(?,diets), allergies=COALESCE(?, allergies), city=COALESCE(?, city), state=COALESCE(?, state), country=COALESCE(?, country), email=COALESCE(?, email), dobMonth=COALESCE(?, dobMonth), dobDate=COALESCE(?, dobDate), dobYear=COALESCE(?, dobYear), phone=COALESCE(?, phone)  WHERE username=?'
+
+  sql=mysql.format(sql, [likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone, req.params.username])
+
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
+
+}
+
+const updateDisplayPrefDefault = (req, res) => {
+  console.log('reset you display preferences to the default ')
+
+  let sql='UPDATE usersDisplayPreferences SET likes=0, dislikes=0, diets=0, allergies=0, city=0, state=0, country=0, email=1, dobMonth=1, dobDate=1, dobYear=0, phone=0, private=0  WHERE username=?'
+
+  sql=mysql.format(sql, [req.params.username])
+
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
+}
+
+const updateDisplayPrivate = (req, res) => {
+  console.log('update just the private settings')
+
+  const {boo} = req.body
+
+  let sql = 'UPDATE usersDisplayPreferences SET private=? WHERE username=?'
+
+  sql=mysql.format(sql, [boo, req.params.username])
+
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    return res.status(204).json
+  })
+}
+
 const updateBirthday = (req, res) => {
   console.log('you have now updated your birthday')
 
-  let sql=''
+  const {month, date, year} = req.body
 
-  sql=mysql.format(sql,[req.body])
+  //if nothing is passed in or changed, make sure the body reads 'null' for those lines 
+  let sql='UPDATE usersDetails SET dobYear=COALESCE(?, dobYear), dobDate=COALESCE(?, dobDate), dobMonth=COALESCE(?, dobMonth) WHERE username=?'
+
+  sql=mysql.format(sql,[month, date, year, req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -253,9 +319,11 @@ const updateBirthday = (req, res) => {
 const updateLocation = (req, res) => {
   console.log('you have now update your location')
 
-  let sql=''
+  const {address, city, state, zip, country} = req.body
 
-  sql=mysql.format(sql,[req.body])
+  let sql='UPDATE usersLocations SET address=COALESCE(?, address), city=COALESCE(?, city), state=COALESCE(?, state), zipcode=COALESCE(?, zipcode), country=COALESCE(?,country) WHERE username=?'
+
+  sql=mysql.format(sql,[address, city, state, zip, country, req.params.username])
 
   pool.query(sql, (err, row) => {
     if (err) return handleSQLError(res, err)
@@ -267,9 +335,11 @@ const updateLocation = (req, res) => {
 const updatePhoneNum = (req, res) => {
   console.log('you have not update the phone number')
 
-  let sql=''
+  const {phone} = req.body
 
-  sql=mysql.format(sql,[req.params])
+  let sql='UPDATE usersDetails SET phone=? WHERE username=?'
+
+  sql=mysql.format(sql,[phone ,req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -281,9 +351,9 @@ const updatePhoneNum = (req, res) => {
 const removeLike = (req, res) => {
   console.log('you have now removed a like from this user')
 
-  let sql=''
+  let sql='UPDATE likes SET active=0 WHERE likeId=? AND username=?'
 
-  sql=mysql.format(sql,[req.body])
+  sql=mysql.format(sql,[req.params.id, req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -294,9 +364,9 @@ const removeLike = (req, res) => {
 const removeDislike = (req, res) => {
   console.log('you have now removed a like from this user')
 
-  let sql=''
+  let sql='UPDATE dislikes SET active=0 WHERE dislikeId=? AND username=?'
 
-  sql=mysql.format(sql,[req.body])
+  sql=mysql.format(sql,[req.params.id, req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -307,9 +377,9 @@ const removeDislike = (req, res) => {
 const removeDiet = (req, res) => {
   console.log('you have now removed a like from this user')
 
-  let sql=''
+  let sql='UPDATE usersDiets SET active=0 WHERE uDietId=? AND username=?'
 
-  sql=mysql.format(sql,[req.body])
+  sql=mysql.format(sql,[req.params.id, req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -320,9 +390,9 @@ const removeDiet = (req, res) => {
 const removeAllergy = (req, res) => {
   console.log('you have now removed a like from this user')
 
-  let sql=''
+  let sql='UPDATE usersAllergies SET active=0 WHERE uAllergyId=? AND username=?'
 
-  sql=mysql.format(sql,[req.body])
+  sql=mysql.format(sql,[req.params.id, req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -334,7 +404,7 @@ const removeAllergy = (req, res) => {
 
 module.exports = { 
   justUserInfo,
-  justDisplayPreferences,
+  justDisplayPrefer,
   justLocation,
   justBirthday,
   justLikes,
@@ -348,7 +418,10 @@ module.exports = {
   addAllergy,
   updatePassword,
   updateEmail, 
-  updateDisplayPreferences, 
+  updateDisplayPrefAll,
+  updateDisplayPrefEach,
+  updateDisplayPrefDefault,
+  updateDisplayPrivate,
   updateBirthday,
   updateLocation,  
   updatePhoneNum,
