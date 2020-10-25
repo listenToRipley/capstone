@@ -11,7 +11,7 @@ const {
   unblockPal,
   updatePalListName,
   updatePalRole
-} = require('../controller/palListController')
+} = require('../controller/palList')
 const router = express.Router()
 
 //GET

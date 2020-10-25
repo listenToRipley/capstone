@@ -23,7 +23,7 @@ const {
   removeDislike,
   removeDiet,
   removeAllergy
-} = require('../controller/currentUserController')
+} = require('../controller/user')
 const router = express.Router({mergeParams: true})
 
 //GET

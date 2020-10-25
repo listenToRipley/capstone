@@ -5,7 +5,7 @@ const {
   removeFromPantry,
   updatePantryItem,
   updateAutoAddShop
-} = require('../controller/pantryController')
+} = require('../controller/pantry')
 const router = express.Router()
 
 //GET

@@ -9,7 +9,7 @@ const {
   updateLiItem,
   updateListName,
   updateAutoAddPantry
-} = require('../controller/shopListController')
+} = require('../controller/shopList')
 const router = express.Router()
 
 //GET
