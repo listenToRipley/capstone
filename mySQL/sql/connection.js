@@ -1,4 +1,3 @@
-
 const mysql = require('mysql')
 
 class Connection {
@@ -14,8 +13,10 @@ class Connection {
         database: process.env.MYSQL_DATABASE,
         debug: false
       })
-
+      
+      console.log('can you see')
       return this.pool
+     
     }
     console.log('got through the pool')
     return this.pool

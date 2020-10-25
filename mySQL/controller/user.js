@@ -257,7 +257,7 @@ const updateLocation = (req, res) => {
 
   sql=mysql.format(sql,[req.body])
 
-  pool.query(sql, (err, results) => {
+  pool.query(sql, (err, row) => {
     if (err) return handleSQLError(res, err)
     return res.status(204).json();
   })

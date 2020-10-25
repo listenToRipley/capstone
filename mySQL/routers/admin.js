@@ -4,17 +4,18 @@ const {
   AllPantries,
   allMerges,
   allPalLists,
+  allShoppingLists,
   allDiets,
   validateLogIn,
   countSummary,
-  deactivateUser,
-  reactivateUser
+  updateActiveStat
 } = require('../controller/admin')
 const router = express.Router()
 
 //GET
 router.get('/', testing)
 // router.get('/pantries',AllPantries)
+// router.get('./shopping', allShoppingLists)
 // router.get('/merges', allMerges)
 // router.get('/palList', allPalLists)
 // router.get('/diets', allDiets)
@@ -24,8 +25,7 @@ router.get('/', testing)
 // //POST
 
 // //PUT
-// router.put('/deactivate', deactivateUser)
-// router.put('/reactivate', reactivateUser)
+// router.put('/updateStatus', updateActiveStat)
 
 //DELETE
 

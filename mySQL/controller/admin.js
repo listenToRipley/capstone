@@ -54,7 +54,7 @@ const allDiets = (req, res) => {
 const validateLogIn = (req, res) => { 
   console.log('validate email and password pair match')
   //write a query the returns a requested user so we can validate the username and password provided are listed in the SQL and they match 
-  pool.query("SELECT * FROM appInfo", (err, row) => {
+  pool.query('SELECT * FROM appInfo', (err, row) => {
     if(err) return handleSQLError(res, err)
     return res.json(row); 
   })   
@@ -62,19 +62,30 @@ const validateLogIn = (req, res) => {
 
 //counts: 
 const countSummary = (req, res) => {
-  console.log('this is the summary count on all records on my table right now')
+  console.log('right now tells you how many users you have')
+
+  pool.query('SELECT COUNT(*) FROM appInfo WHERE active=1', (err, row) => {
+    if(err) return handleSQLError(res, err)
+    return res.json(row)
+  })
 }
 
 //PUT
-const deactivateUser = (req, res) => {
+const updateActiveStat = (req, res) => {
   console.log('you have not deactivated a user')
   //call on table user, column active
+  const { boo, user } = req.body //if deactivating, should be 0, if active 1 
+
+  let sql = 'UPDATE appInfo SET active=? WHERE username=?'
+
+  sql=mysql.format(sql,[boo, user])
+
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
+  })
 }
 
-const reactivateUser = (req, res) => {
-  console.log('you have now reactivated a user')
-  //call on table user, column active
-}
 
 //DELETE
 
@@ -82,11 +93,11 @@ const reactivateUser = (req, res) => {
 module.exports = { 
   testing,
   allPantries,
+  allShoppingLists,
   allMerges,
   allPalLists,
   allDiets,
   validateLogIn,
   countSummary,
-  deactivateUser,
-  reactivateUser
+  updateActiveStat
 }
