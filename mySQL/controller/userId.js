@@ -9,7 +9,7 @@ const login = (req, res, next) => {
   let user = req.params.username
   
   res.send('You found your users', )
-  console.log('can you see your response', res.json(user))
+  console.log('can you see your response', [req.params.username])
 
   next()
 }

@@ -10,7 +10,7 @@ const justUserInfo = (req, res) => {
   console.log('get all the users information')
   //may need to rewrite to consider merge status for pantry and shop list name, should be include this in the primary information? 
   let sql = 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, uD.signedUp, pLS.palListSettingsId AS palListId, pLS.palListName, pS.pantrySettingId AS pantryId, pS.pantryName, sLS.shopListSetId AS shopListId, sLS.shopListName FROM appInfo aI JOIN palListSettings AS pLS JOIN usersDetails uD JOIN pantriesSettings AS pS JOIN shopListsSettings as sLS WHERE aI.username = uD.username AND aI.username = pS.owner AND aI.username = sLS.owner AND  aI.username = pLS.owner AND aI.username = ?;'
- 
+  console.log('can you still see the username?', [req.params.username])
   sql=mysql.format(sql, [req.params.username])
 
   pool.query(sql, (err, row) => {
