@@ -65,6 +65,9 @@ pool.query(sql, (err, results) => {
 const blockPal = (req, res) => {
   console.log('block a user')
 //write a query for blocking a user 
+
+  
+
 }
 
 //PUT
@@ -78,7 +81,7 @@ const acceptPalReq = (req, res) => {
 const { reqId } = req.body
 
 //this will be triggered by the pal role accepting, so all references to the pal will be the current user
-let sql= 'BEGIN; UPDATE palListsRequests SET approved=1, active=0 WHERE palRequestId=; INSERT INTO access (username, pantry, pantryRole, shopList, shopListRole ,palReq) VALUES ( ? , (SELECT DISTINCT pS.pantrySettingId FROM pantriesSettings AS pS JOIN palListsRequests AS pLR ON pS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) ), 5, (SELECT DISTINCT sLS.shopListSetId FROM shopListsSettings AS sLS JOIN palListsRequests AS pLR ON sLS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? )),5 , ? ); INSERT INTO access (username, pantry, pantryRole ,shopList, shopListRole, palReq) VALUES ( (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ), SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? , 5, SELECT shopListSetId FROM shopListsSettings WHERE owner= ?, 5, 8); COMMIT;'
+let sql= 'BEGIN; UPDATE palListsRequests SET approved=1, active=0 WHERE palRequestId=; INSERT INTO access (username, pantry, pantryRole, shopList, shopListRole ,palReq) VALUES ( ? , (SELECT DISTINCT pS.pantrySettingId FROM pantriesSettings AS pS JOIN palListsRequests AS pLR ON pS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) ), 5, (SELECT DISTINCT sLS.shopListSetId FROM shopListsSettings AS sLS JOIN palListsRequests AS pLR ON sLS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? )),5 , ? ); INSERT INTO access (username, pantry, pantryRole ,shopList, shopListRole, palReq) VALUES ( (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ), (SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? ) , 5, (SELECT shopListSetId FROM shopListsSettings WHERE owner= ? ), 5, 8); COMMIT;'
 
 sql=mysql.format(sql,[req.params.username, reqId, reqId, reqId, reqId, req.params.username, req.params.username, reqId])
 
@@ -90,7 +93,7 @@ pool.query(sql, (err, results) => {
 }
 
 //since the information should already be based as the key from the view requests and this action should only be turned on where the use is listed as the pal. 
-const declinePalReq = (req, res) => {
+const declinePalReq = (req, res) => { //USE THIS THIS TO CANCEL REQUESTS
   console.log('decline a pal request')
 //write a query that decline a pal request
 const {reqId} = req.body
@@ -104,10 +107,6 @@ pool.query(sql, (err, results) => {
   return res.status(204).json(); 
 })
 
-}
-
-const cancelPalReq = (req, res) => {
-  console.log('never mind, I did not want to sent that')
 }
 
 const unblockPal = (req, res) => {
@@ -142,7 +141,6 @@ module.exports = {
   sendPalReq,
   acceptPalReq,
   declinePalReq,
-  cancelPalReq,
   blockPal,
   unblockPal,
   updatePalListName,

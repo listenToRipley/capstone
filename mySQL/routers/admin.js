@@ -1,7 +1,7 @@
 const express = require('express')
 const {
   testing,
-  AllPantries,
+  allPantries,
   allMerges,
   allPalLists,
   allShoppingLists,
@@ -14,13 +14,13 @@ const router = express.Router()
 
 //GET
 router.get('/', testing)
-// router.get('/pantries',AllPantries)
-// router.get('./shopping', allShoppingLists)
-// router.get('/merges', allMerges)
-// router.get('/palList', allPalLists)
-// router.get('/diets', allDiets)
-// router.get('/validation', validateLogIn)
-// router.get('/counts', countSummary)
+router.get('/pantries', allPantries)
+router.get('./shopping', allShoppingLists)
+router.get('/merges', allMerges)
+router.get('/palList', allPalLists)
+router.get('/diets', allDiets)
+router.get('/validation', validateLogIn)
+router.get('/counts', countSummary)
 
 // //POST
 

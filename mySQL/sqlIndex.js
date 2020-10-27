@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 //remember to have the route protected
 //should be prefixed by your role, MOU
 app.use(bodyParser.json())
-app.use('/:username', user)
+app.use('/users/:username', user)
 app.use('/admin', admin)
 
 app.listen(port, () => {

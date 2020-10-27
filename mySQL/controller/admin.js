@@ -1,5 +1,4 @@
 const mysql = require('mysql')
-const { shallowEqual } = require('react-redux')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 
@@ -28,7 +27,7 @@ const allPalLists = (req, res) => {
 const allPantries = (req, res) => {
   console.log('all pantries')
 
-  pool.query('SELECT * FROM pantriesSettings', (err, row) => {
+  pool.query('SELECT * FROM pantriesSettings', (err, rows) => {
     if(err) return handleSQLError(res, err)
     return res.json(rows); 
   })

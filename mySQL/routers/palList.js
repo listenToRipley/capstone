@@ -6,7 +6,6 @@ const {
   sendPalReq,
   acceptPalReq,
   declinePalReq,
-  cancelPalReq,
   blockPal,
   unblockPal,
   updatePalListName,
@@ -24,10 +23,9 @@ router.post('/req/',sendPalReq)
 router.post('/block/', blockPal)
 
 //PUT
-router.put('/accept/:boo', acceptPalReq)
-router.put('/decline/:boo', declinePalReq)
-router.put('/cancel/:boo', cancelPalReq)
-router.put('/unblock/:boo', unblockPal)
+router.put('/accept/:reqId', acceptPalReq)
+router.put('/decline/:reqId', declinePalReq)
+router.put('/unblock/:reqId', unblockPal)
 router.put('/updateName/:name', updatePalListName)
 router.put('/updateRoles', updatePalRole)
 
