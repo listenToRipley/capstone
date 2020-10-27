@@ -122,9 +122,6 @@ const justAllergies = (req, res) => {
 
 //POST
 const createUser = (req, res) => {
-  //write a query the creates a new user 
-  console.log('create a new user')
-
   const { username, password, email, firstName, lastName, dobMonth, dobDate, dobYear} = req.body
   //look at the display preferences all and see if we can use similar function for inserting into tables 
   let sql=	'INSERT INTO `appInfo` (username, password, email ) VALUES (? ,?, ?); INSERT INTO `usersDetails` (username, firstName, lastName, dobMonth, dobDate, dobYear, signedUp) VALUES (?, ?, ?, ?, ?, ?, NOW()); INSERT INTO `usersDisplayPreferences` (username) VALUES (?); INSERT INTO `pantriesSettings` (owner) VALUES (?); INSERT INTO `shopListsSettings` (owner) VALUES (?); INSERT INTO `palListsSettings` (owner) VALUES (?); INSERT INTO `usersLocations` (username) VALUES (?); INSERT INTO `access` (username, pantry, pantryRole, shopList, shopListRole) VALUES (?,(SELECT pantrySettingId FROM pantriesSettings WHERE owner=?), 2, (SELECT shopListSetId FROM shopListsSettings WHERE owner=?), 2);'
@@ -138,7 +135,6 @@ const createUser = (req, res) => {
     return res.json({ newId: results.insertId}); //need to verify this
   })  
 }
-
 
 const addLike = (req, res) => {
   console.log('you have now added a like')

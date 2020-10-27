@@ -44,6 +44,7 @@ just.post('/addDislike', addDislike)
 just.post('/addDiet', addDiet)
 just.post('/addAllergy', addAllergy)
 
+
 //PUT
 just.put('/upPassword/', updatePassword )
 just.put('/upEmail/', updateEmail)

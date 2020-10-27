@@ -9,8 +9,8 @@ const pantry = require('./pantry')
 const shopList = require('./shopList')
 const admin = require('./admin')
 
-start.get('/:username', login)
 
+start.get('/:username', login)
 
 start.use('/:username/just', user)
 start.use('/:username/merge', merge)
