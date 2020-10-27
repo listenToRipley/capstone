@@ -8,11 +8,13 @@ const login = (req, res, next) => {
 
   let user = req.params.username
   
-  res.send('You found your users', )
+  res.send('You found your users '+ user)
   console.log('can you see your response', [req.params.username])
 
   next()
 }
+
+
 
 module.exports = { 
   login

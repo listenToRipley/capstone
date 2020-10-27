@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const admin = require('./routers/admin')
 const user = require('./routers/userLogIn')
+const login = require('./routers/preLogin')
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Pantry Pal Server!')
@@ -14,7 +15,8 @@ app.get('/', (req, res) => {
 //remember to have the route protected
 //should be prefixed by your role, MOU
 app.use(bodyParser.json())
-app.use('/users/:username', user)
+app.use('/user/:username', user)
+app.use('/login', login)
 app.use('/admin', admin)
 
 app.listen(port, () => {

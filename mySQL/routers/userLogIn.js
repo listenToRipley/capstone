@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const router = express.Router({mergeParams: true})
+const router = express.Router()
 const bodyParser = require('body-parser')
 
 const {login} = require('../controller/userId')
@@ -10,9 +10,9 @@ const palList = require('./palList')
 const pantry = require('./pantry')
 const shopList = require('./shopList')
 
-router.get('/', login)
+router.get('/login', login)
 
-app.use('/is', user)
+app.get('/just', user)
 app.use('/merge', merge)
 app.use('/palList', palList)
 app.use('/pantry', pantry)

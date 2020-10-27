@@ -8,7 +8,6 @@ const {
   justDislikes,
   justDiets,
   justAllergies,
-  createUser,
   addLike, 
   addDislike, 
   addDiet,
@@ -40,7 +39,6 @@ router.get('/diets', justDiets)
 router.get('/allergies', justAllergies)
 
 //POST
-router.post('/newUser', createUser)
 router.post('/addLike', addLike)
 router.post('/addDislike', addDislike)
 router.post('/addDiet', addDiet)
