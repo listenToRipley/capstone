@@ -3,7 +3,6 @@ const express = require('express')
 const port = process.env.PORT || 4001
 const bodyParser = require('body-parser')
 const app = express()
-const admin = require('./routers/admin')
 const user = require('./routers/userLogIn')
 
 app.get('/', (req, res) => {
@@ -14,8 +13,8 @@ app.get('/', (req, res) => {
 //remember to have the route protected
 //should be prefixed by your role, MOU
 app.use(bodyParser.json())
-app.use('/users/:username', user)
-app.use('/admin', admin)
+
+app.use('/user/', user)
 
 app.listen(port, () => {
   console.log(`Under your backend, you are currently listening on port ${port}`)

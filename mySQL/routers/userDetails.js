@@ -8,7 +8,6 @@ const {
   justDislikes,
   justDiets,
   justAllergies,
-  createUser,
   addLike, 
   addDislike, 
   addDiet,
@@ -27,43 +26,42 @@ const {
   removeDiet,
   removeAllergy
 } = require('../controller/user')
-const router = express.Router({mergeParams: true})
+const just = express.Router({mergeParams: true})
 
 //GET
-router.get('/info', justUserInfo)
-router.get('/displayPref', justDisplayPrefer)
-router.get('/location', justLocation)
-router.get('/DOB', justBirthday)
-router.get('/likes', justLikes)
-router.get('/dislikes', justDislikes)
-router.get('/diets', justDiets)
-router.get('/allergies', justAllergies)
+just.get('/info', justUserInfo)
+just.get('/displayPref', justDisplayPrefer)
+just.get('/location', justLocation)
+just.get('/DOB', justBirthday)
+just.get('/likes', justLikes)
+just.get('/dislikes', justDislikes)
+just.get('/diets', justDiets)
+just.get('/allergies', justAllergies)
 
 //POST
-router.post('/newUser', createUser)
-router.post('/addLike', addLike)
-router.post('/addDislike', addDislike)
-router.post('/addDiet', addDiet)
-router.post('/addAllergy', addAllergy)
+just.post('/addLike', addLike)
+just.post('/addDislike', addDislike)
+just.post('/addDiet', addDiet)
+just.post('/addAllergy', addAllergy)
 
 //PUT
-router.put('/upPassword/', updatePassword )
-router.put('/upEmail/', updateEmail)
+just.put('/upPassword/', updatePassword )
+just.put('/upEmail/', updateEmail)
 
-router.put('/upDisplayPref/', updateDisplayPrefAll)
-router.put('/upDisplayPrefEa/', updateDisplayPrefEach)
-router.put('/upDisplayDefault/', updateDisplayPrefDefault)
-router.put('/upDis/private', updateDisplayPrivate)
+just.put('/upDisplayPref/', updateDisplayPrefAll)
+just.put('/upDisplayPrefEa/', updateDisplayPrefEach)
+just.put('/upDisplayDefault/', updateDisplayPrefDefault)
+just.put('/upDis/private', updateDisplayPrivate)
 
-router.put('/upDOB/', updateBirthday)
-router.put('/upLoc/', updateLocation)
-router.put('/upPhone/', updatePhoneNum)
+just.put('/upDOB/', updateBirthday)
+just.put('/upLoc/', updateLocation)
+just.put('/upPhone/', updatePhoneNum)
 
-router.put('/reLike/:id', removeLike)
-router.put('/reDislike/:id', removeDislike)
-router.put('/reDiet/:id', removeDiet)
-router.put('/reAllergy/:id', removeAllergy)
+just.put('/reLike/:id', removeLike)
+just.put('/reDislike/:id', removeDislike)
+just.put('/reDiet/:id', removeDiet)
+just.put('/reAllergy/:id', removeAllergy)
 
 //DELETE
 
-module.exports = router
+module.exports = just

@@ -6,23 +6,23 @@ const {
   updatePantryItem,
   updateAutoAddShop
 } = require('../controller/pantry')
-const router = express.Router()
+const pantry = express.Router({mergeParams: true})
 
 //GET
-router.get('/myPantry', getPantry)
+pantry.get('/pantry', getPantry)
 
 //POST
-router.post('/add/', addToPantry)
+pantry.post('/add/', addToPantry)
 
 //PUT
-router.put('/remove/:id', removeFromPantry)
-router.put('/upItem/:id', updatePantryItem)
-router.put('/upAutoAddShop/:boo', updateAutoAddShop)
+pantry.put('/remove/:id', removeFromPantry)
+pantry.put('/upItem/:id', updatePantryItem)
+pantry.put('/upAutoAddShop/:boo', updateAutoAddShop)
 
 //DELETE
 
 
-module.exports = router
+module.exports = pantry
 
 
 

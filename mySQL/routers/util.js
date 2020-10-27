@@ -5,14 +5,16 @@ const {
   addAllergy,
   addDiet
 } = require('../controller/admin')
-const router = express.Router()
+const util = express.Router({mergeParams: true})
 
 //GET
-router.get('/' , allUsers)
+util.get('/' , allUsers)
 
 //PUT
-router.post('/addMeasure', addMeasurement)
-router.post('/addAllergy', addAllergy)
-router.post('/addDiets', addDiet)
+util.post('/addMeasure', addMeasurement)
+util.post('/addAllergy', addAllergy)
+util.post('/addDiets', addDiet)
 
 //POST
+
+module.exports = util

@@ -10,17 +10,17 @@ const {
   countSummary,
   updateActiveStat
 } = require('../controller/admin')
-const router = express.Router()
+const admin = express.Router({mergeParams: true})
 
 //GET
-router.get('/', testing)
-router.get('/pantries', allPantries)
-router.get('./shopping', allShoppingLists)
-router.get('/merges', allMerges)
-router.get('/palList', allPalLists)
-router.get('/diets', allDiets)
-router.get('/validation', validateLogIn)
-router.get('/counts', countSummary)
+admin.get('/', testing)
+admin.get('/pantries', allPantries)
+admin.get('./shopping', allShoppingLists)
+admin.get('/merges', allMerges)
+admin.get('/palList', allPalLists)
+admin.get('/diets', allDiets)
+admin.get('/validation', validateLogIn)
+admin.get('/counts', countSummary)
 
 // //POST
 
@@ -29,7 +29,7 @@ router.get('/counts', countSummary)
 
 //DELETE
 
-module.exports = router
+module.exports = admin
 
   
 

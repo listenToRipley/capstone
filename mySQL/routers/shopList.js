@@ -10,26 +10,26 @@ const {
   updateListName,
   updateAutoAddPantry
 } = require('../controller/shopList')
-const router = express.Router()
+const shopList = express.Router({mergeParams: true})
 
 //GET
-router.get('/myShopping', myShopList)
+shopList.get('/myShopping', myShopList)
 
 //POST
-router.post('/add/', addToShopList)
-router.post('/addReq/', addShopRequest)
+shopList.post('/add/', addToShopList)
+shopList.post('/addReq/', addShopRequest)
 
 //PUT
-router.put('/appReq/:boo', approveShopRequest)
-router.put('/decReq/:boo', declineShopRequest)
-router.put('/remove/:id', removeFromShopList )
-router.put('/upItem/:id', updateLiItem)
-router.put('/updateName/:name', updateListName)
-router.put('/upAutoAddPantry/:boo', updateAutoAddPantry)
+shopList.put('/appReq/:boo', approveShopRequest)
+shopList.put('/decReq/:boo', declineShopRequest)
+shopList.put('/remove/:id', removeFromShopList )
+shopList.put('/upItem/:id', updateLiItem)
+shopList.put('/updateName/:name', updateListName)
+shopList.put('/upAutoAddPantry/:boo', updateAutoAddPantry)
 
 //DELETE
 
-module.exports = router
+module.exports = shopList
 
 
 

@@ -11,24 +11,24 @@ const {
   updatePalListName,
   updatePalRole
 } = require('../controller/palList')
-const router = express.Router()
+const pals = express.Router({mergeParams: true})
 
 //GET
-router.get('/pals', myPalList)
-router.get('/viewSent', viewSentReq)
-router.get('/viewPending', viewPendingReq)
+pals.get('/pals', myPalList)
+pals.get('/viewSent', viewSentReq)
+pals.get('/viewPending', viewPendingReq)
 
 //POST
-router.post('/req/',sendPalReq)
-router.post('/block/', blockPal)
+pals.post('/req/',sendPalReq)
+pals.post('/block/', blockPal)
 
 //PUT
-router.put('/accept/:reqId', acceptPalReq)
-router.put('/decline/:reqId', declinePalReq)
-router.put('/unblock/:reqId', unblockPal)
-router.put('/updateName/:name', updatePalListName)
-router.put('/updateRoles', updatePalRole)
+pals.put('/accept/:reqId', acceptPalReq)
+pals.put('/decline/:reqId', declinePalReq)
+pals.put('/unblock/:reqId', unblockPal)
+pals.put('/updateName/:name', updatePalListName)
+pals.put('/updateRoles', updatePalRole)
 
 //DELETE
 
-module.exports = router
+module.exports = pals

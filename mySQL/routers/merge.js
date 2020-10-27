@@ -8,25 +8,25 @@ const {
   declineMergeReq,
   reverseMerge
 } = require('../controller/merge')
-const router = express.Router()
+const merger = express.Router({mergeParams: true})
 
 //GET
-router.get('/status', mergeStatus)
-router.get('/pantry', mergePantry)
-router.get('/shopList', mergedShopList)
+merger.get('/status', mergeStatus)
+merger.get('/pantry', mergePantry)
+merger.get('/shopList', mergedShopList)
 
 //POST
-router.post('/sendRequest/', sendMergeReq )
+merger.post('/sendRequest/', sendMergeReq )
 
 //PUT
-router.put('/accept/:boo', acceptMergeReq)
-router.put('/decline/:boo', declineMergeReq)
-router.put('/reverse/:boo', reverseMerge)
+merger.put('/accept/:boo', acceptMergeReq)
+merger.put('/decline/:boo', declineMergeReq)
+merger.put('/reverse/:boo', reverseMerge)
 
 //DELETE
 
 
-module.exports = router
+module.exports = merger
 
 
 

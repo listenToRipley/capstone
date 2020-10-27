@@ -1,7 +1,5 @@
 const express = require('express')
-const app = express()
-const router = express.Router({mergeParams: true})
-const bodyParser = require('body-parser')
+const start = express.Router({mergeParams: true})
 
 const {login} = require('../controller/userId')
 const user = require('./userDetails')
@@ -9,14 +7,17 @@ const merge = require('./merge')
 const palList = require('./palList')
 const pantry = require('./pantry')
 const shopList = require('./shopList')
+const admin = require('./admin')
 
-router.get('/', login)
-
-app.use('/is', user)
-app.use('/merge', merge)
-app.use('/palList', palList)
-app.use('/pantry', pantry)
-app.use('/shopList', shopList)
+start.get('/:username', login)
 
 
-module.exports = router
+start.use('/:username/just', user)
+start.use('/:username/merge', merge)
+start.use('/:username/palList', palList)
+start.use('/:username/pantry', pantry)
+start.use('/:username/shopList', shopList)
+start.use('/:username', admin)
+
+
+module.exports = start
