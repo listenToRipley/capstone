@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 
-//search database to validate username
+//search database to validate username and password match the provided input
 //validate login
 const login = (req, res, next) => {
 
