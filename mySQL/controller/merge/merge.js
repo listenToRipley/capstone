@@ -31,7 +31,14 @@ const sendMergeReq = (req, res) => {
   //call on mergeRequest
   //remember the requesters will the one who whose pantry will now be the primary owner and the person who requests will be come the co-owner. 
   //the person who send this will have the role of requesters, to req.params.username is already there
+  sql='INSERT INTO mergeRequests (requester, mergePal, palReq) VALUES (?, ? , (SELECT palRequestId FROM palListsRequests WHERE requesterUser=?  AND pal= ? OR requesterUser= ? AND pal=? ))'
 
+  sql=mysql.format(sql,[ username, pal, pal, username, username, pal ])
+  
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    return res.json( { newId: results.insertId} ); //double check this
+  })    
 
 }
 
