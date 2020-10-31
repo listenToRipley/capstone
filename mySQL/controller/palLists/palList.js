@@ -9,7 +9,7 @@ const {handleSQLError} = require('../../sql/error')
 const myPalList = (req, res) => {
   console.log('get the pal list of the current user ')
 //NEED TO UPDATE TO INCLUDE THE PAL LIST
-let sql = 'SELECT palListName FROM palListsSettings WHERE owner=?'
+let sql = 'SELECT DISTINCT pL.username AS pals, pL.reqId AS palReq, pLS.palListName, a.pantryRole, a.shopListRole FROM palLists AS pL JOIN palListsRequests AS pLR JOIN palListsSettings AS pLS JOIN access AS a ON pLR.palRequestId=pL.reqId AND a.palReq=pL.reqId AND pL.palList=pLS.palListSettingsId WHERE pLR.approved=1 AND a.active=1 AND pLS.owner=?'
 
 sql=mysql.format(sql, [req.params.username])
 
