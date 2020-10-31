@@ -121,6 +121,7 @@ const justAllergies = (req, res) => {
 //should my post and put get rerouted to the calls so we can see the updates? 
 
 //POST
+
 const createUser = (req, res) => {
   const { username, password, email, firstName, lastName, dobMonth, dobDate, dobYear} = req.body
   //look at the display preferences all and see if we can use similar function for inserting into tables 
@@ -135,6 +136,7 @@ const createUser = (req, res) => {
     return res.json({ newId: results.insertId}); //need to verify this
   })  
 }
+
 
 const addLike = (req, res) => {
   console.log('you have now added a like')
