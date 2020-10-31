@@ -14,9 +14,10 @@ const merge = express.Router({mergeParams: true})
 merge.get('/', mergeStatus)
 
 
-// //POST
+//POST
+merge.post('/:pal', sendMergeReq)
 
-// //PUT
+//PUT
 // router.put('/updateStatus', updateActiveStat)
 
 //DELETE
