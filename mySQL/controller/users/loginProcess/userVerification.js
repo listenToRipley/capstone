@@ -10,7 +10,7 @@ const login = (req, res, next) => {
   
   res.send('You found your users '+ user)
   console.log('can you see your response', [req.params.username])
-
+  //should the results re-route to another area when completed? 
 }
 
 
