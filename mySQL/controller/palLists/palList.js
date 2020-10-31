@@ -66,9 +66,7 @@ pool.query(sql, (err, results) => {
 const blockPal = (req, res) => {
   console.log('block a user')
 //write a query for blocking a user 
-
-  
-
+//this will be future state. 
 }
 
 //PUT
@@ -114,6 +112,7 @@ pool.query(sql, (err, results) => {
 const unblockPal = (req, res) => {
   console.log('unblock a user')
 //write a query for blocking a user 
+//this will be future state
 }
 
 const updatePalListName = (req, res) => {
