@@ -1,5 +1,6 @@
 const mysql = require('mysql')
-const pool = require('../sql/connection')
+const pool = require('../../sql/connection')
+const err = require('../../sql/error')
 //this will pull the shopping list
 
 //GET

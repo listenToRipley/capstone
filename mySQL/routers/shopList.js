@@ -9,7 +9,7 @@ const {
   updateLiItem,
   updateListName,
   updateAutoAddPantry
-} = require('../controller/shopList')
+} = require('../controller/shoppingLists/shopList')
 const shopList = express.Router({mergeParams: true})
 //WOULD MY REQUEST BE EASIER IF I ESTABLISHED THE PRIMARY LIST ID? 
 

@@ -4,7 +4,7 @@ const {
   addMeasurement,
   addAllergy,
   addDiet
-} = require('../controller/admin')
+} = require('../controller/util')
 const util = express.Router({mergeParams: true})
 
 //GET

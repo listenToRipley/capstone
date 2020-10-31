@@ -1,11 +1,16 @@
 const mysql = require('mysql')
-const pool = require('../../../sql/connection')
-const { handleSQLError } = require('../../../sql/error')
+const pool = require('../sql/connection')
+const { handleSQLError } = require('../sql/error')
 
 //GET
-const listUsers = (req, res) => {
+const verifyCreation = (req, res) => {
   console.log('want a list of username to check again for created name?')
 }
+
+const forgotUsername = (req, res) => {
+  //find user based on email address, return their username and email address 
+    console.log('you forgot what your username is?')
+  }
 
 //POST  
 const createUser = (req, res) => {
@@ -32,13 +37,8 @@ const forgotPassword = (req, res) => {
   console.log('you for got your password you say?')
 }
 
-const forgotUsername = (req, res) => {
-//find user based on email address, return their username and email address 
-  console.log('you forgot what your username is?')
-}
-
 module.exports = {
-  listUsers,
+  verifyCreation,
   createUser,
   forgotPassword,
   forgotUsername

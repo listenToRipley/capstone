@@ -4,8 +4,8 @@ const port = process.env.PORT || 4001
 const bodyParser = require('body-parser')
 const app = express()
 
-const user = require('./routers/postLogin')
-const newUser = require('./routers/loginProcess')
+const user = require('./routers/userLogIn')
+const newUser = require('./routers/prelogin')
 
 
 app.get('/', (req, res) => {

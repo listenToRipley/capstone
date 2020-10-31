@@ -10,7 +10,7 @@ const {
   unblockPal,
   updatePalListName,
   updatePalRole
-} = require('../controller/palList')
+} = require('../controller/palLists/palList')
 const pals = express.Router({mergeParams: true})
 //WOULD IT BE EASIER FOR THESE QUERIES IF HAD THE CURRENT USERS ID FIRST 
 
