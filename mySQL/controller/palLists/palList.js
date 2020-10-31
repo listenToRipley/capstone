@@ -23,7 +23,7 @@ pool.query(sql, (err, row) => {
 
 const viewSentReq = (req, res) => {
   //this is for request send by the current user. 
-  sql='SELECT palRequestId AS reqId, pal AS waiting FROM palListsRequests WHERE active=1 AND requesterUser=?'
+  sql='SELECT palRequestId, pal FROM palListsRequests WHERE active=1 AND requesterUser=?'
 
   sql=mysql.format(sql, [req.params.username])
 
@@ -36,7 +36,7 @@ const viewSentReq = (req, res) => {
 //this will be associated with the ability to accept! 
 const viewPendingReq = (req, res) => {
   //this are request sent by another user and can be approved.
-  sql='SELECT palRequestId AS reqId, requesterUser AS replyOn FROM palListsRequests WHERE active=1 AND pal=?'
+  sql='SELECT palRequestId, requesterUser FROM palListsRequests WHERE active=1 AND pal=?'
 
   sql.mysql.format(sql, [req.params.username])
 
