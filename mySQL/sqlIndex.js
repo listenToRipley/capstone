@@ -4,7 +4,7 @@ const port = process.env.PORT || 4001
 const bodyParser = require('body-parser')
 const app = express()
 const user = require('./routers/postLogin')
-const newUser = require('./routers/preLogin')
+const newUser = require('./routers/loginProcess')
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Pantry Pal Server!')

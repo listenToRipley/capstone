@@ -1,8 +1,9 @@
 const mysql = require('mysql')
-const pool = require('../sql/connection')
-const {handleSQLError} = require('../sql/error')
+const pool = require('../../../sql/connection')
+const {handleSQLError} = require('../../../sql/error')
 //this will pull on the pals lists 
 //all will pull from pals lists 
+
 
 //GET
 const myPalList = (req, res) => {
@@ -18,6 +19,7 @@ pool.query(sql, (err, row) => {
 })
 
 }
+
 
 const viewSentReq = (req, res) => {
   //this is for request send by the current user. 
@@ -81,9 +83,9 @@ const acceptPalReq = (req, res) => {
 const { reqId } = req.body
 
 //this will be triggered by the pal role accepting, so all references to the pal will be the current user
-let sql= 'BEGIN; UPDATE palListsRequests SET approved=1, active=0 WHERE palRequestId=; INSERT INTO access (username, pantry, pantryRole, shopList, shopListRole ,palReq) VALUES ( ? , (SELECT DISTINCT pS.pantrySettingId FROM pantriesSettings AS pS JOIN palListsRequests AS pLR ON pS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) ), 5, (SELECT DISTINCT sLS.shopListSetId FROM shopListsSettings AS sLS JOIN palListsRequests AS pLR ON sLS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? )),5 , ? ); INSERT INTO access (username, pantry, pantryRole ,shopList, shopListRole, palReq) VALUES ( (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ), (SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? ) , 5, (SELECT shopListSetId FROM shopListsSettings WHERE owner= ? ), 5, 8); COMMIT;'
+let sql= 'BEGIN; UPDATE palListsRequests SET approved=1, active=0 WHERE palRequestId=; INSERT INTO access (username, pantry, pantryRole, shopList, shopListRole ,palReq) VALUES ( ? , (SELECT DISTINCT pS.pantrySettingId FROM pantriesSettings AS pS JOIN palListsRequests AS pLR ON pS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) ), 5, (SELECT DISTINCT sLS.shopListSetId FROM shopListsSettings AS sLS JOIN palListsRequests AS pLR ON sLS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? )),5 , ? ); INSERT INTO access (username, pantry, pantryRole ,shopList, shopListRole, palReq) VALUES ( (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ), (SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? ) , 5, (SELECT shopListSetId FROM shopListsSettings WHERE owner= ? ), 5, 8); INSERT INTO palLists (list, username, reqId) VALUES ((), ? ,()); INSERT INTO palLists (list, username, reqId) VALUES ((), ? ,()); COMMIT;'
 
-sql=mysql.format(sql,[req.params.username, reqId, reqId, reqId, reqId, req.params.username, req.params.username, reqId])
+sql=mysql.format(sql,[req.params.username, reqId, reqId, reqId, reqId, req.params.username, req.params.username, reqId, reqId, req.params.username, ])
 
 pool.query(sql, (err, results) => {
   if (err) return handleSQLError(res, err)
