@@ -15,10 +15,11 @@ merge.get('/', mergeStatus)
 
 
 //POST
-merge.post('/:pal', sendMergeReq)
+merge.post('/', sendMergeReq)
 
 //PUT
-// router.put('/updateStatus', updateActiveStat)
+merge.put('/:mergeId', acceptMergeReq)
+merge.put('/:mergeId', declineMergeReq)
 
 //DELETE
 
