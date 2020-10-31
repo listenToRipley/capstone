@@ -7,7 +7,7 @@ const {handleSQLError} = require('../sql/error')
 //GET
 const myPalList = (req, res) => {
   console.log('get the pal list of the current user ')
-//write a query the returns all the friends on the list of the current user
+//NEED TO UPDATE TO INCLUDE THE PAL LIST
 let sql = 'SELECT palListName FROM palListsSettings WHERE owner=?'
 
 sql=mysql.format(sql, [req.params.username])

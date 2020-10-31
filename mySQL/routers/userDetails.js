@@ -27,6 +27,8 @@ const {
   removeAllergy
 } = require('../controller/user')
 const just = express.Router({mergeParams: true})
+//NEED TO CONSIDER MODULARIZING 
+
 
 //GET
 just.get('/info', justUserInfo)

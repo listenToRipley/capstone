@@ -11,6 +11,7 @@ const {
   updateAutoAddPantry
 } = require('../controller/shopList')
 const shopList = express.Router({mergeParams: true})
+//WOULD MY REQUEST BE EASIER IF I ESTABLISHED THE PRIMARY LIST ID? 
 
 //GET
 shopList.get('/myShopping', myShopList)

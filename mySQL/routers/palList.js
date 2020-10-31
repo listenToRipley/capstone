@@ -12,6 +12,7 @@ const {
   updatePalRole
 } = require('../controller/palList')
 const pals = express.Router({mergeParams: true})
+//WOULD IT BE EASIER FOR THESE QUERIES IF HAD THE CURRENT USERS ID FIRST 
 
 //GET
 pals.get('/pals', myPalList)

@@ -7,6 +7,7 @@ const {
   updateAutoAddShop
 } = require('../controller/pantry')
 const pantry = express.Router({mergeParams: true})
+//WOULD ME QUERY BE SHORTED IF I COULD ID THE PRIMARY PANTRY FIRST? 
 
 //GET
 pantry.get('/pantry', getPantry)
