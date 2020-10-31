@@ -4,7 +4,6 @@ const {handleSQLError} = require('../../sql/error')
 //this will pull on the pals lists 
 //all will pull from pals lists 
 
-
 //GET
 const myPalList = (req, res) => {
   console.log('get the pal list of the current user ')
@@ -81,11 +80,12 @@ const acceptPalReq = (req, res) => {
 
 //since the information should already be based as the key from the view requests and this action should only be turned on where the use is listed as the pal. 
 const { reqId } = req.body
+const {username } = req.params
 
-//this will be triggered by the pal role accepting, so all references to the pal will be the current user
-let sql= 'BEGIN; UPDATE palListsRequests SET approved=1, active=0 WHERE palRequestId=; INSERT INTO access (username, pantry, pantryRole, shopList, shopListRole ,palReq) VALUES ( ? , (SELECT DISTINCT pS.pantrySettingId FROM pantriesSettings AS pS JOIN palListsRequests AS pLR ON pS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) ), 5, (SELECT DISTINCT sLS.shopListSetId FROM shopListsSettings AS sLS JOIN palListsRequests AS pLR ON sLS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? )),5 , ? ); INSERT INTO access (username, pantry, pantryRole ,shopList, shopListRole, palReq) VALUES ( (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ), (SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? ) , 5, (SELECT shopListSetId FROM shopListsSettings WHERE owner= ? ), 5, 8); INSERT INTO palLists (list, username, reqId) VALUES ((), ? ,()); INSERT INTO palLists (list, username, reqId) VALUES ((), ? ,()); COMMIT;'
+//this will be triggered by the pal role accepting, so all references to the pal will be the current user -> we should already know that the reqId is, so we should be able to pull information that way
+let sql='BEGIN; UPDATE palListsRequests SET approved=1, active=0 WHERE palRequestId= ? ; INSERT INTO access (username, pantry, pantryRole, shopList, shopListRole ,palReq) VALUES ( ?, (SELECT DISTINCT pS.pantrySettingId FROM pantriesSettings AS pS JOIN palListsRequests AS pLR ON pS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) ), 5, (SELECT DISTINCT sLS.shopListSetId FROM shopListsSettings AS sLS JOIN palListsRequests AS pLR ON sLS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? )),5 , ? ); INSERT INTO palLists (palList, username, reqId) VALUES ((SELECT palListSettingsId FROM palListsSettings WHERE owner=(SELECT requesterUser from palListsRequests WHERE palRequestId= ? )), ? , ? ); INSERT INTO access (username, pantry, pantryRole ,shopList, shopListRole, palReq) VALUES ( (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ), (SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? ), 5, (SELECT shopListSetId FROM shopListsSettings WHERE owner= ? ), 5, ?); INSERT INTO palLists (palList, username, reqId) VALUES ((SELECT palListSettingsId FROM palListsSettings WHERE owner= ? ), (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) , ? ); COMMIT;'
 
-sql=mysql.format(sql,[req.params.username, reqId, reqId, reqId, reqId, req.params.username, req.params.username, reqId, reqId, req.params.username, ])
+sql=mysql.format(sql,[reqId, username, reqId, reqId, reqId, reqId, username, reqId, reqId, username, username, reqId, username, reqId, reqId ])
 
 pool.query(sql, (err, results) => {
   if (err) return handleSQLError(res, err)
