@@ -42,12 +42,25 @@ pool.query(sql, (err, results) => {
 })
 }
 
+
+//PUT 
 const removeFromPantry = (req, res) => {
     console.log('remove from the pantry')
 //write a query for removing an item from the pantry 
+
+let sql='UPDATE pantries SET stock=0 where entryId=?'
+
+sql='UPDATE palListsSettings SET palListName=? WHERE owner=?'
+
+sql=mysql.format(sql,[req.params.id])
+
+pool.query(sql, (err, results) => {
+  if (err) return handleSQLError(res, err)
+  return res.status(204).json();
+})
+
 }
 
-//PUT 
 const updatePantryItem = (req, res) => {
     console.log('update items in the pantry')
 //write a query that updates an items from the pantry 
