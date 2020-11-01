@@ -18,7 +18,8 @@ pantry.post('/add/', addToPantry)
 //PUT
 pantry.put('/remove/:id', removeFromPantry)
 pantry.put('/upItem/:id', updatePantryItem)
-pantry.put('/upAutoAddShop/:boo', updateAutoAddShop)
+//this id should be the item of the 
+pantry.put('/upAutoAddShop/:id', updateAutoAddShop)
 
 //DELETE
 

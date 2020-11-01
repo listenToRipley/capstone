@@ -65,7 +65,7 @@ const {quantity, measId, item, spoonId} = req.body
 let sql='UPDATE pantries SET quantity=COALESCE( ? , quantity), measId=(COALESCE( ? , measId)), item=(COALESCE( ? , item)), spoonId=(COALESCE( ? , spoonId)) WHERE entryId= ? '
 
 
-sql=mysql.format(sql, quantity, measId, item, spoonId, req.params.id)
+sql=mysql.format(sql, [quantity, measId, item, spoonId, req.params.id])
 
 pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -78,6 +78,12 @@ pool.query(sql, (err, results) => {
 const updateAutoAddShop = (req, res) => {
     console.log('update the auto add to the shopping list')
 //update the auto add to shopping list is turned off or on 
+let {autoAdd} = req.body
+
+let sql ='UPDATE pantriesSettings SET autoAdd= ?  WHERE pantrySettingId= ? '
+
+sql= mysql.format(sql, [autoAdd, req.body.id])
+
 }
 
 
