@@ -1,12 +1,9 @@
 const express = require('express')
 const {
   mergeStatus,
-  mergePantry, 
-  mergedShopList,
   sendMergeReq,
   acceptMergeReq,
   declineMergeReq,
-  reverseMerge
 } = require('../controller/merge/merge')
 const merge = express.Router({mergeParams: true})
 

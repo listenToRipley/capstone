@@ -76,6 +76,7 @@ const declineMergeReq = (req, res) => {
 
 }
 
+//this will be future state for now
 const reverseMerge = (req, res) => {
   console.log('reverse request')
 //write a query that reverses that request 

@@ -28,6 +28,18 @@ pool.query(sql, (err, row) => {
 const addToPantry = (req, res) => {
     console.log('add items to the pantry')
 //write a query for adding items to the pantry
+
+//the only field that is required is the item field, null is acceptable for all other fields 
+const {pantryId, quantity, measId, item, spoonId} = req.body
+
+let sql ='INSERT INTO pantries (pantry, quantity, measId, item, spoonId) VALUES (1, ? , ?, ?, ?);'
+
+sql=mysql.format(sql,[ pantryId, quantity, measId, item, spoonId ])
+
+pool.query(sql, (err, results) => {
+  if (err) return handleSQLError(res, err)
+  return res.status(204).json();
+})
 }
 
 const removeFromPantry = (req, res) => {
