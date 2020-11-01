@@ -29,7 +29,7 @@ const addToPantry = (req, res) => {
 //the only field that is required is the item field, null is acceptable for all other fields 
 const {pantryId, quantity, measId, item, spoonId} = req.body
 
-let sql ='INSERT INTO pantries (pantry, quantity, measId, item, spoonId) VALUES (1, ? , ?, ?, ?);'
+let sql ='INSERT INTO pantries (pantry, quantity, measId, item, spoonId) VALUES ( ?, ? , ?, ?, ?);'
 
 sql=mysql.format(sql,[ pantryId, quantity, measId, item, spoonId ])
 
@@ -45,8 +45,6 @@ const removeFromPantry = (req, res) => {
 //write a query for removing an item from the pantry 
 
 let sql='UPDATE pantries SET stock=0 where entryId=?'
-
-sql='UPDATE palListsSettings SET palListName=? WHERE owner=?'
 
 sql=mysql.format(sql,[req.params.id])
 
