@@ -10,9 +10,9 @@ const getPantry = (req, res) => {
 //write a query the returns the pantry of the current user
 
 //this needs to account for a merged pantry
-let sql = 'SELECT entryId, quantity, measId, item, spoonId FROM pantries WHERE stock=1 AND pantry=(SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? )'
+let sql = 'SELECT entryId, quantity, measId, item, spoonId FROM pantries WHERE stock=1 AND pantry= ?' 
 
-sql=mysql.format(sql,[req.params.username])
+sql=mysql.format(sql,[req.params.id])
 
 pool.query(sql, (err, row) => {
   if(err) return handleSQLError(res, err)

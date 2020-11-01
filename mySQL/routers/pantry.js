@@ -10,7 +10,8 @@ const pantry = express.Router({mergeParams: true})
 //WOULD ME QUERY BE SHORTED IF I COULD ID THE PRIMARY PANTRY FIRST? 
 
 //GET
-pantry.get('/pantry', getPantry)
+//this should be the id for the primary pantry
+pantry.get('/pantry/:id', getPantry)
 
 //POST
 pantry.post('/add/', addToPantry)
