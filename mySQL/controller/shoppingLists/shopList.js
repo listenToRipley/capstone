@@ -4,6 +4,9 @@ const err = require('../../sql/error')
 //this will pull the shopping list
 
 //GET
+const shopListDetails
+
+
 const myShopList = (req, res) => {
   console.log('get the shoppingList for this user')
 //write a query that returns the shopping List for the user currently logged in  

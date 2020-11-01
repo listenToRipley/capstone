@@ -5,6 +5,12 @@ const { handleSQLError } = require('../../sql/error')
 
 //GET
 
+const pantryDetails = (req, res) => {
+    //this will be the pantry details for the primary pantry
+
+let sql = '' 
+}
+
 const getPantry = (req, res) => {
     console.log('return the pantry of the user currently logged in')
 //write a query the returns the pantry of the current user

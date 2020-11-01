@@ -14,7 +14,7 @@ const shopList = express.Router({mergeParams: true})
 //WOULD MY REQUEST BE EASIER IF I ESTABLISHED THE PRIMARY LIST ID? 
 
 //GET
-shopList.get('/myShopping', myShopList)
+shopList.get('/myShopping/:id', myShopList)
 
 //POST
 shopList.post('/add/', addToShopList)
