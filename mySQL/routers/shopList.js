@@ -1,6 +1,6 @@
 const express = require('express')
 const {
-  myShopList,
+  shopList,
   addToShopList,
   addShopRequest,
   approveShopRequest,
@@ -14,7 +14,7 @@ const shopList = express.Router({mergeParams: true})
 //WOULD MY REQUEST BE EASIER IF I ESTABLISHED THE PRIMARY LIST ID? 
 
 //GET
-shopList.get('/myShopping/:id', myShopList)
+shopList.get('/myShopping/:id', shopList)
 
 //POST
 shopList.post('/add/', addToShopList)

@@ -1,20 +1,33 @@
 const mysql = require('mysql')
 const pool = require('../../sql/connection')
+const { handleSQLError } = require('../../sql/error')
 const err = require('../../sql/error')
 //this will pull the shopping list
 
 //GET
-const shopListDetails
+const shopListDetails = (req, res) => {
+  //this should be the detailed information about a specific request
+  let sql='SELECT sLS.shopListSetId AS listId,sLS.shopListName AS listName FROM shopListsSettings AS sLS WHERE owner=?'
+
+  sql=mysql.format(sql, [req.params.username])
+
+  pool.query(sql, (err, row) => {
+    if(err) return handleSQLError(res, [req.params.username])
+
+    return res.json(row);
+  })
+
+}
 
 
-const myShopList = (req, res) => {
+const shopList = (req, res) => {
   console.log('get the shoppingList for this user')
 //write a query that returns the shopping List for the user currently logged in  
 
 //this is a work in process, it is not done ~ we need to account for merges 
-let sql = 'SELECT sLS.shopListSetId AS listId,sLS.shopListName AS listName FROM shopListsSettings AS sLS WHERE owner=?'
+let sql = 'SELECT * FROM shoppingLists AS sL JOIN shopListsSettings AS sLS WHERE activeItem=1 AND shopList= ? '
 
-sql=mysql.format(sql,[req.params.username])
+sql=mysql.format(sql,[req.params.id])
 
 pool.query(sql, (err, row) => {
   if(err) return handleSQLError(res, err)
@@ -92,7 +105,7 @@ const updateAutoAddPantry = (req, res) => {
 }
 
 module.exports = { 
-  myShopList,
+  shopList,
   viewShopRequests,
   addToShopList,
   addShopRequest,
