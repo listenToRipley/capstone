@@ -4,16 +4,13 @@ const { handleSQLError } = require('../../sql/error')
 //this will pull the pantry state
 
 //GET
-const getAllPantries = (req, res) => {
-    console.log('get all pantries')
-//write a query to returns all the pantries
-
-}
 
 const getPantry = (req, res) => {
     console.log('return the pantry of the user currently logged in')
 //write a query the returns the pantry of the current user
-let sql = ''
+
+//this needs to account for a merged pantry
+let sql = 'SELECT entryId, quantity, measId, item, spoonId FROM pantries WHERE stock=1 AND pantry=(SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? )'
 
 sql=mysql.format(sql,[req.params.username])
 
@@ -41,7 +38,6 @@ pool.query(sql, (err, results) => {
   return res.status(204).json();
 })
 }
-
 
 //PUT 
 const removeFromPantry = (req, res) => {
@@ -74,7 +70,6 @@ const updateAutoAddShop = (req, res) => {
 
 
 module.exports = {
-    getAllPantries,
     getPantry,
     addToPantry,
     removeFromPantry,
