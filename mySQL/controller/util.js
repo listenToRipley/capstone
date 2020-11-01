@@ -31,8 +31,10 @@ const usersProfiles = (req, res) => {
 const addMeasurement = (req, res) => {
   console.log('you have now added a unit of measurement')
   //call on table measurements 
-  let sql='INSERT INTO `measurements` (short, size) VALUES (?,?)'
-  sql=mysql.format(sql,[req.body.abb], [req.body.measure])
+  const {short, size} = req.body
+
+  let sql='INSERT INTO measurements (short, size) VALUES (UPPER(?),?)'
+  sql=mysql.format(sql,[short, size])
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
     return res.json({newId: results.insertId});
