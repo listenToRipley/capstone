@@ -3,8 +3,8 @@ const mysql = require('mysql')
 const pool = require('../../sql/connection')
 const { handleSQLError } = require('../../sql/error')
 
-const myPantry = (req, res) => {
-  let sql = 'SELECT * FROM shopListsSettings WHERE owner = ?'
+const myPantryDetails = (req, res) => {
+  let sql = 'SELECT * FROM pantriesSettings WHERE owner= ?'
 
   sql=mysql.format(sql, [req.params.username])
 
@@ -15,8 +15,17 @@ const myPantry = (req, res) => {
   
 }
 
+const myPantryContents = (req, res) => {
+  let sql = 'SELECT * FROM pantries WHERE pantry=(SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? )'
+
+  sql=mysql.format(sql, [req.params.username])
+
+  pool.query
+}
+
 
 
 module.exports = {
-  myPantry
+  myPantryDetails,
+  myPantryContents
 }
