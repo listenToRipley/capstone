@@ -60,7 +60,19 @@ pool.query(sql, (err, results) => {
 const updatePantryItem = (req, res) => {
     console.log('update items in the pantry')
 //write a query that updates an items from the pantry 
-    //should there be a put for each column? 
+const {quantity, measId, item, spoonId} = req.body
+
+let sql='UPDATE pantries SET quantity=COALESCE( ? , quantity), measId=(COALESCE( ? , measId)), item=(COALESCE( ? , item)), spoonId=(COALESCE( ? , spoonId)) WHERE entryId= ? '
+
+
+sql=mysql.format(sql, quantity, measId, item, spoonId, req.params.id)
+
+pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+
+    return res.status(204).json();
+})
+
 }
 
 const updateAutoAddShop = (req, res) => {
