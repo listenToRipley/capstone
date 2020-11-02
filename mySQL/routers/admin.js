@@ -1,33 +1,29 @@
 const express = require('express')
 const {
-  testing,
-  allPantries,
-  allMerges,
-  allPalLists,
-  allShoppingLists,
-  allDiets,
+  forgotUsername,
   validateLogIn,
-  countSummary,
-  updateActiveStat
-} = require('../controller/admin')
+
+} = require('../controller/admin/admin')
+
+const {
+  createUser
+} = require('../controller/admin/createNewUser')
+
+const {
+  updatePassword
+} = require('../controller/appFunc/password/password')
+
 const admin = express.Router({mergeParams: true})
 
 //GET
-admin.get('/', testing)
-admin.get('/pantries', allPantries)
-admin.get('./shopping', allShoppingLists)
-admin.get('/merges', allMerges)
-admin.get('/palList', allPalLists)
-admin.get('/diets', allDiets)
+admin.get('/:email', forgotUsername)
 admin.get('/validation', validateLogIn)
-admin.get('/counts', countSummary)
 
-// //POST
+//POST
+admin.post('/createUser', createUser)
 
-// //PUT
-// router.put('/updateStatus', updateActiveStat)
-
-//DELETE
+//PUT
+admin.put('/password/:email', updatePassword)
 
 module.exports = admin
 

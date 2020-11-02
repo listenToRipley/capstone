@@ -1,7 +1,7 @@
 const express = require('express')
 const start = express.Router({mergeParams: true})
 
-const {login} = require('../controller/userVerification')
+const {login} = require('../controller/admin/userVerification')
 const user = require('./userDetails')
 const merge = require('./merge')
 const palList = require('./palList')

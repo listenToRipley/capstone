@@ -1,7 +1,6 @@
 const mysql = require('mysql')
-const pool = require('../../sql/connection')
-const { handleSQLError } = require('../../sql/error')
-const err = require('../../sql/error')
+const pool = require('../../../sql/connection')
+const { handleSQLError } = require('../../../sql/error')
 //this will pull the shopping list
 
 //GET
@@ -20,7 +19,7 @@ const shopListDetails = (req, res) => {
 }
 
 
-const shopList = (req, res) => {
+const thisShopList = (req, res) => {
   console.log('get the shoppingList for this user')
 //write a query that returns the shopping List for the user currently logged in  
 
@@ -105,7 +104,7 @@ const updateAutoAddPantry = (req, res) => {
 }
 
 module.exports = { 
-  shopList,
+  thisShopList,
   viewShopRequests,
   addToShopList,
   addShopRequest,

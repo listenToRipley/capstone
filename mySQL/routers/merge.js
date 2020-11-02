@@ -1,14 +1,18 @@
 const express = require('express')
 const {
-  mergeStatus,
+  mergeStatus
+} = require('../controller/appFunc/merge/mergeStatus')
+
+const {
   sendMergeReq,
   acceptMergeReq,
   declineMergeReq,
-} = require('../controller/merge/merge')
+} = require('../controller/appFunc/merge/mergeActions')
+
 const merge = express.Router({mergeParams: true})
 
 //GET
-merge.get('/', mergeStatus)
+merge.get('/mergeStatus', mergeStatus)
 
 
 //POST

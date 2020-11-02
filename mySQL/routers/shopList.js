@@ -1,6 +1,7 @@
 const express = require('express')
 const {
-  shopList,
+  thisShopList,
+  viewShopRequests,
   addToShopList,
   addShopRequest,
   approveShopRequest,
@@ -9,12 +10,12 @@ const {
   updateLiItem,
   updateListName,
   updateAutoAddPantry
-} = require('../controller/shoppingLists/shopList')
+} = require('../controller/appFunc/shoppingLists/shopList')
 const shopList = express.Router({mergeParams: true})
 //WOULD MY REQUEST BE EASIER IF I ESTABLISHED THE PRIMARY LIST ID? 
 
 //GET
-shopList.get('/myShopping/:id', shopList)
+shopList.get('/myShopping/:id', thisShopList)
 
 //POST
 shopList.post('/add/', addToShopList)

@@ -1,16 +1,17 @@
 const express = require('express')
 const {
   myPalList,
-  viewSentReq,
-  viewPendingReq,
-  sendPalReq,
-  acceptPalReq,
-  declinePalReq,
-  blockPal,
-  unblockPal,
   updatePalListName,
   updatePalRole
-} = require('../controller/palLists/palList')
+} = require('../controller/appFunc/palLists/usersPalList')
+
+const {
+  viewPendingReq,
+  viewSentReq,
+  sendPalReq,
+  acceptPalReq,
+  declinePalReq
+} = require('../controller/appFunc/palLists/requests')
 const pals = express.Router({mergeParams: true})
 //WOULD IT BE EASIER FOR THESE QUERIES IF HAD THE CURRENT USERS ID FIRST 
 
@@ -21,12 +22,10 @@ pals.get('/viewPending', viewPendingReq)
 
 //POST
 pals.post('/req/',sendPalReq)
-pals.post('/block/', blockPal)
 
 //PUT
 pals.put('/accept/:reqId', acceptPalReq)
 pals.put('/decline/:reqId', declinePalReq)
-pals.put('/unblock/:reqId', unblockPal)
 pals.put('/updateName/:name', updatePalListName)
 pals.put('/updateRoles', updatePalRole)
 

@@ -1,31 +1,50 @@
 const express = require('express')
 const {
-  justUserInfo,
-  justDisplayPrefer,
-  justLocation,
-  justBirthday,
-  justLikes,
-  justDislikes,
-  justDiets,
   justAllergies,
-  addLike, 
-  addDislike, 
-  addDiet,
   addAllergy,
-  updatePassword,
-  updateEmail, 
+  removeAllergy
+} = require('../controller/users/tastes/allergies')
+
+const {
+  justDiets,
+  addDiet,
+  removeDiet
+} = require('../controller/users/tastes/diets')
+
+const {
+  justDislikes,
+  addDislike, 
+  removeDislike
+} = require('../controller/users/tastes/dislikes')
+
+const {
+  justDisplayPrefer, 
   updateDisplayPrefAll,
   updateDisplayPrefEach,
   updateDisplayPrefDefault,
-  updateDisplayPrivate,
-  updateBirthday,
-  updateLocation,  
-  updatePhoneNum,
-  removeLike,
-  removeDislike,
-  removeDiet,
-  removeAllergy
-} = require('../controller/user')
+  updateDisplayPrivate
+} = require('../controller/users/information/displayPref')
+
+const {
+  justUserInfo,
+  justLocation,
+  justBirthday,
+  updateBirthday, 
+  updateEmail,
+  updateLocation,
+  updatePhoneNum
+} = require('../controller/users/information/info')
+
+const {
+  justLikes,
+  addLike,
+  removeLike 
+} = require('../controller/users/tastes/likes')
+
+const {
+  updatePassword
+} = require('../controller/appFunc/password/password')
+
 const just = express.Router({mergeParams: true})
 //NEED TO CONSIDER MODULARIZING 
 

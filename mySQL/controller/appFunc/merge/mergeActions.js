@@ -1,38 +1,6 @@
 const mysql = require('mysql')
-const pool = require('../../sql/connection')
-const {handleSQLError} = require('../../sql/error')
-//items related to merges 
-
-//GET
-const mergeStatus = (req, res) => {
-  console.log('return the status of the user`s merge')
-//write a query that returns the merge status of the current user  -
-  //call on table palList, appInfo, mergeRequest 
-  //the mergerRequester or mergePal = to username
-  let sql='SELECT * FROM mergeRequests WHERE approved=1 AND requester=? OR mergePal=?'
-
-  sql=mysql.format(sql, [req.params.username, req.params.username])
-
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(row); 
-  })
-
-  //if the rows = 0 then it is false and all requests can be processed as through the user is the owner of everything
-}
-
-const mergeAll = (req, res) => {
-
-}
-
-//this is future state
-const mergePantry = (req, res) => {
-  console.log('return the merged pantry and the co-owner and your primary pantry')
-}
-
-const mergedShopList = (req, res) => {
-  console.log('return the shopping list as the co-owner as your primary pantry') 
-}
+const pool = require('../../../sql/connection')
+const {handleSQLError} = require('../../../sql/error')
 
 //POST
 const sendMergeReq = (req, res) => {
@@ -63,7 +31,7 @@ const acceptMergeReq = (req, res) => {
 //write a query for approving or rejects a request 
 let sql=''
 
-sql=mysql.format(sql,[ username, pal, pal, username, username, pal ])
+sql=mysql.format(sql,[ ])
 
 pool.query(sql, (err, results) => {
   if(err) return handleSQLError(res, err)
@@ -86,21 +54,8 @@ const declineMergeReq = (req, res) => {
 
 }
 
-//this will be future state for now
-const reverseMerge = (req, res) => {
-  console.log('reverse request')
-//write a query that reverses that request 
-//the merge can be reversed by either the owner or co owner. 
-//a copy of the pantry should be made to the previous co-owner and their owning primary list should be reactivated 
-}
-
 module.exports = {
-  mergeStatus,
-  mergeAll,
-  mergePantry, 
-  mergedShopList,
   sendMergeReq,
   acceptMergeReq,
   declineMergeReq,
-  reverseMerge
 }

@@ -1,11 +1,6 @@
 const mysql = require('mysql')
-const pool = require('../sql/connection')
-const { handleSQLError } = require('../sql/error')
-
-//GET 
-const testing = (req, res) => {
-  res.send('You found the admin view')
-}
+const pool = require('../../sql/connection')
+const { handleSQLError } = require('../../sql/error')
 
 const allMerges = (req, res) => {
   console.log('my whole merge table')
@@ -51,23 +46,6 @@ const allDiets = (req, res) => {
   })
 }
 
-const validateLogIn = (req, res, next) => { 
-  console.log('validate email and password pair match')
-  //write a query the returns a requested user so we can validate the username and password provided are listed in the SQL and they match
-
-  let sql = 'SELECT username FROM appInfo WHERE active=1 AND username=? AND password=?'
-
-  sql= mysql.format([req.params.user], [req.params.password])
-  
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-      if (res.json(row) === null) {
-        res.send('Sorry, we cannot find that login')
-      } else {
-        res.json(row)
-      }
-  })   
-}
 
 //counts: 
 const countSummary = (req, res) => {
@@ -79,34 +57,11 @@ const countSummary = (req, res) => {
   })
 }
 
-//PUT
-const updateActiveStat = (req, res) => {
-  console.log('you have not deactivated a user')
-  //call on table user, column active
-  const { boo, user } = req.body //if deactivating, should be 0, if active 1 
-
-  let sql = 'UPDATE appInfo SET active=? WHERE username=?'
-
-  sql=mysql.format(sql,[boo, user])
-
-  pool.query(sql, (err, results) => {
-    if (err) return handleSQLError(res, err)
-    return res.status(204).json();
-  })
-}
-
-
-//DELETE
-
-
-module.exports = { 
-  testing,
-  allPantries,
-  allShoppingLists,
+modules.exports = {
   allMerges,
   allPalLists,
+  allPantries,
+  allShoppingLists,
   allDiets,
-  validateLogIn,
-  countSummary,
-  updateActiveStat
+  countSummary
 }

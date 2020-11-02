@@ -1,6 +1,6 @@
 const mysql = require('mysql')
-const pool = require('../sql/connection')
-const { handleSQLError } = require('../sql/error')
+const pool = require('../../sql/connection')
+const { handleSQLError } = require('../../sql/error')
 
 
 //search database to validate username and password match the provided input
