@@ -49,5 +49,4 @@ module.exports = {
   addShopRequest,
   approveShopRequest,
   declineShopRequest, 
-  removeFromShopList,
 }
