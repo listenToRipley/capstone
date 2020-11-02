@@ -32,14 +32,10 @@ const myShopListAdd = (req, res) => {
   sql=mysql.format(sql, [req.params.username, quantity, measId, item, spoonId ])
 }
 
-//PUT
 
 
 module.exports = {
-  myPantryDetails,
-  myPantryContents
-}
-
-module.exports = {
-
+  myShopListDetails,
+  myShoppingListContents,
+  myShopListAdd
 }

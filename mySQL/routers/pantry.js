@@ -3,12 +3,12 @@ const {
   pantryDetails,
   pantryItems,
   addToPantry
-} = require('../controller/appFunc/pantries/info')
+} = require('../controller/appFunc/pantries/byList')
 
 const {
   removeFromPantry,
   updatePantryItem
-} = require('../controller/appFunc/pantries/items')
+} = require('../controller/appFunc/pantries/byItem')
 
 const {
   myPantryDetails,
