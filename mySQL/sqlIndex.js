@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 //should be prefixed by your role, MOU
 app.use(bodyParser.json())
 
-app.use('/', user)
+app.use('/postLogin', user)
 
 app.use('/preLogin', preLogin)
 
