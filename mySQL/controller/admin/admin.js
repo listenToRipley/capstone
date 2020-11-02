@@ -4,7 +4,21 @@ const { handleSQLError } = require('../../sql/error')
 
 //GET 
 const forgotUsername = (req, res) => {
-  res.send('forgot username')
+  const {email} = req.params
+
+  let sql = 'SELECT username FROM appInfo WHERE active=1 AND email=?'
+
+  sql= mysql.format(sql, [email])
+
+  pool.query(sql, (err, row) => {
+    if(err) handleSQLError(res, err)
+     
+    if(res.json(row)===null) {
+      res.send('Sorry, we cannot find a login associated with the email address.') //should get reroute to create a login 
+    } else {
+      res.json(row)
+    }
+  })
 }
 
 

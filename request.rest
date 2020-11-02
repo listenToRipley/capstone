@@ -1,0 +1,4 @@
+# GET http://localhost:4001
+
+
+GET http://localhost:4001/natalie.m.kendrick@gmail.com

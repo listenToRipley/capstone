@@ -1,8 +1,7 @@
 const express = require('express')
 const {
   forgotUsername,
-  validateLogIn,
-
+  validateLogIn
 } = require('../controller/admin/admin')
 
 const {
