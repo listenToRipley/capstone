@@ -16,7 +16,7 @@ const findOwner = (res, req) => {
       res.send('This person is not an owner on any lists currently')
       next(findCoOwner)
     } else {
-      next()
+      next(findOwnerLists)
     }
   })
 }
@@ -33,4 +33,22 @@ const findOwner = (res, req) => {
       //we also need to use this check for pals when look for their lists
       res.json(row)
   })
+}
+
+const findOwnerLists = (req, res) => {
+  let sql = 'SELECT shopList, pantry FROM access WHERE active=1 AND pantryRole=2 AND shopListRole=2 AND username= ?'
+
+  sql=mysql.format(sql, [req.params.username])
+
+  pool.query(sql, (err, row) => {
+    if(err) return handleSQLError(res, err)
+    return res.json(row); 
+  })  
+  
+}
+
+module.export = {
+  findOwner,
+  findCoOwner,
+  findOwnerLists
 }
