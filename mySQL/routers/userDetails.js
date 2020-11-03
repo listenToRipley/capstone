@@ -45,6 +45,12 @@ const {
   updatePassword
 } = require('../controller/appFunc/password/password')
 
+const {
+  findOwner,
+  findCoOwner,
+  findOwnerLists
+} = require('../controller/appFunc/determinePrimary')
+
 const just = express.Router({mergeParams: true})
 //NEED TO CONSIDER MODULARIZING 
 
@@ -58,6 +64,7 @@ just.get('/likes', justLikes)
 just.get('/dislikes', justDislikes)
 just.get('/diets', justDiets)
 just.get('/allergies', justAllergies)
+just.get('/primaryList', findOwner, findCoOwner, findOwnerLists)
 
 //POST
 just.post('/addLike', addLike)
