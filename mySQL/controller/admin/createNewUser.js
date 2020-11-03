@@ -3,7 +3,7 @@ const pool = require('../../sql/connection')
 const { handleSQLError } = require('../../sql/error')
 
 //should my post and put get rerouted to the calls so we can see the updates? 
-//GET 
+
 const verifyUsername = (req, res, next) => {
   //make sure there isn't someone with the same username 
   const {username} = req.body
@@ -39,8 +39,6 @@ const verifyEmail = (req, res, next) => {
     }
   })
 }
-
-//POST
 
 //should each of these be broken down into their own queries and run separately using next? 
 const createUser = (req, res) => {
