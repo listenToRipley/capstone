@@ -11,11 +11,6 @@ const {
   updatePantryItem
 } = require('../controller/appFunc/pantries/byItem')
 
-const {
-  myPantryDetails,
-  myPantryContents
-} = require('../controller/appFunc/pantries/owner')
-
 const {  
   updateAutoAddShop
 } = require('../controller/appFunc/pantries/settings')
@@ -29,10 +24,6 @@ const pantry = express.Router({mergeParams: true})
 pantry.get('/:id', pantryDetails)
 pantry.get('/pantryItems/:id', pantryItems)
 pantry.get('/pantryCount/:id', pantryCount)
-
-pantry.get('/pantryInfo', myPantryDetails)
-pantry.get('/pantry', myPantryContents)
-
 
 //POST
 pantry.post('/pantry/add/:id', addToPantry)

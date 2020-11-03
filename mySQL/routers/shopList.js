@@ -12,13 +12,6 @@ const {
   addToShopList
 } = require('../controller/appFunc/shoppingLists/byList')
 
-
-const {
-  myShopListDetails,
-  myShoppingListContents,
-  myShopListAdd
-} = require('../controller/appFunc/shoppingLists/owner')
-
 const {
   viewShopRequests,
   addShopRequest,
@@ -39,15 +32,8 @@ shopList.get('/shopping/:id', shopListDetails)
 shopList.get('/shoppingList/:id', thisShopList)
 shopList.get('/shopingList/:id', shopListCount)
 
-//MY CURRENT USER
-shopList.get('/myShopDetails', myShopListDetails)
-shopList.get('/myShopList', myShoppingListContents)
-
 //POST
 shopList.post('/addToList', addToShopList)
-
-//BY CURRENT USER
-shopList.post('/myAdd', myShopListAdd)
 
 shopList.post('/addReq/', addShopRequest)
 
