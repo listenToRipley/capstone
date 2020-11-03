@@ -1,4 +1,3 @@
-const { NextWeek } = require('@material-ui/icons')
 const mysql = require('mysql')
 const pool = require('../../sql/connection')
 const { handleSQLError } = require('../../sql/error')
@@ -11,7 +10,8 @@ const verifyUsername = (req, res, next) => {
 
   let sql = 'SELECT COUNT(username) FROM appInfo WHERE active=1 AND username= ? ORDER BY username;'
 
-  sql = mysql.format(sql, (username) => {
+  sql = mysql.format(sql, [username])
+    pool.query (sql, (err, row ) => {
     if (err) return handleSQLError(res, err)
 
     if(res.json(row)>0) {
