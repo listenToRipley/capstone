@@ -7,6 +7,7 @@ const {
 
 const {
   shopListDetails, 
+  shopListCount,
   thisShopList,
   addToShopList
 } = require('../controller/appFunc/shoppingLists/byList')
@@ -36,6 +37,7 @@ const shopList = express.Router({mergeParams: true})
 //GET
 shopList.get('/shopping/:id', shopListDetails)
 shopList.get('/shoppingList/:id', thisShopList)
+shopList.get('/shopingList/:id', shopListCount)
 
 //MY CURRENT USER
 shopList.get('/myShopDetails', myShopListDetails)
