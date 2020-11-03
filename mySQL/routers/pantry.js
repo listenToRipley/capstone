@@ -1,6 +1,7 @@
 const express = require('express')
 const {
   pantryDetails,
+  pantryCount,
   pantryItems,
   addToPantry
 } = require('../controller/appFunc/pantries/byList')
@@ -26,7 +27,8 @@ const pantry = express.Router({mergeParams: true})
 //GET
 //this should be the id for the primary pantry
 pantry.get('/:id', pantryDetails)
-pantry.get('/pantyitems/:id', pantryItems)
+pantry.get('/pantryItems/:id', pantryItems)
+pantry.get('/pantryCount/:id', pantryCount)
 
 pantry.get('/pantryInfo', myPantryDetails)
 pantry.get('/pantry', myPantryContents)
