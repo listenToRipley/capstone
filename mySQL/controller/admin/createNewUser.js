@@ -5,6 +5,24 @@ const { handleSQLError } = require('../../sql/error')
 
 //should my post and put get rerouted to the calls so we can see the updates? 
 //GET 
+const verifyUsername = (req, res, next) => {
+  //make sure there isn't someone with the same username 
+  const {username} = req.body
+
+  let sql = 'SELECT COUNT(username) FROM appInfo WHERE active=1 AND username= ? ORDER BY username;'
+
+  sql = mysql.format(sql, (username) => {
+    if (err) return handleSQLError(res, err)
+
+    if(res.json(row)>0) {
+      res.send('Sorry, someone already has that username.') //should get reroute to create a login 
+    } else {
+      next()
+    }
+  })
+}
+
+
 const verifyEmail = (req, res, next) => {
   //make sure the person creating this login doesn't already have a login
   const {email} = req.body
