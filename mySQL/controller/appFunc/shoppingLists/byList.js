@@ -7,7 +7,7 @@ const shopListDetails = (req, res) => {
   //this should be the detailed information about a specific request
   let sql='SELECT * FROM shopListsSettings WHERE shopListSetId= ?'
 
-  sql=mysql.format(sql, [req.params.id])
+  sql=mysql.format(sql, [req.params.listId])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -21,7 +21,7 @@ const shopListCount = (req, res) => {
 //provide a count of how many items are currently on your shopping list 
   let sql= 'SELECT COUNT(entryId) FROM shoppingLists WHERE activeItem=1 AND shopList= ? ;'
 
-  sql=mysql.format(sql, [req.params.id])
+  sql=mysql.format(sql, [req.params.listId])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -38,7 +38,7 @@ const thisShopList = (req, res) => {
 //this is a work in process, it is not done ~ we need to account for merges 
 let sql = 'SELECT * FROM shoppingLists WHERE activeItem=1 AND shopList= ? '
 
-sql=mysql.format(sql,[req.params.id])
+sql=mysql.format(sql,[req.params.listId])
 
 pool.query(sql, (err, row) => {
   if(err) return handleSQLError(res, err)
@@ -51,7 +51,8 @@ pool.query(sql, (err, row) => {
 const addToShopList = (req, res) => {
   console.log('add item to the shopping list')
 //write a query that add items to the list
-  const { listId, quantity, measure, item, spoon} = req.body
+  const { quantity, measure, item, spoon} = req.body
+  const {listId} = req.params
 
   let sql = 'INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId) VALUES (?, ?, ?, ?, ?);'
   

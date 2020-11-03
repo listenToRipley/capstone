@@ -28,20 +28,20 @@ const shopList = express.Router({mergeParams: true})
 //WOULD MY REQUEST BE EASIER IF I ESTABLISHED THE PRIMARY LIST ID? 
 
 //GET
-shopList.get('/shopping/:id', shopListDetails)
-shopList.get('/shoppingList/:id', thisShopList)
-shopList.get('/shopingList/:id', shopListCount)
+shopList.get('/shopping/:listId', shopListDetails)
+shopList.get('/shoppingList/:listId', thisShopList)
+shopList.get('/shoppingList/:listId', shopListCount)
 
 //POST
-shopList.post('/addToList', addToShopList)
+shopList.post('/addToList/listId', addToShopList)
 
 shopList.post('/addReq/', addShopRequest)
 
 //PUT
 shopList.put('/appReq/:boo', approveShopRequest)
 shopList.put('/decReq/:boo', declineShopRequest)
-shopList.put('/remove/:id', removeFrom)
-shopList.put('/upItem/:id', updateItem)
+shopList.put('/remove/:itemId', removeFrom)
+shopList.put('/upItem/:itemId', updateItem)
 shopList.put('/updateName/:name', updateListName)
 shopList.put('/upAutoAddPantry/:boo', updateAutoAddShop)
 

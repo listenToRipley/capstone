@@ -5,11 +5,10 @@ const { handleSQLError } = require('../../../sql/error')
 //GET
 const pantryDetails = (req, res) => {
   //this will be the pantry details for the primary pantry
-  const {id} = req.params
 
 let sql = 'SELECT * FROM pantriesSettings WHERE id = ? '
 
-sql=mysql.format(sql, [id])
+sql=mysql.format(sql, [req.params.pantryId])
 
 pool.query(sql, (err, row) => {
   if (err) handleSQLError(res, err)
@@ -21,11 +20,10 @@ pool.query(sql, (err, row) => {
 
 const pantryCount = (req, res) => {
   //tell me how much stuff in the pantry
-  const {id} = req.params
 
   let sql = 'SELECT COUNT(entryId) FROM pantries WHERE stock=1 AND pantry=?'
 
-  sql = mysql.format(sql, [id])
+  sql = mysql.format(sql, [req.params.pantryId])
 
   pool.query(sql, (err, row) => {
     if(err) handleSQLError(res, err) 
@@ -42,7 +40,7 @@ const pantryItems = (req, res) => {
 //this needs to account for a merged pantry
 let sql = 'SELECT entryId, quantity, measId, item, spoonId FROM pantries WHERE stock=1 AND pantry= ?' 
 
-sql=mysql.format(sql,[req.params.id])
+sql=mysql.format(sql,[req.params.pantryId])
 
 pool.query(sql, (err, row) => {
 if(err) return handleSQLError(res, err)
@@ -58,7 +56,8 @@ const addToPantry = (req, res) => {
 
 //the only field that is required is the item field, null is acceptable for all other fields 
 //pantry should be a param
-const {pantryId, quantity, measId, item, spoonId} = req.body
+const { quantity, measId, item, spoonId} = req.body
+const {pantryId} = req.params
 
 let sql ='INSERT INTO pantries (pantry, quantity, measId, item, spoonId) VALUES ( ?, ? , ?, ?, ?);'
 

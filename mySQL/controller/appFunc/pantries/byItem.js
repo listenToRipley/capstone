@@ -11,7 +11,7 @@ const removeFromPantry = (req, res) => {
 
 let sql='UPDATE pantries SET stock=0 where entryId=?'
 
-sql=mysql.format(sql,[req.params.id])
+sql=mysql.format(sql,[req.params.itemId])
 
 pool.query(sql, (err, results) => {
   if (err) return handleSQLError(res, err)
@@ -24,11 +24,12 @@ const updatePantryItem = (req, res) => {
     console.log('update items in the pantry')
 //write a query that updates an items from the pantry 
 const {quantity, measId, item, spoonId} = req.body
+const {itemId} = req.params
 
 let sql='UPDATE pantries SET quantity=COALESCE( ? , quantity), measId=(COALESCE( ? , measId)), item=(COALESCE( ? , item)), spoonId=(COALESCE( ? , spoonId)) WHERE entryId= ? '
 
 
-sql=mysql.format(sql, [quantity, measId, item, spoonId, req.params.id])
+sql=mysql.format(sql, [quantity, measId, item, spoonId, itemId])
 
 pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)

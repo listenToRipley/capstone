@@ -21,18 +21,18 @@ const pantry = express.Router({mergeParams: true})
 
 //GET
 //this should be the id for the primary pantry
-pantry.get('/:id', pantryDetails)
-pantry.get('/pantryItems/:id', pantryItems)
-pantry.get('/pantryCount/:id', pantryCount)
+pantry.get('/:pantryId', pantryDetails)
+pantry.get('/pantryItems/:pantryId', pantryItems)
+pantry.get('/pantryCount/:pantryId', pantryCount)
 
 //POST
-pantry.post('/pantry/add/:id', addToPantry)
+pantry.post('/pantry/add/:pantryId', addToPantry)
 
 //PUT
-pantry.put('/remove/:id', removeFromPantry)
-pantry.put('/upItem/:id', updatePantryItem)
+pantry.put('/remove/:itemId', removeFromPantry)
+pantry.put('/upItem/:itemId', updatePantryItem)
 //this id should be the item of the 
-pantry.put('/upAutoAddShop/:id', updateAutoAddShop)
+pantry.put('/upAutoAddShop/:pantryId', updateAutoAddShop)
 
 //DELETE
 
