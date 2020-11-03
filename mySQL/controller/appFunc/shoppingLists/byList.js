@@ -68,6 +68,7 @@ const addToShopList = (req, res) => {
 
 module.exports = {
   shopListDetails, 
+  shopListCount,
   thisShopList,
   addToShopList
 }

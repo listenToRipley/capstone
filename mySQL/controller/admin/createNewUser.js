@@ -60,6 +60,7 @@ const createUser = (req, res) => {
 
 
 module.exports = {
+  verifyUsername,
   verifyEmail, 
   createUser
 }

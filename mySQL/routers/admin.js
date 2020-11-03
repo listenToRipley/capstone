@@ -5,6 +5,8 @@ const {
 } = require('../controller/admin/admin')
 
 const {
+  verifyUsername,
+  verifyEmail, 
   createUser
 } = require('../controller/admin/createNewUser')
 
@@ -20,8 +22,8 @@ admin.get('/:email', forgotUsername)
 admin.get('/validation', validateLogIn)
 
 //POST
-admin.post('/createUser', createUser)
-admin.post('/testPassword/', testPassword)
+admin.post('/createUser', verifyUsername, verifyEmail, createUser)
+admin.post('/testPassword', testPassword)
 
 //PUT
 admin.put('/password/:email', updatePassword)
@@ -29,6 +31,5 @@ admin.put('/password/:email', updatePassword)
 module.exports = admin
 
 
-  
 
 
