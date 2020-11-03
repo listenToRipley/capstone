@@ -13,9 +13,24 @@ const findOwner = (res, req) => {
     if (err) return handleSQLError(res, err)
 
     if(res.json(row)>0) {
-      res.send('This person is not an owner on any lists currently') //should get reroute to create a login 
+      res.send('This person is not an owner on any lists currently')
+      next(findCoOwner)
     } else {
       next()
     }
+  })
+}
+
+  const findCoOwner = (res, req) => {
+    //determine what ths list this person is the co-owner on 
+    let sql = 'SELECT shopList, pantry FROM access WHERE active=1 AND pantryRole=3 AND shopListRole=3 AND username= ? ; '
+
+    sql= mysql.format(sql, [req.params.username] )
+    
+    pool.query(sql, (err, row) => {
+      if (err) return handleSQLError(res, err)
+      //these are list that should be used for all queries on this individual
+      //we also need to use this check for pals when look for their lists
+      res.json(row)
   })
 }
