@@ -5,10 +5,33 @@ const { handleSQLError } = require('../../../sql/error')
 //GET
 const pantryDetails = (req, res) => {
   //this will be the pantry details for the primary pantry
+  const {id} = req.params
 
 let sql = 'SELECT * FROM pantriesSettings WHERE id = ? '
 
-sql=mysql.format(sql, [req.params.id])
+sql=mysql.format(sql, [id])
+
+pool.query(sql, (err, row) => {
+  if (err) handleSQLError(res, err)
+
+  return res.json(row)
+})
+
+}
+
+const pantryCount = (req, res) => {
+  //tell me how much stuff in the pantry
+  const {id} = req.params
+
+  let sql = 'SELECT COUNT(entryId) FROM pantries WHERE stock=1 AND pantry=?'
+
+  sql = mysql.format(sql, [id])
+
+  pool.query(sql, (err, row) => {
+    if(err) handleSQLError(res, err) 
+
+    return res.json(row)
+  })
 
 }
 
@@ -34,6 +57,7 @@ const addToPantry = (req, res) => {
 //write a query for adding items to the pantry
 
 //the only field that is required is the item field, null is acceptable for all other fields 
+//pantry should be a param
 const {pantryId, quantity, measId, item, spoonId} = req.body
 
 let sql ='INSERT INTO pantries (pantry, quantity, measId, item, spoonId) VALUES ( ?, ? , ?, ?, ?);'
@@ -51,6 +75,7 @@ return res.status(204).json();
 
 module.exports = {
   pantryDetails,
+  pantryCount,
   pantryItems,
   addToPantry
 }
