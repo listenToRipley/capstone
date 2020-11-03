@@ -42,6 +42,7 @@ const verifyEmail = (req, res, next) => {
 
 //POST
 
+//should each of these be broken down into their own queries and run separately using next? 
 const createUser = (req, res) => {
   const { username, password, email, firstName, lastName, dobMonth, dobDate, dobYear} = req.body
   //look at the display preferences all and see if we can use similar function for inserting into tables 
@@ -53,7 +54,7 @@ const createUser = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json({ newId: results.insertId}); //need to verify this
+    return res.json({ username: results.username}); //need to verify this
   })  
 }
 

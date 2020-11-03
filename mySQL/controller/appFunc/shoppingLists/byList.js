@@ -7,12 +7,26 @@ const shopListDetails = (req, res) => {
   //this should be the detailed information about a specific request
   let sql='SELECT * FROM shopListsSettings WHERE shopListSetId= ?'
 
-  sql=mysql.format(sql, [req.params.username])
+  sql=mysql.format(sql, [req.params.id])
 
   pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, [req.params.username])
+    if(err) return handleSQLError(res, err)
 
     return res.json(row);
+  })
+
+}
+
+const shopListCount = (req, res) => {
+//provide a count of how many items are currently on your shopping list 
+  let sql= 'SELECT COUNT(entryId) FROM shoppingLists WHERE activeItem=1 AND shopList= ? ;'
+
+  sql=mysql.format(sql, [req.params.id])
+
+  pool.query(sql, (err, row) => {
+    if(err) return handleSQLError(res, err)
+
+    return res.json(row)
   })
 
 }
