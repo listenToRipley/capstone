@@ -9,7 +9,8 @@ const {
 } = require('../controller/admin/createNewUser')
 
 const {
-  updatePassword
+  updatePassword,
+  testPassword
 } = require('../controller/appFunc/password/password')
 
 const admin = express.Router({mergeParams: true})
@@ -20,6 +21,7 @@ admin.get('/validation', validateLogIn)
 
 //POST
 admin.post('/createUser', createUser)
+admin.post('/testPassword/', testPassword)
 
 //PUT
 admin.put('/password/:email', updatePassword)

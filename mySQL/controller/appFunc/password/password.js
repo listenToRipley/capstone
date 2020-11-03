@@ -1,6 +1,18 @@
 const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
+const { hexPass } = require('../../../middleware/hex')
+const bcrypt = require('bcrypt')
+
+const testPassword = async (req, res) => {
+  console.log('you are trying to pass the test for this password', req.body.password)
+  const {password} = req .body
+
+  bcrypt.hash(password, 10, (err, hash) => {
+    res.send(hash) 
+  })
+ 
+}
 
 //PUT
 const updatePassword = (req, res) => {
@@ -10,7 +22,7 @@ const updatePassword = (req, res) => {
 
   let sql='UPDATE appInfo SET password=? WHERE username=?'
 
-  sql=mysql.format(sql,[password,  req.params.username])
+  sql=mysql.format(sql,[ hexPass(password),  req.params.username])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -21,5 +33,6 @@ const updatePassword = (req, res) => {
 
 
 module.exports = {
-  updatePassword
+  updatePassword,
+  testPassword
 }
