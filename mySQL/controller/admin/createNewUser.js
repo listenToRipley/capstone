@@ -1,8 +1,26 @@
+const { NextWeek } = require('@material-ui/icons')
 const mysql = require('mysql')
 const pool = require('../../sql/connection')
 const { handleSQLError } = require('../../sql/error')
 
 //should my post and put get rerouted to the calls so we can see the updates? 
+//GET 
+const verifyEmail = (req, res, next) => {
+  //make sure the person creating this login doesn't already have a login
+  const {email} = req.body
+
+  let sql = 'SELECT COUNT(email) FROM appInfo WHERE active=1 AND email= ? ORDER BY email; '
+
+  sql = mysql.format(sql, (email) => {
+    if (err) return handleSQLError(res, err)
+
+    if(res.json(row)>0) {
+      res.send('Sorry, you seem to already have a login.') //should get reroute to create a login 
+    } else {
+      next()
+    }
+  })
+}
 
 //POST
 
@@ -22,6 +40,7 @@ const createUser = (req, res) => {
 }
 
 
-module.exports = { 
+module.exports = {
+  verifyEmail, 
   createUser
 }
