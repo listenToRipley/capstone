@@ -47,7 +47,7 @@ const findOwnerLists = (req, res) => {
   
 }
 
-module.export = {
+module.exports = {
   findOwner,
   findCoOwner,
   findOwnerLists

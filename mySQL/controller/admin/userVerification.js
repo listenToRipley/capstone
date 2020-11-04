@@ -7,11 +7,23 @@ const { handleSQLError } = require('../../sql/error')
 //validate login
 const login = (req, res, next) => {
 
-  let user = req.params.username
+  let { username, password } = req.params
+  console.log('username :', username, ' password', password)
+
+  sql='SELECT COUNT(username) FROM appInfo WHERE username= ? AND password= ? ;  '
   
-  res.send('You found your users '+ user)
-  console.log('can you see your response', [req.params.username])
-  //should the results re-route to another area when completed? 
+  sql = mysql.format(sql, [username, password])
+
+  pool.query(sql, (err, row) => {
+    if(err) handleSQLError(res, err)
+
+    if(res.json(row) < 0) {
+      return res.send('sorry, we cannot find that user')
+    } else {
+      return res.send('You found your users '+ username)
+      next()
+    }
+  })
 }
 
 

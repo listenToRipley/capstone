@@ -1,11 +1,11 @@
-# GET http://localhost:4001
+GET http://localhost:4001/postLogin/F00DF3v3r/B3tt#rP@ssW0rd
 
 
 #GET http://localhost:4001/preLogin/natalie.m.kendrick@gmail.com
 
-POST http://localhost:4001/preLogin/testPassword
-Content-Type: : application/json
+# //POST http://localhost:4001/preLogin/testPassword
+# Content-Type: : application/json
 
-{
-  "password": "davidBowie"
-}
+# {
+#   "password": "davidBowie"
+# }

@@ -1,5 +1,6 @@
 const express = require('express')
 const start = express.Router({mergeParams: true})
+const bodyParser = require('body-parser')
 
 const {login} = require('../controller/admin/userVerification')
 const user = require('./userDetails')
@@ -9,10 +10,11 @@ const pantry = require('./pantry')
 const shopList = require('./shopList')
 const admin = require('./admin')
 
+start.use(bodyParser.json())
 
-start.get('/:username', login)
+start.get('/:username/:password', login)
 
-start.use('/:username/just', user)
+start.use('/:username/current', user)
 start.use('/:username/merge', merge)
 start.use('/:username/palList', palList)
 start.use('/:username/pantry', pantry)

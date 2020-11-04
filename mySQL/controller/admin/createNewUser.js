@@ -29,7 +29,9 @@ const verifyEmail = (req, res, next) => {
 
   let sql = 'SELECT COUNT(email) FROM appInfo WHERE active=1 AND email= ? ORDER BY email; '
 
-  sql = mysql.format(sql, (email) => {
+  sql = mysql.format(sql, [email])
+  
+  pool.query(sql, (err, row) => {
     if (err) return handleSQLError(res, err)
 
     if(res.json(row)>0) {
