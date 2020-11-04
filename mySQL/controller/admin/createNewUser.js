@@ -6,11 +6,10 @@ const { handleSQLError } = require('../../sql/error')
 
 const verifyUsername = (req, res, next) => {
   //make sure there isn't someone with the same username 
-  const {username} = req.body
 
   let sql = 'SELECT COUNT(username) FROM appInfo WHERE active=1 AND username= ? ORDER BY username;'
 
-  sql = mysql.format(sql, [username])
+  sql = mysql.format(sql, [req.body.user])
     pool.query (sql, (err, row ) => {
     if (err) return handleSQLError(res, err)
 
@@ -25,11 +24,10 @@ const verifyUsername = (req, res, next) => {
 
 const verifyEmail = (req, res, next) => {
   //make sure the person creating this login doesn't already have a login
-  const {email} = req.body
 
   let sql = 'SELECT COUNT(email) FROM appInfo WHERE active=1 AND email= ? ORDER BY email; '
 
-  sql = mysql.format(sql, [email])
+  sql = mysql.format(sql, [req.body.email])
   
   pool.query(sql, (err, row) => {
     if (err) return handleSQLError(res, err)

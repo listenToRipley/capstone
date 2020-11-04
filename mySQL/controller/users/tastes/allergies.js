@@ -9,7 +9,7 @@ const justAllergies = (req, res) => {
 
   let sql='SELECT al.allergy, al.spoonId FROM  usersAllergies AS uAl JOIN allergies AS al ON uAl.allergy=al.allergyId WHERE uAl.active=1 AND uAl.username=?'
 
-  sql=mysql.format(sql,[req.params.username])
+  sql=mysql.format(sql,[req.params.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -23,11 +23,12 @@ const justAllergies = (req, res) => {
 const addAllergy = (req, res) => {
   console.log('you have now added a like')
 
-  const { allergy } = req.body
+  const { allergyId } = req.body
+  const { user} = req.params
 
   let sql='INSERT INTO usersAllergies (username, allergy) VALUES (?, ?); '
 
-  sql=mysql.format(sql, [req.params.username , allergy])
+  sql=mysql.format(sql, [ user, allergyId])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -41,9 +42,11 @@ const addAllergy = (req, res) => {
 const removeAllergy = (req, res) => {
   console.log('you have now removed a like from this user')
 
+  const { entryId, user } = req.params
+
   let sql='UPDATE usersAllergies SET active=0 WHERE uAllergyId=? AND username=?'
 
-  sql=mysql.format(sql,[req.params.id, req.params.username])
+  sql=mysql.format(sql,[entryId, user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)

@@ -1,4 +1,4 @@
-GET http://localhost:4001/postLogin/F00DF3v3r/B3tt#rP@ssW0rd
+GET http://localhost:4001/postLogin/F0DF3v3r/test
 
 
 #GET http://localhost:4001/preLogin/natalie.m.kendrick@gmail.com

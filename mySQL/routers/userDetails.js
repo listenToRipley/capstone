@@ -69,8 +69,8 @@ just.get('/primaryList', findOwner, findCoOwner, findOwnerLists)
 //POST
 just.post('/addLike', addLike)
 just.post('/addDislike', addDislike)
-just.post('/addDiet', addDiet)
-just.post('/addAllergy', addAllergy)
+just.post('/addDiet/:dietId', addDiet)
+just.post('/addAllergy/:allergyId', addAllergy)
 
 
 //PUT
@@ -86,10 +86,10 @@ just.put('/upDOB/', updateBirthday)
 just.put('/upLoc/', updateLocation)
 just.put('/upPhone/', updatePhoneNum)
 
-just.put('/reLike/:id', removeLike)
-just.put('/reDislike/:id', removeDislike)
-just.put('/reDiet/:id', removeDiet)
-just.put('/reAllergy/:id', removeAllergy)
+just.put('/reLike/:entryId', removeLike)
+just.put('/reDislike/:entryId', removeDislike)
+just.put('/reDiet/:entryId', removeDiet)
+just.put('/reAllergy/:entryId', removeAllergy)
 
 //DELETE
 

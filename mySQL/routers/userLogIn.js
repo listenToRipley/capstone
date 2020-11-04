@@ -1,6 +1,6 @@
 const express = require('express')
 const start = express.Router({mergeParams: true})
-const bodyParser = require('body-parser')
+
 
 const {login} = require('../controller/admin/userVerification')
 const user = require('./userDetails')
@@ -10,16 +10,16 @@ const pantry = require('./pantry')
 const shopList = require('./shopList')
 const admin = require('./admin')
 
-start.use(bodyParser.json())
 
-start.get('/:username/:password', login)
 
-start.use('/:username/current', user)
-start.use('/:username/merge', merge)
-start.use('/:username/palList', palList)
-start.use('/:username/pantry', pantry)
-start.use('/:username/shopList', shopList)
-start.use('/:username', admin)
+start.get('/:user/:password', login)
+
+start.use('/:user/current', user)
+start.use('/:user/merge', merge)
+start.use('/:user/palList', palList)
+start.use('/:user/pantry', pantry)
+start.use('/:user/shopList', shopList)
+start.use('/:user', admin)
 
 
 module.exports = start

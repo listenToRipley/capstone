@@ -23,10 +23,11 @@ const addDiet = (req, res) => {
   console.log('you have now added a like')
 
   const {dietId} = req.body
+  const {user} = req.params
 
   let sql='INSERT INTO usersDiets (username, diet) VALUES (?, ?)'
 
-  sql=mysql.format(sql,[ req.params.username ,dietId])
+  sql=mysql.format(sql,[ user ,dietId])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -40,9 +41,11 @@ const addDiet = (req, res) => {
 const removeDiet = (req, res) => {
   console.log('you have now removed a like from this user')
 
+  const {entryId, user} = req.params
+
   let sql='UPDATE usersDiets SET active=0 WHERE uDietId=? AND username=?'
 
-  sql=mysql.format(sql,[req.params.id, req.params.username])
+  sql=mysql.format(sql,[entryId, user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)

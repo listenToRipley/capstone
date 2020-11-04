@@ -7,22 +7,17 @@ const { handleSQLError } = require('../../sql/error')
 //validate login
 const login = (req, res, next) => {
 
-  let { username, password } = req.params
-  console.log('username :', username, ' password', password)
+  let { user, password } = req.params
+  console.log('username :', user, ' password', password)
 
-  sql='SELECT COUNT(username) FROM appInfo WHERE username= ? AND password= ? ;  '
+  sql='SELECT username FROM appInfo WHERE username= ? AND password= ? ;  '
   
-  sql = mysql.format(sql, [username, password])
+  sql = mysql.format(sql, [user, password])
 
   pool.query(sql, (err, row) => {
     if(err) handleSQLError(res, err)
+    return res.json(row)
 
-    if(res.json(row) < 0) {
-      return res.send('sorry, we cannot find that user')
-    } else {
-      return res.send('You found your users '+ username)
-      next()
-    }
   })
 }
 

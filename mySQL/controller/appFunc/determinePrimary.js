@@ -7,7 +7,7 @@ const findOwner = (res, req) => {
   //determine if the primary list is actually owned by the person currently logged in 
   let sql = 'SELECT COUNT(*) FROM access WHERE active=1 AND pantryRole=2 AND shopListRole=2 AND username= ? ; '
 
-  sql= mysql.format(sql, [req.params.username] )
+  sql= mysql.format(sql, [req.params.user] )
   
   pool.query(sql, (err, row) => {
     if (err) return handleSQLError(res, err)
@@ -25,7 +25,7 @@ const findOwner = (res, req) => {
     //determine what ths list this person is the co-owner on 
     let sql = 'SELECT shopList, pantry FROM access WHERE active=1 AND pantryRole=3 AND shopListRole=3 AND username= ? ; '
 
-    sql= mysql.format(sql, [req.params.username] )
+    sql= mysql.format(sql, [req.params.user] )
     
     pool.query(sql, (err, row) => {
       if (err) return handleSQLError(res, err)

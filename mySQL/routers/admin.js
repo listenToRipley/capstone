@@ -1,7 +1,6 @@
 const express = require('express')
 const {
-  forgotUsername,
-  validateLogIn
+  forgotUsername
 } = require('../controller/admin/admin')
 
 const {
@@ -19,7 +18,6 @@ const admin = express.Router({mergeParams: true})
 
 //GET
 admin.get('/:email', forgotUsername)
-admin.get('/validation', validateLogIn)
 
 //POST
 admin.post('/createUser', verifyUsername, verifyEmail, createUser)

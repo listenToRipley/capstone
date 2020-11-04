@@ -7,7 +7,7 @@ const viewSentReq = (req, res) => {
   //this is for request send by the current user. 
   sql='SELECT palRequestId, pal FROM palListsRequests WHERE active=1 AND requesterUser=?'
 
-  sql=mysql.format(sql, [req.params.username])
+  sql=mysql.format(sql, [req.params.user])
 
   pool.query(sql, (err, row) => {
     if(err) handleSQLError(res, err)
@@ -20,7 +20,7 @@ const viewPendingReq = (req, res) => {
   //this are request sent by another user and can be approved.
   sql='SELECT palRequestId, requesterUser FROM palListsRequests WHERE active=1 AND pal=?'
 
-  sql.mysql.format(sql, [req.params.username])
+  sql.mysql.format(sql, [req.params.user])
 
   pool.query(sql, (err, row) => {
     if(err) handleSQLError(res, err)

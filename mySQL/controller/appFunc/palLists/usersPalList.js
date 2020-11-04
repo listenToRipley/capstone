@@ -10,7 +10,7 @@ const myPalList = (req, res) => {
 //NEED TO UPDATE TO INCLUDE THE PAL LIST - we need to change this so the roles display and not the index
 let sql = 'SELECT DISTINCT pL.username AS pals, pL.reqId AS palReq, pLS.palListName, a.pantryRole, a.shopListRole FROM palLists AS pL JOIN palListsRequests AS pLR JOIN palListsSettings AS pLS JOIN access AS a ON pLR.palRequestId=pL.reqId AND a.palReq=pL.reqId AND pL.palList=pLS.palListSettingsId WHERE pLR.approved=1 AND a.active=1 AND pLS.owner=?'
 
-sql=mysql.format(sql, [req.params.username])
+sql=mysql.format(sql, [req.params.user])
 
 pool.query(sql, (err, row) => {
   if(err) handleSQLError(res, err)
@@ -22,10 +22,14 @@ pool.query(sql, (err, row) => {
 //POST
 const updatePalListName = (req, res) => {
   console.log('update the list name  now')
+
+  const {name} = req.body
+  const {user} = req.params
+
   //write a query to update the users palListName
   sql='UPDATE palListsSettings SET palListName=? WHERE owner=?'
 
-  sql=mysql.format(sql, [req.body.name], [req.body.username])
+  sql=mysql.format(sql, [name, user])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)

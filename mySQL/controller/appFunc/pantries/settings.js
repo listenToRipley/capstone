@@ -9,11 +9,12 @@ const { handleSQLError } = require('../../../sql/error')
 //PUT
 const updateTitle = (req, res) => {
   //update the name on this, only owner and co-owner 
-  let {title} = req.body
+  const {title} = req.body
+  const {pantryId} = req.params
 
   let sql = 'UPDATE pantriesSettings SET pantryName= ? WHERE pantrySettingId = ? '
   //~~make sure the path includes the id of this list
-  sql=mysql.format(sql [ title, id ])
+  sql=mysql.format(sql [ title, pantryId ])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -33,5 +34,6 @@ sql= mysql.format(sql, [autoAdd, req.body.id])
 }
 
 module.exports = {
-  updateAutoAddShop
+  updateAutoAddShop,
+  updateTitle
 }

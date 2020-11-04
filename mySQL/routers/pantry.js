@@ -12,7 +12,8 @@ const {
 } = require('../controller/appFunc/pantries/byItem')
 
 const {  
-  updateAutoAddShop
+  updateAutoAddShop,
+  updateTitle
 } = require('../controller/appFunc/pantries/settings')
 
 
@@ -33,6 +34,7 @@ pantry.put('/remove/:itemId', removeFromPantry)
 pantry.put('/upItem/:itemId', updatePantryItem)
 //this id should be the item of the 
 pantry.put('/upAutoAddShop/:pantryId', updateAutoAddShop)
+pantry.put('/updatePantryName/:pantryId', updateTitle )
 
 //DELETE
 
