@@ -15,6 +15,24 @@ const allUsers = (req, res) => {
   })
 }
 
+const allAllergies = (req, res) => {
+  //drop down for allergies
+  
+    pool.query('SELECT * FROM allergies', (err, rows) => {
+      if (err) return handleSQLError(res, err)
+      return res.json(rows);
+    })
+  }
+  
+const allDiets = (req, res) => {
+  //drop down for diet
+  
+    pool.query('SELECT * FROM diets', (err, rows) => {
+      if (err) return handleSQLError(res, err)
+      return res.json(rows);
+    })
+  }
+
 const usersProfiles = (req, res) => {
   console.log('this should display what other are able to see based on the users settings from the display table')
 
@@ -69,6 +87,8 @@ const addDiet = (req, res) => {
 
 module.exports = {
   allUsers,
+  allAllergies, 
+  allDiets,
   addMeasurement,
   addAllergy,
   addDiet

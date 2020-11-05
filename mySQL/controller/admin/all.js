@@ -37,15 +37,6 @@ const allShoppingLists = (req, res) => {
   })
 }
 
-const allDiets = (req, res) => {
-  console.log('all the diets, to be use to drop down lists')
-
-  pool.query('SELECT * FROM diets', (err, rows) => {
-    if (err) return handleSQLError(res, err)
-    return res.json(rows);
-  })
-}
-
 
 //counts: 
 const userSummary = (req, res) => {
@@ -62,6 +53,5 @@ modules.exports = {
   allPalLists,
   allPantries,
   allShoppingLists,
-  allDiets,
   userSummary
 }
