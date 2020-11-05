@@ -10,7 +10,7 @@ const { handleSQLError } = require('../../../sql/error')
 const viewShopRequests = (req, res) => {
   console.log('owner and co owners should be abel to view these items')
 
-  sql='SELECT * FROM itemRequest WHERE shopList= ? '
+  let sql='SELECT * FROM itemRequest WHERE shopList= ? '
 
   sql=mysql.format(sql[req.params.listId])
 
@@ -30,7 +30,7 @@ const addShopRequest = (req, res) => {
   const {user, listId} = req.params
 
   //work in progress - needs to be some kind of join to verify the access as a requesters 
-  sql='INSERT INTO itemRequest (requester, quantity, measId, item, spoonId, shopList, access) VALUES (? , ?, ?, ? , ?, ?, (SELECT accessId FROM access WHERE username= ? AND shopListRole=5 AND shopList=?))'
+  let sql='INSERT INTO itemRequest (requester, quantity, measId, item, spoonId, shopList, access) VALUES (? , ?, ?, ? , ?, ?, (SELECT accessId FROM access WHERE username= ? AND shopListRole=5 AND shopList=?))'
 
   sql=mysql.format(sql, [user,quantity, measId, item, spoonId, listId, user, listId])
 
@@ -49,6 +49,15 @@ const approveShopRequest = (req, res) => {
 
 const declineShopRequest = (req, res) => {
   console.log('sorry, we are not going to get that')
+
+  let sql = 'UPDATE itemRequest SET active=0, approved=0 WHERE reqItId= ? '
+  
+  sql=mysql.format(sql, [req.params.reqId])
+
+  pool.query(sql, (err, row) => {
+    if(err) return handleSQLError(res, err)
+    return res.send('item was declined')
+  })
 }
 
 
