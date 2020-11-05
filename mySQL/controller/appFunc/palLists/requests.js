@@ -34,10 +34,11 @@ const sendPalReq = (req, res) => {
   console.log('send a request to become friends ')
 
   const {askingUser } = req.body
+  const {user} = req.params
 //write a query for approving or rejects a request 
 sql='INSERT INTO palListsRequests (requesterUser, pal) VALUES (?, ?)'
 
-sql=mysql.format(sql,[req.params.username, askingUser ])
+sql=mysql.format(sql,[user, askingUser ])
 
 pool.query(sql, (err, results) => {
   if(err) return handleSQLError(res, err)
@@ -55,14 +56,14 @@ const acceptPalReq = (req, res) => {
 
 //since the information should already be based as the key from the view requests and this action should only be turned on where the use is listed as the pal. 
 const { reqId } = req.body
-const {username } = req.params
+const {user } = req.params
 
 //this will be triggered by the pal role accepting, so all references to the pal will be the current user -> we should already know that the reqId is, so we should be able to pull information that way
 let sql='BEGIN; UPDATE palListsRequests SET approved=1, active=0 WHERE palRequestId= ? ; INSERT INTO access (username, pantry, pantryRole, shopList, shopListRole ,palReq) VALUES ( ?, (SELECT DISTINCT pS.pantrySettingId FROM pantriesSettings AS pS JOIN palListsRequests AS pLR ON pS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) ), 5, (SELECT DISTINCT sLS.shopListSetId FROM shopListsSettings AS sLS JOIN palListsRequests AS pLR ON sLS.owner=pLR.requesterUser WHERE pLR.requesterUser=(SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? )),5 , ? ); INSERT INTO palLists (palList, username, reqId) VALUES ((SELECT palListSettingsId FROM palListsSettings WHERE owner=(SELECT requesterUser from palListsRequests WHERE palRequestId= ? )), ? , ? ); INSERT INTO access (username, pantry, pantryRole ,shopList, shopListRole, palReq) VALUES ( (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ), (SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? ), 5, (SELECT shopListSetId FROM shopListsSettings WHERE owner= ? ), 5, ?); INSERT INTO palLists (palList, username, reqId) VALUES ((SELECT palListSettingsId FROM palListsSettings WHERE owner= ? ), (SELECT requesterUser FROM palListsRequests WHERE palRequestId= ? ) , ? ); COMMIT;'
 
-sql=mysql.format(sql,[reqId, username, reqId, reqId, reqId, reqId, username, reqId, reqId, username, username, reqId, username, reqId, reqId ])
+sql=mysql.format(sql,[reqId, user, reqId, reqId, reqId, reqId, user, reqId, reqId, user, user, reqId, user, reqId, reqId ])
 
-pool.query(sql, (err, results) => {
+pool.query(sql, (err, res) => {
   if (err) return handleSQLError(res, err)
   return res.status(204).json();
 })
@@ -79,7 +80,7 @@ let sql='UPDATE palListsRequests SET approved=0, active=0 WHERE palRequestId=?'
 
 sql= mysql.format(sql, [reqId])
 
-pool.query(sql, (err, results) => {
+pool.query(sql, (err, res) => {
   if(err) return handleSQLError(res, err)
   return res.status(204).json(); 
 })
