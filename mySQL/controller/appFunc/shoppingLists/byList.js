@@ -54,7 +54,7 @@ const addToShopList = (req, res) => {
   const { quantity, measure, item, spoon} = req.body
   const {listId} = req.params
 
-  let sql = 'INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId) VALUES (?, ?, ?, ?, ?);'
+  let sql = 'INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId) VALUES (?, ?, ?, ?, ?) ORDER BY item'
   
   sql=mysql.format(sql, [ listId, quantity, measure, item, spoon ])
 
