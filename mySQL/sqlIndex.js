@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 //need to connect up your sql and have the basic routes
 //remember to have the route protected
 //should be prefixed by your role, MOU
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 
 app.use('/postLogin', user)
 

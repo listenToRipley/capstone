@@ -48,7 +48,7 @@ const allDiets = (req, res) => {
 
 
 //counts: 
-const countSummary = (req, res) => {
+const userSummary = (req, res) => {
   console.log('right now tells you how many users you have')
 
   pool.query('SELECT COUNT(*) FROM appInfo WHERE active=1', (err, row) => {
@@ -63,5 +63,5 @@ modules.exports = {
   allPantries,
   allShoppingLists,
   allDiets,
-  countSummary
+  userSummary
 }

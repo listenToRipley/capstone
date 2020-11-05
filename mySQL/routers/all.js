@@ -5,7 +5,7 @@ const {
   allMerges, 
   allPalLists,
   allDiets,
-  countSummary
+  userSummary
 
 } = require('../controller/admin/admin')
 
@@ -17,7 +17,7 @@ admin.get('./shopping', allShoppingLists)
 admin.get('/merges', allMerges)
 admin.get('/palList', allPalLists)
 admin.get('/diets', allDiets)
-admin.get('/counts', countSummary)
+admin.get('/counts', userSummary)
 
 //POST
 admin.post('/createUser', createUser)
