@@ -44,6 +44,7 @@ const updatePalRole = (req, res) => {
   console.log('you have update what the pal can do on your list')
   const {accessId} = req.params
 
+  //this will only be for editors and change back to requesters for right now. 
   sql= 'UPDATE access SET pantryRole=COALESCE(4, pantryRole), shopListRole=pantryRole WHERE accessId=?'
 
   sql=mysql.format(sql, [accessId])
