@@ -27,7 +27,7 @@ pals.post('/req/',sendPalReq)
 pals.put('/accept/:reqId', acceptPalReq)
 pals.put('/decline/:reqId', declinePalReq)
 pals.put('/updateName/:name', updatePalListName)
-pals.put('/updateRoles', updatePalRole)
+pals.put('/updateRoles/:accessId', updatePalRole)
 
 //DELETE
 

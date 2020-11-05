@@ -42,6 +42,16 @@ const updatePalListName = (req, res) => {
 
 const updatePalRole = (req, res) => {
   console.log('you have update what the pal can do on your list')
+  const {accessId} = req.params
+
+  sql= 'UPDATE access SET pantryRole=COALESCE(4, pantryRole), shopListRole=pantryRole WHERE accessId=?'
+
+  sql=mysql.format(sql, [accessId])
+
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    return res.status(204).json()
+  })
 
 }
 
