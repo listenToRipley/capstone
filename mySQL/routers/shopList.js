@@ -31,11 +31,12 @@ const shopList = express.Router({mergeParams: true})
 shopList.get('/shopping/:listId', shopListDetails)
 shopList.get('/shoppingList/:listId', thisShopList)
 shopList.get('/shoppingList/:listId', shopListCount)
+shopList.get('/shopListRequest/:listId', viewShopRequests)
 
 //POST
 shopList.post('/addToList/listId', addToShopList)
 
-shopList.post('/addReq/:shopListId', addShopRequest)
+shopList.post('/addReq/:listId', addShopRequest)
 
 //PUT
 shopList.put('/appReq/:boo', approveShopRequest)
