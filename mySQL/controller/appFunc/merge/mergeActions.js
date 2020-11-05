@@ -5,16 +5,14 @@ const {handleSQLError} = require('../../../sql/error')
 //POST
 const sendMergeReq = (req, res) => {
   console.log('send a merge')
-//write a query that send a merge request
-  //call on mergeRequest
   //remember the requesters will the one who whose pantry will now be the primary owner and the person who requests will be come the co-owner. 
-  //the person who send this will have the role of requesters, to req.params.username is already there
+  //the person who send this will have the role of requesters, to req.params.useris already there
   const {pal} = req.body
   const {user} = req.params
 
   let sql='INSERT INTO mergeRequests (requester, mergePal, palReq) VALUES (?, ? , (SELECT palRequestId FROM palListsRequests WHERE requesterUser=?  AND pal= ? OR requesterUser= ? AND pal=? ))'
 
-  sql=mysql.format(sql,[ user, pal, pal, username, username, pal ])
+  sql=mysql.format(sql,[ user, pal, pal, user, user, pal ])
   
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -26,8 +24,6 @@ const sendMergeReq = (req, res) => {
 //PUT
 const acceptMergeReq = (req, res) => {
   console.log('accept merge request')
-//write a query that accepts a merge 
-//call on tables mergeRequest, palList
 //remember the requesters will the one who whose pantry will now be the primary owner and the person who requests will be come the co-owner. 
   //must update the role if the merge request is approved. will become co-owner 
   const {user, mergeId} = req.params
@@ -58,7 +54,7 @@ const declineMergeReq = (req, res) => {
 
  sql=mysql.format(sql, [req.params.mergeId])
 
- pool.query(sql, (err, results) => {
+ pool.query(sql, (err, res) => {
   if (err) return handleSQLError(res, err)
   return res.status(204).json();
 })
