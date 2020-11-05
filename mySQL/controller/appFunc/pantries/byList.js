@@ -4,9 +4,8 @@ const { handleSQLError } = require('../../../sql/error')
 
 //GET
 const pantryDetails = (req, res) => {
-  //this will be the pantry details for the primary pantry
 
-let sql = 'SELECT * FROM pantriesSettings WHERE id = ? '
+let sql = 'SELECT a.pantry, pS.owner, pS.pantryName, a.username AS pals, a.pantryRole, a.palReq, pS.autoAdd, pS.mergeStatus FROM pantriesSettings AS pS JOIN access AS a ON a.pantry=pS.pantrySettingId WHERE a.active=1 AND pS.active=1 AND a.username<>pS.owner AND a.pantry= ? '
 
 sql=mysql.format(sql, [req.params.pantryId])
 
