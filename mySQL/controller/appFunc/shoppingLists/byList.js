@@ -19,7 +19,7 @@ const shopListDetails = (req, res) => {
 
 const shopListCount = (req, res) => {
 //provide a count of how many items are currently on your shopping list 
-  let sql= 'SELECT COUNT(entryId) FROM shoppingLists WHERE activeItem=1 AND shopList= ? ;'
+  let sql= 'SELECT a.shopList, sLS.owner, sLS.shopListName, a.username AS pals, a.shopListRole, a.palReq, sLS.autoAdd, sLS.mergeStatus FROM shopListsSettings AS sLS JOIN access AS a ON a.shopList=sLS.shopListSetId WHERE a.active=1 AND sLS.active=1 AND a.username<>sLS.owner AND a.pantry= ? ORDER BY a.username;'
 
   sql=mysql.format(sql, [req.params.listId])
 

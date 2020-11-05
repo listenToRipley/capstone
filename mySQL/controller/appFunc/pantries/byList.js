@@ -37,7 +37,7 @@ const pantryItems = (req, res) => {
 //write a query the returns the pantry of the current user
 
 //this needs to account for a merged pantry
-let sql = 'SELECT entryId, quantity, measId, item, spoonId FROM pantries WHERE stock=1 AND pantry= ?' 
+let sql = 'SELECT entryId, quantity, measId, item, spoonId FROM pantries WHERE stock=1 AND pantry= ? ORDER BY item' 
 
 sql=mysql.format(sql,[req.params.pantryId])
 
