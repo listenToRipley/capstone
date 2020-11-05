@@ -35,7 +35,7 @@ shopList.get('/shoppingList/:listId', shopListCount)
 //POST
 shopList.post('/addToList/listId', addToShopList)
 
-shopList.post('/addReq/', addShopRequest)
+shopList.post('/addReq/:shopListId', addShopRequest)
 
 //PUT
 shopList.put('/appReq/:boo', approveShopRequest)
