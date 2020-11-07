@@ -10,7 +10,7 @@ const {
 const util = express.Router({mergeParams: true})
 
 //GET
-util.get('/users' , allUsers)
+util.get('/users/' , allUsers)
 util.get('/allergies', allAllergies)
 util.get('/diets', allDiets)
 

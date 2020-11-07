@@ -5,8 +5,10 @@ const { handleSQLError } = require('../../sql/error')
 //GET
 const allUsers = (req, res) => {
   //will be used for searchs 
-  console.log('what is the req...', req)
-  let sql= 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username'
+  
+  let sql= 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username WHERE aI.username<> ?'
+
+  sql= mysql.format(sql, [req.params.user])
 
   //write a query that returns all the users 
   pool.query(sql, (err, rows) => {
