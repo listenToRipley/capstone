@@ -18,8 +18,3 @@ module.exports = {
   blockPal,
   unblock
 }
-
-module.exports = {
-  blockPal,
-  unblock
-}
