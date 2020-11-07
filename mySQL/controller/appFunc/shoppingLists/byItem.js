@@ -39,7 +39,16 @@ pool.query(sql, (err, results) => {
 
 }
 
+const markOff = (req, res) => {
+  //make an item be removed from the shopping list 
+}
+
+const autoAddToPantry = (req, res) => {
+  //this will add be triggered when an items gets marked off the list and auto add is on
+}
+
 module.exports = {
   removeFrom,
-  updateItem
+  updateItem,
+  autoAddToPantry
 }

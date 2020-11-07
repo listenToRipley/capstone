@@ -39,6 +39,14 @@ pool.query(sql, (err, results) => {
 
 }
 
+const outOf = (req, res) => {
+  //make an item be removed from the shopping list 
+}
+
+const autoAddToShopList = (req, res) => {
+  //this will add be triggered when an items gets marked off the list and auto add is on
+}
+
 module.exports = {
   removeFromPantry,
   updatePantryItem
