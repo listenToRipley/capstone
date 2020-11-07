@@ -19,8 +19,7 @@ const {
 
 const {
   justDisplayPrefer, 
-  updateDisplayPrefAll,
-  updateDisplayPrefEach,
+  updateDisplayPref,
   updateDisplayPrefDefault,
   updateDisplayPrivate
 } = require('../controller/users/information/displayPref')
@@ -77,8 +76,7 @@ just.post('/addAllergy/:allergyId', addAllergy)
 just.put('/upPassword/', updatePassword )
 just.put('/upEmail/', updateEmail)
 
-just.put('/upDisplayPref/', updateDisplayPrefAll)
-just.put('/upDisplayPrefEa/', updateDisplayPrefEach)
+just.put('/upDisplayPrefEa/', updateDisplayPref)
 just.put('/upDisplayDefault/', updateDisplayPrefDefault)
 just.put('/upDis/private', updateDisplayPrivate)
 

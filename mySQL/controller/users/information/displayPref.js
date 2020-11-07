@@ -19,23 +19,7 @@ const justDisplayPrefer = (req, res) => {
 
 //PUT 
 
-//are we going to be able to do this as a bulk thing or are we going to need to address this of every individual item? 
-const updateDisplayPrefAll = (req, res) => {
-  console.log('update all of your displays to on or off')
-
-  const {boo} = req.body
-
-  let sql='UPDATE usersDisplayPreferences SET likes=?, dislikes=likes, diets=likes, allergies=likes, city=likes, state=likes, country=likes, email=likes, dobMonth=likes, dobDate=likes, dobYear=likes, phone=likes  WHERE username=?'
-
-  sql=mysql.format(sql,[boo, req.params.user])
-
-  pool.query(sql, (err, results) => {
-    if (err) return handleSQLError(res, err)
-    return res.status(204).json();
-  })
-}
-
-const updateDisplayPrefEach = (req, res) => {
+const updateDisplayPref = (req, res) => {
   console.log('update each of your display preferences, one at a time')
 
   //if dobMonth is turned off, then you should not be able to display the dobDate
@@ -85,8 +69,7 @@ const updateDisplayPrivate = (req, res) => {
 
 module.exports = {
   justDisplayPrefer, 
-  updateDisplayPrefAll,
-  updateDisplayPrefEach,
+  updateDisplayPref,
   updateDisplayPrefDefault,
   updateDisplayPrivate
 }
