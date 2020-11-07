@@ -9,7 +9,6 @@ const {
   declineShopRequest
 } = require('../controller/appFunc/shoppingLists/requests')
 
-
 //GET 
 requests.get('/viewReq', viewShopRequests)
 
@@ -17,7 +16,7 @@ requests.get('/viewReq', viewShopRequests)
 requests.post('/addReq', addShopRequest)
 
 //PUT
-requests.put('/approveReq', approveShopRequest)
-requests.put('/declineReq', declineShopRequest)
+requests.put('/approveReq/:reqId', approveShopRequest)
+requests.put('/declineReq/:reqId', declineShopRequest)
 
 module.exports = requests
