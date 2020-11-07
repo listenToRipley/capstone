@@ -78,5 +78,5 @@ module.exports = {
   viewShopRequests,
   addShopRequest,
   approveShopRequest,
-  declineShopRequest, 
+  declineShopRequest
 }

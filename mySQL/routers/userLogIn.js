@@ -9,6 +9,7 @@ const palList = require('./palList')
 const pantry = require('./pantry')
 const shopList = require('./shopList')
 const admin = require('./admin')
+const requests = require('./requests')
 
 
 
@@ -20,6 +21,7 @@ start.use('/:user/palList', palList)
 start.use('/:user/pantry', pantry)
 start.use('/:user/shopList', shopList)
 start.use('/:user', admin)
+start.use('/:user', requests)
 
 
 module.exports = start
