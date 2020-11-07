@@ -17,6 +17,20 @@ const justUserInfo = (req, res) => {
   })
 }
 
+const usersProfiles = (req, res) => {
+  console.log('this should display what other are able to see based on the users settings from the display table')
+
+  let sql=''
+  //if private set to true, only people on the palsList should be able to see anything 
+  //on dislikes, likes, userAllergies, userDiets, all items associates with that user must be set to true in order for others to view 
+
+  pool.query(sql, (err, rows) => {
+    if(err) return handleSQLError(res, err)
+    return res.json(rows); 
+  })
+}
+
+
 const justLocation = (req, res) => {
   console.log('this is just the user location')
 
