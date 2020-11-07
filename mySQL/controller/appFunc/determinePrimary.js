@@ -12,12 +12,7 @@ const findOwner = (res, req) => {
   pool.query(sql, (err, row) => {
     if (err) return handleSQLError(res, err)
 
-    if(res.json(row)>0) {
-      res.send('This person is not an owner on any lists currently')
-      next(findCoOwner)
-    } else {
-      next(findOwnerLists)
-    }
+    return res.json(row)
   })
 }
 
