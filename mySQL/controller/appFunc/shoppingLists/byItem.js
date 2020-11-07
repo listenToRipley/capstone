@@ -5,6 +5,20 @@ const { handleSQLError } = require('../../../sql/error')
 //GET
 
 //POST
+const autoAddToPantry = (req, res) => {
+  //this will add be triggered when an items gets marked off the list and auto add is on
+  const {itemId} = req.params
+
+  let sql = 'INSERT INTO pantries (pantry, quantity, measId, item, spoonId) VALUES ((SELECT shopList FROM access WHERE shopListRole=2 AND pantry=(SELECT pantry FROM pantries WHERE entryId=?)), (SELECT quantity FROM shoppingLists WHERE entryId=?),(SELECT measId FROM shoppingLists WHERE entryId= ? ),(SELECT item FROM shoppingLists WHERE entryId= ?),(SELECT spoonId FROM shoppingLists WHERE entryId=?))'
+
+  sql = mysql.format(sql, [itemId, itemId, itemId, itemId, itemId])
+
+  pool.query(sql, (err, row) => {
+    if (err) handleSQLError(res, err)
+
+    return res.json(row)
+  })
+}
 
 //PUT
 const removeFrom = (req, res) => {
@@ -41,14 +55,22 @@ pool.query(sql, (err, results) => {
 
 const markOff = (req, res) => {
   //make an item be removed from the shopping list 
+
+  let sql = 'UPDATE shoppingLists SET activeItem=0 WHERE entryId= ?'
+
+  sql = mysql.format(sql, [itemId])
+
+  pool.query(sql, (err, results) => {
+    if (err) handleSQLError(err, results)
+
+    return res.status(204).json()
+  })
 }
 
-const autoAddToPantry = (req, res) => {
-  //this will add be triggered when an items gets marked off the list and auto add is on
-}
 
 module.exports = {
+  autoAddToPantry,
   removeFrom,
   updateItem,
-  autoAddToPantry
+  markOff
 }

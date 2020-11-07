@@ -1,8 +1,10 @@
 const express = require('express')
 
 const { 
+  autoAddToPantry,
   removeFrom,
-  updateItem
+  updateItem,
+  markOff
 } = require('../controller/appFunc/shoppingLists/byItem')
 
 const {
@@ -35,8 +37,8 @@ shopList.get('/shopListRequest/:listId', viewShopRequests)
 
 //POST
 shopList.post('/addToList/listId', addToShopList)
-
 shopList.post('/addReq/:listId', addShopRequest)
+shopList.post('/autoAddToPantry/:itemId',  autoAddToPantry)
 
 //PUT
 shopList.put('/appReq/:boo', approveShopRequest)
@@ -45,6 +47,7 @@ shopList.put('/remove/:itemId', removeFrom)
 shopList.put('/upItem/:itemId', updateItem)
 shopList.put('/updateName/:name', updateListName)
 shopList.put('/upAutoAddPantry/:boo', updateAutoAddShop)
+shopList.put('/markOff/:itemId', markOff)
 
 //DELETE
 
