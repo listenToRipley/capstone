@@ -10,7 +10,7 @@ const autoAddToShopList = (req, res) => {
 
   const { itemId } = req.params
 
-  let sql = 'INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId) VALUES ((SELECT pantry FROM access WHERE pantryRole=2 AND shopList=(SELECT shopList FROM itemRequest WHERE entryId=?)), (SELECT quantity FROM pantries WHERE entryId=?),(SELECT measId FROM pantries WHERE entryId= ? ),(SELECT item FROM pantries WHERE entryId= ?),(SELECT spoonId FROM pantries WHERE entryId=?))'
+  let sql = 'INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId) VALUES ((SELECT pantry FROM access WHERE pantryRole=2 AND shopList=(SELECT shopList FROM shoppingLists WHERE entryId=?)), (SELECT quantity FROM pantries WHERE entryId=?),(SELECT measId FROM pantries WHERE entryId= ? ),(SELECT item FROM pantries WHERE entryId= ?),(SELECT spoonId FROM pantries WHERE entryId=?))'
 
   sql = mysql.format(sql, [itemId, itemId, itemId, itemId, itemId])
 
