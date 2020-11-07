@@ -4,6 +4,23 @@ const { handleSQLError } = require('../../../sql/error')
 
 //these are all items where the param required in the entry Id
 
+//POST
+const autoAddToShopList = (req, res) => {
+  //this will add be triggered when an items gets marked off the list and auto add is on
+
+  const { itemId } = req.params
+
+  let sql = 'INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId) VALUES ((SELECT pantry FROM access WHERE pantryRole=2 AND shopList=(SELECT shopList FROM itemRequest WHERE entryId=?)), (SELECT quantity FROM pantries WHERE entryId=?),(SELECT measId FROM pantries WHERE entryId= ? ),(SELECT item FROM pantries WHERE entryId= ?),(SELECT spoonId FROM pantries WHERE entryId=?))'
+
+  sql = mysql.format(sql, [itemId, itemId, itemId, itemId, itemId])
+
+  pool.query(sql, (err, row) => {
+    if(err) return handleSQLError(res, err)
+
+    return res.json(row);
+  })
+}
+
 //PUT 
 const removeFromPantry = (req, res) => {
     console.log('remove from the pantry')
@@ -41,13 +58,21 @@ pool.query(sql, (err, results) => {
 
 const outOf = (req, res) => {
   //make an item be removed from the shopping list 
-}
+  let sql = 'UPDATE pantries SET stock=0 WHERE entryId= ?'
 
-const autoAddToShopList = (req, res) => {
-  //this will add be triggered when an items gets marked off the list and auto add is on
+  sql= mysql.format(sql, [req.params.itemId])
+
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+
+    return res.status(204).json();
+})
+
 }
 
 module.exports = {
+  autoAddToShopList,
   removeFromPantry,
-  updatePantryItem
+  updatePantryItem,
+  outOf
 }

@@ -7,8 +7,10 @@ const {
 } = require('../controller/appFunc/pantries/byList')
 
 const {
+  autoAddToShopList,
   removeFromPantry,
-  updatePantryItem
+  updatePantryItem,
+  outOf
 } = require('../controller/appFunc/pantries/byItem')
 
 const {  
@@ -28,6 +30,7 @@ pantry.get('/pantryCount/:pantryId', pantryCount)
 
 //POST
 pantry.post('/pantry/add/:pantryId', addToPantry)
+pantry.post('/pantry/autoAdd/:itemId', autoAddToShopList)
 
 //PUT
 pantry.put('/remove/:itemId', removeFromPantry)
@@ -35,6 +38,7 @@ pantry.put('/upItem/:itemId', updatePantryItem)
 //this id should be the item of the 
 pantry.put('/upAutoAddShop/:pantryId', updateAutoAddShop)
 pantry.put('/updatePantryName/:pantryId', updateTitle )
+pantry.put('/pantryOutOf/:itemId', outOf)
 
 //DELETE
 
