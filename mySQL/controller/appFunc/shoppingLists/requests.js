@@ -1,3 +1,4 @@
+const { NextWeek } = require('@material-ui/icons')
 const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')

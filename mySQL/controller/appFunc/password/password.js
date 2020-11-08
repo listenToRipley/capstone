@@ -1,7 +1,6 @@
 const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
-const { hexPass } = require('../../../middleware/hex')
 const bcrypt = require('bcrypt')
 
 const testPassword = async (req, res) => {

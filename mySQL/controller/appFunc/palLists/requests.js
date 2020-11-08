@@ -1,3 +1,4 @@
+const { NextWeek } = require('@material-ui/icons')
 const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
@@ -67,7 +68,7 @@ pool.query(sql, (err, res) => {
   if (err) return handleSQLError(res, err)
   return res.status(204).json();
 })
-
+ next()
 }
 
 //since the information should already be based as the key from the view requests and this action should only be turned on where the use is listed as the pal. 
