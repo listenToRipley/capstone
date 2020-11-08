@@ -12,12 +12,12 @@ const forgotUsername = (req, res) => {
   pool.query(sql, (err, row) => {
     if(err) handleSQLError(res, err)
      
-    if(res.json(row)===null) {
-      res.send('Sorry, we cannot find a login associated with the email address.') //should get reroute to create a login 
+    if(row.length===0) {
+      res.send('Sorry, we cannot find a login associated with that email address.') //should get reroute to create a login 
     } else {
-      res.json(row)
+     return res.json(row)
     }
-  })
+   })
 }
 
 
