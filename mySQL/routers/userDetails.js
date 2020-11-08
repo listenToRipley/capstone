@@ -25,9 +25,9 @@ const {
 } = require('../controller/users/information/displayPref')
 
 const {
-  justUserInfo,
-  justLocation,
-  justBirthday,
+  userPersonalInfo,
+  userLocation,
+  userBirthday,
   updateBirthday, 
   updateEmail,
   updateLocation,
@@ -55,10 +55,10 @@ const just = express.Router({mergeParams: true})
 
 
 //GET
-just.get('/info', justUserInfo)
+just.get('/info', userPersonalInfo)
 just.get('/displayPref', justDisplayPrefer)
-just.get('/location', justLocation)
-just.get('/DOB', justBirthday)
+just.get('/location', userLocation)
+just.get('/DOB', userBirthday)
 just.get('/likes', justLikes)
 just.get('/dislikes', justDislikes)
 just.get('/diets', justDiets)

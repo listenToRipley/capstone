@@ -3,12 +3,12 @@ const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
 //GET
-const justUserInfo = (req, res) => {
+const userPersonalInfo = (req, res) => {
   console.log('get all the users information')
   //may need to rewrite to consider merge status for pantry and shop list name, should be include this in the primary information? 
 
-  let sql = 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, uD.signedUp, pLS.palListSettingsId AS palListId, pLS.palListName, pS.pantrySettingId AS pantryId, pS.pantryName, sLS.shopListSetId AS shopListId, sLS.shopListName FROM appInfo aI JOIN palListsSettings AS pLS JOIN usersDetails uD JOIN pantriesSettings AS pS JOIN shopListsSettings as sLS WHERE aI.username = uD.username AND aI.username = pS.owner AND aI.username = sLS.owner AND  aI.username = pLS.owner AND aI.username = ?'
-  console.log('can you still see the username?', [req.params.user])
+  let sql = 'SELECT DISTINCT aI.username, uD.firstName, uD.lastName, aI.email, uD.phone FROM appInfo AS aI JOIN usersDetails AS uD  ON  aI.username=uD.username WHERE aI.username = ?'
+ 
   sql=mysql.format(sql, [req.params.user])
 
   pool.query(sql, (err, row) => {
@@ -17,21 +17,7 @@ const justUserInfo = (req, res) => {
   })
 }
 
-const usersProfiles = (req, res) => {
-  console.log('this should display what other are able to see based on the users settings from the display table')
-
-  let sql=''
-  //if private set to true, only people on the palsList should be able to see anything 
-  //on dislikes, likes, userAllergies, userDiets, all items associates with that user must be set to true in order for others to view 
-
-  pool.query(sql, (err, rows) => {
-    if(err) return handleSQLError(res, err)
-    return res.json(rows); 
-  })
-}
-
-
-const justLocation = (req, res) => {
+const userLocation = (req, res) => {
   console.log('this is just the user location')
 
   let sql = 'SELECT * FROM usersLocations WHERE username=?'
@@ -45,7 +31,7 @@ const justLocation = (req, res) => {
 
 }
 
-const justBirthday = (req, res) => {
+const userBirthday = (req, res) => {
   console.log('you got back just the users birthday')
 
   let sql = 'SELECT username, dobYear, dobMonth, dobDate FROM usersDetails WHERE username=?'
@@ -131,9 +117,9 @@ const updatePhoneNum = (req, res) => {
 
 
 module.exports = {
-  justUserInfo,
-  justLocation,
-  justBirthday,
+  userPersonalInfo,
+  userLocation,
+  userBirthday,
   updateBirthday, 
   updateEmail,
   updateLocation,
