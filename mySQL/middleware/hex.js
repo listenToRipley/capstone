@@ -3,6 +3,8 @@ const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 const bcrypt = require('bcrypt')
 
+const saltRounds = 10; 
+
 const hexPass = async (req, res) => {
   try {
     const salt = await bcrypt.genSalt()
