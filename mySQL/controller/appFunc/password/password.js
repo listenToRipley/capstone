@@ -4,24 +4,10 @@ const { handleSQLError } = require('../../../sql/error')
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
 
-
-// const hexPass = async (pass) => {
-//   // console.log('you are trying to pass the test for this password', req.body.password)
-//   const {pass} = req.body
-
-//   bcrypt.hash(pass, saltRounds, (err, hash) => {
-//     console.log('here is the password, ', pass, ' and the hash is :', hash)
-
-//     return hash
-//   })
- 
-// }
-
-// console.log(hexPass('davidbowie'))
-
 //PUT
 const updatePassword = async (req, res) => {
-  res.setHeader('Content-Type', 'text/plain') 
+
+  res.setHeader('Content-Type', 'application/json')
 
   const {password} = req.body
   const {email} = req.params
@@ -34,8 +20,13 @@ const updatePassword = async (req, res) => {
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
+
+    if(results.affectedRows === 0) {
+      return res.send(`Sorry, something went wrong, we don't seem to have that email on record`)
+    } else {
+      return res.send('Your password has now been reset')
+    }
     
-    return res.send('Your password has now been updated')
   })
 
   })
