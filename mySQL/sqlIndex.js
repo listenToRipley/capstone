@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const port = process.env.PORT || 4001
 const bodyParser = require('body-parser')
+
 const app = express()
 
 const user = require('./routers/userLogIn')
@@ -16,10 +17,13 @@ app.get('/', (req, res) => {
 //remember to have the route protected
 //should be prefixed by your role, MOU
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+app.use(express.json())
+
 
 app.use('/postLogin', user)
 
-app.use('/preLogin', preLogin)
+app.use('/preLogin',preLogin)
 
 
 

@@ -2,36 +2,46 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 const bcrypt = require('bcrypt')
+const saltRounds = 10;
 
-const testPassword = async (req, res) => {
-  console.log('you are trying to pass the test for this password', req.body.password)
-  const {password} = req .body
 
-  bcrypt.hash(password, 10, (err, hash) => {
-    res.send(hash) 
-  })
+// const hexPass = async (pass) => {
+//   // console.log('you are trying to pass the test for this password', req.body.password)
+//   const {pass} = req.body
+
+//   bcrypt.hash(pass, saltRounds, (err, hash) => {
+//     console.log('here is the password, ', pass, ' and the hash is :', hash)
+
+//     return hash
+//   })
  
-}
+// }
+
+// console.log(hexPass('davidbowie'))
 
 //PUT
-const updatePassword = (req, res) => {
-  console.log('you have now update the password for this user')
+const updatePassword = async (req, res) => {
+  res.setHeader('Content-Type', 'text/plain') 
 
-  const { password } = req.body
+  const {password} = req.body
+  const {email} = req.params
 
-  let sql='UPDATE appInfo SET password=? WHERE username=?'
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+  
+  let sql='UPDATE appInfo SET password=? WHERE email=?'
 
-  sql=mysql.format(sql,[ hexPass(password),  req.params.username])
+  sql=mysql.format(sql,[hash, email])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
-    return res.status(204).json();
+    
+    return res.send('Your password has now been updated')
   })
 
+  })
 }
 
-
 module.exports = {
-  updatePassword,
-  testPassword
+  updatePassword
+
 }
