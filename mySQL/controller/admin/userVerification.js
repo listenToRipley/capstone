@@ -10,17 +10,19 @@ const saltRounds = 10
 const login = (req, res, next) => {
 
   let { user, password } = req.body
-  console.log('username :', user, ' password', password)
 
   bcrypt.hash(password, saltRounds, (err, hash) => {
-    sql='SELECT username, password FROM appInfo WHERE username= ? AND password= ? ;  '
+    sql='SELECT COUNT(username) FROM appInfo WHERE username= ? AND password= ? '
   
     sql = mysql.format(sql, [user, hash])
+
   
-    pool.query(sql, (err, results) => {
+    pool.query(sql, (err, row) => {
       if(err) handleSQLError(res, err)
-      let total = row[0]['COUNT(email)']
-      if(total!==0) {
+      let total = row[0]['COUNT(username)']
+      console.log(total)
+      console.log('username :', user, ' password', hash)
+      if(total===1) {
         res.setHeader('username', `${user}`)
         res.setHeader('password', `${hash}`)
       } else {
