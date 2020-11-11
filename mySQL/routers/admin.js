@@ -11,12 +11,19 @@ const {
 const {
   verifyUsername,
   verifyEmail, 
-  createUser
+  createUsername,
+  createUserDetails,
+  createDefaultDisplay,
+  createPantry,
+  createShoppingList,
+  createPalList,
+  createUserLocation,
+  createUserAccess,
+  newUser
 } = require('../controller/admin/createNewUser')
 
 const {
-  updatePassword,
-  // testPassword
+  updatePassword
 } = require('../controller/appFunc/password/password')
 
 const admin = express.Router({mergeParams: false})
@@ -25,10 +32,18 @@ const admin = express.Router({mergeParams: false})
 admin.get('/:email', forgotUsername)
 admin.get('/vUsername/:user', verifyUsername)
 admin.get('/vEmail/:email', verifyEmail)
+admin.get('/verUserCreation/:username', newUser)
 
 //POST
-admin.post('/createUser', createUser)
-
+admin.post('/createUser',
+createUsername,
+createUserDetails,
+createDefaultDisplay,
+createPantry,
+createShoppingList,
+createPalList,
+createUserLocation,
+createUserAccess)
 
 //PUT
 admin.put('/password/:email',updatePassword)
