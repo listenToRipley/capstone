@@ -19,7 +19,7 @@ const {
   createPalList,
   createUserLocation,
   createUserAccess,
-  newUser
+  newUser //might want to put that behind verification 
 } = require('../controller/admin/createNewUser')
 
 const {
@@ -32,7 +32,8 @@ const admin = express.Router({mergeParams: false})
 admin.get('/:email', forgotUsername)
 admin.get('/vUsername/:user', verifyUsername)
 admin.get('/vEmail/:email', verifyEmail)
-admin.get('/verUserCreation/:username', newUser)
+//maybe protected route
+admin.get('/vUserCreation/:username', newUser)
 
 //POST
 admin.post('/createUser',
@@ -46,6 +47,7 @@ createUserLocation,
 createUserAccess)
 
 //PUT
+//maybe protected route or require verification
 admin.put('/password/:email',updatePassword)
 
 module.exports = admin

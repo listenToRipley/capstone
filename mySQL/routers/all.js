@@ -7,23 +7,24 @@ const {
   userSummary
 
 } = require('../controller/admin/admin')
+const mou = require('../middleware/mou')
 
 
-const admin = express.Router({mergeParams: true})
+const all = express.Router({mergeParams: true})
 
 //GET
-admin.get('/pantries', allPantries)
-admin.get('./shopping', allShoppingLists)
-admin.get('/merges', allMerges)
-admin.get('/palList', allPalLists)
-admin.get('/counts', userSummary)
+all.get('/pantries', mou, allPantries)
+all.get('./shopping', mou, allShoppingLists)
+all.get('/merges', mou ,allMerges)
+all.get('/palList', mou ,allPalLists)
+all.get('/counts', mou , userSummary)
 
 //POST
-admin.post('/createUser', createUser)
+all.post('/createUser', mou ,createUser)
 
 // //PUT
 // router.put('/updateStatus', updateActiveStat)
 
 //DELETE
 
-module.exports = admin
+module.exports = all
