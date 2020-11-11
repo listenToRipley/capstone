@@ -9,7 +9,7 @@ const saltRounds = 10
 //validate login
 const login = (req, res, next) => {
 
-  let { user, password } = req.params
+  let { user, password } = req.body
   console.log('username :', user, ' password', password)
 
   bcrypt.hash(password, saltRounds, (err, hash) => {
@@ -21,7 +21,8 @@ const login = (req, res, next) => {
       if(err) handleSQLError(res, err)
       let total = row[0]['COUNT(email)']
       if(total!==0) {
-        res.send(results)
+        res.setHeader('username', `${user}`)
+        res.setHeader('password', `${hash}`)
       } else {
         res.send('Sorry, we cannot find that login')
       }
