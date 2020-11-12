@@ -2,37 +2,32 @@ const mysql = require('mysql')
 const pool = require('../../sql/connection')
 const { handleSQLError } = require('../../sql/error')
 const bcrypt = require('bcrypt')
-const saltRounds = 10
-
 
 //search database to validate username and password match the provided input
 //validate login
 const login = (req, res, next) => {
 
   let { user, password } = req.body
+  const salt = bcrypt.genSaltSync(10)
+  let hash = bcrypt.hashSync(password, salt)
 
-  bcrypt.compareSync(password, (err, hash) => {
-    sql='SELECT COUNT(username) FROM appInfo WHERE username= ? AND password= ? '
+    sql='SELECT password FROM appInfo WHERE username= ?'
   
-    sql = mysql.format(sql, [user, hash])
-
+    sql = mysql.format(sql, [user])
   
-    pool.query(sql, (err, row) => {
+    pool.query(sql, async (err, results) => {
       if(err) handleSQLError(res, err)
-      let total = row[0]['COUNT(username)']
-      console.log(total)
-      console.log('username :', user, ' password', hash)
-      if(total===1) {
-        res.send('redirect to auth...')
-      } else {
-        res.send('Sorry, we cannot find that login')
-      }
-  
-    })
-  })
-  
-}
+    
+    const match = await bcrypt.compare(password, results[0].password)
 
+    if (match) {
+     res.send('found you')
+    } else {
+      res.send('wrong')
+    }
+
+  })
+}
 
 
 module.exports = { 
