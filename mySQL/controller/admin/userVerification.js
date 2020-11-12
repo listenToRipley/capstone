@@ -11,7 +11,7 @@ const login = (req, res, next) => {
 
   let { user, password } = req.body
 
-  bcrypt.hash(password, saltRounds, (err, hash) => {
+  bcrypt.compareSync(password, (err, hash) => {
     sql='SELECT COUNT(username) FROM appInfo WHERE username= ? AND password= ? '
   
     sql = mysql.format(sql, [user, hash])
@@ -23,8 +23,7 @@ const login = (req, res, next) => {
       console.log(total)
       console.log('username :', user, ' password', hash)
       if(total===1) {
-        res.setHeader('username', `${user}`)
-        res.setHeader('password', `${hash}`)
+        res.send('redirect to auth...')
       } else {
         res.send('Sorry, we cannot find that login')
       }
