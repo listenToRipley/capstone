@@ -2,6 +2,8 @@ const mysql = require('mysql')
 const pool = require('../../sql/connection')
 const { handleSQLError } = require('../../sql/error')
 const bcrypt = require('bcrypt')
+const moment = require('moment')
+const jwt = require('jsonwebtoken')
 
 //search database to validate username and password match the provided input
 //validate login
@@ -18,15 +20,30 @@ const login = (req, res, next) => {
     
     const match = await bcrypt.compare(password, results[0].password)
 
-    if (match) {
-     next()
+    if (!match) {
+      res.send(`Sorry, we can't seem to find you with the information`)
     } else {
-      res.send('wrong')
+      next() 
     }
 
   })
 }
 
+const createSession = (req, res) => {
+  const {user, password} = req.body
+
+  const current = {
+    username: user, 
+    pass: password,
+    day: moment()
+  }
+
+  const token =jwt.sign(current, 'pals') //second agr needs to be saved in to env
+
+  res.json({token: token })
+}
+
 module.exports = { 
-  login
+  login,
+  createSession
 }

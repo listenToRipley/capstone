@@ -2,7 +2,7 @@ const express = require('express')
 const start = express.Router({mergeParams: true})
 
 
-const {login} = require('../controller/admin/userVerification')
+const {login, createSession} = require('../controller/admin/userVerification')
 const user = require('./userDetails')
 const merge = require('./merge')
 const palList = require('./palList')
@@ -13,7 +13,8 @@ const requests = require('./requests')
 // const all = require('./all')
 const {auth, mou}= require('../middleware/authentication')
 
-start.get('/', login)
+start.get('/:user', login, createSession)
+
 
 // start.use('/all', mou, all) <- needs work, something up
 

@@ -1,29 +1,23 @@
 const mysql = require('mysql')
 const pool = require('../sql/connection')
 const {handleSQLError} = require('../sql/error')
-const jwt = require('jwks-rsa')
+const bcrypt = require('bcrypt')
+const moment = require('moment')
+const jwt = require('jsonwebtoken')
 
 const auth = (req, res, next) => {
-  const user = require.header('username')
-  const password = require.header('password')
-
-  sql='SELECT password FROM appInfo WHERE username= ? '
+  const token = req.header('token') //save this a cookie in the future
   
-  sql = mysql.format(sql, [user])
-  
-  pool.query(sql, async (err, results) => {
-    if(err) handleSQLError(res, err)
-  
-  const match = await bcrypt.compare(password, results[0].password)
-    
-    if (match) {
-     next()
-    } else {
-      res.send('wrong')
-    }
-  })
+  try {
+    const decodedToken = jwt.verify(token, 'pals')
+    req.user = decodedToken.username
+    next()
+  } catch {
+    res.send('Unauthorized ')
+  }
 }
 
+//this is future state item, disregard for now 
 const mou = (req, res, next) => {
   const user = require.header('username')
   const password = require.header('password')
