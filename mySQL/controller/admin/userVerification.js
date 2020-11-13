@@ -8,8 +8,6 @@ const bcrypt = require('bcrypt')
 const login = (req, res, next) => {
 
   let { user, password } = req.body
-  const salt = bcrypt.genSaltSync(10)
-  let hash = bcrypt.hashSync(password, salt)
 
     sql='SELECT password FROM appInfo WHERE username= ?'
   
@@ -21,14 +19,13 @@ const login = (req, res, next) => {
     const match = await bcrypt.compare(password, results[0].password)
 
     if (match) {
-     res.send('found you')
+     next()
     } else {
       res.send('wrong')
     }
 
   })
 }
-
 
 module.exports = { 
   login

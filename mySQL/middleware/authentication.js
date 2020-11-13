@@ -7,21 +7,21 @@ const auth = (req, res, next) => {
   const user = require.header('username')
   const password = require.header('password')
 
-  sql='SELECT COUNT(username) FROM appInfo WHERE username= ? AND password= ? '
+  sql='SELECT password FROM appInfo WHERE username= ? '
   
-  sql = mysql.format(sql, [user, password])
-
-  pool.query(sql, (err, row) => {
+  sql = mysql.format(sql, [user])
+  
+  pool.query(sql, async (err, results) => {
     if(err) handleSQLError(res, err)
-    let total = row[0]['COUNT(username)']
-    if(total===1) {
-      next()
+  
+  const match = await bcrypt.compare(password, results[0].password)
+    
+    if (match) {
+     next()
     } else {
-      res.send('Unauthorized ')
+      res.send('wrong')
     }
-
   })
-
 }
 
 const mou = (req, res, next) => {
