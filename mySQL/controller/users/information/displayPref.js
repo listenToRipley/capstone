@@ -8,7 +8,7 @@ const justDisplayPrefer = (req, res) => {
 
   let sql = 'SELECT * FROM usersDisplayPreferences WHERE username=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -24,12 +24,11 @@ const updateDisplayPref = (req, res) => {
 
   //if dobMonth is turned off, then you should not be able to display the dobDate
   const {likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone} = req.body
-  const {user} = req.params
 
   //make sure if not changes occur, then the body reads as null
   let sql='UPDATE usersDisplayPreferences SET likes=COALESCE(?, likes), dislikes=COALESCE(?, dislikes), diets=COALESCE(?,diets), allergies=COALESCE(?, allergies), city=COALESCE(?, city), state=COALESCE(?, state), country=COALESCE(?, country), email=COALESCE(?, email), dobMonth=COALESCE(?, dobMonth), dobDate=COALESCE(?, dobDate), dobYear=COALESCE(?, dobYear), phone=COALESCE(?, phone)  WHERE username=?'
 
-  sql=mysql.format(sql, [likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone, user])
+  sql=mysql.format(sql, [likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone, req.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -43,7 +42,7 @@ const updateDisplayPrefDefault = (req, res) => {
 
   let sql='UPDATE usersDisplayPreferences SET likes=0, dislikes=0, diets=0, allergies=0, city=0, state=0, country=0, email=1, dobMonth=1, dobDate=1, dobYear=0, phone=0, private=0  WHERE username=?'
 
-  sql=mysql.format(sql, [req.params.user])
+  sql=mysql.format(sql, [req.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -55,11 +54,10 @@ const updateDisplayPrivate = (req, res) => {
   console.log('update just the private settings')
 
   const {boo} = req.body
-  const {user} = req.params
 
   let sql = 'UPDATE usersDisplayPreferences SET private=? WHERE username=?'
 
-  sql=mysql.format(sql, [boo, user])
+  sql=mysql.format(sql, [boo, req.user])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)

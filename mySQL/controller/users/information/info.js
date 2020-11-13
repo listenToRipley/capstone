@@ -9,7 +9,7 @@ const userPersonalInfo = (req, res) => {
 
   let sql = 'SELECT DISTINCT aI.username, uD.firstName, uD.lastName, aI.email, uD.phone FROM appInfo AS aI JOIN usersDetails AS uD  ON  aI.username=uD.username WHERE aI.username = ?'
  
-  sql=mysql.format(sql, [req.params.user])
+  sql=mysql.format(sql, [req.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -22,7 +22,7 @@ const userLocation = (req, res) => {
 
   let sql = 'SELECT * FROM usersLocations WHERE username=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -36,7 +36,7 @@ const userBirthday = (req, res) => {
 
   let sql = 'SELECT username, dobYear, dobMonth, dobDate FROM usersDetails WHERE username=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -55,7 +55,7 @@ const updateBirthday = (req, res) => {
   //if nothing is passed in or changed, make sure the body reads 'null' for those lines 
   let sql='UPDATE usersDetails SET dobYear=COALESCE(?, dobYear), dobDate=COALESCE(?, dobDate), dobMonth=COALESCE(?, dobMonth) WHERE username=?'
 
-  sql=mysql.format(sql,[month, date, year, req.params.user])
+  sql=mysql.format(sql,[month, date, year, req.user])
 
   pool.query(sql, (err, res) => {
     if (err) return handleSQLError(res, err)
@@ -68,11 +68,10 @@ const updateEmail = (req, res) => {
   console.log('you have how update the user information')
 
   const {email} = req.body
-  const {user} = req.params
 
   let sql='UPDATE appInfo SET email=? WHERE username=?'
 
-  sql=mysql.format(sql,[email, user])
+  sql=mysql.format(sql,[email, req.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -85,11 +84,10 @@ const updateLocation = (req, res) => {
   console.log('you have now update your location')
 
   const {address, city, state, zip, country} = req.body
-  const {user} = req.params
 
   let sql='UPDATE usersLocations SET address=COALESCE(?, address), city=COALESCE(?, city), state=COALESCE(?, state), zipcode=COALESCE(?, zipcode), country=COALESCE(?,country) WHERE username=?'
 
-  sql=mysql.format(sql,[address, city, state, zip, country, user])
+  sql=mysql.format(sql,[address, city, state, zip, country, req.user])
 
   pool.query(sql, (err, row) => {
     if (err) return handleSQLError(res, err)
@@ -102,11 +100,10 @@ const updatePhoneNum = (req, res) => {
   console.log('you have not update the phone number')
 
   const {phone} = req.body
-  const {user} = req.params
 
   let sql='UPDATE usersDetails SET phone=? WHERE username=?'
 
-  sql=mysql.format(sql,[phone , user])
+  sql=mysql.format(sql,[phone , req.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
