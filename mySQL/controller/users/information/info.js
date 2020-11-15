@@ -61,7 +61,6 @@ const updateBirthday = (req, res) => {
 }
 
 const updateEmail = (req, res) => {
-  console.log('you have how update the user information')
 
   const {email} = req.body
 
