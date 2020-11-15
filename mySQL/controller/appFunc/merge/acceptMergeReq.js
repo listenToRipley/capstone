@@ -36,7 +36,7 @@ const acceptAccess = (req, res, next) => {
   })
 }
 
-const deactivateCoOwnerList = (req, res, next) => {
+const deactivateAccess = (req, res, next) => {
 
   let sql = 'UPDATE access SET active=0 WHERE pantryRole=2 AND shopListRole=2 AND username= ? '
 
@@ -61,7 +61,7 @@ const copyPantry = (req, res, next) => {
 }
 
 
-const copyShoppingList = (req, res, next) => {
+const copyShopList = (req, res, next) => {
 
   let sql = 'UPDATE shoppingLists SET shopList=(SELECT shopListSetId FROM shopListsSettings WHERE owner=(SELECT requester FROM mergeRequests WHERE mergeReqId= ? )) WHERE shopList=(SELECT shopListSetId FROM shopListsSettings WHERE owner= ? )'
 
@@ -73,7 +73,7 @@ const copyShoppingList = (req, res, next) => {
   })
 }
 
-const deactivateCoOwnerPantry = (req, res, next) => {
+const deactivatePantry = (req, res, next) => {
 
   let sql = 'UPDATE pantriesSettings SET mergeStatus= ? , active=0 WHERE owner= ? '
 
@@ -85,7 +85,7 @@ const deactivateCoOwnerPantry = (req, res, next) => {
   })
 }
 
-const deactivateCoOwnerShopList = (req, res, next) => {
+const deactivateShopList = (req, res, next) => {
 
   let sql = ' UPDATE shopListsSettings SET mergeStatus= ? , active=0 WHERE owner= ? '
 
@@ -98,7 +98,7 @@ const deactivateCoOwnerShopList = (req, res, next) => {
 
 }
 
-const updateCoOwnerStatus = (req, res, next) => {
+const pantryMergeStatus = (req, res, next) => {
 
   let sql = 'UPDATE pantriesSettings SET mergeStatus= ? WHERE owner=(SELECT requester FROM mergeRequests WHERE mergeReqId= ? )'
 
