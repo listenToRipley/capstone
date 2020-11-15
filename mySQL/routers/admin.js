@@ -47,7 +47,7 @@ createUserLocation,
 createUserAccess)
 
 //PUT
-//maybe protected route or require verification
+//maybe protected route or require verification -> should really be two parts 
 admin.put('/password/:email',updatePassword)
 
 module.exports = admin

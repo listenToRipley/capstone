@@ -5,9 +5,8 @@ const bcrypt = require('bcrypt')
 
 
 //PUT
-const updatePassword = async (req, res) => {
+const updatePassword = (req, res) => {
 
-  res.setHeader('Content-Type', 'application/json')
   const salt = bcrypt.genSaltSync(10)
 
   const {password} = req.body

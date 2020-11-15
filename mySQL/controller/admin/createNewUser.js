@@ -50,7 +50,6 @@ const createUsername = (req, res, next) => {
   
     pool.query(sql, (err, results) => {
       if(err) return handleSQLError(res, err)
-      console.log('username : ', req.body)
       next()
     })  
   })
