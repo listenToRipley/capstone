@@ -18,7 +18,6 @@ const justDislikes = (req, res) => {
 
 //POST
 const addDislike = (req, res) => {
-  console.log('you have now added a like')
 
   const {item, spoon} = req.body
 
@@ -28,7 +27,7 @@ const addDislike = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json( { newId: results.insertId} ); //double check this
+    return res.json( { dislikeId: results.insertId} )
   })  
 
 }
