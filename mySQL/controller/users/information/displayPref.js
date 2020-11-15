@@ -4,7 +4,6 @@ const { handleSQLError } = require('../../../sql/error')
 
 //GET 
 const justDisplayPrefer = (req, res) => {
-  console.log('this are just the display preferences for this user')
 
   let sql = 'SELECT * FROM usersDisplayPreferences WHERE username=?'
 
