@@ -67,15 +67,15 @@ just.post('/addAllergy', addAllergy)
 
 //PUT
 just.put('/upPassword', updateFromLogPassword )
-just.put('/upEmail/', updateEmail)
+just.put('/upEmail', updateEmail)
 
-just.put('/upDisplayPrefEa/', updateDisplayPref)
-just.put('/upDisplayDefault/', updateDisplayPrefDefault)
+just.put('/upDisplayPrefEa', updateDisplayPref)
+just.put('/upDisplayDefault', updateDisplayPrefDefault)
 just.put('/upDis/private', updateDisplayPrivate)
 
-just.put('/upDOB/', updateBirthday)
-just.put('/upLoc/', updateLocation)
-just.put('/upPhone/', updatePhoneNum)
+just.put('/upDOB', updateBirthday)
+just.put('/upLoc', updateLocation)
+just.put('/upPhone', updatePhoneNum)
 
 just.put('/reLike/:entryId', removeLike)
 just.put('/reDislike/:entryId', removeDislike)

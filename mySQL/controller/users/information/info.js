@@ -92,8 +92,7 @@ const updateLocation = (req, res) => {
 }
 
 const updatePhoneNum = (req, res) => {
-  console.log('you have not update the phone number')
-
+  
   const {phone} = req.body
 
   let sql='UPDATE usersDetails SET phone=? WHERE username=?'
