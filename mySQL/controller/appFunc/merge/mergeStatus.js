@@ -5,9 +5,6 @@ const {handleSQLError} = require('../../../sql/error')
 
 //GET
 const mergeStatus = (req, res) => {
-  console.log('return the status of the user`s merge')
-//write a query that returns the merge status of the current user  -
-  //call on table palList, appInfo, mergeRequest 
   //the mergerRequester or mergePal = to user
 
   let sql='SELECT * FROM mergeRequests WHERE approved=1 AND requester=? OR mergePal=?'
@@ -16,10 +13,14 @@ const mergeStatus = (req, res) => {
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
-    return res.json(row); 
+    let total = row.length
+    if (total===0) {
+      return res.send('There are not current merges for this user')
+    } else {
+      return res.json(row); 
+    }
   })
 
-  //if the rows = 0 then it is false and all requests can be processed as through the user is the owner of everything
 }
 
 module.exports = {

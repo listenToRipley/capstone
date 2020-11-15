@@ -23,7 +23,7 @@ const {
 const merge = express.Router({mergeParams: true})
 
 //GET
-merge.get('/mergeStatus', mergeStatus)
+merge.get('/status', mergeStatus)
 
 
 //POST
