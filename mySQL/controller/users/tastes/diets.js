@@ -4,11 +4,10 @@ const { handleSQLError } = require('../../../sql/error')
 
 //GET
 const justDiets = (req, res) => {
-  console.log('this is just your diets')
 
   let sql='SELECT uD.uDietId AS id, d.diet FROM usersDiets AS uD JOIN diets AS d ON uD.diet=d.dietId WHERE uD.active=1 AND uD.username=?'
 
-  sql=mysql.format(sql,[req.username])
+  sql=mysql.format(sql,[req.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
