@@ -5,7 +5,6 @@ const { handleSQLError } = require('../../../sql/error')
 
 //GET
 const justAllergies = (req, res) => {
-  console.log('this is just your allergies')
 
   let sql='SELECT al.allergy, al.spoonId FROM  usersAllergies AS uAl JOIN allergies AS al ON uAl.allergy=al.allergyId WHERE uAl.active=1 AND uAl.username=?'
 
