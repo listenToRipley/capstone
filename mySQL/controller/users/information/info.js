@@ -44,22 +44,19 @@ const userBirthday = (req, res) => {
 
 //PUT
 const updateBirthday = (req, res) => {
-  console.log('you have now updated your birthday')
 
-  const {month, date, year} = req.body
+  const {year, date, month} = req.body
 
-  //if nothing is passed in or changed, make sure the body reads 'null' for those lines 
   let sql='UPDATE usersDetails SET dobYear=COALESCE(?, dobYear), dobDate=COALESCE(?, dobDate), dobMonth=COALESCE(?, dobMonth) WHERE username=?'
 
-  sql=mysql.format(sql,[month, date, year, req.user])
+  sql=mysql.format(sql,[year, date, month, req.user])
 
-  pool.query(sql, (err, res) => {
+  pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
     return res.status(204).json();
   })
 
 }
-
 const updateEmail = (req, res) => {
 
   const {email} = req.body
@@ -83,7 +80,7 @@ const updateLocation = (req, res) => {
 
   sql=mysql.format(sql,[address, city, state, zip, country, req.user])
 
-  pool.query(sql, (err, row) => {
+  pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
     return res.status(204).json();
   })
