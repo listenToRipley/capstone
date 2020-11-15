@@ -34,7 +34,7 @@ const addDislike = (req, res) => {
 
 //PUT
 const removeDislike = (req, res) => {
-  console.log('you have now removed a like from this user')
+  
   const { entryId} = req.params
 
   let sql='UPDATE dislikes SET active=0 WHERE dislikeId=? AND username=?'
