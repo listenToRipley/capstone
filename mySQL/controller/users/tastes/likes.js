@@ -18,7 +18,6 @@ const justLikes = (req, res) => {
 
 //POST
 const addLike = (req, res) => {
-  console.log('you have now added a like')
 
   const {item, spoon} = req.body
 
@@ -28,7 +27,7 @@ const addLike = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json( { newId: results.insertId} ); //double check this
+    return res.json( { likeId: results.insertId} )
   })  
 
 }
