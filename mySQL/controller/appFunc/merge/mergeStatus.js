@@ -9,11 +9,10 @@ const mergeStatus = (req, res) => {
 //write a query that returns the merge status of the current user  -
   //call on table palList, appInfo, mergeRequest 
   //the mergerRequester or mergePal = to user
-  const {user} = req.params
 
   let sql='SELECT * FROM mergeRequests WHERE approved=1 AND requester=? OR mergePal=?'
 
-  sql=mysql.format(sql, [user, user])
+  sql=mysql.format(sql, [req.user, req.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
