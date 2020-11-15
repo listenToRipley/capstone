@@ -32,7 +32,35 @@ const updatePassword = async (req, res) => {
   })
 }
 
+const updateFromLogPassword = async (req, res) => {
+
+  const salt = bcrypt.genSaltSync(10)
+
+  const {password} = req.body
+
+  bcrypt.hash(password, salt, (err, hash) => {
+  
+  let sql='UPDATE appInfo SET password=? WHERE username=?'
+
+  sql=mysql.format(sql,[hash, req.user])
+
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err)
+
+    if(results.affectedRows === 0) {
+      return res.send(`Sorry, something went wrong, we don't seem to have that email on record`)
+    } else {
+      return res.send('Your password has now been reset')
+    }
+    
+  })
+    console.log('here?')
+  })
+}
+
+
 module.exports = {
-  updatePassword
+  updatePassword,
+  updateFromLogPassword
 
 }

@@ -41,7 +41,7 @@ const {
 } = require('../../controller/users/tastes/likes')
 
 const {
-  updatePassword
+  updateFromLogPassword
 } = require('../../controller/appFunc/password/password')
 
 const just = express.Router({mergeParams: true})
@@ -66,7 +66,7 @@ just.post('/addAllergy', addAllergy)
 
 
 //PUT
-just.put('/upPassword/', updatePassword )
+just.put('/upPassword', updateFromLogPassword )
 just.put('/upEmail/', updateEmail)
 
 just.put('/upDisplayPrefEa/', updateDisplayPref)
