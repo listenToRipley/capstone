@@ -2,6 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
 
+//PUT
 //make this its own document 
 const acceptMergeReq = (req, res) => {
   console.log('accept merge request')
