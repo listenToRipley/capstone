@@ -19,12 +19,9 @@ const justDisplayPrefer = (req, res) => {
 //PUT 
 
 const updateDisplayPref = (req, res) => {
-  console.log('update each of your display preferences, one at a time')
-
-  //if dobMonth is turned off, then you should not be able to display the dobDate
+  
   const {likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone} = req.body
 
-  //make sure if not changes occur, then the body reads as null
   let sql='UPDATE usersDisplayPreferences SET likes=COALESCE(?, likes), dislikes=COALESCE(?, dislikes), diets=COALESCE(?,diets), allergies=COALESCE(?, allergies), city=COALESCE(?, city), state=COALESCE(?, state), country=COALESCE(?, country), email=COALESCE(?, email), dobMonth=COALESCE(?, dobMonth), dobDate=COALESCE(?, dobDate), dobYear=COALESCE(?, dobYear), phone=COALESCE(?, phone)  WHERE username=?'
 
   sql=mysql.format(sql, [likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone, req.user])
