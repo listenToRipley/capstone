@@ -9,9 +9,13 @@ const {
   viewPendingReq,
   viewSentReq,
   sendPalReq,
-  acceptPalReq,
   declinePalReq
 } = require('../controller/appFunc/palLists/requests')
+
+const {
+  acceptPalReq
+} = require('../controller/appFunc/palLists/acceptPalReq')
+
 const pals = express.Router({mergeParams: true})
 //WOULD IT BE EASIER FOR THESE QUERIES IF HAD THE CURRENT USERS ID FIRST 
 

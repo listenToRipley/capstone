@@ -70,6 +70,5 @@ module.exports = {
   viewPendingReq,
   viewSentReq,
   sendPalReq,
-  acceptPalReq,
   declinePalReq
 }
