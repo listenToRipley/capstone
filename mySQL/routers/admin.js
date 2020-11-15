@@ -47,7 +47,7 @@ createUserLocation,
 createUserAccess)
 
 //PUT
-//maybe protected route or require verification -> should really be two parts 
+//protected route, process can only be accessed through link sent to email? Stand alone? 
 admin.put('/password/:email',updatePassword)
 
 module.exports = admin
