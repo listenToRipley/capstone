@@ -19,7 +19,7 @@ const {
   createPalList,
   createUserLocation,
   createUserAccess,
-  newUser //might want to put that behind verification 
+  newUser
 } = require('../controller/admin/createNewUser')
 
 const {

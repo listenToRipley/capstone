@@ -4,6 +4,7 @@ const { handleSQLError } = require('../../sql/error')
 const bcrypt = require('bcrypt')
 const moment = require('moment')
 const jwt = require('jsonwebtoken')
+const shopList = require('../../routers/shopList')
 
 //search database to validate username and password match the provided input
 //validate login
@@ -15,10 +16,10 @@ const login = (req, res, next) => {
   
     sql = mysql.format(sql, [user])
   
-    pool.query(sql, async (err, results) => {
+    pool.query(sql, async (err, row) => {
       if(err) handleSQLError(res, err)
     
-    const match = await bcrypt.compare(password, results[0].password)
+    const match = await bcrypt.compare(password, row[0].password)
 
     if (!match) {
       res.send(`Sorry, we can't seem to find you with the information`)
@@ -30,7 +31,7 @@ const login = (req, res, next) => {
 }
 
 const createSession = (req, res) => {
-  const {user, password} = req.body
+  const {user, password } = req.body
 
   const current = {
     username: user, 
