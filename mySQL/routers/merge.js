@@ -5,9 +5,12 @@ const {
 
 const {
   sendMergeReq,
-  acceptMergeReq,
   declineMergeReq,
 } = require('../controller/appFunc/merge/mergeActions')
+
+const {
+  acceptMergeReq
+} = require('../controller/appFunc/merge/acceptMergeReq')
 
 const merge = express.Router({mergeParams: true})
 
