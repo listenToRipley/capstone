@@ -34,7 +34,6 @@ const addLike = (req, res) => {
 
 //PUT
 const removeLike = (req, res) => {
-  console.log('you have now removed a like from this user')
 
   const {entryId} = req.params
 
