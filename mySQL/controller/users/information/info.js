@@ -46,7 +46,6 @@ const userBirthday = (req, res) => {
 
 //PUT
 const updateBirthday = (req, res) => {
-  console.log('you have now updated your birthday')
 
   const {month, date, year} = req.body
 
