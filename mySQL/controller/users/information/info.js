@@ -76,7 +76,6 @@ const updateEmail = (req, res) => {
 }
 
 const updateLocation = (req, res) => {
-  console.log('you have now update your location')
 
   const {address, city, state, zip, country} = req.body
 
@@ -92,7 +91,7 @@ const updateLocation = (req, res) => {
 }
 
 const updatePhoneNum = (req, res) => {
-  
+
   const {phone} = req.body
 
   let sql='UPDATE usersDetails SET phone=? WHERE username=?'
