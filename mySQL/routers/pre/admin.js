@@ -6,7 +6,7 @@ const urlencodedParser = bodyParser.urlencoded({extended: false})
 
 const {
   forgotUsername
-} = require('../controller/admin/admin')
+} = require('../../controller/admin/admin')
 
 const {
   verifyUsername,
@@ -20,11 +20,11 @@ const {
   createUserLocation,
   createUserAccess,
   newUser
-} = require('../controller/admin/createNewUser')
+} = require('../../controller/admin/createNewUser')
 
 const {
   updatePassword
-} = require('../controller/appFunc/password/password')
+} = require('../../controller/appFunc/password/password')
 
 const admin = express.Router({mergeParams: false})
 

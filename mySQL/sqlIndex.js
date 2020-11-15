@@ -5,8 +5,8 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-const user = require('./routers/userLogIn')
-const preLogin = require('./routers/admin')
+const user = require('./routers/login/logIn')
+const preLogin = require('./routers/pre/admin')
 
 
 app.get('/', (req, res) => {

@@ -6,7 +6,7 @@ const {
   allPalLists,
   userSummary
 
-} = require('../controller/admin/admin')
+} = require('../../controller/admin/admin')
 
 const all = express.Router({mergeParams: true})
 

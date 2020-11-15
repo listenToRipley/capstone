@@ -1,12 +1,12 @@
 const express = require('express')
 const {
   mergeStatus
-} = require('../controller/appFunc/merge/mergeStatus')
+} = require('../../controller/appFunc/merge/mergeStatus')
 
 const {
   sendMergeReq,
   declineMergeReq,
-} = require('../controller/appFunc/merge/mergeActions')
+} = require('../../controller/appFunc/merge/mergeActions')
 
 const {
   acceptMergeReq,
@@ -18,7 +18,7 @@ const {
   deactivateShopList,
   pantryMergeStatus,
   shopListMergeStatus
-} = require('../controller/appFunc/merge/acceptMergeReq')
+} = require('../../controller/appFunc/merge/acceptMergeReq')
 
 const merge = express.Router({mergeParams: true})
 
