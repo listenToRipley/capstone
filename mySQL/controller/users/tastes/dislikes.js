@@ -4,7 +4,6 @@ const { handleSQLError } = require('../../../sql/error')
 
 //GET
 const justDislikes = (req, res) => {
-  console.log('this is just your dislikes')
 
   let sql='SELECT dislikeId AS id, item, spoonId FROM dislikes WHERE active=1 AND username=?'
 
