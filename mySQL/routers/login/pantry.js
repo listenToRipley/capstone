@@ -4,19 +4,19 @@ const {
   pantryCount,
   pantryItems,
   addToPantry
-} = require('../controller/appFunc/pantries/byList')
+} = require('../../controller/appFunc/pantries/byList')
 
 const {
   autoAddToShopList,
   removeFromPantry,
   updatePantryItem,
   outOf
-} = require('../controller/appFunc/pantries/byItem')
+} = require('../../controller/appFunc/pantries/byItem')
 
 const {  
   updateAutoAddShop,
   updateTitle
-} = require('../controller/appFunc/pantries/settings')
+} = require('../../controller/appFunc/pantries/settings')
 
 
 const pantry = express.Router({mergeParams: true})

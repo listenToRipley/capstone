@@ -2,16 +2,16 @@ const express = require('express')
 const start = express.Router({mergeParams: true})
 
 
-const {login, createSession} = require('../controller/admin/userVerification')
+const {login, createSession} = require('../../controller/admin/userVerification')
 const user = require('./userDetails')
 const merge = require('./merge')
 const palList = require('./palList')
 const pantry = require('./pantry')
 const shopList = require('./shopList')
-const admin = require('./admin')
+const admin = require('../pre/admin')
 const requests = require('./requests')
 // const all = require('./all')
-const {auth, mou}= require('../middleware/authentication')
+const {auth, mou}= require('../../middleware/authentication')
 
 start.get('/:user', login, createSession)
 

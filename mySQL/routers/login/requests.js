@@ -7,7 +7,7 @@ const {
   addShopRequest,
   approveShopRequest,
   declineShopRequest
-} = require('../controller/appFunc/shoppingLists/requests')
+} = require('../../controller/appFunc/shoppingLists/requests')
 
 //GET 
 requests.get('/viewReq', viewShopRequests)

@@ -5,26 +5,26 @@ const {
   removeFrom,
   updateItem,
   markOff
-} = require('../controller/appFunc/shoppingLists/byItem')
+} = require('../../controller/appFunc/shoppingLists/byItem')
 
 const {
   shopListDetails, 
   shopListCount,
   thisShopList,
   addToShopList
-} = require('../controller/appFunc/shoppingLists/byList')
+} = require('../../controller/appFunc/shoppingLists/byList')
 
 const {
   viewShopRequests,
   addShopRequest,
   approveShopRequest,
   declineShopRequest, 
-} = require('../controller/appFunc/shoppingLists/requests')
+} = require('../../controller/appFunc/shoppingLists/requests')
 
 const {
   updateListName,
   updateAutoAddShop
-} = require('../controller/appFunc/shoppingLists/settings')
+} = require('../../controller/appFunc/shoppingLists/settings')
 
 const shopList = express.Router({mergeParams: true})
 //WOULD MY REQUEST BE EASIER IF I ESTABLISHED THE PRIMARY LIST ID? 

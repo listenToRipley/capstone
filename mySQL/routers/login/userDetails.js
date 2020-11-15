@@ -3,26 +3,26 @@ const {
   justAllergies,
   addAllergy,
   removeAllergy
-} = require('../controller/users/tastes/allergies')
+} = require('../../controller/users/tastes/allergies')
 
 const {
   justDiets,
   addDiet,
   removeDiet
-} = require('../controller/users/tastes/diets')
+} = require('../../controller/users/tastes/diets')
 
 const {
   justDislikes,
   addDislike, 
   removeDislike
-} = require('../controller/users/tastes/dislikes')
+} = require('../../controller/users/tastes/dislikes')
 
 const {
   justDisplayPrefer, 
   updateDisplayPref,
   updateDisplayPrefDefault,
   updateDisplayPrivate
-} = require('../controller/users/information/displayPref')
+} = require('../../controller/users/information/displayPref')
 
 const {
   userPersonalInfo,
@@ -32,17 +32,17 @@ const {
   updateEmail,
   updateLocation,
   updatePhoneNum
-} = require('../controller/users/information/info')
+} = require('../../controller/users/information/info')
 
 const {
   justLikes,
   addLike,
   removeLike 
-} = require('../controller/users/tastes/likes')
+} = require('../../controller/users/tastes/likes')
 
 const {
   updatePassword
-} = require('../controller/appFunc/password/password')
+} = require('../../controller/appFunc/password/password')
 
 const just = express.Router({mergeParams: true})
 //NEED TO CONSIDER MODULARIZING 

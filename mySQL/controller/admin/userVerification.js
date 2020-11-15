@@ -4,7 +4,6 @@ const { handleSQLError } = require('../../sql/error')
 const bcrypt = require('bcrypt')
 const moment = require('moment')
 const jwt = require('jsonwebtoken')
-const shopList = require('../../routers/shopList')
 
 //search database to validate username and password match the provided input
 //validate login
