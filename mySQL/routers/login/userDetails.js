@@ -61,8 +61,8 @@ just.get('/allergies', justAllergies)
 //POST
 just.post('/addLike', addLike)
 just.post('/addDislike', addDislike)
-just.post('/addDiet/:dietId', addDiet)
-just.post('/addAllergy/:allergyId', addAllergy)
+just.post('/addDiet', addDiet)
+just.post('/addAllergy', addAllergy)
 
 
 //PUT

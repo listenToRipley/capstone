@@ -20,7 +20,6 @@ const justAllergies = (req, res) => {
 //POST
 
 const addAllergy = (req, res) => {
-  console.log('you have now added a like')
 
   const { allergyId } = req.body
 
