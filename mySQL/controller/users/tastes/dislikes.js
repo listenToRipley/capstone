@@ -8,7 +8,7 @@ const justDislikes = (req, res) => {
 
   let sql='SELECT dislikeId AS id, item, spoonId FROM dislikes WHERE active=1 AND username=?'
 
-  sql=mysql.format(sql,[req.params.user])
+  sql=mysql.format(sql,[req.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -22,11 +22,10 @@ const addDislike = (req, res) => {
   console.log('you have now added a like')
 
   const {item, spoon} = req.body
-  const {user} = req.params
 
   let sql='INSERT INTO dislikes (username, item, spoonId) VALUES (?, ?, ?)'
 
-  sql=mysql.format(sql,[ user, item, spoon])
+  sql=mysql.format(sql,[ req.user, item, spoon])
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
@@ -38,11 +37,11 @@ const addDislike = (req, res) => {
 //PUT
 const removeDislike = (req, res) => {
   console.log('you have now removed a like from this user')
-  const { entryId, user} = req.params
+  const { entryId} = req.params
 
   let sql='UPDATE dislikes SET active=0 WHERE dislikeId=? AND username=?'
 
-  sql=mysql.format(sql,[entryId, params])
+  sql=mysql.format(sql,[entryId, req.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)

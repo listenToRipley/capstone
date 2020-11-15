@@ -8,7 +8,7 @@ const justDiets = (req, res) => {
 
   let sql='SELECT uD.uDietId AS id, d.diet FROM usersDiets AS uD JOIN diets AS d ON uD.diet=d.dietId WHERE uD.active=1 AND uD.username=?'
 
-  sql=mysql.format(sql,[req.params.username])
+  sql=mysql.format(sql,[req.username])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -23,11 +23,10 @@ const addDiet = (req, res) => {
   console.log('you have now added a like')
 
   const {dietId} = req.body
-  const {user} = req.params
 
   let sql='INSERT INTO usersDiets (username, diet) VALUES (?, ?)'
 
-  sql=mysql.format(sql,[ user ,dietId])
+  sql=mysql.format(sql,[ req.user, dietId])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -41,11 +40,11 @@ const addDiet = (req, res) => {
 const removeDiet = (req, res) => {
   console.log('you have now removed a like from this user')
 
-  const {entryId, user} = req.params
+  const {entryId} = req.params
 
   let sql='UPDATE usersDiets SET active=0 WHERE uDietId=? AND username=?'
 
-  sql=mysql.format(sql,[entryId, user])
+  sql=mysql.format(sql,[entryId, req.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
