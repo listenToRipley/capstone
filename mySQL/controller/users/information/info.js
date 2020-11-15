@@ -16,7 +16,6 @@ const userPersonalInfo = (req, res) => {
 }
 
 const userLocation = (req, res) => {
-  console.log('this is just the user location')
 
   let sql = 'SELECT * FROM usersLocations WHERE username=?'
 
@@ -30,7 +29,6 @@ const userLocation = (req, res) => {
 }
 
 const userBirthday = (req, res) => {
-  console.log('you got back just the users birthday')
 
   let sql = 'SELECT username, dobYear, dobMonth, dobDate FROM usersDetails WHERE username=?'
 
@@ -46,6 +44,7 @@ const userBirthday = (req, res) => {
 
 //PUT
 const updateBirthday = (req, res) => {
+  console.log('you have now updated your birthday')
 
   const {month, date, year} = req.body
 
