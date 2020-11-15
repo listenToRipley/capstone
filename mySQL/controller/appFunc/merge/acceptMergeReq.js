@@ -4,20 +4,19 @@ const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
 
 //PUT
-//make this its own document 
 const acceptMergeReq = (req, res, next) => {
   console.log('accept merge request')
 //remember the requesters will the one who whose pantry will now be the primary owner and the person who requests will be come the co-owner. 
   //must update the role if the merge request is approved. will become co-owner 
   const {mergeId} = req.params
-//write a query for approving or rejects a request 
-let sql='UPDATE mergeRequests SET active=0, approved=1 WHERE mergeReqId= ?'
 
-sql=mysql.format(sql,[ mergeId ])
+  let sql='UPDATE mergeRequests SET active=0, approved=1 WHERE mergeReqId= ?'
 
-pool.query(sql, (err, results) => {
-  if(err) return handleSQLError(res, err)
-  next()
+  sql=mysql.format(sql,[ mergeId ])
+
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    next()
 })  
 
 }
@@ -125,5 +124,13 @@ const shopListMergeStatus = (req, res, next) => {
 }
 
 module.exports = {
-  acceptMergeReq
+  acceptMergeReq,
+  acceptAccess,
+  deactivateAccess,
+  copyPantry,
+  copyShopList,
+  deactivatePantry,
+  deactivateShopList,
+  pantryMergeStatus,
+  shopListMergeStatus
 }
