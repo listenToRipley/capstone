@@ -19,7 +19,6 @@ const justDiets = (req, res) => {
 //POST
 
 const addDiet = (req, res) => {
-  console.log('you have now added a like')
 
   const {dietId} = req.body
 
@@ -27,9 +26,9 @@ const addDiet = (req, res) => {
 
   sql=mysql.format(sql,[ req.user, dietId])
 
-  pool.query(sql, (err, row) => {
+  pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json(row); 
+    return res.json( { dietId: results.insertId} )
   })  
 
 }

@@ -29,7 +29,7 @@ const addAllergy = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json( { newId: results.insertId} ); //double check this
+    return res.json( { allergyId: results.insertId} )
   })  
 
 }
