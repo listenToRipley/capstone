@@ -28,12 +28,12 @@ const addShopRequest = (req, res) => {
   console.log('add item to be requested')
 
   const { quantity, measId, item, spoonId} = req.body
-  const {user, listId} = req.params
+  const { listId} = req.params
 
   //work in progress - needs to be some kind of join to verify the access as a requesters 
   let sql='INSERT INTO itemRequest (requester, quantity, measId, item, spoonId, shopList, access) VALUES (? , ?, ?, ? , ?, ?, (SELECT accessId FROM access WHERE username= ? AND shopListRole=5 AND shopList=?))'
 
-  sql=mysql.format(sql, [user,quantity, measId, item, spoonId, listId, user, listId])
+  sql=mysql.format(sql, [req.user,quantity, measId, item, spoonId, listId, user, listId])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
