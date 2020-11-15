@@ -36,7 +36,6 @@ const addDiet = (req, res) => {
 //PUT
 
 const removeDiet = (req, res) => {
-  console.log('you have now removed a like from this user')
 
   const {entryId} = req.params
 

@@ -37,7 +37,6 @@ const addAllergy = (req, res) => {
 
 //PUT 
 const removeAllergy = (req, res) => {
-  console.log('you have now removed a like from this user')
 
   const { entryId } = req.params
 
