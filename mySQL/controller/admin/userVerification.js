@@ -28,7 +28,7 @@ const login = (req, res, next) => {
     }
 
   })
-}
+} 
 
 const createSession = (req, res) => {
   const {user, password } = req.body
