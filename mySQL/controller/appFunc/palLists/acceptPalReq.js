@@ -77,5 +77,9 @@ const addToPalsPalList = (req, res, next) => {
 
 
 module.exports = {
-  acceptPalReq
+  acceptPalReq,
+  updateRequesterAccess,
+  addToRequesterPalList,
+  addPalAccess,
+  addToPalsPalList
 }

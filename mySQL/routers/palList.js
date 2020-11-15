@@ -13,7 +13,11 @@ const {
 } = require('../controller/appFunc/palLists/requests')
 
 const {
-  acceptPalReq
+  acceptPalReq,
+  updateRequesterAccess,
+  addToRequesterPalList,
+  addPalAccess,
+  addToPalsPalList
 } = require('../controller/appFunc/palLists/acceptPalReq')
 
 const pals = express.Router({mergeParams: true})
@@ -28,7 +32,12 @@ pals.get('/viewPending', viewPendingReq)
 pals.post('/req/',sendPalReq)
 
 //PUT
-pals.put('/accept/:reqId', acceptPalReq)
+pals.put('/accept/:reqId', 
+acceptPalReq,
+updateRequesterAccess,
+addToRequesterPalList,
+addPalAccess,
+addToPalsPalList)
 pals.put('/decline/:reqId', declinePalReq)
 pals.put('/updateName/:name', updatePalListName)
 pals.put('/updateRoles/:accessId', updatePalRole)
