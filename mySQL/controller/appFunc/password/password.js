@@ -5,14 +5,14 @@ const bcrypt = require('bcrypt')
 
 
 //PUT
-const updatePassword = (req, res) => {
+const updatePassword = async (req, res) => {
 
   const salt = bcrypt.genSaltSync(10)
 
   const {password} = req.body
   const {email} = req.params
 
-  bcrypt.hashSync(password, salt, (err, hash) => {
+  bcrypt.hash(password, salt, (err, hash) => {
   
   let sql='UPDATE appInfo SET password=? WHERE email=?'
 
@@ -28,7 +28,7 @@ const updatePassword = (req, res) => {
     }
     
   })
-
+    console.log('here?')
   })
 }
 
