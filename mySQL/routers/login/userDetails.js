@@ -71,7 +71,7 @@ just.put('/upEmail', updateEmail)
 
 just.put('/upDisplayPrefEa', updateDisplayPref)
 just.put('/upDisplayDefault', updateDisplayPrefDefault)
-just.put('/upDis/private', updateDisplayPrivate)
+just.put('/upDis/private/:boo', updateDisplayPrivate)
 
 just.put('/upDOB', updateBirthday)
 just.put('/upLoc', updateLocation)

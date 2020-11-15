@@ -50,17 +50,14 @@ const updateDisplayPrefDefault = (req, res) => {
 }
 
 const updateDisplayPrivate = (req, res) => {
-  console.log('update just the private settings')
-
-  const {boo} = req.body
 
   let sql = 'UPDATE usersDisplayPreferences SET private=? WHERE username=?'
 
-  sql=mysql.format(sql, [boo, req.user])
+  sql=mysql.format(sql, [req.params.boo, req.user])
 
   pool.query(sql, (err, results) => {
-    if(err) return handleSQLError(res, err)
-    return res.status(204).json
+    if (err) return handleSQLError(res, err)
+    return res.status(204).json();
   })
 }
 
