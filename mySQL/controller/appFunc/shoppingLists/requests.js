@@ -5,18 +5,44 @@ const { handleSQLError } = require('../../../sql/error')
 //this will pull the shopping list
 
 //GET
+const reqCount = (req, res) => {
+  console.log(req.params.listId)
+  console.log('owner and co owners should be abel to view these items')
+
+  let sql='SELECT COUNT(reqItId) AS requestCount FROM itemRequest WHERE active=1 AND shopList=? '
+
+  sql = mysql.format(sql, [req.params.listId])
+  console.log('sql', sql)
+  pool.query (sql, (err, row ) => {
+    if(err) return handleSQLError(res, err) 
+
+    console.log(total)
+    if(total===0) {
+      return res.json({count: 0})
+    } else {
+      return res.json(row)
+    }
+  })
+}
 
 //THIS IS ONLY AVAILABLE AS A OWNER OR CO-OWNER  
 const viewShopRequests = (req, res) => {
+  console.log(req.params.listId)
   console.log('owner and co owners should be abel to view these items')
 
-  let sql='SELECT * FROM itemRequest WHERE shopList= ? '
+  let sql='SELECT * FROM itemRequest WHERE active=1 AND shopList=? '
 
   sql=mysql.format(sql[req.params.listId])
-
+  console.log('sql', sql)
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err) 
-    return res.json(row)
+    let total = row[0]['*']
+    console.log(total)
+    if(total===0) {
+      return res.json({count: 0})
+    } else {
+      return res.json(row)
+    }
   })
 }
 
@@ -75,6 +101,7 @@ const declineShopRequest = (req, res) => {
 
 
 module.exports = { 
+  reqCount,
   viewShopRequests,
   addShopRequest,
   approveShopRequest,

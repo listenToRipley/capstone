@@ -3,6 +3,7 @@ const express = require('express')
 const requests = express.Router({mergeParams: true})
 
 const {
+  reqCount,
   viewShopRequests,
   addShopRequest,
   approveShopRequest,
@@ -10,7 +11,8 @@ const {
 } = require('../../controller/appFunc/shoppingLists/requests')
 
 //GET 
-requests.get('/viewReq', viewShopRequests)
+requests.get('/reqCount', reqCount)
+requests.get('/viewReqs', viewShopRequests)
 
 //POST
 requests.post('/addReq', addShopRequest)

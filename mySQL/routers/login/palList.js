@@ -44,6 +44,4 @@ pals.put('/decline/:reqId', declinePalReq)
 pals.put('/upName', updatePalListName)
 pals.put('/upRole/:accessId', updatePalRole)
 
-//DELETE
-
 module.exports = pals

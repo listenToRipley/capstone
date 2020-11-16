@@ -17,7 +17,6 @@ const justDisplayPrefer = (req, res) => {
 }
 
 //PUT 
-
 const updateDisplayPref = (req, res) => {
   
   const {likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone} = req.body
