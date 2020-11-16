@@ -1,9 +1,12 @@
 const express = require('express')
 const {
-  myPalList,
+  palList
+} = require('../../controller/appFunc/palLists/usersPalList')
+
+const {
   updatePalListName,
   updatePalRole
-} = require('../../controller/appFunc/palLists/usersPalList')
+} = require('../../controller/appFunc/palLists/settings')
 
 const {
   viewPendingReq,
@@ -23,7 +26,7 @@ const {
 const pals = express.Router({mergeParams: true})
 
 //GET
-pals.get('/pals/:user', myPalList)
+pals.get('/pals/:user', palList)
 pals.get('/viewSent', viewSentReq)
 pals.get('/viewPending', viewPendingReq)
 
