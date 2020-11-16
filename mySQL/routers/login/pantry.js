@@ -10,8 +10,7 @@ const {
 const {
   autoAddToShopList,
   removeFromPantry,
-  updatePantryItem,
-  outOf
+  updatePantryItem
 } = require('../../controller/appFunc/pantries/byItem')
 
 const {  
@@ -39,10 +38,6 @@ pantry.put('/upItem/:itemId', updatePantryItem)
 //this id should be the item of the 
 pantry.put('/upAutoAddShop/:pantryId', updateAutoAddShop)
 pantry.put('/updateName/:pantryId', updateTitle )
-pantry.put('/outOf/:itemId', outOf)
-
-//DELETE
-
 
 module.exports = pantry
 

@@ -20,6 +20,8 @@ const autoAddToShopList = (req, res) => {
 }
 
 //PUT 
+
+//!~ add front end logic to access if auto add is on. Or refactor this 
 const removeFromPantry = (req, res) => {
     console.log('remove from the pantry')
 //write a query for removing an item from the pantry 
@@ -54,23 +56,9 @@ pool.query(sql, (err, results) => {
 
 }
 
-const outOf = (req, res) => {
-  //make an item be removed from the shopping list 
-  let sql = 'UPDATE pantries SET stock=0 WHERE entryId= ?'
-
-  sql= mysql.format(sql, [req.params.itemId])
-
-  pool.query(sql, (err, results) => {
-    if(err) return handleSQLError(res, err)
-
-    return res.status(204).json();
-})
-
-}
 
 module.exports = {
   autoAddToShopList,
   removeFromPantry,
-  updatePantryItem,
-  outOf
+  updatePantryItem
 }
