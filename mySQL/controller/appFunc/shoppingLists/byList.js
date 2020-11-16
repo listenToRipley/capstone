@@ -53,11 +53,10 @@ const addToShopList = (req, res) => {
 
   let sql = 'INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId) VALUES (?, ?, ?, ?, ?) '
   
-  sql=mysql.format(sql, [ listId, quantity, measure, item, spoon ])
-
-  pool.query(sql, (err, row) => {
+  sql = mysql.format(sql, [listId, quantity, measure, item, spoon])
+  pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json( { newId: results.insertId} );
+    return res.json( { newItemId: results.insertId} )
   })
 
 }
