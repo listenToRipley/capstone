@@ -35,7 +35,7 @@ pantry.post('/autoAdd/:itemId', autoAddToShopList)
 //PUT
 pantry.put('/remove/:itemId', removeFromPantry)
 pantry.put('/upItem/:itemId', updatePantryItem)
-//this id should be the item of the 
+
 pantry.put('/upAutoAddShop/:pantryId', updateAutoAddShop)
 pantry.put('/updateName/:pantryId', updateTitle )
 

@@ -23,8 +23,6 @@ const autoAddToShopList = (req, res) => {
 
 //!~ add front end logic to access if auto add is on. Or refactor this 
 const removeFromPantry = (req, res) => {
-    console.log('remove from the pantry')
-//write a query for removing an item from the pantry 
 
 let sql='UPDATE pantries SET stock=0 where entryId=?'
 
@@ -38,8 +36,7 @@ pool.query(sql, (err, results) => {
 }
 
 const updatePantryItem = (req, res) => {
-    console.log('update items in the pantry')
-//write a query that updates an items from the pantry 
+
 const {quantity, measId, item, spoonId} = req.body
 const {itemId} = req.params
 
