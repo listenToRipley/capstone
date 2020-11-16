@@ -42,7 +42,7 @@ addPalAccess,
 addToPalsPalList)
 pals.put('/decline/:reqId', declinePalReq)
 pals.put('/upName', updatePalListName)
-pals.put('/upRoles/:accessId', updatePalRole)
+pals.put('/upRole/:accessId', updatePalRole)
 
 //DELETE
 
