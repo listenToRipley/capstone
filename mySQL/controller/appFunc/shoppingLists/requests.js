@@ -1,24 +1,20 @@
-const { NextWeek } = require('@material-ui/icons')
 const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
-//this will pull the shopping list
 
 //GET
 const reqCount = (req, res) => {
-  console.log(req.params.listId)
-  console.log('owner and co owners should be abel to view these items')
 
   let sql='SELECT COUNT(reqItId) AS requestCount FROM itemRequest WHERE active=1 AND shopList=? '
 
   sql = mysql.format(sql, [req.params.listId])
-  console.log('sql', sql)
+
   pool.query (sql, (err, row ) => {
     if(err) return handleSQLError(res, err) 
+    let total = row[0]['requestCount']
 
-    console.log(total)
     if(total===0) {
-      return res.json({count: 0})
+      return res.send('No requests')
     } else {
       return res.json(row)
     }
