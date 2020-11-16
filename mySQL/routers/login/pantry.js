@@ -26,7 +26,7 @@ const pantry = express.Router({mergeParams: true})
 //GET
 //this should be the id for the primary pantry
 pantry.get('/:pantryId', pantryDetails)
-pantry.get('/access/:pantryId')
+pantry.get('/access/:pantryId', pantryAccess)
 pantry.get('/count/:pantryId', pantryCount)
 pantry.get('/items/:pantryId', pantryItems)
 
