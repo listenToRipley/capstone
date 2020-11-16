@@ -32,7 +32,6 @@ const viewPendingReq = (req, res) => {
 
 //POST
 const sendPalReq = (req, res) => {
-  console.log('send a request to become friends ')
 
   const {askingUser } = req.body
 //write a query for approving or rejects a request 
@@ -49,17 +48,15 @@ pool.query(sql, (err, results) => {
 
 //PUT
 
-//since the information should already be based as the key from the view requests and this action should only be turned on where the use is listed as the pal. 
-const declinePalReq = (req, res) => { //USE THIS THIS TO CANCEL REQUESTS
-  console.log('decline a pal request')
-//write a query that decline a pal request
+const declinePalReq = (req, res) => { 
+
 const {reqId} = req.body
 
 let sql='UPDATE palListsRequests SET approved=0, active=0 WHERE palRequestId=?'
 
 sql= mysql.format(sql, [reqId])
 
-pool.query(sql, (err, res) => {
+pool.query(sql, (err, results) => {
   if(err) return handleSQLError(res, err)
   return res.status(204).json(); 
 })
