@@ -5,7 +5,7 @@ const {handleSQLError} = require('../../../sql/error')
 
 //GET 
 const viewSentReq = (req, res) => {
-  //this is for request send by the current user. 
+
   sql='SELECT palRequestId, pal FROM palListsRequests WHERE active=1 AND requesterUser=?'
 
   sql=mysql.format(sql, [req.user])

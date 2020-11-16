@@ -7,7 +7,6 @@ const { handleSQLError } = require('../../../sql/error')
 //GET
 
 //THIS IS ONLY AVAILABLE AS A OWNER OR CO-OWNER  
- 
 const viewShopRequests = (req, res) => {
   console.log('owner and co owners should be abel to view these items')
 
