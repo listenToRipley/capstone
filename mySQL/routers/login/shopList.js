@@ -15,13 +15,6 @@ const {
 } = require('../../controller/appFunc/shoppingLists/byList')
 
 const {
-  viewShopRequests,
-  addShopRequest,
-  approveShopRequest,
-  declineShopRequest, 
-} = require('../../controller/appFunc/shoppingLists/requests')
-
-const {
   updateListName,
   updateAutoAddShop
 } = require('../../controller/appFunc/shoppingLists/settings')
@@ -37,21 +30,17 @@ shopList.use('/:listId', requests)
 shopList.get('/shopping/:listId', shopListDetails)
 shopList.get('/shoppingList/:listId', thisShopList)
 shopList.get('/shoppingList/:listId', shopListCount)
-shopList.get('/shopListRequest/:listId', viewShopRequests)
 
 //POST
-shopList.post('/addToList/listId', addToShopList)
-shopList.post('/addReq/:listId', addShopRequest)
+shopList.post('/addToList/:listId', addToShopList)
 shopList.post('/autoAddToPantry/:itemId',  autoAddToPantry)
 
 //PUT
-shopList.put('/appReq/:boo', approveShopRequest)
-shopList.put('/decReq/:boo', declineShopRequest)
 shopList.put('/remove/:itemId', removeFrom)
 shopList.put('/upItem/:itemId', updateItem)
 shopList.put('/updateName/:name', updateListName)
 shopList.put('/upAutoAddPantry/:boo', updateAutoAddShop)
-shopList.put('/markOff/:itemId', markOff)
+ shopList.put('/markOff/:itemId', markOff)
 
 //DELETE
 

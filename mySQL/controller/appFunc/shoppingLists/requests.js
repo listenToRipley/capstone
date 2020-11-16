@@ -77,23 +77,6 @@ const addShopRequest = (req, res) => {
 
 }
 
-//PUT  OWNER OR CO-OWNER
-const approveShopRequest = (req, res) => {
-  console.log('approved the request') 
-
-  const {reqId} = req.params
-
-  let sql='BEGIN; UPDATE itemRequest SET active=0, approved=1 WHERE reqItId= ?; INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId, reqItem) VALUES ((SELECT shopList FROM itemRequest WHERE reqItId= ? ), (SELECT quantity FROM itemRequest WHERE reqItId=?),(SELECT measId FROM itemRequest WHERE reqItId= ? ),(SELECT item FROM itemRequest WHERE reqItId= ?),(SELECT spoonId FROM itemRequest WHERE reqItId=?), ?);COMMIT'
-
-  sql= mysql.format(sql, [reqId, reqId, reqId, reqId, reqId, reqId, reqId])
-
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
-    return res.json( { newId: results.insertId} );
-  })
-
-}
-
 //use this for canceling req
 const declineShopRequest = (req, res) => {
   console.log('sorry, we are not going to get that')
@@ -109,13 +92,10 @@ const declineShopRequest = (req, res) => {
 }
 
 
-
-
 module.exports = { 
   reqCount,
   viewShopRequests,
   viewSentRequests,
   addShopRequest,
-  approveShopRequest,
   declineShopRequest
 }
