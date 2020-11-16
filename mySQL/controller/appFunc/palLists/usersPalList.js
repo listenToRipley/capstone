@@ -1,13 +1,10 @@
 const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
-//this will pull on the pals lists 
-//all will pull from pals lists 
 
 //GET
 const palList = (req, res) => {
-  console.log('get the pal list of the current user ')
-//NEED TO UPDATE TO INCLUDE THE PAL LIST - we need to change this so the roles display and not the index
+
 const {user} = req.params
 
 let sql = 'SELECT DISTINCT a.accessId, pL.username AS pals, pL.reqId AS palReq, pL.palList, pLS.palListName, a.pantryRole, a.shopListRole FROM palLists AS pL JOIN palListsRequests AS pLR JOIN palListsSettings AS pLS JOIN access AS a ON pLR.palRequestId=pL.reqId AND a.palReq=pL.reqId AND pL.palList=pLS.palListSettingsId WHERE pLR.approved=1 AND a.active=1 AND a.username<>? AND pLS.owner=? ORDER BY a.accessId'
@@ -15,7 +12,6 @@ let sql = 'SELECT DISTINCT a.accessId, pL.username AS pals, pL.reqId AS palReq, 
 sql=mysql.format(sql, [user, user])
 pool.query(sql, (err, row) => {
   if(err) return handleSQLError(res, err)
-  console.log('sql ? ',sql, ' row ? ',row)
   return res.json(row); 
 })  
 
