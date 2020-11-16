@@ -22,13 +22,12 @@ const sendMergeReq = (req, res) => {
 //PUT
 
 const declineMergeReq = (req, res) => {
-  console.log('decline merge request')
-//write query that decline a merge 
+
  let sql ='UPDATE mergeRequests SET active=0, approved=0 WHERE mergeReqId=?'
 
  sql=mysql.format(sql, [req.params.mergeId])
 
- pool.query(sql, (err, res) => {
+ pool.query(sql, (err, results) => {
   if (err) return handleSQLError(res, err)
   return res.status(204).json();
 })
