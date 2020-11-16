@@ -21,10 +21,9 @@ const {
 } = require('../../controller/appFunc/palLists/acceptPalReq')
 
 const pals = express.Router({mergeParams: true})
-//WOULD IT BE EASIER FOR THESE QUERIES IF HAD THE CURRENT USERS ID FIRST 
 
 //GET
-pals.get('/pals', myPalList)
+pals.get('/pals/:user', myPalList)
 pals.get('/viewSent', viewSentReq)
 pals.get('/viewPending', viewPendingReq)
 
