@@ -14,7 +14,7 @@ const {
 //GET 
 requests.get('/reqCount', reqCount)
 requests.get('/viewReqs', viewShopRequests)
-request.get('/viewSent', viewSentRequests)
+requests.get('/viewSent', viewSentRequests)
 
 //POST
 requests.post('/addReq', addShopRequest)

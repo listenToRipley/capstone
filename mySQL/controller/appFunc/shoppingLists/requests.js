@@ -116,6 +116,7 @@ const declineShopRequest = (req, res) => {
 module.exports = { 
   reqCount,
   viewShopRequests,
+  viewSentRequests,
   addShopRequest,
   approveShopRequest,
   declineShopRequest
