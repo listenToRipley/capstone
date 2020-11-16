@@ -6,7 +6,7 @@ const updateListName = (req, res) => {
   //write a query that update the list name
   const {title} = req.body
   
-  let sql ='UPDATE shopListsSettings SET shopListName= ?  WHERE shopListSetId= ? '
+  let sql ='UPDATE shopListsSettings SET shopListName=?  WHERE shopListSetId= ? '
 
   sql= mysql.format(sql, [title, req.user])
 

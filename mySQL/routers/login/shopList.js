@@ -27,9 +27,9 @@ const shopList = express.Router({mergeParams: true})
 shopList.use('/:listId', requests)
 
 //GET
-shopList.get('/shopping/:listId', shopListDetails)
-shopList.get('/shoppingList/:listId', thisShopList)
-shopList.get('/shoppingList/:listId', shopListCount)
+shopList.get('/details/:listId', shopListDetails)
+shopList.get('/items/:listId', thisShopList)
+shopList.get('/count/:listId', shopListCount)
 
 //POST
 shopList.post('/addToList/:listId', addToShopList)

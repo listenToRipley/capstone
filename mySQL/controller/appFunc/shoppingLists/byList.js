@@ -4,7 +4,7 @@ const { handleSQLError } = require('../../../sql/error')
 
 //GET
 const shopListDetails = (req, res) => {
-  //this should be the detailed information about a specific request
+
   let sql='SELECT a.shopList, sLS.owner, sLS.shopListName, a.username AS pals, a.shopListRole, a.palReq, sLS.autoAdd, sLS.mergeStatus FROM shopListsSettings AS sLS JOIN access AS a ON a.shopList=sLS.shopListSetId WHERE a.active=1 AND sLS.active=1 AND a.username<>sLS.owner AND a.shopList= ? ORDER BY a.username'
 
   sql=mysql.format(sql, [req.params.listId])
@@ -18,7 +18,7 @@ const shopListDetails = (req, res) => {
 }
 
 const shopListCount = (req, res) => {
-//provide a count of how many items are currently on your shopping list 
+
   let sql= 'SELECT COUNT(item) FROM shoppingLists WHERE shopList= ?'
 
   sql=mysql.format(sql, [req.params.listId])
@@ -32,10 +32,7 @@ const shopListCount = (req, res) => {
 }
 
 const thisShopList = (req, res) => {
-  console.log('get the shoppingList for this user')
-//write a query that returns the shopping List for the user currently logged in  
 
-//this is a work in process, it is not done ~ we need to account for merges 
 let sql = 'SELECT * FROM shoppingLists WHERE activeItem=1 AND shopList= ? ORDER BY item '
 
 sql=mysql.format(sql,[req.params.listId])
