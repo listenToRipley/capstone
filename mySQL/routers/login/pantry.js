@@ -21,10 +21,9 @@ const {
 
 
 const pantry = express.Router({mergeParams: true})
-//WOULD ME QUERY BE SHORTED IF I COULD ID THE PRIMARY PANTRY FIRST? 
 
 //GET
-//this should be the id for the primary pantry
+//maybe refractor routes so id's come first? change use statements as portal and verification? 
 pantry.get('/:pantryId', pantryDetails)
 pantry.get('/access/:pantryId', pantryAccess)
 pantry.get('/count/:pantryId', pantryCount)
