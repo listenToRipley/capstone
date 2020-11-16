@@ -4,14 +4,12 @@ const {handleSQLError} = require('../../../sql/error')
 
 //POST
 const updatePalListName = (req, res) => {
-  console.log('update the list name  now')
 
-  const {name} = req.body
+  const {title} = req.body
 
-  //write a query to update the users palListName
   sql='UPDATE palListsSettings SET palListName=? WHERE owner=?'
 
-  sql=mysql.format(sql, [name, req.user])
+  sql=mysql.format(sql, [title, req.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
