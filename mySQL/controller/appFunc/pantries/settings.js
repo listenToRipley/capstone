@@ -20,13 +20,18 @@ const updateTitle = (req, res) => {
 }
 
 const updateAutoAddShop = (req, res) => {
-//update the auto add to shopping list is turned off or on 
+
 let {pantryId} = req.params
 let {boo} = req.body
 
 let sql ='UPDATE pantriesSettings SET autoAdd= ?  WHERE pantrySettingId= ? '
 
 sql= mysql.format(sql, [boo, pantryId])
+
+pool.query(sql, (err, results) => {
+  if(err) return handleSQLError(res, err)
+  return res.status(204).json()
+})
 
 }
 
