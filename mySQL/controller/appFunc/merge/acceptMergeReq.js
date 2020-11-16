@@ -26,7 +26,7 @@ const acceptAccess = (req, res, next) => {
   const {mergeId} = req.params
 
   let sql='UPDATE access SET pantryRole=3, shopListRole=3 WHERE username= ? AND palReq=(SELECT palRequestId FROM palListsRequests WHERE requesterUser= ? AND pal=(SELECT requester FROM mergeRequests WHERE mergeReqId= ? ) OR requesterUser=(SELECT requester FROM mergeRequests WHERE mergeReqId= ? ) AND pal= ? )'
-  //double check this 
+
   sql = mysql.format(sql, [ req.user, req.user, mergeId, mergeId, req.user])
 
   pool.query(sql, (err, results) => {
@@ -49,6 +49,8 @@ const deactivateAccess = (req, res, next) => {
 
 const copyPantry = (req, res, next) => {
 
+  const {mergeId} = req.params
+  
   let sql = 'UPDATE pantries SET pantry=(SELECT pantrySettingId FROM pantriesSettings WHERE owner=(SELECT requester FROM mergeRequests WHERE mergeReqId= ? )) WHERE pantry=(SELECT pantrySettingId FROM pantriesSettings WHERE owner= ? )'
 
   sql = mysql.format(sql, [mergeId, req.user])
@@ -62,10 +64,12 @@ const copyPantry = (req, res, next) => {
 
 const copyShopList = (req, res, next) => {
 
+  const {mergeId} = req.params
+
   let sql = 'UPDATE shoppingLists SET shopList=(SELECT shopListSetId FROM shopListsSettings WHERE owner=(SELECT requester FROM mergeRequests WHERE mergeReqId= ? )) WHERE shopList=(SELECT shopListSetId FROM shopListsSettings WHERE owner= ? )'
 
   sql = mysql.format(sql, [mergeId, req.user ])
-
+  console.log('phase 5', sql)
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
     next()
@@ -73,6 +77,8 @@ const copyShopList = (req, res, next) => {
 }
 
 const deactivatePantry = (req, res, next) => {
+
+  const {mergeId} = req.params
 
   let sql = 'UPDATE pantriesSettings SET mergeStatus= ? , active=0 WHERE owner= ? '
 
@@ -86,6 +92,8 @@ const deactivatePantry = (req, res, next) => {
 
 const deactivateShopList = (req, res, next) => {
 
+  const {mergeId} = req.params
+
   let sql = ' UPDATE shopListsSettings SET mergeStatus= ? , active=0 WHERE owner= ? '
 
   sql = mysql.format(sql, [mergeId, req.user])
@@ -98,6 +106,8 @@ const deactivateShopList = (req, res, next) => {
 }
 
 const pantryMergeStatus = (req, res, next) => {
+
+  const {mergeId} = req.params
 
   let sql = 'UPDATE pantriesSettings SET mergeStatus= ? WHERE owner=(SELECT requester FROM mergeRequests WHERE mergeReqId= ? )'
 
