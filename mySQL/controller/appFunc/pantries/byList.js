@@ -33,7 +33,6 @@ pool.query(sql, (err, row) => {
 }
 
 const pantryCount = (req, res) => {
-  //tell me how much stuff in the pantry
 
   let sql = 'SELECT COUNT(entryId) AS itemCount FROM pantries WHERE stock=1 AND pantry=?'
 
