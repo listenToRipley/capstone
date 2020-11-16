@@ -5,7 +5,22 @@ const { handleSQLError } = require('../../../sql/error')
 //GET
 const pantryDetails = (req, res) => {
 
-let sql = 'SELECT a.pantry, pS.owner, pS.pantryName, a.username AS pals, a.pantryRole, a.palReq, pS.autoAdd, pS.mergeStatus FROM pantriesSettings AS pS JOIN access AS a ON a.pantry=pS.pantrySettingId WHERE a.active=1 AND pS.active=1 AND a.username<>pS.owner AND a.pantry= ? ORDER BY a.username'
+  let sql = 'SELECT owner, pantryName, autoAdd, mergeStatus FROM pantriesSettings WHERE active=1 AND pantrySettingId=?'
+  
+  sql=mysql.format(sql, [req.params.pantryId])
+  
+  pool.query(sql, (err, row) => {
+    if (err) handleSQLError(res, err)
+  
+    return res.json(row)
+  })
+  
+  }
+
+  //may have to refactor this as an access point 
+const pantryAccess = (req, res) => {
+
+let sql = 'SELECT a.pantry, pS.owner, a.username AS pals, a.pantryRole, a.palReq, pS.autoAdd, pS.mergeStatus FROM pantriesSettings AS pS JOIN access AS a ON a.pantry=pS.pantrySettingId WHERE a.active=1 AND pS.active=1 AND a.username<>pS.owner AND a.pantry= ? ORDER BY a.username'
 
 sql=mysql.format(sql, [req.params.pantryId])
 
@@ -73,6 +88,7 @@ return res.status(204).json();
 
 module.exports = {
   pantryDetails,
+  pantryAccess,
   pantryCount,
   pantryItems,
   addToPantry

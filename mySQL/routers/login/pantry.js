@@ -1,6 +1,7 @@
 const express = require('express')
 const {
   pantryDetails,
+  pantryAccess,
   pantryCount,
   pantryItems,
   addToPantry
