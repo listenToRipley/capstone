@@ -37,7 +37,7 @@ pantry.put('/remove/:itemId', removeFromPantry)
 pantry.put('/upItem/:itemId', updatePantryItem)
 
 pantry.put('/upAutoAddShop/:pantryId', updateAutoAddShop)
-pantry.put('/updateName/:pantryId', updateTitle )
+pantry.put('/upName/:pantryId', updateTitle )
 
 module.exports = pantry
 
