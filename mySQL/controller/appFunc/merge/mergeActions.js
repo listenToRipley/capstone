@@ -4,12 +4,11 @@ const {handleSQLError} = require('../../../sql/error')
 
 //POST
 const sendMergeReq = (req, res) => {
-  console.log('send a merge')
   //remember the requesters will the one who whose pantry will now be the primary owner and the person who requests will be come the co-owner. 
-  //the person who send this will have the role of requesters, to req.params.useris already there
+  //the person who send this will have the role of requesters, to req.user is already there
   const {pal} = req.body
 
-  let sql='INSERT INTO mergeRequests (requester, mergePal, palReq) VALUES (?, ? , (SELECT palRequestId FROM palListsRequests WHERE requesterUser=?  AND pal= ? OR requesterUser= ? AND pal=? ))'
+  let sql='INSERT INTO mergeRequests (requester, mergePal, palReq) VALUES (?, ? , (SELECT palRequestId FROM palListsRequests WHERE requesterUser=? AND pal=? OR requesterUser=? AND pal=? ))'
 
   sql=mysql.format(sql,[ req.user, pal, pal, req.user, req.user, pal ])
   

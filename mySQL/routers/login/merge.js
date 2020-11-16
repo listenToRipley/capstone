@@ -27,10 +27,10 @@ merge.get('/status', mergeStatus)
 
 
 //POST
-merge.post('/', sendMergeReq)
+merge.post('/req', sendMergeReq)
 
 //PUT
-merge.put('/:mergeId',   acceptMergeReq,
+merge.put('/accept/:mergeId',   acceptMergeReq,
 acceptAccess,
 deactivateAccess,
 copyPantry,
@@ -39,8 +39,7 @@ deactivatePantry,
 deactivateShopList,
 pantryMergeStatus,
 shopListMergeStatus)
-merge.put('/:mergeId', declineMergeReq)
 
-//DELETE
+merge.put('/decline/:mergeId', declineMergeReq)
 
 module.exports = merge
