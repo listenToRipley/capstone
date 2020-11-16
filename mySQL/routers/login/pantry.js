@@ -30,8 +30,8 @@ pantry.get('/count/:pantryId', pantryCount)
 pantry.get('/items/:pantryId', pantryItems)
 
 //POST
-pantry.post('/pantry/add/:pantryId', addToPantry)
-pantry.post('/pantry/autoAdd/:itemId', autoAddToShopList)
+pantry.post('/add/:pantryId', addToPantry)
+pantry.post('/autoAdd/:itemId', autoAddToShopList)
 
 //PUT
 pantry.put('/remove/:itemId', removeFromPantry)

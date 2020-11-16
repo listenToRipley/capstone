@@ -61,11 +61,7 @@ return res.json(row);
 
 //POST
 const addToPantry = (req, res) => {
-  console.log('add items to the pantry')
-//write a query for adding items to the pantry
 
-//the only field that is required is the item field, null is acceptable for all other fields 
-//pantry should be a param
 const { quantity, measId, item, spoonId} = req.body
 const {pantryId} = req.params
 
