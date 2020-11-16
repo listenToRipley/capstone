@@ -23,17 +23,15 @@ const reqCount = (req, res) => {
 
 //THIS IS ONLY AVAILABLE AS A OWNER OR CO-OWNER  
 const viewShopRequests = (req, res) => {
-  console.log(req.params.listId)
-  console.log('owner and co owners should be abel to view these items')
 
   let sql='SELECT * FROM itemRequest WHERE active=1 AND shopList=? '
 
-  sql=mysql.format(sql[req.params.listId])
+  sql = mysql.format(sql, [req.params.listId])
   console.log('sql', sql)
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err) 
     let total = row[0]['*']
-    console.log(total)
+
     if(total===0) {
       return res.json({count: 0})
     } else {
@@ -80,6 +78,7 @@ const approveShopRequest = (req, res) => {
 
 }
 
+//use this for canceling req
 const declineShopRequest = (req, res) => {
   console.log('sorry, we are not going to get that')
 
