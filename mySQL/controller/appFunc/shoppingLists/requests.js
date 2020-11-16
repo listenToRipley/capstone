@@ -40,6 +40,24 @@ const viewShopRequests = (req, res) => {
   })
 }
 
+const viewSentRequests = (req, res) => {
+
+  let sql='SELECT * FROM itemRequest WHERE active=1 AND requester=?'
+
+  sql = mysql.format(sql, [req.params.listId, req.user])
+  console.log('sql', sql)
+  pool.query(sql, (err, row) => {
+    if(err) return handleSQLError(res, err) 
+    let total = row[0]['*']
+
+    if(total===0) {
+      return res.send(`You haven't sent any request`)
+    } else {
+      return res.json(row)
+    }
+  })
+}
+
 //POST 
 
 //CAN ONLY DO AS A REQUESTER

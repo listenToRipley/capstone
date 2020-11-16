@@ -5,6 +5,7 @@ const requests = express.Router({mergeParams: true})
 const {
   reqCount,
   viewShopRequests,
+  viewSentRequests,
   addShopRequest,
   approveShopRequest,
   declineShopRequest
@@ -13,6 +14,7 @@ const {
 //GET 
 requests.get('/reqCount', reqCount)
 requests.get('/viewReqs', viewShopRequests)
+request.get('/viewSent', viewSentRequests)
 
 //POST
 requests.post('/addReq', addShopRequest)
