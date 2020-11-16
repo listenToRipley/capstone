@@ -5,7 +5,7 @@ const {handleSQLError} = require('../../../sql/error')
 
 //PUT
 const acceptMergeReq = (req, res, next) => {
-  console.log('accept merge request')
+
 //remember the requesters will the one who whose pantry will now be the primary owner and the person who requests will be come the co-owner. 
   //must update the role if the merge request is approved. will become co-owner 
   const {mergeId} = req.params
@@ -69,12 +69,28 @@ const copyShopList = (req, res, next) => {
   let sql = 'UPDATE shoppingLists SET shopList=(SELECT shopListSetId FROM shopListsSettings WHERE owner=(SELECT requester FROM mergeRequests WHERE mergeReqId= ? )) WHERE shopList=(SELECT shopListSetId FROM shopListsSettings WHERE owner= ? )'
 
   sql = mysql.format(sql, [mergeId, req.user ])
-  console.log('phase 5', sql)
+
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
     next()
   })
 }
+
+//future state, need to verify all people on merge pal's friend's list are currently on requesters list. 
+const updatePalsListAccess = (req, res, next) => {
+
+  const {mergeId} = req.params
+
+  let sql = 'UPDATE access SET shopList=(SELECT shopListSetId FROM shopListsSettings WHERE owner=(SELECT requester FROM mergeRequests WHERE mergeReqId=?)) , pantry=(SELECT pantrySettingId FROM pantriesSettings WHERE owner=(SELECT requester FROM mergeRequests WHERE mergeReqId=? )) WHERE palReq=(SELECT palRequestId FROM palListsRequests WHERE approved=1 AND pal=? OR requesterUser=?)'
+
+  sql = mysql.format(sql, [mergeId, mergeId, req.user, req.user])
+
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    next()
+  })
+}
+
 
 const deactivatePantry = (req, res, next) => {
 
@@ -139,6 +155,7 @@ module.exports = {
   deactivateAccess,
   copyPantry,
   copyShopList,
+  updatePalsListAccess,
   deactivatePantry,
   deactivateShopList,
   pantryMergeStatus,
