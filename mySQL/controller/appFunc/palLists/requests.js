@@ -42,7 +42,7 @@ sql=mysql.format(sql,[req.user, askingUser ])
 
 pool.query(sql, (err, results) => {
   if(err) return handleSQLError(res, err)
-  return res.json( { newId: results.insertId} ); //double check this
+  return res.json( { palRequestId: results.insertId} )
 })  
 
 }

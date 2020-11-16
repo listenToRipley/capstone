@@ -28,7 +28,7 @@ pals.get('/viewSent', viewSentReq)
 pals.get('/viewPending', viewPendingReq)
 
 //POST
-pals.post('/req/',sendPalReq)
+pals.post('/req',sendPalReq)
 
 //PUT
 pals.put('/accept/:reqId', 
