@@ -31,7 +31,6 @@ const searchUsers = (req, res) => {
 }
 
 const allAllergies = (req, res) => {
-  //drop down for allergies
   
     pool.query('SELECT * FROM allergies', (err, rows) => {
       if (err) return handleSQLError(res, err)
@@ -40,7 +39,6 @@ const allAllergies = (req, res) => {
   }
   
 const allDiets = (req, res) => {
-  //drop down for diet
   
     pool.query('SELECT * FROM diets', (err, rows) => {
       if (err) return handleSQLError(res, err)
@@ -50,42 +48,42 @@ const allDiets = (req, res) => {
 
 //POST
 const addMeasurement = (req, res) => {
-  console.log('you have now added a unit of measurement')
-  //call on table measurements 
+
   const {short, size} = req.body
 
   let sql='INSERT INTO measurements (short, size) VALUES (UPPER(?),?)'
+
   sql=mysql.format(sql,[short, size])
+
   pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-    return res.json({newId: results.insertId});
+    return res.json({newMeasId: results.insertId});
   })
 }
 
 const addAllergy = (req, res) => {
-  console.log('you have now added an allergy to your list')
-  //call on table allergies
-  let sql='INSERT INTO allergies (allergy) VALUES (?)'
-  sql=mysql.format(sql,[req.body.allergy])
-  pool.query(sql, (err, results => {
-    if(err) return handleSQLError(res, err)
-    return res.json( { newId: results.insertId} );
-  }))
-}
 
-const addDiet = (req, res) => {
-  console.log('you have now added a new diet')
-  //add new table diets
-  let sql='INSERT INTO diets (diet) VALUES (?)'
-  sql=mysql.format(sql,[req.body.diet])
+  let sql='INSERT INTO allergies (allergy) VALUES (?)'
+
+  sql= mysql.format(sql, [req.body.allergy])
+
   pool.query(sql, (err, results) => {
+    
     if(err) return handleSQLError(res, err)
-    return res.json( { newId: results.insertId} );
+    return res.json( { newAllergyId: results.insertId} );
   })
 }
 
+const addDiet = (req, res) => {
 
-//PUT
+  let sql='INSERT INTO diets (diet) VALUES (?)'
+  sql=mysql.format(sql,[req.body.diet])
+
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    return res.json( { newDietId: results.insertId} );
+  })
+}
 
 module.exports = {
   allUsers,

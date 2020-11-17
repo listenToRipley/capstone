@@ -19,7 +19,7 @@ util.get('/diets', allDiets)
 //PUT
 util.post('/addMeasure', addMeasurement)
 util.post('/addAllergy', addAllergy)
-util.post('/addDiets', addDiet)
+util.post('/addDiet', addDiet)
 
 //POST
 
