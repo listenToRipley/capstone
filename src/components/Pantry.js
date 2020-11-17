@@ -1,14 +1,20 @@
 import React from 'react'
 
-//needs to include 
-  //add items
-  //remove items 
-  //function - auto add to shopping list 
-  //merge request
-    //accept
-    //decline 
-  //name pantry 
-//permissions 
+//IMPORTANT NOTES!!! 
+  //~there are three version of this component based on users roles on current list  
+  //the primary list of the current user :
+  //needs to include 
+    //edit pantry name
+    //add items
+    //remove items 
+
+//~editor 
+  //view items 
+  //add and remove items 
+
+//~ requesters 
+  //view 
+  //request items 
 
 const Pantry = () => {
   return (
