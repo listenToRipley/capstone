@@ -133,6 +133,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//NEED TO WORK ON GETTING THE DRAWER TO CLOSE prelogin 
 //if not logged in, the top panel should only have the name and about. 
 //the content on the page should also shift if the drawer is expanded  
 

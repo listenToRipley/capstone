@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//need to add text handling for input, use Hooks/inputHook
+
+//use action from redux to create user
+
 const SignUp = () => {
 
   const classes = useStyles();
