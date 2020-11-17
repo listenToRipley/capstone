@@ -39,7 +39,7 @@ shopList.post('/autoAddToPantry/:itemId',  autoAddToPantry)
 shopList.put('/remove/:itemId', removeFrom)
 shopList.put('/upItem/:itemId', updateItem)
 shopList.put('/upName/:listId', updateListName)
-shopList.put('/upAutoAddPantry/:boo', updateAutoAddShop)
+shopList.put('/upAutoAddPantry/:listId', updateAutoAddShop)
  shopList.put('/markOff/:itemId', markOff)
 
 //DELETE
