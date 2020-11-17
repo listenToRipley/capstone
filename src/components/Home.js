@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import cookie from 'cookie'
 
+//this view is based on the current user and their primary lists
+
 const Home = (props) => {
 
   return (
