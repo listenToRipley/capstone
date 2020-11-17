@@ -1,16 +1,30 @@
 import React from 'react';
 
-//will need to pull in information from mySQL 
+  //IMPORTANT NOTE!!!
+
+  //there should be three version of this 
+
+  //primary list 
+  //rename shop list 
+  //view items 
   //start shopping  - end shopping 
     //check items off 
     //add items to pantry 
   //add items 
-  //remove items 
-  //requests
-    //accept 
-    //decline 
-  //permissions 
-  //update name 
+  //remove items
+  //update items  
+
+  //~~editor 
+    //view items 
+    //add items
+    //update items 
+    //remove items
+    //start shopping  - end shopping 
+    //check items off 
+
+  //~~requests
+    //view items 
+    //request items 
 
 const ShoppingList = () => {
   return (

@@ -15,6 +15,7 @@ import ForgotPassword from '../Components/ForgotPassword'
 
 //this will be for when you move to login required status
 // const checkAuth = () => {
+  //associate with token created during login? 
 //   const cookies = cookies.parse(document.cookie)
 //   const status = JSON.parse(cookies."cookie object name here"). "element related to login"
 // }
