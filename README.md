@@ -1,6 +1,9 @@
 # RULES
 Pantry Pals is intended to help making shopping for large groups, or small, easier. 
 
+# ROUTES 
+  The routes should be based on the individual currently logged in. The title of the role may change, but interactions are based on current user. 
+
 # DEFAULTS 
 When a user is first created, pal's list, pantry and shopping list should be empty.
 

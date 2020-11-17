@@ -1,5 +1,8 @@
 //handle all your possible error codes 
-const handleSQLErrors = (res, err) => {
+const handleSQLError = (res, err) => {
   console.log('You have an SQL error', err)
-  return res.status(error).send('There was an unexpected error in your request')
+  // removed status(err) from after status since it is causing issues 
+  return res.send('There was an unexpected error in your request')
 } 
+
+module.exports = { handleSQLError }
