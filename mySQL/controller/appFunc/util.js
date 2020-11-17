@@ -19,7 +19,7 @@ const searchUsers = (req, res) => {
   
   let {find} = req.body
 
-  let sql= 'SELECT aI.username, uD.firstName, aI.email, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username WHERE aI.active=1 AND aI.username LIKE ? OR aI.email LIKE ? '
+  let sql= 'SELECT aI.username, uD.firstName, aI.email, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username JOIN usersDisplayPreferences AS uDP ON aI.username=uDP.username WHERE aI.active=1 AND uDP.private=0 AND aI.username LIKE ? OR aI.email LIKE ?'
 
   sql= mysql.format(sql, [find, find])
 
