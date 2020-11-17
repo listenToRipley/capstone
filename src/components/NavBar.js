@@ -23,6 +23,7 @@ import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import cookie from 'cookie'
+import { withStyles } from '@material-ui/styles';
 
 //svg icons 
 library.add(faShoppingBasket,faDoorClosed, faUsers, faHome, faUtensils, faUserCircle, faSignOutAlt, faPeopleArrows, faCarrot)
@@ -178,6 +179,7 @@ const NavBar = () => {
           <Typography className={classes.title} variant="h6" noWrap>
             Pantry Pals
           </Typography>
+          {/* HID THIS FOR NOW ~ might want this to be only post login option  
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -190,7 +192,7 @@ const NavBar = () => {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+          </div> */}
         </Toolbar>
       </AppBar>
       {status === true ? 
@@ -290,7 +292,7 @@ const NavBar = () => {
         </List>
         <Divider />
         <List>
-          {/* functional routes related to the user - needs to be links */}
+          {/* functional routes related to the user - needs to be links, token and cookie should be deleted */}
           <ListItem 
           button 
           component={Link}
@@ -317,14 +319,50 @@ const NavBar = () => {
         </List>
       </Drawer>
       :
-      <Button
+      <div>
+      <Drawer
+        className={classes.drawer}
+        variant="persistent"
+        anchor="left"
+        open={open}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </div>
+
+      <List>
+          <ListItem
+            button
+            component={Link} 
+            to='/about'
+            aria-label='about'
+            className={classes.about}
+            >
+            <ListItemIcon>
+              <svg className="fas fa-carrot"></svg>
+            </ListItemIcon>
+            <ListItemText primary={'About'} />
+            </ListItem> 
+        <ListItem 
+              button 
               component={Link} 
-              to='/about'
-              aria-label='about'
-              className={classes.about}
+              to='/'
+              aria-label='login'
               >
-              <p><svg className="fas fa-carrot"></svg></p>
-        </Button> 
+              <ListItemIcon>
+                 <svg className="fas fa-home"></svg>
+              </ListItemIcon>
+              <ListItemText primary={'Login'} />
+            </ListItem>
+         
+      </List>
+      </Drawer>
+      </div>
   }    
     </div>
     <div className={classes.toolbar} />
@@ -332,6 +370,6 @@ const NavBar = () => {
   );
 }
 
-export default NavBar
+export default withStyles(useStyles)(NavBar)
 
 //from https://material-ui.com/components/drawers/
