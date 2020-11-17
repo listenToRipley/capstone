@@ -12,7 +12,11 @@ import React from 'react';
 //dislikes 
 //diets 
 //allergies 
-//need a view mode 
+
+//SAVE BUTTON TO COMMIT ANY CHANGES
+
+//need a view mode ~ see pal profile 
+
 
 const UserProfile = () => {
 
