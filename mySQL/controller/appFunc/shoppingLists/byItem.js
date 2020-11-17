@@ -21,9 +21,8 @@ const autoAddToPantry = (req, res) => {
 
 //PUT
 const removeFrom = (req, res) => {
-  console.log('remove item to the shopping list')
-//write a query that add items to the list
-let sql='UPDATE shopList SET stock=0 where entryId=?'
+
+let sql='UPDATE shoppingLists SET activeItem=0 where entryId=?'
 
 sql=mysql.format(sql,[req.params.itemId])
 
