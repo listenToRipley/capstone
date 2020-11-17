@@ -1,7 +1,22 @@
 export const createUser = (user) => {
-  return {
-    type: 'CREATE_USER',
-    value: user //should add new person to my database 
+  return (distach) => {
+    fetch('http://localhost:4001/preLogin/createUser')
+    .then(req => req.json())
+    dispatch({ //need to pull in the information, do I need to add the key here? 
+       
+      type: 'CREATE USER',
+      value: {
+        'username': '',
+        'password': '',
+        'email':'',
+        'firstName':'',
+        'lastName':'',
+        'dobMonth':'', 
+        'dobDate':'', 
+        'dobYear':''
+      }
+    
+  })
   }
 }
 
