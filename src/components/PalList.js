@@ -7,9 +7,13 @@ import React from 'react';
   //current pals of this user
   //accept request
   //decline requests
-  //block users
   //search users
   //link to individual users' profile 
+  
+    //merge request <-- did we decide if this should be on pals list instead
+    //accept
+    //decline 
+  //permissions of pals 
 
   //the pals view :
   //current pals of this user
