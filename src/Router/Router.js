@@ -40,6 +40,8 @@ const Router = () => {
       <Route path="/palsList" component={PalList}/>
       <Route path="/userProfile" component={UserProfile}/>
       <Route path="/palProfile" component={PalProfile}/>
+      
+{/* un protected routes */}
       <Route path="/createNewUser" component={SignUp}/>
       <Route path="/about" component={About}/>
       <Route path="/forgotpassword" component={ForgotPassword}/>
