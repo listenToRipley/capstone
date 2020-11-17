@@ -9,6 +9,7 @@ const palList = require('./palList')
 const pantry = require('./pantry')
 const shopList = require('./shopList')
 const requests = require('./requests')
+const util = require('./util')
 // const all = require('./all')
 const {auth, mou}= require('../../middleware/authentication')
 
@@ -23,6 +24,6 @@ start.use('/palList', auth, palList)
 start.use('/pantry', auth, pantry)
 start.use('/shopList', auth, shopList)
 start.use('/admin', auth, requests)
-
+start.use('/util', auth, util)
 
 module.exports = start

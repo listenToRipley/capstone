@@ -4,14 +4,27 @@ const { handleSQLError } = require('../../sql/error')
 
 //GET
 const allUsers = (req, res) => {
-  //will be used for searchs 
   
-  let sql= 'SELECT aI.username, uD.firstName, uD.lastName, aI.email, uD.dobMonth, uD.dobDate, uD.dobYear, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username WHERE aI.username<> ?'
+  let sql= 'SELECT aI.username, uD.firstName, aI.email, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username WHERE aI.active=1'
 
   sql= mysql.format(sql, [req.params.user])
 
-  //write a query that returns all the users 
   pool.query(sql, (err, rows) => {
+    if(err) return handleSQLError(res, err)
+    return res.json(rows); 
+  })
+}
+
+const searchUsers = (req, res) => {
+  
+  let {find} = req.body
+
+  let sql= 'SELECT aI.username, uD.firstName, aI.email, aI.active, uD.signedUp FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username WHERE aI.active=1 AND aI.username LIKE ? OR aI.email LIKE ? '
+
+  sql= mysql.format(sql, [find, find])
+
+  pool.query(sql, (err, rows) => {
+
     if(err) return handleSQLError(res, err)
     return res.json(rows); 
   })
@@ -76,6 +89,7 @@ const addDiet = (req, res) => {
 
 module.exports = {
   allUsers,
+  searchUsers,
   allAllergies, 
   allDiets,
   addMeasurement,
