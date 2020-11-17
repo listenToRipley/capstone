@@ -6,6 +6,7 @@ import ShoppingList from '../Components/ShoppingList';
 import Pantry from '../Components/Pantry';
 import PalList from '../Components/PalList';
 import UserProfile from '../Components/UserProfile';
+import PalProfile from '../Components/PalProfile'
 import SignUp from '../Components/SignUp';
 import About from '../Components/About'
 import ForgotPassword from '../Components/ForgotPassword'
@@ -38,6 +39,7 @@ const Router = () => {
       <Route path="/pantry" component={Pantry}/>
       <Route path="/palsList" component={PalList}/>
       <Route path="/userProfile" component={UserProfile}/>
+      <Route path="/palProfile" component={PalProfile}/>
       <Route path="/createNewUser" component={SignUp}/>
       <Route path="/about" component={About}/>
       <Route path="/forgotpassword" component={ForgotPassword}/>

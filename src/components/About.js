@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 })
 )
 
-
 const About = () => {
 
   const classes = useStyles();

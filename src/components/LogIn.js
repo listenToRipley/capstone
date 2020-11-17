@@ -55,7 +55,8 @@ const LogIn = () => {
   const {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
   const {value: loggedIn, bind: bindLoggedIn, reset: resetLoggedIn} = useInput('')
-
+  console.log('user name is : ' ,username)
+  console.log('the password : ', password )
   //need to set state on text before I add handlers 
     //validate password and username 
   
