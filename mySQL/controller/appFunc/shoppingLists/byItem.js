@@ -6,17 +6,16 @@ const { handleSQLError } = require('../../../sql/error')
 
 //POST
 const autoAddToPantry = (req, res) => {
-  //this will add be triggered when an items gets marked off the list and auto add is on
+
   const {itemId} = req.params
 
-  let sql = 'INSERT INTO pantries (pantry, quantity, measId, item, spoonId) VALUES ((SELECT shopList FROM access WHERE shopListRole=2 AND pantry=(SELECT pantry FROM pantries WHERE entryId=?)), (SELECT quantity FROM shoppingLists WHERE entryId=?),(SELECT measId FROM shoppingLists WHERE entryId= ? ),(SELECT item FROM shoppingLists WHERE entryId= ?),(SELECT spoonId FROM shoppingLists WHERE entryId=?))'
+  let sql = 'INSERT INTO pantries (pantry, quantity, measId, item, spoonId) VALUES ((SELECT pantry FROM access WHERE shopListRole=2 AND shopList=(SELECT shopList FROM shoppingLists WHERE entryId=?)), (SELECT quantity FROM shoppingLists WHERE entryId=?),(SELECT measId FROM shoppingLists WHERE entryId= ? ),(SELECT item FROM shoppingLists WHERE entryId= ?),(SELECT spoonId FROM shoppingLists WHERE entryId=?))'
 
   sql = mysql.format(sql, [itemId, itemId, itemId, itemId, itemId])
 
-  pool.query(sql, (err, row) => {
-    if (err) handleSQLError(res, err)
-
-    return res.json(row)
+  pool.query(sql, (err, results) => {
+    if(err) return handleSQLError(res, err)
+    return res.json( { newItemId: results.insertId} )
   })
 }
 
@@ -47,7 +46,6 @@ sql=mysql.format(sql, [quantity, measId, item, spoonId, itemId])
 
 pool.query(sql, (err, results) => {
     if(err) return handleSQLError(res, err)
-
     return res.status(204).json();
 })
 
