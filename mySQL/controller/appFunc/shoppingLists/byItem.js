@@ -50,9 +50,10 @@ pool.query(sql, (err, results) => {
 }
 
 const markOff = (req, res) => {
-  //make an item be removed from the shopping list 
 
-  let sql = 'UPDATE shoppingLists SET activeItem=0 WHERE entryId= ?'
+  const {itemId} = req.params
+
+  let sql = 'UPDATE shoppingLists SET activeItem=0 WHERE entryId=?'
 
   sql = mysql.format(sql, [itemId])
 

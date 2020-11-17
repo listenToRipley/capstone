@@ -46,8 +46,7 @@ pool.query(sql, (err, row) => {
 
 //POST
 const addToShopList = (req, res) => {
-  console.log('add item to the shopping list')
-//write a query that add items to the list
+
   const { quantity, measure, item, spoon} = req.body
   const {listId} = req.params
 

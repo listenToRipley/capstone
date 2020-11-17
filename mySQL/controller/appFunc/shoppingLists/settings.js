@@ -18,7 +18,7 @@ const updateListName = (req, res) => {
 }
 
 const updateAutoAddShop = (req, res) => {
-  //update the auto add to shopping list is turned off or on 
+
   const {listId} = req.params
   const {boo} = req.body
   
