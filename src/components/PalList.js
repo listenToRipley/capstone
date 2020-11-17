@@ -10,7 +10,7 @@ import React from 'react';
   //search users
   //link to individual users' profile 
   
-    //merge request <-- did we decide if this should be on pals list instead
+    //merge request
     //accept
     //decline 
   //permissions of pals 

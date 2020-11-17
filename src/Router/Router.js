@@ -9,6 +9,7 @@ import UserProfile from '../Components/UserProfile';
 import PalProfile from '../Components/PalProfile'
 import SignUp from '../Components/SignUp';
 import About from '../Components/About'
+import Inbox from '../Components/Inbox'
 import ForgotPassword from '../Components/ForgotPassword'
 // import cookie from 'cookie'
 
@@ -40,6 +41,7 @@ const Router = () => {
       <Route path="/palsList" component={PalList}/>
       <Route path="/userProfile" component={UserProfile}/>
       <Route path="/palProfile" component={PalProfile}/>
+      <Route path="/inbox" component={Inbox}/>
       
 {/* un protected routes */}
       <Route path="/createNewUser" component={SignUp}/>
