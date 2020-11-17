@@ -3,12 +3,13 @@ const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
 const updateListName = (req, res) => {
-  //write a query that update the list name
+
+  const {listId} = req.params
   const {title} = req.body
   
-  let sql ='UPDATE shopListsSettings SET shopListName=?  WHERE shopListSetId= ? '
+  let sql ='UPDATE shopListsSettings SET shopListName=?  WHERE shopListSetId=? '
 
-  sql= mysql.format(sql, [title, req.user])
+  sql= mysql.format(sql, [title, listId])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
