@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Grid } from '@material-ui/core';
+import { Card, Grid } from '@material-ui/core';
 import './ComponentCSS.css'
 
 
@@ -49,9 +49,11 @@ const CreateUser = () => {
         className={classes.root}
       >
         <div>
-        <Typography className="userTitle" component="h1" variant="h5">
+          <Card>
+          <Typography className="userTitle" component="h1" variant="h5">
               Create Login 
             </Typography>
+          </Card>
         </div>
         <CssBaseline/>
        <Grid
