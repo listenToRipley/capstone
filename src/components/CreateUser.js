@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Container, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import './ComponentCSS.css'
 
 
