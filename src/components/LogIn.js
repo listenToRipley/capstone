@@ -61,6 +61,7 @@ const LogIn = () => {
     //validate password and username 
   
   const loggedInCookie = e => {
+    //need to try the auth token here
     e.preventDefault()
     document.cookie = "businessCookies="+JSON.stringify({
       "username":bindUsername,

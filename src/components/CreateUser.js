@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 //use action from redux to create user
 
-const SignUp = () => {
+const CreateUser = () => {
 
   const classes = useStyles();
 
@@ -133,4 +133,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp; 
+export default withStyles(useStyles)(CreateUser)

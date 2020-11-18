@@ -7,7 +7,7 @@ import Pantry from '../Components/Pantry';
 import PalList from '../Components/PalList';
 import UserProfile from '../Components/UserProfile';
 import PalProfile from '../Components/PalProfile'
-import SignUp from '../Components/SignUp';
+import CreateUser from '../Components/CreateUser';
 import About from '../Components/About'
 import Inbox from '../Components/Inbox'
 import ForgotPassword from '../Components/ForgotPassword'
@@ -45,7 +45,7 @@ const Router = () => {
       <Route path="/inbox" component={Inbox}/>
       
 {/* un protected routes */}
-      <Route path="/createNewUser" component={SignUp}/>
+      <Route path="/createNewUser" component={CreateUser}/>
       <Route path="/about" component={About}/>
       <Route path="/forgotpassword" component={ForgotPassword}/>
     </Switch>
