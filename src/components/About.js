@@ -42,5 +42,5 @@ const About = () => {
   )
 
 }
-
-export default About
+export default withStyles(useStyles)(About)
+//export default About

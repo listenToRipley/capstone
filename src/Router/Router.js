@@ -40,7 +40,7 @@ const Router = () => {
       <Route path="/shoppingList" component={ShoppingList}/>
       <Route path="/pantry" component={Pantry}/>
       <Route path="/palsList" component={PalList}/>
-      <Route path="/userProfile" component={UserProfile}/>
+       <Route path="/userProfile" component={UserProfile}/>
       <Route path="/palProfile" component={PalProfile}/>
       <Route path="/inbox" component={Inbox}/>
       
