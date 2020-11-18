@@ -43,4 +43,3 @@ const About = () => {
 
 }
 export default withStyles(useStyles)(About)
-//export default About

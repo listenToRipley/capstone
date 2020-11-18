@@ -6,10 +6,10 @@ import UserProfile from './UserProfile';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card'
 import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import cookie from 'cookie'
+// import Box from '@material-ui/core/Box';
+// import cookie from 'cookie'
 
-//this view is based on the current user and their primary lists
+//this view is based on the current user and their primary
 
 const Home = (props) => {
 

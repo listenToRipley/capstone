@@ -14,14 +14,14 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
+// import SearchIcon from '@material-ui/icons/Search';
+// import InputBase from '@material-ui/core/InputBase';
 import CssBaseline from '@material-ui/icons/Menu'; 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt, faPeopleArrows, faCarrot} from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import cookie from 'cookie'
 import { withStyles } from '@material-ui/styles';
 
@@ -33,7 +33,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   toolbar: theme.mixins.toolbar,
   appBar: {
@@ -45,10 +45,6 @@ const useStyles = makeStyles((theme) => ({
   },
   title:{
     marginLeft: `calc(100% - ${window.innerWidth/1.5}px)`,
-  },
-  about:{
-    width: '25px',
-    color: 'orange'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -359,7 +355,17 @@ const NavBar = () => {
               </ListItemIcon>
               <ListItemText primary={'Login'} />
             </ListItem>
-         
+        <ListItem 
+            button 
+            component={Link} 
+            to='/createNewUser'
+            aria-label='create Login'
+            >
+            <ListItemIcon>
+               <svg className="far fa-user-circle"></svg>
+            </ListItemIcon>
+            <ListItemText primary={'Create Login'} />
+        </ListItem>
       </List>
       </Drawer>
       </div>
