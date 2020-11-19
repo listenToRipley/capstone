@@ -21,6 +21,13 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Actions from './ShopActions'
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+
+
+library.add(faShoppingBasket, faCartArrowDown) 
+dom.watch()
+
 
   //IMPORTANT NOTE!!!
 
@@ -240,15 +247,15 @@ const ShoppingListToolbar = (props) => {
       )}
 
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-            <DeleteIcon />
+        <Tooltip title="Finished Shopping">
+          <IconButton aria-label="finish shopping">
+          <svg class="fas fa-cart-arrow-down"></svg> 
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Filter list">
-          <IconButton aria-label="filter list">
-            {/* <FilterListIcon /> */}
+        <Tooltip title="Start Shopping">
+          <IconButton aria-label="start shopping">
+          <svg className="fas fa-shopping-basket"></svg>
           </IconButton>
         </Tooltip>
         )}
