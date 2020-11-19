@@ -48,10 +48,11 @@ import FilterListIcon from '@material-ui/icons/FilterList';
     //request items 
 
     //quantity, measurement, item, spoonId
-function createData(quantity, item, measurement, update, remove) {
+const createData = (quantity, item, measurement, update, remove) => {
   return { quantity, item, measurement, update, remove};
 }
 
+//this will need to be replaced by content from the server 
 const rows = [
   createData('Cupcake', 305, 3.7, 67, 4.3),
   createData('Donut', 452, 25.0, 51, 4.9),
@@ -105,7 +106,9 @@ const headCells = [
 
 //EnhancedTableHead
 const ShoppingListHead = (props) =>  {
+
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -114,11 +117,12 @@ const ShoppingListHead = (props) =>  {
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
+        {/* update this, should only appear if they are in shop mode! If box is checked after shopping is completed, then it should be auto added to pantry and removed from list. */}
           <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'select all desserts' }}
+            inputProps={{ 'aria-label': 'items' }}
           />
         </TableCell>
         {headCells.map((headCell) => (
@@ -126,6 +130,7 @@ const ShoppingListHead = (props) =>  {
             key={headCell.id}
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'default'}
+            /* We don't really need sorting on update and delete, we should change that  */
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
@@ -207,7 +212,7 @@ const ShoppingListToolbar = (props) => {
       ) : (
         <Tooltip title="Filter list">
           <IconButton aria-label="filter list">
-            <FilterListIcon />
+            {/* <FilterListIcon /> */}
           </IconButton>
         </Tooltip>
       )}
@@ -349,12 +354,12 @@ const ShoppingList = () =>  {
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.name}
+                        {row.quantity}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="right">{row.item}</TableCell>
+                      <TableCell align="right">{row.measurement}</TableCell>
+                      <TableCell align="right">{row.update}</TableCell>
+                      <TableCell align="right">{row.remove}</TableCell>
                     </TableRow>
                   );
                 })}
