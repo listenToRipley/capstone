@@ -24,7 +24,14 @@ import React from 'react';
 const PalProfile = () => {
 
   return (
-    <div>PalProfile Profile</div>
+    <div>
+    <h1>USERNAME Profile</h1>
+    <h2>all information must be checked against user's display preferences and outlined that way</h2>
+    <h4>IF PALS</h4>
+    <a>User's pantry</a>
+    <a>User's shopping</a>
+    <a>User's pal list</a>
+    </div>
   )
 }
 
