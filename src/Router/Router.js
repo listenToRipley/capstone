@@ -3,14 +3,14 @@ import {Switch, Route} from 'react-router';
 import LogIn from '../Components/LogIn'
 import Home from '../Components/Home';
 import ShoppingList from '../Components/ShopList/ShoppingList';
-import Pantry from '../Components/Pantry';
-import PalList from '../Components/PalList';
-import UserProfile from '../Components/UserProfile';
+import Pantry from '../Components/Pantry/Pantry';
+import PalList from '../Components/PalLists/PalList';
+import UserProfile from '../Components/CurrentUser/UserProfile';
 import PalProfile from '../Components/PalProfile'
-import CreateUser from '../Components/CreateUser';
+import CreateUser from '../Components/AppFunc/CreateUser';
 import About from '../Components/About'
-import Inbox from '../Components/Inbox'
-import ForgotPassword from '../Components/ForgotPassword'
+import Inbox from '../Components/CurrentUser/Inbox'
+import ForgotPassword from '../Components/AppFunc/ForgotPassword'
 // import cookie from 'cookie'
 
 //this will be for when you move to login required status

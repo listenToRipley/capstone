@@ -154,7 +154,7 @@ const ShoppingListHead = (props) =>  {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
+        <TableCell >
         {/* update this, should only appear if they are in shop mode! If box is checked after shopping is completed, then it should be auto added to pantry and removed from list. */}
           <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -216,7 +216,7 @@ const useToolbarStyles = makeStyles((theme) => ({
           backgroundColor: theme.palette.secondary.dark,
         },
   title: {
-    flex: '1 1 100%',
+    flex: '1 1 90%',
   },
 }));
 
@@ -256,7 +256,7 @@ const ShoppingListToolbar = (props) => {
             {/* <FilterListIcon /> */}
           </IconButton>
         </Tooltip>
-      )}
+        )}
     </Toolbar>
   );
 };
@@ -334,7 +334,7 @@ const ShoppingList = () =>  {
         <TableContainer>
           <Table
             className={classes.table}
-            aria-labelledby="tableTitle"
+            aria-labelledby="your shopping list"
             size={dense ? 'small' : 'medium'}
             aria-label="enhanced table"
           >
