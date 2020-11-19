@@ -1,18 +1,30 @@
 import React from 'react';
 
-//needs to get added to NavBar or should this be notification in the top bar?
+//needs to get added to NavBar or should this be notification in the top bar, bell Icon?
 
-//there should be three sections here 
-  //pal requests
-    //sent and pending
-  //requesters
-    //shopping list
-  //merge requests
-    //send and pending 
 const Inbox = () => {
 
   return (
-    <h1>This is where you will see pending and sent notifications</h1>
+    <div>
+      <h1>Requests</h1>
+      <div>
+        <h2>Pal</h2>
+        <p>sent</p>
+        <p>pending approval</p>
+      </div>
+      <div>
+        <h2>Shopping</h2>
+        <p>sent</p>
+        <p>Should include whose list this was sent to</p>
+        <p>pending approval</p>
+      </div>
+      <div>
+        <h2>Merge</h2>
+        <p>sent</p>
+        <p>pending approval</p>
+      </div>
+    </div>
+
   )
 
 }
