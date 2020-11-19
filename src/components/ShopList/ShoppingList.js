@@ -76,8 +76,8 @@ import Actions from './ShopActions'
 
 
     //quantity, measurement, item, spoonId
-const createData = (quantity, items, measurement, actions) => {
-  return { quantity, items, measurement, actions};
+const createData = (quantity, items, unit, actions) => {
+  return { quantity, items, unit, actions};
 }
 
 //there is an issue with the drawer and page content. 
@@ -133,7 +133,7 @@ const descendingComparator = (a, b, orderBy) => {
 const headCells = [
   { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
   { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
-  { id: 'meas', numeric: true, disablePadding: false, label: 'Measurement' },
+  { id: 'unit', numeric: true, disablePadding: false, label: 'Unit' },
   { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
 ];
 
@@ -155,13 +155,13 @@ const ShoppingListHead = (props) =>  {
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'items' }}
+            inputProps={{ 'check box for': 'items' }}
           />
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align={headCell.numeric ? 'center' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'default'}
             /* We don't really need sorting on update and delete, we should change that  */
             sortDirection={orderBy === headCell.id ? order : false}
@@ -341,7 +341,7 @@ const ShoppingList = () =>  {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.name);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+                  const labelId = `check box${index}`;
 
                   return (
                     <TableRow
@@ -355,17 +355,19 @@ const ShoppingList = () =>  {
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
+                          padding="10"
                           checked={isItemSelected}
-                          inputProps={{ 'aria-labelledby': labelId }}
+                          inputProps={{ 'list item number ': labelId }}
                         />
                       </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                      <TableCell component="th" id={labelId} scope="row" align="center">
                         {row.quantity}
                       </TableCell>
-                      <TableCell align="right">{row.items}</TableCell>
-                      <TableCell align="right">{row.measurement}</TableCell>
-                      <TableCell align="right">{row.actions}
-                        <Actions/></TableCell>
+                      <TableCell align="left">{row.items}</TableCell>
+                      <TableCell align="right">{row.unit}</TableCell>
+                      <TableCell align="left">{row.actions}
+                        <Actions/>
+                        </TableCell>
                     </TableRow>
                   );
                 })}
