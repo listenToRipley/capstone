@@ -25,6 +25,15 @@ const shopListActions = () => {
     setAnchorEl(null);
   };
 
+  const handleDelete = () => {
+    //need to add actions here 
+  }
+
+  const handleUpdate = () => {
+    //need to add actions here 
+  }
+
+
   return (
     <div>
       <IconButton
