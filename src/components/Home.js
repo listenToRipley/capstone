@@ -1,5 +1,5 @@
 import React from 'react';
-import ShoppingList from './ShoppingList';
+import ShoppingList from './ShopList/ShoppingList';
 import Pantry from './Pantry';
 import PalList from './PalList';
 import UserProfile from './UserProfile'; 

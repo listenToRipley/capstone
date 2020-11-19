@@ -47,10 +47,45 @@ import FilterListIcon from '@material-ui/icons/FilterList';
     //view items 
     //request items 
 
+    const useStyles = makeStyles((theme) => ({
+      root: {
+        width: '100%',
+        marginTop: theme.spacing(4),
+      },
+      paper: {
+        width: '90%',
+        marginLeft: theme.spacing(6),
+        marginBottom: theme.spacing(2),
+      },
+      table: {
+        minWidth: 750,
+      },
+      visuallyHidden: {
+        border: 0,
+        clip: 'rect(0 0 0 0)',
+        height: 1,
+        margin: -1,
+        overflow: 'hidden',
+        padding: 0,
+        position: 'absolute',
+        top: 20,
+        width: 1,
+      }, 
+      densePadding: {
+        margin: 5,
+        paddingLeft: 11 
+      }
+    }));
+
+
     //quantity, measurement, item, spoonId
-const createData = (quantity, item, measurement, update, remove) => {
-  return { quantity, item, measurement, update, remove};
+const createData = (quantity, items, measurement, update, remove) => {
+  return { quantity, items, measurement, update, remove};
 }
+
+//there is an issue with the drawer and page content. 
+
+//need to add something to show role on table, are we going to need to write a query for that? 
 
 //this will need to be replaced by content from the server 
 const rows = [
@@ -69,12 +104,14 @@ const rows = [
   createData('Oreo', 437, 18.0, 63, 4.0),
 ];
 
+//sorting functions  DON'T TOUCH 
 const getComparator =(order, orderBy) => {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
+//sorting functions  DON'T TOUCH 
 const stableSort = (array, comparator) =>{
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -85,7 +122,7 @@ const stableSort = (array, comparator) =>{
   return stabilizedThis.map((el) => el[0]);
 }
 
-
+//sorting functions  DON'T TOUCH 
 const descendingComparator = (a, b, orderBy) => {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -97,11 +134,11 @@ const descendingComparator = (a, b, orderBy) => {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Quantity' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Item' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Measurement' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'Update' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Remove' },
+  { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
+  { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
+  { id: 'meas', numeric: true, disablePadding: false, label: 'Measurement' },
+  { id: 'update', numeric: true, disablePadding: false, label: 'Update' },
+  { id: 'remove', numeric: true, disablePadding: false, label: 'Remove' },
 ];
 
 //EnhancedTableHead
@@ -164,7 +201,7 @@ ShoppingListHead.propTypes = {
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(1),
   },
   highlight:
@@ -199,7 +236,10 @@ const ShoppingListToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Nutrition
+        {/* This will have to be  imported from SQL*/}
+          Your Shopping List 
+
+          
         </Typography>
       )}
 
@@ -222,31 +262,7 @@ const ShoppingListToolbar = (props) => {
 
 ShoppingListToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
-};
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
-  paper: {
-    width: '100%',
-    marginBottom: theme.spacing(2),
-  },
-  table: {
-    minWidth: 750,
-  },
-  visuallyHidden: {
-    border: 0,
-    clip: 'rect(0 0 0 0)',
-    height: 1,
-    margin: -1,
-    overflow: 'hidden',
-    padding: 0,
-    position: 'absolute',
-    top: 20,
-    width: 1,
-  },
-}));
+}
 
 //EnhancedTable 
 const ShoppingList = () =>  {
@@ -356,7 +372,7 @@ const ShoppingList = () =>  {
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.quantity}
                       </TableCell>
-                      <TableCell align="right">{row.item}</TableCell>
+                      <TableCell align="right">{row.items}</TableCell>
                       <TableCell align="right">{row.measurement}</TableCell>
                       <TableCell align="right">{row.update}</TableCell>
                       <TableCell align="right">{row.remove}</TableCell>
@@ -382,7 +398,7 @@ const ShoppingList = () =>  {
         />
       </Paper>
       <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
+        control={<Switch checked={dense} onChange={handleChangeDense} classes="densePadding" />}
         label="Dense padding"
       />
     </div>

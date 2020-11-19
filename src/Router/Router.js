@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router';
 import LogIn from '../Components/LogIn'
 import Home from '../Components/Home';
-import ShoppingList from '../Components/ShoppingList';
+import ShoppingList from '../Components/ShopList/ShoppingList';
 import Pantry from '../Components/Pantry';
 import PalList from '../Components/PalList';
 import UserProfile from '../Components/UserProfile';
