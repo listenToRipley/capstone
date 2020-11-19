@@ -71,11 +71,6 @@ import Actions from './ShopActions'
         position: 'absolute',
         top: 20,
         width: 1,
-      }, 
-      //this isn't working right now 
-      densePadding: {
-        margin: 5,
-        paddingLeft: 11 
       }
     }));
 
@@ -272,7 +267,6 @@ const ShoppingList = () =>  {
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (event, property) => {
@@ -319,10 +313,6 @@ const ShoppingList = () =>  {
     setPage(0);
   };
 
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
-  };
-
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
@@ -335,8 +325,7 @@ const ShoppingList = () =>  {
           <Table
             className={classes.table}
             aria-labelledby="your shopping list"
-            size={dense ? 'small' : 'medium'}
-            aria-label="enhanced table"
+            aria-label="shopping list"
           >
             <ShoppingListHead
               classes={classes}
@@ -380,11 +369,6 @@ const ShoppingList = () =>  {
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -398,10 +382,6 @@ const ShoppingList = () =>  {
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} classes="densePadding" />}
-        label="Dense padding"
-      />
     </div>
   );
 }
