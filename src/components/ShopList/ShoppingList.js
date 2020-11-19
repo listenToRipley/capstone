@@ -16,10 +16,6 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
@@ -241,8 +237,7 @@ const ShoppingListToolbar = (props) => {
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
         {/* This will have to be  imported from SQL*/}
           Your Shopping List 
-
-          
+          {/* add items there needs to be a button here */}
         </Typography>
       )}
 
