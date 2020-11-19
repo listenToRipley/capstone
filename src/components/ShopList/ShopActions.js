@@ -4,17 +4,18 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const options = [
-  'Remove',
-  'Update'
-];
-
 const ITEM_HEIGHT = 48;
 
 //need to tie in shop list actions here
 
-const shopListActions = () => {
+const ShopListActions = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const options = [
+    'Remove',
+    'Update'
+  ];
+
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -67,4 +68,4 @@ const shopListActions = () => {
   );
 }
 
-export default shopListActions
+export default ShopListActions

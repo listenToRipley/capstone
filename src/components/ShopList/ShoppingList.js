@@ -20,6 +20,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import Actions from './ShopActions'
 
   //IMPORTANT NOTE!!!
 
@@ -54,7 +55,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
       },
       paper: {
         width: '90%',
-        marginLeft: theme.spacing(6),
+        marginLeft: theme.spacing(4),
         marginBottom: theme.spacing(2),
       },
       table: {
@@ -71,6 +72,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
         top: 20,
         width: 1,
       }, 
+      //this isn't working right now 
       densePadding: {
         margin: 5,
         paddingLeft: 11 
@@ -79,8 +81,8 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 
 
     //quantity, measurement, item, spoonId
-const createData = (quantity, items, measurement, update, remove) => {
-  return { quantity, items, measurement, update, remove};
+const createData = (quantity, items, measurement, actions) => {
+  return { quantity, items, measurement, actions};
 }
 
 //there is an issue with the drawer and page content. 
@@ -89,19 +91,19 @@ const createData = (quantity, items, measurement, update, remove) => {
 
 //this will need to be replaced by content from the server 
 const rows = [
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Donut', 452, 25.0, 51, 4.9),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-  createData('Honeycomb', 408, 3.2, 87, 6.5),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Jelly Bean', 375, 0.0, 94, 0.0),
-  createData('KitKat', 518, 26.0, 65, 7.0),
-  createData('Lollipop', 392, 0.2, 98, 0.0),
-  createData('Marshmallow', 318, 0, 81, 2.0),
-  createData('Nougat', 360, 19.0, 9, 37.0),
-  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData( 305, 'Cupcake', 3.7),
+  createData( 452, 'Donut', 3.7),
+  createData( 305, 'Eclair', 3.7), 
+  createData( 5221, 'Frozen yoghurt', 159),  
+  createData( 5, 'Gingerbread', 356),  
+  createData( 1, 'Honeycomb', 408), 
+  createData( 32, 'Ice cream sandwich', 237), 
+  createData( 66, 'Jelly Bean', 375), 
+  createData( 23, 'KitKat', 518),  
+  createData( 6565, 'Lollipop', 392),
+  createData( 13.2, 'Marshmallow', 318),
+  createData( 33, 'Nougat', 360),
+  createData( 6666, 'Oreo', 437)
 ];
 
 //sorting functions  DON'T TOUCH 
@@ -137,8 +139,7 @@ const headCells = [
   { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
   { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
   { id: 'meas', numeric: true, disablePadding: false, label: 'Measurement' },
-  { id: 'update', numeric: true, disablePadding: false, label: 'Update' },
-  { id: 'remove', numeric: true, disablePadding: false, label: 'Remove' },
+  { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
 ];
 
 //EnhancedTableHead
@@ -374,8 +375,8 @@ const ShoppingList = () =>  {
                       </TableCell>
                       <TableCell align="right">{row.items}</TableCell>
                       <TableCell align="right">{row.measurement}</TableCell>
-                      <TableCell align="right">{row.update}</TableCell>
-                      <TableCell align="right">{row.remove}</TableCell>
+                      <TableCell align="right">{row.actions}
+                        <Actions/></TableCell>
                     </TableRow>
                   );
                 })}
