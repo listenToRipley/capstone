@@ -1,71 +1,17 @@
 import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const ITEM_HEIGHT = 48;
+//this will be actions that can be taken on the pantry as a whole
+const PantryActions = () => {
 
-//need to tie in shop list actions here
-
-const PantryActions = (props) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const options = [
-    'Remove',
-    'Update'
-  ];
-
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleDelete = () => {
-    //need to add actions here 
+  const handleNameUpdate = () => {
+    //add action here 
   }
-
-  const handleUpdate = () => {
-    //need to add actions here 
-  }
-
 
   return (
     <div>
-      <IconButton
-        aria-label="more"
-        aria-controls="long-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <MoreVertIcon />
-      </IconButton>
-      <Menu
-        id="long-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
-          },
-        }}
-      >
-        {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Update'} onClick={handleClose}>
-            {option}
-          </MenuItem>
-        ))}
-      </Menu>
+      This will allow the name to be updated 
     </div>
-  );
+  )
 }
 
 export default PantryActions

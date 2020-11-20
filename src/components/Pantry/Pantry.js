@@ -16,7 +16,8 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import Actions from './PantryActions'
+import ItemActions from './ItemActions'
+import PantryActions from './PantryActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -71,8 +72,8 @@ dom.watch()
 
 
     //quantity, measurement, item, spoonId
-const createData = (quantity, items, unit, actions) => {
-  return { quantity, items, unit, actions};
+const createData = (quantity, items, unit, itemActions) => {
+  return { quantity, items, unit, itemActions};
 }
 
 //there is an issue with the drawer and page content. 
@@ -129,7 +130,7 @@ const headCells = [
   { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
   { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
   { id: 'unit', numeric: true, disablePadding: false, label: 'Unit' },
-  { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
+  { id: 'itemActions', numeric: false, disablePadding: false, label: 'Action Items' },
 ];
 
 //EnhancedTableHead
@@ -359,8 +360,8 @@ const Pantry = () =>  {
                       </TableCell>
                       <TableCell align="left">{row.items}</TableCell>
                       <TableCell align="right">{row.unit}</TableCell>
-                      <TableCell align="left">{row.actions}
-                        <Actions/>
+                      <TableCell align="left">{row.itemActions}
+                        <ItemActions/>
                         </TableCell>
                     </TableRow>
                   );
