@@ -1,4 +1,9 @@
 import React from 'react';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faCogs} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCogs)
+dom.watch()
 
 //!!!IMPORTANT NOTE ~ there will be two versions of the pal list. 
   //there is the current user :
