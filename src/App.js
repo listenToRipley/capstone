@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import './App.css';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Router from './Router/Router';
 import {BrowserRouter} from 'react-router-dom';
 import NavBar from './Components/AppFunc/NavBar';
@@ -10,10 +11,14 @@ const App = () => {
 
   return(
     
-    <BrowserRouter>
-      <NavBar/>
-        <Router/>
-    </BrowserRouter>
+    <Fragment>
+      <CssBaseline>
+         <BrowserRouter>
+         <NavBar/>
+           <Router/>
+        </BrowserRouter>
+      </CssBaseline>
+    </Fragment>
 
   )
 
