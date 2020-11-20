@@ -14,6 +14,7 @@ const PalsActions = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const options = [
+    'Send Merge Request',
     'Update Role',
     'Un-Pal',
     'Block Pal'
@@ -28,6 +29,11 @@ const PalsActions = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleMergeRequest = () => {
+    //add action to send a merge request to a user
+  }
+
 
   const handleUpdate = () => {
     //need to add actions here 
