@@ -49,12 +49,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   paper: {
-    width: '90%',
+    width: '100%',
     marginLeft: theme.spacing(4),
     marginBottom: theme.spacing(2),
   },
   table: {
-    minWidth: 750,
+    minWidth: 450,
   },
   visuallyHidden: {
     border: 0,
@@ -69,8 +69,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-//quantity, measurement, item, spoonId
 const createData = (pal, username, palActions) => {
 return { pal, username, palActions};
 }
@@ -81,19 +79,11 @@ return { pal, username, palActions};
 
 //this will need to be replaced by content from the server 
 const rows = [
-createData( 305, 'Cupcake', 3.7),
-createData( 452, 'Donut', 3.7),
-createData( 305, 'Eclair', 3.7), 
-createData( 5221, 'Frozen yoghurt', 159),  
-createData( 5, 'Gingerbread', 356),  
-createData( 1, 'Honeycomb', 408), 
-createData( 32, 'Ice cream sandwich', 237), 
-createData( 66, 'Jelly Bean', 375), 
-createData( 23, 'KitKat', 518),  
-createData( 6565, 'Lollipop', 392),
-createData( 13.2, 'Marshmallow', 318),
-createData( 33, 'Nougat', 360),
-createData( 6666, 'Oreo', 437)
+createData( 'Cupcake', 'Cupcake'),
+createData( 'Donut','Donut',),
+createData( 'Eclair','Eclair',), 
+createData( 'Frozen yoghurt','Frozen yoghurt'),  
+createData( 'Gingerbread','Gingerbread')
 ];
 
 //sorting functions  DON'T TOUCH 
@@ -142,14 +132,14 @@ onRequestSort(event, property);
 
 return (
 <TableHead>
-  <TableRow>
+
     <TableCell >
     </TableCell>
     {headCells.map((headCell) => (
       <TableCell
         key={headCell.id}
-        align={headCell.numeric ? 'center' : 'left'}
-        padding={headCell.disablePadding ? 'none' : 'default'}
+        align='left'
+        padding='none'
         /* We don't really need sorting on update and delete, we should change that  */
         sortDirection={orderBy === headCell.id ? order : false}
       >
@@ -167,7 +157,7 @@ return (
         </TableSortLabel>
       </TableCell>
     ))}
-  </TableRow>
+
 </TableHead>
 );
 }
@@ -196,7 +186,7 @@ theme.palette.type === 'light'
       backgroundColor: theme.palette.secondary.dark,
     },
 title: {
-flex: '1 1 90%',
+flex: '1 1 80%',
 },
 }));
 
