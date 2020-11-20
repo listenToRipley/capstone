@@ -153,7 +153,7 @@ const NavBar = () => {
 
   return (
     <div>
-          <div className={classes.root} style={{position: "fixed"}}>
+      <div className={classes.root} style={{position: "fixed"}}>
     
     <CssBaseline/>
       <AppBar
