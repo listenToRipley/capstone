@@ -3,8 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import PalListActions from './PalListActions'
-import PalActions from './PalActions'
+import MergeReq from './MergeRequest'
 
 const ITEM_HEIGHT = 48;
 

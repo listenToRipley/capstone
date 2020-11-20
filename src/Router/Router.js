@@ -4,7 +4,7 @@ import LogIn from '../Components/LogIn'
 import Home from '../Components/Home';
 import ShoppingList from '../Components/ShopList/ShoppingList';
 import Pantry from '../Components/Pantry/Pantry';
-import PalList from '../Components/PalLists/PalList';
+import PalList from '../Components/PalLists/PalsList';
 import UserProfile from '../Components/CurrentUser/UserProfile';
 import PalProfile from '../Components/PalProfile'
 import CreateUser from '../Components/AppFunc/CreateUser';
