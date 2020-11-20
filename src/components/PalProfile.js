@@ -30,7 +30,7 @@ const PalProfile = () => {
     <h4>IF PALS</h4>
     <a>User's pantry</a>
     <a>User's shopping</a>
-    <a>User's pal list</a>
+    <a>User's pal</a>
     </div>
   )
 }
