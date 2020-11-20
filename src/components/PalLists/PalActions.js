@@ -4,10 +4,13 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MergeReq from './MergeRequest'
+import UpdatePalRole from './UpdateRole'
 
 const ITEM_HEIGHT = 48;
 
 //need to tie in shop list actions here
+
+  //permissions of pals 
 
 const PalsActions = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);

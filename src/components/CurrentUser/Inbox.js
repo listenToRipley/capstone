@@ -2,6 +2,14 @@ import React from 'react';
 
 //needs to get added to NavBar or should this be notification in the top bar, bell Icon?
 
+    //merge request
+    //accept
+    //decline 
+
+    //pal requests
+      //accept request
+      //decline requests
+
 const Inbox = () => {
 
   return (

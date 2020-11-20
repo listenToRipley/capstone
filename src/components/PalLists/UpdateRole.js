@@ -1,8 +1,8 @@
 import React from 'react'
 
-//this will be a pop out window for sending a merge request. 
+//this will be a pop out window update role, only allow requester and editor. 
 
-const MergeReq = () => {
+const UpdatePalRole = () => {
   
   return (
     <div>
@@ -12,4 +12,4 @@ const MergeReq = () => {
   )
 }
 
-export default MergeReq
+export default UpdatePalRole

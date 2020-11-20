@@ -28,20 +28,14 @@ dom.watch()
 
 //needs to include 
   //current pals of this user
-  //accept request
-  //decline requests
   //search users
-  //link to individual users' profile 
-  
-    //merge request
-    //accept
-    //decline 
-  //permissions of pals 
 
   //the pals view :
   //current pals of this user
   //link to individual users' profile 
 
+
+  //need to add search. 
 
 const useStyles = makeStyles((theme) => ({
   root: {
