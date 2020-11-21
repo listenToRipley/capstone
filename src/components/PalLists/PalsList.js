@@ -111,11 +111,10 @@ return 0;
 
 const headCells = [
 { id: 'pal', numeric: false, label: 'Pals' },
-{ id: 'username', numeric: false,  label: 'username' },
+{ id: 'username', numeric: false,  label: 'Username' },
 { id: 'palActions', numeric: false, label: 'Pal Actions' },
 ];
 
-//EnhancedTableHead
 const PalsHead = (props) =>  {
 
 const { classes, order, orderBy, rowCount, onRequestSort } = props;
@@ -127,13 +126,11 @@ onRequestSort(event, property);
 return (
 <TableHead>
 
-    <TableCell >
-    </TableCell>
     {headCells.map((headCell) => (
       <TableCell
         key={headCell.id}
-        align='left'
-        padding='none'
+        align='center'
+        padding='5'
         /* We don't really need sorting on update and delete, we should change that  */
         sortDirection={orderBy === headCell.id ? order : false}
       >
