@@ -23,6 +23,11 @@ import React from 'react';
 
 const PalProfile = () => {
 
+  const handleDisplayPrefs = () => {
+    //pull what the users' current display preferences. Depending on this response, we can determine which elements will be displayed. 
+    //determine if user is set to private or not 
+  }
+
   return (
     <div>
     <h1>USERNAME Profile</h1>
