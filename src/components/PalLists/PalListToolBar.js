@@ -21,23 +21,22 @@ dom.watch()
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '90%'
+    flexGrow: 1,
+    marginRight: theme.spacing(2),
   },
   search: {
     position: 'relative',
-    marginLeft: 100,
+    margin: 100,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(2),
-
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto'
-    },
+    // width: '100%',
+    // [theme.breakpoints.up('sm')]: {
+    //   marginLeft: theme.spacing(1),
+    //   width: 'auto'
+    // },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -60,7 +59,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '40ch',
     },
-  }
+    marginRight: 100
+  }, 
+  settingIcon: {
+    paddingRight: '50%',
+    justifyContent: 'right',
+  },
 }));
 
 
@@ -106,7 +110,9 @@ const useToolbarStyles = makeStyles((theme) => ({
             inputProps={{ 'aria-label': 'search' }}
           />
         </MenuItem>
+        <p className="spacing"/>
           <IconButton
+          className="settingIcon"
           aria-label="pal list settings">
           <svg className="fas fa-cogs"></svg>
           </IconButton>
