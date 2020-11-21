@@ -1,5 +1,8 @@
 import React from 'react';
 import { lighten, fade , makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
@@ -21,22 +24,34 @@ dom.watch()
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    height:'10vh',
+    width: '80vw'
+  },
+  grid: {
+    padding: theme.spacing(2),
     marginRight: theme.spacing(2),
+  },
+  toolbar: {
+
+  },
+  title: {
+    flexGrow: 1,
+    margin: 2,
+    padding: 10,
+    display: 'none',
+    justifyContent: 'center',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
   },
   search: {
     position: 'relative',
-    margin: 100,
+    margin: 10,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    // width: '100%',
-    // [theme.breakpoints.up('sm')]: {
-    //   marginLeft: theme.spacing(1),
-    //   width: 'auto'
-    // },
+    }
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -66,37 +81,31 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'right',
   },
 }));
-
-
-const useToolbarStyles = makeStyles((theme) => ({
-  root: {
-  paddingLeft: theme.spacing(3),
-  paddingRight: theme.spacing(1),
-  },
-  highlight:
-  theme.palette.type === 'light'
-    ? {
-        color: theme.palette.secondary.main,
-        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-      }
-    : {
-        color: theme.palette.text.primary,
-        backgroundColor: theme.palette.secondary.dark,
-      },
-  title: {
-  flex: '1 1 80%',
-  },
-  }));
   
   //This will only be available if this list belongs to the current user 
   const PalsToolbar = (props) => {
-  const classes = useToolbarStyles();
+  const classes = useStyles();
   
   return (
-    <Paper className="toolBar">
-      <Toolbar
-          title="Update Pal List Settings">
+    <Box>
+     <Grid 
+    container
+    className="grid"
+    component="main" 
+        direction="row"
+        justify="center"
+        alignItems="center"
+        spacing={2}
+      >
+     <Paper className="toolBar">
+      <Grid item xs={12}  square className="toolbar">
+      <Typography className="title">
+USERNAME'S Pal List : NAME USER ASSIGNED TO PAL LIST</Typography>
+      </Grid>
     
+       <Toolbar
+          title="Update Pal List Settings">
+        <Grid item xs={9} square>
         <MenuItem className={classes.search}>
           <div className={classes.searchIcon}>
             <SearchIcon />
@@ -110,16 +119,19 @@ const useToolbarStyles = makeStyles((theme) => ({
             inputProps={{ 'aria-label': 'search' }}
           />
         </MenuItem>
-        <p className="spacing"/>
+        </Grid> 
+        <Grid item xs={3} square>
           <IconButton
           className="settingIcon"
           aria-label="pal list settings">
           <svg className="fas fa-cogs"></svg>
           </IconButton>
-        
-      </Toolbar>
-    </Paper>
+          </Grid>
+        </Toolbar>
+      </Paper>
+    </Grid>
+    </Box>
   )
-  };  
+};  
 
 export default withStyles(useStyles)(PalsToolbar)

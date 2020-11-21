@@ -18,7 +18,7 @@ import ListItem from '@material-ui/core/ListItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height:'100vh'
+    height:'0vh'
   },
   welcome: {
     margin: theme.spacing(4,5)
