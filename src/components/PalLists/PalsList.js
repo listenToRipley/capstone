@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   paper: {
-    width: '100%',
+    width: '90%',
     marginLeft: theme.spacing(4),
     marginBottom: theme.spacing(2),
   },
