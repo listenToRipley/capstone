@@ -13,13 +13,26 @@ import '../ComponentCSS.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    margin: '5%',
+    paddingLeft: '5%',
+    width: '90%',
+    justifyContent: 'space-evenly'
   },
   paper: {
-    margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
+    width: '100%',
+    marginTop: theme.spacing(6),
+    marginLeft: theme.spacing(10),
+    marginBottom: theme.spacing(2),
+    justifyContent: 'space-evenly',
     alignItems: 'center',
+  },
+  title: {
+    padding: 10,
+    display: 'none',
+    justifyContent: 'center',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
   },
   fields: {
     margin: theme.spacing(4),
@@ -28,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
 }));
 
@@ -36,29 +50,26 @@ const useStyles = makeStyles((theme) => ({
 //use action from redux to create user
 
 const CreateUser = () => {
-
   const classes = useStyles();
 
   return(
+    <Paper
+    className={classes.root}
+    >
+    <Typography className={classes.title} component="h1" variant="h5">
+        Create Login 
+      </Typography>
 
       <Grid
         container
         component="main" 
-        direction="column"
-        justify="center"
+        direction="row"
         alignItems="center"
-        className={classes.root}
       >
-        <div>
-          <Card>
-          <Typography className="userTitle" component="h1" variant="h5">
-              Create Login 
-            </Typography>
-          </Card>
-        </div>
         <CssBaseline/>
        <Grid
-       item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+       item 
+       xs={12} sm={8} md={5} component={Card} elevation={4} square>
        <form 
         className={classes.form} 
         > 
@@ -132,6 +143,7 @@ const CreateUser = () => {
         </Button>
        </Grid>
       </Grid>
+    </Paper>
      
   )
 }
