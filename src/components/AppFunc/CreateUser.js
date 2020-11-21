@@ -58,10 +58,19 @@ const CreateUser = () => {
 
   const {value: firstName, bind: bindFirstName, reset: resetFirstName} = useInput('')
   const {value: lastName, bind: bindLastName, reset: resetLastName} = useInput('')
+  const {value: email, bind: bindEmail, reset: resetEmail} = useInput('')
+  const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
+    const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
+  const {value: bDay, bind: bindBDay, reset: resetBDay} = useInput('')
 
 
   //change this selected date 
   const [dob, onChange] = useState(new Date());
+
+  const handlePasswordMatch = () => {
+    //need to make sure the password matches
+    //if password and vPassword do not match, then they should not continue 
+  }
 
   const handleDOB = () => {
     //need to had this to handle birthday input 
