@@ -2,6 +2,7 @@ import React from 'react';
 import {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,7 +11,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { FormControl } from '@material-ui/core';
-import Calendar from 'react-calendar';
+// import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../../Hooks/inputHook'
 
@@ -61,7 +62,7 @@ const CreateUser = () => {
   const {value: email, bind: bindEmail, reset: resetEmail} = useInput('')
   const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
     const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
-  const {value: bDay, bind: bindBDay, reset: resetBDay} = useInput('')
+  const {value: birthday, bind: bindBirthday, reset: resetBirthday} = useInput('')
 
 
   //change this selected date 
@@ -82,6 +83,7 @@ const CreateUser = () => {
 
   const handleDOB = () => {
     //need to had this to handle birthday input 
+      //want to make sure they are over a specific age? 
   }
 
   const handleSubmit = () => {
@@ -107,6 +109,7 @@ const CreateUser = () => {
        item 
        xs={12} sm={8} md={5} component={Card} elevation={4} square>
        <FormControl
+       
         className={classes.form} 
         > 
           <TextField
@@ -189,10 +192,12 @@ const CreateUser = () => {
             className={classes.fields}
             aria-label="your new password"
             />
+            <InputLabel>Birthday</InputLabel>
           <TextField
             variant="outlined"
             margin="normal"
             required
+            fullWidth
             id="birthday"
             label="Birthday"
             name="birthday"
