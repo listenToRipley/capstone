@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import '../ComponentCSS.css'
+import Calendar from 'react-calendar'
 
 
 const useStyles = makeStyles((theme) => ({
