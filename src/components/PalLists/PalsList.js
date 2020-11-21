@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { lighten, fade , makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,6 +12,8 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -19,6 +21,7 @@ import PalsListActions from './PalsListActions'
 import PalActions from './PalActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faCogs} from '@fortawesome/free-solid-svg-icons';
+import { withStyles } from '@material-ui/styles';
 
 library.add(faCogs)
 dom.watch()
@@ -46,6 +49,54 @@ const useStyles = makeStyles((theme) => ({
     width: '90%',
     marginLeft: theme.spacing(4),
     marginBottom: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  toolBar: {
+    width: '80%',
+    marginLeft: theme.spacing(4),
+    marginBottom: theme.spacing(2),
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto'
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
   },
   table: {
     minWidth: 450,
@@ -181,18 +232,36 @@ flex: '1 1 80%',
 },
 }));
 
-//EnhancedTableToolbar
+//This will only be available if this list belongs to the current user 
 const PalsToolbar = (props) => {
 const classes = useToolbarStyles();
 
 return (
-<Toolbar>
-  <Tooltip title="Start Shopping">
-    <IconButton aria-label="start shopping">
-    <svg className="fas fa-cogs"></svg>
-    </IconButton>
-  </Tooltip>
-</Toolbar>
+  <Paper className="toolBar">
+    <Toolbar
+        title="Update Pal List Settings">
+      <Typography>USERNAME'S Pal List : NAME USER ASSIGNED TO PAL LIST</Typography>
+      <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+        </div>
+      
+        <IconButton
+        aria-label="pal list settings">
+        <svg className="fas fa-cogs"></svg>
+        </IconButton>
+      
+    </Toolbar>
+  </Paper>
 )
 };
 
@@ -300,4 +369,4 @@ return (
 );
 }
 
-export default PalsList
+export default withStyles(useStyles)(PalsList)
