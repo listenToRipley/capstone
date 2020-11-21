@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     },
   form: {
     width: '100vw', // Fix IE 11 issue.
-    paddingLeft: '8%',
+    paddingLeft: '5%',
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
@@ -100,33 +100,48 @@ const UserProfile = () => {
           <CssBaseline/>
             <Grid
             item 
-            xs={6} sm={8} md={2} component={Card} elevation={4} square>
-            <Button>Edit</Button>
+            xs={8} sm={8} md={2} component={Card} elevation={4} square>
+
+              <InputLabel
+              className={classes.fieldLabel}
+              >First Name</InputLabel>
+                <TextField 
+                disabled
+                className={classes.fields}
+                ></TextField>
+              <InputLabel
+              className={classes.fieldLabel}
+              >Last Name</InputLabel>
+                <TextField 
+                disabled
+                className={classes.fields}
+                ></TextField>
             <InputLabel
             className={classes.fieldLabel}
-            >Name</InputLabel>
-            <TextField 
-            disabled
-            className={classes.fields}
-            ></TextField>
-            <InputLabel>Password</InputLabel>
-             <TextField 
-             disabled
-             className={classes.fields}
-             ></TextField>
-            <InputLabel>Birthday</InputLabel>
+            >Password</InputLabel>
               <TextField 
               disabled
               className={classes.fields}
               ></TextField>
-            <InputLabel>Location</InputLabel>
+            <InputLabel
+            className={classes.fieldLabel}
+            >Birthday Month</InputLabel>
+              <TextField 
+              disabled
+              type="date"
+              className={classes.fields}
+              ></TextField>
+            </Grid>
+            <Button>Edit</Button>
+          </Grid>
+          <div>
+          <InputLabel
+            className={classes.fieldLabel}
+            >Location</InputLabel>
               <TextField 
               disabled
               className={classes.fields}
               >This is actually three fields</TextField>
-            </Grid>
-          </Grid>
-          <div>
             <p>address</p>
             <p>city</p>
             <p>state</p>
@@ -134,6 +149,13 @@ const UserProfile = () => {
           </div>
           <h4>contact info</h4> 
             <div>
+            <InputLabel
+            className={classes.fieldLabel}
+            >Email</InputLabel>
+              <TextField 
+              disabled
+              className={classes.fields}
+            ></TextField>
               <p>email</p>
               <p>phone</p>
             </div>
