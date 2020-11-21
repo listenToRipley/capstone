@@ -164,7 +164,20 @@ const CreateUser = () => {
             aria-label="verify your password"
             />
             {/* might want to change this to a popout option  */}
-            <Calendar
+            <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="password"
+            label="Password"
+            name="password"
+            type="password"
+            autoFocus
+            className={classes.fields}
+            aria-label="your new password"
+            />
+          <TextField
             variant="outlined"
             margin="normal"
             required
@@ -175,8 +188,6 @@ const CreateUser = () => {
             autoFocus
             className={classes.fields}
             aria-label="your date of birth"
-            onChange={onChange}
-            value={dob}
             />
           
         </FormControl>
