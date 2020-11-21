@@ -88,7 +88,7 @@ const Home = (props) => {
         <ListItem 
             button 
             component={Link}
-            to='/palList'
+            to='/palsList'
             aria-label='pal list'
             > 
             Your Pal's List
