@@ -196,7 +196,7 @@ return (
 )
 };
 
-//EnhancedTable 
+ 
 const PalsList = () =>  {
 const classes = useStyles();
 const [order, setOrder] = React.useState('asc');
@@ -275,9 +275,9 @@ return (
 
                 >
   
-                  <TableCell align="left">{row.pal}</TableCell>
-                  <TableCell align="right">{row.username}</TableCell>
-                  <TableCell align="left">{row.palActions}
+                  <TableCell align="center">{row.pal}</TableCell>
+                  <TableCell align="center">{row.username}</TableCell>
+                  <TableCell align="center">{row.palActions}
                     <PalActions/>
                     </TableCell>
                 </TableRow>
