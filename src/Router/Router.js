@@ -6,7 +6,7 @@ import ShoppingList from '../Components/ShopList/ShoppingList';
 import Pantry from '../Components/Pantry/Pantry';
 import PalList from '../Components/PalLists/PalsList';
 import UserProfile from '../Components/CurrentUser/UserProfile';
-import PalProfile from '../Components/PalProfile'
+import PalProfile from '../Components/PalProfile/PalProfile'
 import CreateUser from '../Components/AppFunc/CreateUser';
 import About from '../Components/About'
 import Inbox from '../Components/CurrentUser/Inbox'
