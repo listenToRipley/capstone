@@ -34,13 +34,13 @@ import {useInput} from '../../Hooks/inputHook'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: '5%',
-    paddingLeft: '5%',
-    width: '90%',
-    justifyContent: 'space-evenly'
+    margin: 10,
+    padding: 20,
+    width: '99%',
+    justifyContent: 'center'
   },
   paper: {
-    width: '100%',
+    width: '80%',
     marginTop: theme.spacing(6),
     marginLeft: theme.spacing(10),
     marginBottom: theme.spacing(2),
@@ -58,9 +58,14 @@ const useStyles = makeStyles((theme) => ({
   fields: {
     margin: theme.spacing(4),
     width: '90%',
+
+    },
+    fieldLabel: {
+      padding: theme.spacing(1),
     },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100vw', // Fix IE 11 issue.
+    paddingLeft: '8%',
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
@@ -74,8 +79,8 @@ const UserProfile = () => {
   }
 
   return (
-    <Paper
-      classes={classes.root}>
+    <div className={classes.root}>
+      <Paper className={classes.paper}>
       <Typography
       className={classes.title} 
       component="h1" 
@@ -84,19 +89,22 @@ const UserProfile = () => {
       <Card>
 
         <div>
-        <h2>User info</h2>
+        <Typography>User info</Typography>
           <Grid
             container
             component="main" 
             direction="row"
             alignItems="center"
+            className={classes.form}
           >
           <CssBaseline/>
             <Grid
             item 
-            xs={12} sm={8} md={5} component={Card} elevation={4} square>
+            xs={6} sm={8} md={2} component={Card} elevation={4} square>
             <Button>Edit</Button>
-            <InputLabel>Name</InputLabel>
+            <InputLabel
+            className={classes.fieldLabel}
+            >Name</InputLabel>
             <TextField 
             disabled
             className={classes.fields}
@@ -152,6 +160,7 @@ const UserProfile = () => {
         <button>Save</button>
       </Card>
     </Paper>
+  </div>
   )
 }
 
