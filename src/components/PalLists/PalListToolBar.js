@@ -3,6 +3,7 @@ import { fade , makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider'
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
@@ -25,7 +26,7 @@ dom.watch()
 const useStyles = makeStyles((theme) => ({
   root: {
     height:'10vh',
-    width: '80vw',
+    width: '100vw',
     marginBottom: 100
   },
   grid: {
@@ -33,11 +34,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   toolbar: {
-    margin: 10
+    margin: 5,
+    padding: theme.spacing(2),
+    textAlign: 'center',
   },
   title: {
-    margin: '2%',
-    padding: "10%",
+    padding: 5,
     display: 'none',
     justifyContent: 'center',
     [theme.breakpoints.up('sm')]: {
@@ -87,23 +89,31 @@ const useStyles = makeStyles((theme) => ({
   const classes = useStyles();
   
   return (
-    <Box>
+    <Box
+      className="root"
+      >
      <Grid 
     container
-    className="grid"
-        direction="row"
-        justify="center"
+    className={classes.grid}
+        justify="space-evenly"
         alignItems="center"
         spacing={4}
       >
-     <Paper className="toolBar">
-      <Grid item xs={12} square className="toolbar">
-      <Typography className="title">
-USERNAME'S Pal List : NAME USER ASSIGNED TO PAL LIST</Typography>
+     <Paper className={classes.toolbar}>
+      <Grid item xs={12} square >
+        <Typography className={classes.title}>
+          USERNAME'S Pal List : NAME USER ASSIGNED TO PAL LIST
+        </Typography>
       </Grid>
-    
+        <Divider/>
        <Toolbar
-          title="Update Pal List Settings">
+          title="Pal List Tool Bar">
+        <Grid
+          container
+          justify="space-around"
+          alignItems="center"
+          spacing={6}
+          >
         <Grid item xs={9} square>
         <MenuItem className={classes.search}>
           <div className={classes.searchIcon}>
@@ -121,11 +131,12 @@ USERNAME'S Pal List : NAME USER ASSIGNED TO PAL LIST</Typography>
         </Grid> 
         <Grid item xs={3} square>
           <IconButton
-          className="settingIcon"
+          className={classes.settingIcon}
           aria-label="pal list settings">
           <svg className="fas fa-cogs"></svg>
           </IconButton>
           </Grid>
+        </Grid>
         </Toolbar>
       </Paper>
     </Grid>
