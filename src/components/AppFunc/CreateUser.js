@@ -67,6 +67,14 @@ const CreateUser = () => {
   //change this selected date 
   const [dob, onChange] = useState(new Date());
 
+  const handleVerifyUsername = () => {
+    //verify this is not a username already in use
+  }
+
+  const handleVerifyEmail = () => {
+    //verify the email address isn't already in use 
+  }
+
   const handlePasswordMatch = () => {
     //need to make sure the password matches
     //if password and vPassword do not match, then they should not continue 
@@ -74,6 +82,10 @@ const CreateUser = () => {
 
   const handleDOB = () => {
     //need to had this to handle birthday input 
+  }
+
+  const handleSubmit = () => {
+    //this is where the use is actually created. 
   }
 
   return(
