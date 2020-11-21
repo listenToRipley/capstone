@@ -9,8 +9,10 @@ import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
+import { FormControl } from '@material-ui/core';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import {useInput} from '../../Hooks/inputHook'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
 const CreateUser = () => {
   const classes = useStyles();
 
+  const {value: firstName, bind: bindFirstName, reset: resetFirstName} = useInput('')
+  const {value: lastName, bind: bindLastName, reset: resetLastName} = useInput('')
+
+
+  //change this selected date 
   const [dob, onChange] = useState(new Date());
 
   const handleDOB = () => {
@@ -78,28 +85,34 @@ const CreateUser = () => {
        <Grid
        item 
        xs={12} sm={8} md={5} component={Card} elevation={4} square>
-       <form 
+       <FormControl
         className={classes.form} 
         > 
           <TextField
             variant="outlined"
             margin="normal"
             required
+            fullWidth
             id="firstName"
             label="First Name"
             name="firstName"
+            type="text"
             autoFocus
             className={classes.fields}
+            aria-label="your first name"
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
+            fullWidth
             id="lastName"
             label="Last Name"
             name="lastName"
+            type="text"
             autoFocus
             className={classes.fields}
+            aria-label="your last name"
           />
           <TextField
             variant="outlined"
@@ -110,17 +123,24 @@ const CreateUser = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            type="email"
+            autoFocus
             className={classes.fields}
+            aria-label="your email address"
             />
 
           <TextField
             variant="outlined"
             margin="normal"
             required
+            fullWidth
             id="password"
             label="Password"
             name="password"
+            type="password"
+            autoFocus
             className={classes.fields}
+            aria-label="your new password"
             />
           <TextField
             variant="outlined"
@@ -129,8 +149,12 @@ const CreateUser = () => {
             id="passwordVerify"
             label="Password Verification"
             name="password"
+            type="password"
+            autoFocus
             className={classes.fields}
+            aria-label="verify your password"
             />
+            {/* might want to change this to a popout option  */}
             <Calendar
             variant="outlined"
             margin="normal"
@@ -138,12 +162,15 @@ const CreateUser = () => {
             id="birthday"
             label="Birthday"
             name="birthday"
+            type="date"
+            autoFocus
             className={classes.fields}
+            aria-label="your date of birth"
             onChange={onChange}
             value={dob}
             />
           
-        </form>
+        </FormControl>
         <Button    
           style={{margin: '15px'}} 
           type="submit" 
