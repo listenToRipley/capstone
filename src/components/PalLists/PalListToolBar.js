@@ -1,5 +1,5 @@
 import React from 'react';
-import { lighten, fade , makeStyles } from '@material-ui/core/styles';
+import { fade , makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -25,19 +25,19 @@ dom.watch()
 const useStyles = makeStyles((theme) => ({
   root: {
     height:'10vh',
-    width: '80vw'
+    width: '80vw',
+    marginBottom: 100
   },
   grid: {
     padding: theme.spacing(2),
     marginRight: theme.spacing(2),
   },
   toolbar: {
-
+    margin: 10
   },
   title: {
-    flexGrow: 1,
-    margin: 2,
-    padding: 10,
+    margin: '2%',
+    padding: "10%",
     display: 'none',
     justifyContent: 'center',
     [theme.breakpoints.up('sm')]: {
@@ -91,14 +91,13 @@ const useStyles = makeStyles((theme) => ({
      <Grid 
     container
     className="grid"
-    component="main" 
         direction="row"
         justify="center"
         alignItems="center"
-        spacing={2}
+        spacing={4}
       >
      <Paper className="toolBar">
-      <Grid item xs={12}  square className="toolbar">
+      <Grid item xs={12} square className="toolbar">
       <Typography className="title">
 USERNAME'S Pal List : NAME USER ASSIGNED TO PAL LIST</Typography>
       </Grid>

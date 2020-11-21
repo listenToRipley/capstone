@@ -33,12 +33,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: 10,
     padding: 20,
-    width: '99%'
+    width: '99%',
+    justifyContent: 'center'
   },
   paper: {
     width: '80%',
-    marginTop: theme.spacing(2),
-    marginLeft: theme.spacing(4),
+    marginTop: theme.spacing(6),
+    marginLeft: theme.spacing(10),
     marginBottom: theme.spacing(2),
     justifyContent: 'center'
   },
@@ -112,10 +113,9 @@ const headCells = [
 ];
 
 const PalsHead = (props) =>  {
+  const { classes, order, orderBy, rowCount, onRequestSort } = props;
 
-const { classes, order, orderBy, rowCount, onRequestSort } = props;
-
-const createSortHandler = (property) => (event) => {
+  const createSortHandler = (property) => (event) => {
 onRequestSort(event, property);
 };
 
