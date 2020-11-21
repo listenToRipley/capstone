@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
@@ -8,7 +9,8 @@ import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import Calendar from 'react-calendar'
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fields: {
     margin: theme.spacing(4),
-    width: '25ch',
+    width: '90%',
     },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -51,6 +53,12 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateUser = () => {
   const classes = useStyles();
+
+  const [dob, onChange] = useState(new Date());
+
+  const handleDOB = () => {
+    //need to had this to handle birthday input 
+  }
 
   return(
     <Paper
@@ -123,7 +131,7 @@ const CreateUser = () => {
             name="password"
             className={classes.fields}
             />
-            <TextField
+            <Calendar
             variant="outlined"
             margin="normal"
             required
@@ -131,6 +139,8 @@ const CreateUser = () => {
             label="Birthday"
             name="birthday"
             className={classes.fields}
+            onChange={onChange}
+            value={dob}
             />
           
         </form>
