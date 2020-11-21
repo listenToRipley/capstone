@@ -12,12 +12,8 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 import PalListToolBar from './PalListToolBar'
 import PalActions from './PalActions'
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faCogs} from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
 
-library.add(faCogs)
-dom.watch()
 
 //!!!IMPORTANT NOTE ~ there will be two versions of the pal list. 
   //there is the current user :
