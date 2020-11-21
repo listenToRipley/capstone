@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -35,15 +36,29 @@ dom.watch()
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    marginTop: theme.spacing(4),
+    margin: 10,
+    padding: 20,
+    width: '99%'
+  },
+  title: {
+    flexGrow: 1,
+    margin: 10,
+    padding: 20,
+    display: 'none',
+    justifyContent: 'center',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
   },
   paper: {
-    width: '90%',
+    width: '80%',
+    marginTop: theme.spacing(2),
     marginLeft: theme.spacing(4),
     marginBottom: theme.spacing(2),
+    justifyContent: 'center'
   },
   table: {
+    width: '100%',
     minWidth: 450,
   },
   visuallyHidden: {
@@ -205,6 +220,8 @@ const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsP
 
 return (
 <div className={classes.root}>
+<Typography className="title">
+USERNAME'S Pal List : NAME USER ASSIGNED TO PAL LIST</Typography>
 <PalListToolBar/>    
 {/* move to the other side */}
   <Paper className={classes.paper}>

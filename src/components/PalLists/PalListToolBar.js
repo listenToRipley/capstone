@@ -2,7 +2,6 @@ import React from 'react';
 import { lighten, fade , makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuItem from '@material-ui/core/MenuItem';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import Paper from '@material-ui/core/Paper';
@@ -22,19 +21,9 @@ dom.watch()
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '90%',
-    marginTop: theme.spacing(4),
+    width: '90%'
   },
-  title: {
-    flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-
   search: {
-
     position: 'relative',
     marginLeft: 100,
     borderRadius: theme.shape.borderRadius,
@@ -43,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
+
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
@@ -68,22 +58,8 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '40ch',
     },
-  },
-  table: {
-    minWidth: 450,
-  },
-  visuallyHidden: {
-    border: 0,
-    clip: 'rect(0 0 0 0)',
-    height: 1,
-    margin: -1,
-    overflow: 'hidden',
-    padding: 0,
-    position: 'absolute',
-    top: 20,
-    width: 1,
   }
 }));
 
@@ -116,8 +92,7 @@ const useToolbarStyles = makeStyles((theme) => ({
     <Paper className="toolBar">
       <Toolbar
           title="Update Pal List Settings">
-        <Typography>USERNAME'S Pal List : NAME USER ASSIGNED TO PAL LIST</Typography>
-      
+    
         <MenuItem className={classes.search}>
           <div className={classes.searchIcon}>
             <SearchIcon />
