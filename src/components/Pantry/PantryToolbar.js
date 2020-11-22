@@ -9,8 +9,7 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs } from '@fortawesome/free-solid-svg-icons';
 import PantryActions from './PantryActions'
 
-
-library.add(faShoppingBasket, faCartArrowDown, faPlusCircle) 
+library.add(faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs) 
 dom.watch()
 
 const useToolbarStyles = makeStyles((theme) => ({
@@ -61,9 +60,9 @@ const PantryToolbar = (props) => {
          </Tooltip>
 
          <Tooltip title="Pantry Settings">
-           <IconButton aria-label="pantry setting">
-           <svg className="fas fa-cogs"></svg>
-           </IconButton>
+           <PantryActions
+             aria-label="pantrySettings"
+           />
          </Tooltip>
 
      </Toolbar>
