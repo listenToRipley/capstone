@@ -28,6 +28,8 @@ import {useInput} from '../../Hooks/inputHook'
 //diets 
 //allergies 
 
+let mock = ['apples', 'bananas', 'rasberries', 'potatos']
+
 //SAVE BUTTON TO COMMIT ANY CHANGES
 
 //need a view mode ~ see pal profile 
@@ -88,13 +90,15 @@ const UserProfile = () => {
       <Typography
       className={classes.title} 
       component="h1" 
-      variant="h5"
+      variant="h4"
       >  USERNAME Profile </Typography>
       <Card>
 
         <div>
         <Typography
         className={classes.subtitle} 
+        component="h1" 
+        variant="h5"
         >User info</Typography>
           <Grid
             container
@@ -131,7 +135,7 @@ const UserProfile = () => {
               ></TextField>
             <InputLabel
             className={classes.fieldLabel}
-            >Birthday Month</InputLabel>
+            >Birthday</InputLabel>
               <TextField 
               disabled
               type="date"
@@ -141,8 +145,10 @@ const UserProfile = () => {
             <Button>Edit</Button>
           </Grid>
 
-            <div>
-            <Typography
+        <div>
+          <Typography
+          component="h1" 
+          variant="h5"
           className={classes.subtitle} 
           >Location</Typography>
             <Grid
@@ -191,6 +197,8 @@ const UserProfile = () => {
 
         <div>
           <Typography
+          component="h1" 
+          variant="h5"
           className={classes.subtitle} 
           >Contact Info</Typography>
             <Grid
@@ -225,16 +233,41 @@ const UserProfile = () => {
         </div>
         <div>
         <Typography
+          component="h1" 
+          variant="h5"
           className={classes.subtitle} 
           >Taste Preferences</Typography>
-          <p>likes</p>
-          <p>dislikes</p>
-          <p>allergies</p>
-          <p>diets</p>
+          {/* Will need a way to add to each of these fields and remove.  */}
+          <div>
+          <Typography
+          className={classes.subtitle} 
+          >Likes</Typography>
+          </div>
+
+          <div>
+          <Typography
+          className={classes.subtitle} 
+          >Dislikes</Typography>
+          </div>
+
+          <div>
+          <Typography
+          className={classes.subtitle} 
+          >Diets</Typography>
+          </div>
+
+          <div>
+          <Typography
+          className={classes.subtitle} 
+          >Allergies</Typography>
+          </div>
+
         </div>
 
         <div>
         <Typography
+          component="h1" 
+          variant="h5"
           className={classes.subtitle} 
           >Display Preferences</Typography>
           <p>birthday</p>
