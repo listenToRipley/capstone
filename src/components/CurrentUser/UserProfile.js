@@ -171,7 +171,7 @@ const UserProfile = () => {
               disabled
               className={classes.fields}
               ></TextField>
-                          <InputLabel
+            <InputLabel
             className={classes.fieldLabel}
             >State</InputLabel>
               <TextField 
@@ -185,22 +185,43 @@ const UserProfile = () => {
               disabled
               className={classes.fields}
               ></TextField>
-            </Grid>
-            </Grid>
-            </div>
-  
-          <h4>contact info</h4> 
-            <div>
+          </Grid>
+         </Grid>
+        </div>
+
+        <div>
+            <Typography
+          className={classes.subtitle} 
+          >Contact Info</Typography>
+            <Grid
+              container
+              component="main" 
+              direction="row"
+              alignItems="center"
+              className={classes.form}
+            >
+            <CssBaseline/>
+            <Grid
+              item
+              xs={2} sm={8} md={2} component={Card} elevation={4}
+            >
+            <InputLabel
+            className={classes.fieldLabel}
+            >Phone</InputLabel>
+              <TextField 
+              disabled
+              className={classes.fields}
+              ></TextField>
             <InputLabel
             className={classes.fieldLabel}
             >Email</InputLabel>
               <TextField 
               disabled
               className={classes.fields}
-            ></TextField>
-              <p>email</p>
-              <p>phone</p>
-            </div>
+              ></TextField>
+          </Grid>
+         </Grid>
+        </div>
         </div>
         <div>
         <h3>Preferences</h3>
