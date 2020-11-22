@@ -55,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
     },
   },
+  subtitle: {
+    padding: 20,
+  },
   fields: {
     margin: theme.spacing(4),
     width: '90%',
@@ -73,9 +76,10 @@ const useStyles = makeStyles((theme) => ({
 
 const UserProfile = () => {
   const classes = useStyles();
+  //need to populate originally from the sign in info of the user
 
   const handleUpdates = () => {
-
+    //would be better to have an on handle change? 
   }
 
   return (
@@ -89,7 +93,9 @@ const UserProfile = () => {
       <Card>
 
         <div>
-        <Typography>User info</Typography>
+        <Typography
+        className={classes.subtitle} 
+        >User info</Typography>
           <Grid
             container
             component="main" 
@@ -100,7 +106,7 @@ const UserProfile = () => {
           <CssBaseline/>
             <Grid
             item 
-            xs={8} sm={8} md={2} component={Card} elevation={4} square>
+            xs={8} sm={8} md={2} component={Card} elevation={4} >
 
               <InputLabel
               className={classes.fieldLabel}
@@ -134,19 +140,55 @@ const UserProfile = () => {
             </Grid>
             <Button>Edit</Button>
           </Grid>
-          <div>
-          <InputLabel
+
+            <div>
+            <Typography
+          className={classes.subtitle} 
+          >Location</Typography>
+            <Grid
+              container
+              component="main" 
+              direction="row"
+              alignItems="center"
+              className={classes.form}
+            >
+            <CssBaseline/>
+            <Grid
+              item
+              xs={2} sm={8} md={2} component={Card} elevation={4}
+            >
+            <InputLabel
             className={classes.fieldLabel}
-            >Location</InputLabel>
+            >Address</InputLabel>
               <TextField 
               disabled
               className={classes.fields}
-              >This is actually three fields</TextField>
-            <p>address</p>
-            <p>city</p>
-            <p>state</p>
-            <p>country</p>
-          </div>
+              ></TextField>
+            <InputLabel
+            className={classes.fieldLabel}
+            >City</InputLabel>
+              <TextField 
+              disabled
+              className={classes.fields}
+              ></TextField>
+                          <InputLabel
+            className={classes.fieldLabel}
+            >State</InputLabel>
+              <TextField 
+              disabled
+              className={classes.fields}
+              ></TextField>
+            <InputLabel
+            className={classes.fieldLabel}
+            >Country</InputLabel>
+              <TextField 
+              disabled
+              className={classes.fields}
+              ></TextField>
+            </Grid>
+            </Grid>
+            </div>
+  
           <h4>contact info</h4> 
             <div>
             <InputLabel
