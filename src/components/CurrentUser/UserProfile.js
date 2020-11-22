@@ -13,8 +13,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
+import GridListTile from '@material-ui/core/GridListTile'
 import Card from '@material-ui/core/Card';
-import { FormControl } from '@material-ui/core';
+import { FormControl, GridList } from '@material-ui/core';
 // import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../../Hooks/inputHook'
@@ -291,14 +292,27 @@ const UserProfile = () => {
           variant="h5"
           className={classes.subtitle} 
           >Display Preferences</Typography>
-          <p>birthday</p>
-          <p>location</p>
-          <p>email</p>
-          <p>phone</p>
-          <p>likes</p>
-          <p>dislikes</p>
-          <p>allergies</p>
-          <p>diets</p>
+          <Grid
+            container
+            component="main" 
+            direction="row"
+            alignItems="center"
+            className={classes.form}
+          >
+            <CssBaseline/>
+            <GridList>
+            <GridListTile>birthday</GridListTile>
+           <p>location</p>
+           <p>email</p>
+           <p>phone</p>
+           <p>likes</p>
+           <p>dislikes</p>
+           <p>allergies</p>
+           <p>diets</p>
+
+            </GridList>
+          </Grid>
+          
         </div>
         <button>Save</button>
       </Card>
