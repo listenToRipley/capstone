@@ -3,7 +3,11 @@ import {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
+import Box from '@material-ui/core/Box'
+import { shadows } from '@material-ui/system';
 import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
+import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
@@ -74,6 +78,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
+  tastes: {
+    width: '100vw', // Fix IE 11 issue.
+    paddingLeft: '5%',
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    borderRadius: 3
+  }
 }));
 
 const UserProfile = () => {
@@ -238,7 +249,15 @@ const UserProfile = () => {
           className={classes.subtitle} 
           >Taste Preferences</Typography>
           {/* Will need a way to add to each of these fields and remove.  */}
-          <div>
+        <div 
+        className={classes.form}
+        >
+        <Box
+        className={classes.tastes}
+        boxShadow={3}
+        >
+
+        <div>
           <Typography
           className={classes.subtitle} 
           >Likes</Typography>
@@ -261,8 +280,10 @@ const UserProfile = () => {
           className={classes.subtitle} 
           >Allergies</Typography>
           </div>
+        </Box>
 
         </div>
+      </div>
 
         <div>
         <Typography
