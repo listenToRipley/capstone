@@ -7,6 +7,10 @@ const PantryActions = () => {
     //add action here 
   }
 
+  const handleItemAdd = () => {
+    //add items to add 
+  }
+
   return (
     <div>
       This will allow the name to be updated 
