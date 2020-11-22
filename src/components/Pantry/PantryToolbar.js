@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,6 +7,8 @@ import IconButton  from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs } from '@fortawesome/free-solid-svg-icons';
+import PantryActions from './PantryActions'
+
 
 library.add(faShoppingBasket, faCartArrowDown, faPlusCircle) 
 dom.watch()
@@ -38,10 +38,6 @@ const useToolbarStyles = makeStyles((theme) => ({
 const PantryToolbar = (props) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
-
-  const handleNameUpdate = () => {
-    //add action here 
-  }
 
   const handleItemAdd = () => {
     //add items to add 

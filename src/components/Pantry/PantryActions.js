@@ -1,1 +1,11 @@
-//create pop out for name change. 
+import React from 'react'
+
+const PantryActions = () => {
+
+  const handleNameUpdate = () => {
+    //add action here 
+  }
+
+}
+
+export default PantryActions 
