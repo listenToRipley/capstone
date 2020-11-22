@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,20 +9,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
-import IconButton  from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
 import ItemActions from './ItemActions'
 import PantryActions from './PantryToolbar'
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingBasket, faCartArrowDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faShoppingBasket, faCartArrowDown, faPlusCircle) 
-dom.watch()
-
 
  //IMPORTANT NOTES!!! 
   //~there are three version of this component based on users roles on current list  
@@ -187,70 +176,6 @@ PantryHead.propTypes = {
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
-
-const useToolbarStyles = makeStyles((theme) => ({
-  root: {
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(1),
-  },
-  highlight:
-    theme.palette.type === 'light'
-      ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
-      : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
-  title: {
-    flex: '1 1 90%',
-  },
-}));
-
-//EnhancedTableToolbar
-const PantryToolbar = (props) => {
-  const classes = useToolbarStyles();
-  const { numSelected } = props;
-
-  return (
-    <Toolbar
-      className={clsx(classes.root, {
-        [classes.highlight]: numSelected > 0,
-      })}
-    >
-      {numSelected > 0 ? (
-        <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-        {/* This will have to be  imported from SQL*/}
-          Your Pantry
-          {/* add items there needs to be a button here */}
-        </Typography>
-      )}
-
-      {numSelected > 0 ? (
-        <Tooltip title="Finished Shopping">
-          <IconButton aria-label="finish shopping">
-          <svg class="fas fa-cart-arrow-down"></svg> 
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Start Shopping">
-          <IconButton aria-label="start shopping">
-          <svg className="fas fa-shopping-basket"></svg>
-          </IconButton>
-        </Tooltip>
-        )}
-    </Toolbar>
-  );
-};
-
-PantryToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-}
 
 
 const Pantry = () =>  {
