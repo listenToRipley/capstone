@@ -17,7 +17,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton  from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import ItemActions from './ItemActions'
-import PantryActions from './PantryActions'
+import PantryActions from './PantryToolbar'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -252,7 +252,7 @@ PantryToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 }
 
-//EnhancedTable 
+
 const Pantry = () =>  {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -313,7 +313,7 @@ const Pantry = () =>  {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <PantryToolbar  numSelected={selected.length} />
+        <PantryActions />
         <TableContainer>
           <Table
             className={classes.table}
