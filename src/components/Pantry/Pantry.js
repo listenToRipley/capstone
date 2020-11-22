@@ -14,19 +14,16 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
+import IconButton  from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import ItemActions from './ItemActions'
 import PantryActions from './PantryActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBasket, faCartArrowDown, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
-
-library.add(faShoppingBasket, faCartArrowDown) 
+library.add(faShoppingBasket, faCartArrowDown, faPlusCircle) 
 dom.watch()
 
-
-  //IMPORTANT NOTE!!!
 
  //IMPORTANT NOTES!!! 
   //~there are three version of this component based on users roles on current list  
@@ -279,6 +276,7 @@ const Pantry = () =>  {
     setSelected([]);
   };
 
+  //need to work on this since it is handle everything right now 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
