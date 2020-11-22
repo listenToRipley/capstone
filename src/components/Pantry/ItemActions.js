@@ -12,8 +12,8 @@ const ItemActions = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const options = [
-    'Remove',
-    'Update'
+    'Update',
+    'Remove'
   ];
 
   const open = Boolean(anchorEl);
