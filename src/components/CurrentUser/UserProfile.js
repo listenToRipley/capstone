@@ -190,7 +190,7 @@ const UserProfile = () => {
         </div>
 
         <div>
-            <Typography
+          <Typography
           className={classes.subtitle} 
           >Contact Info</Typography>
             <Grid
@@ -224,7 +224,9 @@ const UserProfile = () => {
         </div>
         </div>
         <div>
-        <h3>Preferences</h3>
+        <Typography
+          className={classes.subtitle} 
+          >Taste Preferences</Typography>
           <p>likes</p>
           <p>dislikes</p>
           <p>allergies</p>
@@ -232,7 +234,9 @@ const UserProfile = () => {
         </div>
 
         <div>
-          <h3>Display Preferences - update by toggle</h3>
+        <Typography
+          className={classes.subtitle} 
+          >Display Preferences</Typography>
           <p>birthday</p>
           <p>location</p>
           <p>email</p>
