@@ -10,6 +10,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
+import Checkbox from '@material-ui/core/Checkbox';
 import ItemActions from './ItemActions'
 import PantryActions from './PantryToolbar'
 
@@ -163,7 +164,8 @@ PantryHead.propTypes = {
   onRequestSort: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
-}
+
+};
 
 
 const Pantry = () =>  {
@@ -179,7 +181,6 @@ const Pantry = () =>  {
     setOrderBy(property);
   };
 
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -190,7 +191,8 @@ const Pantry = () =>  {
   };
 
 
-  
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -205,16 +207,19 @@ const Pantry = () =>  {
               classes={classes}
               order={order}
               orderBy={orderBy}
-              onRequestSort={handleRequestSort}  
+              onRequestSort={handleRequestSort}
+            
             />
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
+             
 
                   return (
                     <TableRow
                       hover
+                      tabIndex={-1}
                     >
                       <TableCell component="th" scope="row" align="center">
                         {row.quantity}

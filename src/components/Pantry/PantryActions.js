@@ -2,6 +2,7 @@ import React from 'react'
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faCogs } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,7 +16,7 @@ const PantryActions = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const options = [
-    'Update Name'
+    'Update Pantry Name'
   ];
 
    const open = Boolean(anchorEl);

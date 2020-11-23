@@ -43,10 +43,10 @@ const ItemActions = (props) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-       
+       <MoreVertIcon/>
       </IconButton>
       <Menu
-      
+
         anchorEl={anchorEl}
         keepMounted
         open={open}
