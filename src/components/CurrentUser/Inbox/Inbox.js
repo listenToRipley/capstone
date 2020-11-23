@@ -156,7 +156,6 @@ const Inbox = (props) => {
                   </TableCell>
                   <TableCell align="left" >{data.sender}</TableCell>
                   <TableCell align="left" >{data.pal}</TableCell>
-                  <TableCell align="left" >{data.pal}</TableCell>
                   <TableCell align="right" >{data.actions}</TableCell>
                 </TableRow>
               ))}
