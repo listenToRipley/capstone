@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box'
+import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 
 //needs to get added to NavBar or should this be notification in the top bar, bell Icon?
@@ -42,7 +42,8 @@ import Grid from '@material-ui/core/Grid';
           width: '100%'
         },
         reqBody: {
-
+          width:'100%',
+          padding:'25px'
         }
       }));
   
@@ -52,7 +53,7 @@ const Inbox = () => {
 
   return (
   <div className={classes.root}>
-  <Box>
+
     <Paper classes={classes.paper}>
     <Typography 
         component="h1"
@@ -67,7 +68,8 @@ const Inbox = () => {
       >
         <Grid
         item
-        component={Box}
+        xs={2} sm={8} md={2} 
+        component={Card}
         elevation={4}
         className={classes.reqBody}>
           <Typography
@@ -78,7 +80,12 @@ const Inbox = () => {
           <p>sent</p>
           <p>pending approval</p>
         </Grid>
-        <div>
+        <Grid
+        item
+        xs={2} sm={8} md={2} 
+        component={Card}
+        elevation={4}
+        className={classes.reqBody}>
           <Typography
           component="h1"
           variant="h6"
@@ -87,8 +94,13 @@ const Inbox = () => {
           <p>sent</p>
           <p>Should include whose list this was sent to</p>
           <p>pending approval</p>
-        </div>
-        <div>
+        </Grid>
+        <Grid
+        item
+        xs={2} sm={8} md={2} 
+        component={Card}
+        elevation={4}
+        className={classes.reqBody}>
           <Typography
           component="h1"
           variant="h6"
@@ -96,10 +108,10 @@ const Inbox = () => {
           >Merge</Typography>
           <p>sent</p>
           <p>pending approval</p>
-        </div>
+        </Grid>
         </Grid>
       </Paper>
-    </Box>
+    
   </div>
   )
 
