@@ -65,7 +65,7 @@ const ShopReq = (props) => {
         }}
       >
         {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Update'} onClick={handleClose}>
+          <MenuItem key={option} selected={option === ''} onClick={handleClose}>
             {option}
           </MenuItem>
         ))}

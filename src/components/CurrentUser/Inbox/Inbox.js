@@ -61,6 +61,7 @@ import MergeReq from './MergeReq'
       }));
   
 
+      //this can be on login pull
     const createPalData = (reqId, sender, pal, action) => {
       return {reqId, sender, pal, action}
     }
