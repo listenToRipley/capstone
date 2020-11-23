@@ -60,9 +60,9 @@ const PantryToolbar = (props) => {
          </Tooltip>
 
          <Tooltip title="Pantry Settings">
-           <PantryActions
-             aria-label="pantrySettings"
-           />
+           <IconButton aria-label="pantry setting">
+           <PantryActions/>
+           </IconButton>
          </Tooltip>
 
      </Toolbar>

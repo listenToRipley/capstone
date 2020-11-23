@@ -39,14 +39,14 @@ const ItemActions = (props) => {
     <div>
       <IconButton
         aria-label="more"
-        aria-controls="long-menu"
+
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon />
+       
       </IconButton>
       <Menu
-        id="long-menu"
+      
         anchorEl={anchorEl}
         keepMounted
         open={open}
