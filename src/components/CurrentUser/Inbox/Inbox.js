@@ -24,20 +24,17 @@ import Box from '@material-ui/core/Box'
           marginLeft: theme.spacing(4),
           marginBottom: theme.spacing(2),
         },
-        table: {
-          minWidth: 750,
+        title: {
+          padding: 10,
+          display: 'none',
+          justifyContent: 'center',
+          [theme.breakpoints.up('sm')]: {
+            display: 'block',
+          },
         },
-        visuallyHidden: {
-          border: 0,
-          clip: 'rect(0 0 0 0)',
-          height: 1,
-          margin: -1,
-          overflow: 'hidden',
-          padding: 0,
-          position: 'absolute',
-          top: 20,
-          width: 1,
-        }
+        subtitle: {
+          padding: 20,
+        },
       }));
   
 
@@ -48,20 +45,36 @@ const Inbox = () => {
   <div className={classes.root}>
   <Box>
     <Paper classes={classes.paper}>
-      <h1>Requests</h1>
+      <Typography 
+      component="h1"
+      variant="h4"
+      className={classes.title}
+      >Requests</Typography>
       <div>
-        <h2>Pal</h2>
+        <Typography
+        component="h1"
+        variant="h6"
+        className={classes.subtitle}
+        >Pal</Typography>
         <p>sent</p>
         <p>pending approval</p>
       </div>
       <div>
-        <h2>Shopping</h2>
+        <Typography
+        component="h1"
+        variant="h6"
+        className={classes.subtitle}
+        >Shopping</Typography>
         <p>sent</p>
         <p>Should include whose list this was sent to</p>
         <p>pending approval</p>
       </div>
       <div>
-        <h2>Merge</h2>
+        <Typography
+        component="h1"
+        variant="h6"
+        className={classes.subtitle}
+        >Merge</Typography>
         <p>sent</p>
         <p>pending approval</p>
       </div>
