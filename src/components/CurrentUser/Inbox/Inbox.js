@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box'
 
 //needs to get added to NavBar or should this be notification in the top bar, bell Icon?
 
@@ -14,8 +16,8 @@ import Paper from '@material-ui/core/Paper';
 
       const useStyles = makeStyles((theme) => ({
         root: {
-          width: '100%',
-          marginTop: theme.spacing(4),
+          width: '95%',
+          margin: theme.spacing(4),
         },
         paper: {
           width: '90%',
@@ -43,7 +45,9 @@ const Inbox = () => {
   const classes = useStyles();
 
   return (
-    <Paper>
+  <div className={classes.root}>
+  <Box>
+    <Paper classes={classes.paper}>
       <h1>Requests</h1>
       <div>
         <h2>Pal</h2>
@@ -62,7 +66,8 @@ const Inbox = () => {
         <p>pending approval</p>
       </div>
     </Paper>
-
+    </Box>
+  </div>
   )
 
 }
