@@ -148,7 +148,7 @@ const Inbox = (props) => {
                 <TableCell>Req Id </TableCell>
                 <TableCell>Sender </TableCell>
                 <TableCell>Pal </TableCell>
-                <TableCell>Actions </TableCell>
+                <TableCell align="center">Actions </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -159,7 +159,7 @@ const Inbox = (props) => {
                   </TableCell>
                   <TableCell align="left" >{data.sender}</TableCell>
                   <TableCell align="left" >{data.pal}</TableCell>
-                  <TableCell align="right" >
+                  <TableCell align="center" >
                     <PalReq 
                     reqId={data.reqId} 
                     sender={data.sender}
