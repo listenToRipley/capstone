@@ -38,8 +38,8 @@ import Grid from '@material-ui/core/Grid';
         },
         inboxReq: {
           margin: theme.spacing(2),
-          direction:"column",
-          alignItems:"center"
+          alignItems:"space-evenly",
+          width: '100%'
         },
         reqBody: {
 
@@ -62,9 +62,14 @@ const Inbox = () => {
       <Grid
       container
       component="main"
+      direction="column"
       className={classes.inboxReq}
       >
-        <div>
+        <Grid
+        item
+        component={Box}
+        elevation={4}
+        className={classes.reqBody}>
           <Typography
           component="h1"
           variant="h6"
@@ -72,7 +77,7 @@ const Inbox = () => {
           >Pal</Typography>
           <p>sent</p>
           <p>pending approval</p>
-        </div>
+        </Grid>
         <div>
           <Typography
           component="h1"
