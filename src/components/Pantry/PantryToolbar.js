@@ -1,7 +1,6 @@
 import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import IconButton  from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import MenuItem from '@material-ui/core/MenuItem'
@@ -28,10 +27,10 @@ const PantryToolbar = (props) => {
   }
 
   return (
-    <div className='root' >
-      <Toolbar>
+    <div >
+      <Toolbar className='root'>
         <Typography
-        className='title' > 
+        className='title'> 
         Your Pantry
          </Typography>
          <div className='searchbar'>
@@ -46,9 +45,7 @@ const PantryToolbar = (props) => {
              inputProps={{ 'aria-label': 'search' }}
            />
           </MenuItem>
-
          </div>
-
          <div
          className='add'>
          <Tooltip title="Add Item to Pantry">
@@ -56,18 +53,13 @@ const PantryToolbar = (props) => {
            <svg className="fas fa-plus-circle"></svg>
            </IconButton>
          </Tooltip>
-
          </div>
-         
          <div
          className='settings'>
-         <Tooltip title="Pantry Settings">
-           <IconButton aria-label="pantry setting">
+          <Tooltip title="Pantry Settings">
            <PantryActions/>
-           </IconButton>
-         </Tooltip>
+         </Tooltip> 
          </div>
-
      </Toolbar>
     </div>
   )

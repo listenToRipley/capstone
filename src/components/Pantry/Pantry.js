@@ -184,14 +184,6 @@ const Pantry = (props) =>  {
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
 
   //need to work on this since it is handle everything right now 
   const handleClick = (event, name) => {
@@ -244,7 +236,6 @@ const Pantry = (props) =>  {
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              onSelectAllClick={handleSelectAllClick}
               rowCount={rows.length}
             
             />
@@ -258,7 +249,6 @@ const Pantry = (props) =>  {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={index}
