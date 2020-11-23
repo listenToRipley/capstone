@@ -24,18 +24,16 @@ const PantryToolbar = (props) => {
   }
 
   const handFindPantryItem = () => {
-    
+    //see if you currently have something in your pantry
   }
 
   return (
     <div className='root' >
       <Toolbar>
-        <Typography 
-        className='title' 
-        > 
+        <Typography
+        className='title' > 
         Your Pantry
          </Typography>
-
          <div className='searchbar'>
           <MenuItem className='search'>
            <div className='searchIcon'>
@@ -72,8 +70,7 @@ const PantryToolbar = (props) => {
 
      </Toolbar>
     </div>
-  );
-};
-
+  )
+}
 
 export default PantryToolbar
