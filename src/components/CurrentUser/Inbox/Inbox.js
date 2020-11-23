@@ -62,8 +62,8 @@ import TableRow from '@material-ui/core/TableRow';
       return {reqId, sender, pal, action}
     }
 
-    const createShopData = (reqId, quantity, items, unit, actions) => {
-      return { reqId, quantity, items, unit, actions};
+    const createShopData = (reqId, sender, quantity, items, unit, actions) => {
+      return { reqId, sender ,quantity, items, unit, actions};
     }
 
     const createMergeData = (reqId, sender, pal, action) => {
@@ -79,19 +79,19 @@ import TableRow from '@material-ui/core/TableRow';
     ]
 
     const mockFood = [
-      createShopData(1 ,305, 'Cupcake', 3.7),
-      createShopData(2 ,452, 'Donut', 3.7),
-      createShopData(3 ,305, 'Eclair', 3.7), 
-      createShopData(4 ,5221, 'Frozen yoghurt', 159),  
-      createShopData(5 ,5, 'Gingerbread', 356),  
-      createShopData(6 ,1, 'Honeycomb', 408), 
-      createShopData(7 ,32, 'Ice cream sandwich', 237), 
-      createShopData(8 ,66, 'Jelly Bean', 375), 
-      createShopData(9 ,23, 'KitKat', 518),  
-      createShopData(10 ,6565, 'Lollipop', 392),
-      createShopData(11 ,13.2, 'Marshmallow', 318),
-      createShopData(12 ,33, 'Nougat', 360),
-      createShopData(13 ,6666, 'Oreo', 437)
+      createShopData(1 , "sender",305, 'Cupcake', 3.7),
+      createShopData(2 , "sender",452, 'Donut', 3.7),
+      createShopData(3 , "sender",305, 'Eclair', 3.7), 
+      createShopData(4 , "sender",5221, 'Frozen yoghurt', 159),  
+      createShopData(5 , "sender",5, 'Gingerbread', 356),  
+      createShopData(6 , "sender",1, 'Honeycomb', 408), 
+      createShopData(7 , "sender",32, 'Ice cream sandwich', 237), 
+      createShopData(8 , "sender",66, 'Jelly Bean', 375), 
+      createShopData(9 , "sender",23, 'KitKat', 518),  
+      createShopData(10, "sender" ,6565, 'Lollipop', 392),
+      createShopData(11, "sender" ,13.2, 'Marshmallow', 318),
+      createShopData(12, "sender" ,33, 'Nougat', 360),
+      createShopData(13, "sender" ,6666, 'Oreo', 437)
     ];
     
 
@@ -142,9 +142,8 @@ const Inbox = (props) => {
             <TableHead>
               <TableRow>
                 <TableCell>Req Id </TableCell>
-                <TableCell>Quantity </TableCell>
-                <TableCell>Item </TableCell>
-                <TableCell>Unit </TableCell>
+                <TableCell>Sender </TableCell>
+                <TableCell>Pal </TableCell>
                 <TableCell>Actions </TableCell>
               </TableRow>
             </TableHead>
@@ -184,8 +183,10 @@ const Inbox = (props) => {
             <TableHead>
               <TableRow>
                 <TableCell>Req Id </TableCell>
-                <TableCell>Sender </TableCell>
-                <TableCell>Pal </TableCell>
+                <TableCell>Sender</TableCell>
+                <TableCell>Quantity </TableCell>
+                <TableCell>Item </TableCell>
+                <TableCell>Unit </TableCell>
                 <TableCell>Actions </TableCell>
               </TableRow>
             </TableHead>
@@ -195,6 +196,7 @@ const Inbox = (props) => {
                   <TableCell component="th" scope="data">
                     {data.reqId}
                   </TableCell>
+                  <TableCell align="left" >{data.sender}</TableCell>
                   <TableCell align="left" >{data.quantity}</TableCell>
                   <TableCell align="left" >{data.items}</TableCell>
                   <TableCell align="left" >{data.unit}</TableCell>
