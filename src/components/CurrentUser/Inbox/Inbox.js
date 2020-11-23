@@ -26,10 +26,10 @@ import Grid from '@material-ui/core/Grid';
           marginBottom: theme.spacing(2),
         },
         title: {
-          padding: 10,
+          padding: 5,
           display: 'none',
           justifyContent: 'center',
-          [theme.breakpoints.up('sm')]: {
+          [theme.breakpoints.up('xs')]: {
             display: 'block',
           },
         },
