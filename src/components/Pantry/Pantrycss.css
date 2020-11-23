@@ -1,0 +1,50 @@
+.root {
+  display: flex;
+}
+
+.title { 
+ flex: 80%
+}
+
+.searchbar {
+  margin-right: 2%;
+  margin-left: 5%;
+}
+
+.search {
+  position: 'relative';
+  left: 15px;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.search :hover {
+  background-color: (white, 0.15);
+}
+
+.searchIcon {
+  padding: 2px;
+  height: '100%';
+  position: 'absolute';
+  pointer-events: none;
+  display: 'flex';
+  align-items: 'center';
+  justify-content: 'center';
+}
+.inputRoot {
+  color: 'inherit';
+  padding: 1em;
+}
+
+.inputInput {
+  margin-right: 100; 
+  padding: 5px;
+}
+
+.add {
+  flex: 5%;
+}
+
+.settings {
+  flex: 10%
+}

@@ -16,7 +16,7 @@ const PantryActions = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const options = [
-    'Update Pantry Name'
+    'Update Name'
   ];
 
    const open = Boolean(anchorEl);

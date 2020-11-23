@@ -19,6 +19,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { withStyles } from '@material-ui/styles';
 
 
 library.add(faShoppingBasket, faCartArrowDown) 
@@ -218,11 +219,10 @@ const useToolbarStyles = makeStyles((theme) => ({
   },
 }));
 
-//EnhancedTableToolbar
 const ShoppingListToolbar = (props) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
-
+console.log('what is number selected? ',numSelected)
   return (
     <Toolbar
       className={clsx(classes.root, {
@@ -259,7 +259,8 @@ const ShoppingListToolbar = (props) => {
 };
 
 ShoppingListToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
+  numSelected: PropTypes.number.isRequired
+
 }
 
 //EnhancedTable 
@@ -301,6 +302,7 @@ const ShoppingList = () =>  {
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1),
       );
+      console.log('click', name)
     }
 
     setSelected(newSelected);
@@ -308,14 +310,17 @@ const ShoppingList = () =>  {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    console.log('new page', newPage)
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    console.log('set pages?', setPage(0))
   };
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
+
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -344,7 +349,7 @@ const ShoppingList = () =>  {
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.name);
                   const labelId = `check box${index}`;
-
+                    console.log('is item selected? ', isItemSelected)
                   return (
                     <TableRow
                       hover
@@ -377,7 +382,7 @@ const ShoppingList = () =>  {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[10, 25, 50]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
@@ -390,4 +395,4 @@ const ShoppingList = () =>  {
   );
 }
 
-export default ShoppingList
+export default withStyles(useStyles)(ShoppingList)
