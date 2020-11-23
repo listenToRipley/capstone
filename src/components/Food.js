@@ -9,15 +9,13 @@ import Collapse from '@material-ui/core/Collapse';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Button from '@material-ui/core/Button'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faStar,faCartArrowDown, faDoorOpen, faSkullCrossbones, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
 
-library.add(faCartArrowDown) 
+library.add(faStar,faCartArrowDown, faDoorOpen, faSkullCrossbones, faThumbsDown) 
 dom.watch()
 
 const useStyles = makeStyles((theme) => ({
@@ -40,16 +38,25 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-  avatar: {
-    backgroundColor: red[500],
+  actionList: {
+    width: '100vw'
   },
+  actions: {
+    display: 'flex',
+    justifyContent:"space-around",
+   
+  },
+  fas: {
+    display: 'flex',
+    justifyContent:"space-between",
+  }
 }));
 
 //this should not be based on current user, but add will always add to the primary list of the current user
 //this will be based on spoon, need to be able to search and add to shopping list or pantry 
 const Food = (props) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(true); //remember to se back to false 
 
   const handleAddToPantry = () => {
 
@@ -110,16 +117,38 @@ const Food = (props) => {
           </IconButton>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Button> Add To Pantry</Button>
-            <Button>
-            <svg className="fas fa-cart-arrow-down"/> 
+          <CardContent 
+          className="actionList">
+            <Button
+             fullWidth="true"
+             className="actions"
+            ><svg className="fas fa-door-open"/>  
+            Add To Pantry
+            <svg className="fas fa-door-open"/></Button>
+            <Button
+            fullWidth="true"
+            className="actions"
+            ><svg className="fas fa-cart-arrow-down"/> 
             Add To Shopping List 
-            <svg className="fas fa-cart-arrow-down"/> 
-            </Button>
-            <Button> <FavoriteIcon /> Add To My Likes <FavoriteIcon /> </Button>
-            <Button> Add To My Dislikes</Button>
-            <Button> Add to My Allergies </Button>
+            <svg className="fas fa-cart-arrow-down"/></Button>
+            <Button
+             fullWidth="true"
+             className="actions"
+            ><svg className="fas fa-star"/> 
+             Add To My Likes  
+             <svg className="fas fa-star"/></Button>
+            <Button
+             fullWidth="true"
+             className="actions"
+            ><svg className="fas fa-thumbs-down"/>
+            Add To My Dislikes
+            <svg className="fas fa-thumbs-down"/></Button>
+            <Button
+            fullWidth="true"
+            className="actions"
+            ><svg className="fas fa-skull-crossbones"/>
+             Add to My Allergies 
+             <svg className="fas fa-skull-crossbones"/></Button>
           </CardContent>
         </Collapse>
        </Card>
