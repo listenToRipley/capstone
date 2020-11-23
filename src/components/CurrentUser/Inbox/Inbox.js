@@ -97,11 +97,11 @@ import TableRow from '@material-ui/core/TableRow';
 
 
     const mockMerge = [
-      createPalData(1, 'cheese', 'job', 'action'),
-      createPalData(1, 'job', 'cheese', 'action'),
-      createPalData(1, 'cheese', 'work', 'action'),
-      createPalData(1, 'cheese', 'honey', 'action'),
-      createPalData(1, 'cheese', 'hobby', 'action'),
+      createPalData(5, 'cheese', 'job', 'action'),
+      createPalData(6, 'job', 'cheese', 'action'),
+      createPalData(7, 'cheese', 'work', 'action'),
+      createPalData(8, 'cheese', 'honey', 'action'),
+      createPalData(9, 'cheese', 'hobby', 'action'),
     ]
 
 const Inbox = (props) => {
@@ -188,8 +188,34 @@ const Inbox = (props) => {
           variant="h6"
           className={classes.subtitle}
           >Merge</Typography>
-          <p>sent</p>
-          <p>pending approval</p>
+          <TableContainer>
+            <Table
+            className={classes.table}
+            size="small"
+            aria-lable="pal request table"
+            >
+            <TableHead>
+              <TableRow>
+                <TableCell>Req Id </TableCell>
+                <TableCell>Sender </TableCell>
+                <TableCell>Pal </TableCell>
+                <TableCell>Actions </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {mockMerge.map((data) => (
+                <TableRow key={data.reqId}>
+                  <TableCell component="th" scope="data">
+                    {data.reqId}
+                  </TableCell>
+                  <TableCell align="left" >{data.sender}</TableCell>
+                  <TableCell align="left" >{data.pal}</TableCell>
+                  <TableCell align="right" >{data.actions}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
         </Grid>
       </Paper>
