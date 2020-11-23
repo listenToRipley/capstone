@@ -91,6 +91,7 @@ const Food = (props) => {
     alignItems="center"
     spacing={2}
     >
+    THIS WILL BE WERE WE MAP EACH RESULT OF THE FOOD SEARCH! 
       <Grid
       item xs={10} sm={10} md={9} elevation={10}>
         <Card className={classes.root}>
