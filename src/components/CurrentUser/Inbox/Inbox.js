@@ -207,7 +207,11 @@ const Inbox = (props) => {
                   <TableCell align="left" >{data.quantity}</TableCell>
                   <TableCell align="left" >{data.items}</TableCell>
                   <TableCell align="left" >{data.unit}</TableCell>
-                  <TableCell align="right" ><ShopReq reqId={data.reqId}/></TableCell>
+                  <TableCell align="right" >
+                    <ShopReq 
+                    reqId={data.reqId}
+                    sender={data.sender}
+                    /></TableCell>
                 </TableRow>
               ))}
             </TableBody>
