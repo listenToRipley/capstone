@@ -10,6 +10,7 @@ import PalProfile from '../Components/PalProfile/PalProfile'
 import CreateUser from '../Components/AppFunc/CreateUser';
 import About from '../Components/About'
 import Inbox from '../Components/CurrentUser/Inbox'
+import Food from '../Components/Food'
 import ForgotPassword from '../Components/AppFunc/ForgotPassword'
 // import cookie from 'cookie'
 
@@ -43,6 +44,7 @@ const Router = () => {
        <Route path="/userProfile" component={UserProfile}/>
       <Route path="/palProfile" component={PalProfile}/>
       <Route path="/inbox" component={Inbox}/>
+      <Route path='/food' component={Food}/>
       
 {/* un protected routes */}
       <Route path="/createNewUser" component={CreateUser}/>
