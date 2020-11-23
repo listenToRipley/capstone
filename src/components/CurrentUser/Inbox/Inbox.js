@@ -12,6 +12,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import ShopReq from './ShopReq';
 import PalReq from './PalReq';
+import MergeReq from './MergeReq'
 
 //needs to get added to NavBar or should this be notification in the top bar, bell Icon?
 
@@ -240,7 +241,7 @@ const Inbox = (props) => {
                 <TableCell>Req Id </TableCell>
                 <TableCell>Sender </TableCell>
                 <TableCell>Pal </TableCell>
-                <TableCell>Actions </TableCell>
+                <TableCell align="center">Actions </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -251,7 +252,12 @@ const Inbox = (props) => {
                   </TableCell>
                   <TableCell align="left" >{data.sender}</TableCell>
                   <TableCell align="left" >{data.pal}</TableCell>
-                  <TableCell align="right" >{data.actions}</TableCell>
+                  <TableCell align="center" >
+                    <MergeReq
+                      reqId={data.reqId}
+                      sender={data.sender}
+                    />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

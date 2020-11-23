@@ -8,7 +8,7 @@ const ITEM_HEIGHT = 48;
 
 //tie this back to decline or approve on requests
 
-const PalReq = (props) => {
+const ShopReq = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   //the props getting passed in should the the reqId 
 
@@ -74,4 +74,4 @@ const PalReq = (props) => {
   );
 }
 
-export default PalReq
+export default ShopReq
