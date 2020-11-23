@@ -142,8 +142,9 @@ const Inbox = (props) => {
             <TableHead>
               <TableRow>
                 <TableCell>Req Id </TableCell>
-                <TableCell>Sender </TableCell>
-                <TableCell>Pal </TableCell>
+                <TableCell>Quantity </TableCell>
+                <TableCell>Item </TableCell>
+                <TableCell>Unit </TableCell>
                 <TableCell>Actions </TableCell>
               </TableRow>
             </TableHead>
@@ -154,6 +155,7 @@ const Inbox = (props) => {
                     {data.reqId}
                   </TableCell>
                   <TableCell align="left" >{data.sender}</TableCell>
+                  <TableCell align="left" >{data.pal}</TableCell>
                   <TableCell align="left" >{data.pal}</TableCell>
                   <TableCell align="right" >{data.actions}</TableCell>
                 </TableRow>
@@ -173,9 +175,35 @@ const Inbox = (props) => {
           variant="h6"
           className={classes.subtitle}
           >Shopping</Typography>
-          <p>sent</p>
-          <p>Should include whose list this was sent to</p>
-          <p>pending approval</p>
+                    <TableContainer>
+            <Table
+            className={classes.table}
+            size="small"
+            aria-lable="pal request table"
+            >
+            <TableHead>
+              <TableRow>
+                <TableCell>Req Id </TableCell>
+                <TableCell>Sender </TableCell>
+                <TableCell>Pal </TableCell>
+                <TableCell>Actions </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {mockFood.map((data) => (
+                <TableRow key={data.reqId}>
+                  <TableCell component="th" scope="data">
+                    {data.reqId}
+                  </TableCell>
+                  <TableCell align="left" >{data.quantity}</TableCell>
+                  <TableCell align="left" >{data.items}</TableCell>
+                  <TableCell align="left" >{data.unit}</TableCell>
+                  <TableCell align="right" >{data.actions}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
         <Grid
         item
