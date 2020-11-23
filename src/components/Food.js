@@ -112,7 +112,11 @@ const Food = (props) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Button> Add To Pantry</Button>
-            <Button> <svg className="fas fa-cart-arrow-down"></svg> Add To Shopping List <svg className="fas fa-cart-arrow-down"></svg> </Button>
+            <Button>
+            <svg className="fas fa-cart-arrow-down"/> 
+            Add To Shopping List 
+            <svg className="fas fa-cart-arrow-down"/> 
+            </Button>
             <Button> <FavoriteIcon /> Add To My Likes <FavoriteIcon /> </Button>
             <Button> Add To My Dislikes</Button>
             <Button> Add to My Allergies </Button>

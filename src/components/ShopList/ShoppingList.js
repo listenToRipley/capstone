@@ -244,13 +244,13 @@ console.log('what is number selected? ',numSelected)
       {numSelected > 0 ? (
         <Tooltip title="Finished Shopping">
           <IconButton aria-label="finish shopping">
-          <svg className="fas fa-cart-arrow-down"></svg> 
+          <svg className="fas fa-cart-arrow-down"/> 
           </IconButton>
         </Tooltip>
       ) : (
         <Tooltip title="Start Shopping">
           <IconButton aria-label="start shopping">
-          <svg className="fas fa-shopping-basket"></svg>
+          <svg className="fas fa-shopping-basket"/>
           </IconButton>
         </Tooltip>
         )}
