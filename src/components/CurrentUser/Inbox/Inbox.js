@@ -37,12 +37,13 @@ import Grid from '@material-ui/core/Grid';
           padding: 20,
         },
         inboxReq: {
-          margin: theme.spacing(2),
+          marginLeft: theme.spacing(4),
           alignItems:"space-evenly",
           width: '100%'
         },
         reqBody: {
           width:'100%',
+          marginBottom: theme.spacing(3),
           padding:'25px'
         }
       }));
@@ -68,9 +69,9 @@ const Inbox = () => {
       >
         <Grid
         item
-        xs={2} sm={8} md={2} 
+        xs={11}
         component={Card}
-        elevation={4}
+        elevation={2}
         className={classes.reqBody}>
           <Typography
           component="h1"
@@ -82,7 +83,7 @@ const Inbox = () => {
         </Grid>
         <Grid
         item
-        xs={2} sm={8} md={2} 
+        xs={11}
         component={Card}
         elevation={4}
         className={classes.reqBody}>
@@ -97,7 +98,7 @@ const Inbox = () => {
         </Grid>
         <Grid
         item
-        xs={2} sm={8} md={2} 
+        xs={11}
         component={Card}
         elevation={4}
         className={classes.reqBody}>
