@@ -40,6 +40,7 @@ import Paper from '@material-ui/core/Paper';
   
 
 const Inbox = () => {
+  const classes = useStyles();
 
   return (
     <Paper>
@@ -66,4 +67,4 @@ const Inbox = () => {
 
 }
 
-export default Inbox
+export default withStyles(useStyles)(Inbox)
