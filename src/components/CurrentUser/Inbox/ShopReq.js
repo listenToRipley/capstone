@@ -38,6 +38,7 @@ const ShopReq = (props) => {
   
   const handleCancel = () => {
     //need to add actions here 
+      //only available if you're the sender. 
   }
 
   return (

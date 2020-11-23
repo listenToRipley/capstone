@@ -63,6 +63,8 @@ import ShopReq from './ShopReq'
       return {reqId, sender, pal, action}
     }
 
+
+    //do we want to include list owner on this? 
     const createShopData = (reqId, sender, quantity, items, unit, actions) => {
       return { reqId, sender ,quantity, items, unit, actions};
     }
