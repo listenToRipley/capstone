@@ -19,6 +19,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    marginTop: theme.spacing(4),
+    marginLeft: theme.spacing(4),
   },
   media: {
     height: 0,
@@ -74,11 +76,13 @@ const Food = (props) => {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image="/../../public/pantryImg.jpg"
         title="Paella dish"
       />
       <CardContent>
-      <Typography>Food Title</Typography>
+      <Typography
+      variant="body2" color="textSecondary" component="p"
+      >Food Title</Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton
