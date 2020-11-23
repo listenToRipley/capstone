@@ -10,7 +10,7 @@ const ITEM_HEIGHT = 48;
 
 const ShopListActions = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+//the props getting passed in should the the reqId 
   const options = [
     'Remove',
     'Update'

@@ -10,6 +10,7 @@ const ITEM_HEIGHT = 48;
 
 const ShopReq = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  //the props getting passed in should the the reqId 
 
   const options = [
     'Approve',
@@ -27,14 +28,17 @@ const ShopReq = (props) => {
     setAnchorEl(null);
   };
 
-  const handleDelete = () => {
+  const handleApproved= () => {
     //need to add actions here 
   }
 
-  const handleUpdate = () => {
+  const handleDeclined = () => {
     //need to add actions here 
   }
-
+  
+  const handleCancel = () => {
+    //need to add actions here 
+  }
 
   return (
     <div>

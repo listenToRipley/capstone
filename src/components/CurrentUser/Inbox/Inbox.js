@@ -10,6 +10,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import ShopReq from './ShopReq'
 
 //needs to get added to NavBar or should this be notification in the top bar, bell Icon?
 
@@ -200,7 +201,7 @@ const Inbox = (props) => {
                   <TableCell align="left" >{data.quantity}</TableCell>
                   <TableCell align="left" >{data.items}</TableCell>
                   <TableCell align="left" >{data.unit}</TableCell>
-                  <TableCell align="right" >{data.actions}</TableCell>
+                  <TableCell align="right" ><ShopReq reqId={data.reqId}/></TableCell>
                 </TableRow>
               ))}
             </TableBody>
