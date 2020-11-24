@@ -83,6 +83,7 @@ const Tastes = (props) => {
   const classes = useStyles();
   //need to populate originally from the sign in info of the user
 
+  //each action needs to import the index of the item and use the associated Container
   const handleRemoveLike = () => {
     console.log('like has been removed')
   }
@@ -107,7 +108,7 @@ const Tastes = (props) => {
     console.log('congrats! you just added an diet!')
   }
 
-  const handleRemoveAllergy = () => {
+  const handleRemoveAllergy = (props) => {
     console.log('allergy has been removed')
   }
 
