@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const UserProfile = () => {
+const Info = () => {
   const classes = useStyles();
   //need to populate originally from the sign in info of the user
   const [checked, setChecked] = React.useState(['wifi']);
@@ -133,4 +133,4 @@ const UserProfile = () => {
   )
 }
 
-export default withStyles(useStyles)(UserProfile)
+export default withStyles(useStyles)(Info)

@@ -134,9 +134,7 @@ const UserProfile = () => {
       <Card>
 
         <div>
-          
          <Info/>
-
         <div>
           <Typography
           component="h1" 
