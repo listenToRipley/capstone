@@ -27,6 +27,7 @@ import BluetoothIcon from '@material-ui/icons/Bluetooth';
 import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../../../Hooks/inputHook'
 import Info from './Info'
+import Location from './Location'
 
 //display information from user sign up 
   //name
@@ -136,53 +137,7 @@ const UserProfile = () => {
         <div>
          <Info/>
         <div>
-          <Typography
-          component="h1" 
-          variant="h5"
-          className={classes.subtitle} 
-          >Location</Typography>
-            <Grid
-              container
-              component="main" 
-              direction="row"
-              alignItems="center"
-              className={classes.form}
-            >
-            <CssBaseline/>
-            <Grid
-              item
-              xs={2} sm={8} md={2} component={Card} elevation={4}
-            >
-            <InputLabel
-            className={classes.fieldLabel}
-            >Address</InputLabel>
-              <TextField 
-              disabled
-              className={classes.fields}
-              ></TextField>
-            <InputLabel
-            className={classes.fieldLabel}
-            >City</InputLabel>
-              <TextField 
-              disabled
-              className={classes.fields}
-              ></TextField>
-            <InputLabel
-            className={classes.fieldLabel}
-            >State</InputLabel>
-              <TextField 
-              disabled
-              className={classes.fields}
-              ></TextField>
-            <InputLabel
-            className={classes.fieldLabel}
-            >Country</InputLabel>
-              <TextField 
-              disabled
-              className={classes.fields}
-              ></TextField>
-          </Grid>
-         </Grid>
+          <Location/>
         </div>
 
         <div>

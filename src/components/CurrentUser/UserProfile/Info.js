@@ -55,20 +55,6 @@ const useStyles = makeStyles((theme) => ({
 const Info = () => {
   const classes = useStyles();
   //need to populate originally from the sign in info of the user
-  const [checked, setChecked] = React.useState(['wifi']);
-
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
 
   const handleUpdates = () => {
     //would be better to have an on handle change? 
