@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react'
 import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box'
+import Paper from '@material-ui/core/Paper';
 import { shadows } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,16 +33,16 @@ dom.watch()
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: 10,
+    margin: 50,
     padding: 20,
     width: '99%',
     justifyContent: 'center'
   },
   paper: {
-    width: '80%',
-    marginTop: theme.spacing(6),
-    marginLeft: theme.spacing(10),
-    marginBottom: theme.spacing(2),
+    width: '85%',
+    marginTop: theme.spacing(5),
+    marginLeft: theme.spacing(6),
+    marginBottom: theme.spacing(4),
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
@@ -98,12 +98,12 @@ const DisplayPreferences  = () => {
   };
 
   const handleUpdates = () => {
-    //would be better to have an on handle change? 
+    console.log('congrats, you have made some changes to your display preferences')
   }
 
   return (
-        <Card className={classes.root}>
-            <Card>
+        <Paper classes={classes.root}>
+            <Card className={classes.paper}>
             <List subheader={
             <Typography
                component="h1" 
@@ -111,7 +111,7 @@ const DisplayPreferences  = () => {
                 className={classes.subtitle} 
               >Display Preferences</Typography>} >
              
-                <Button alignItems="right">Save</Button>
+                <Button onClick={handleUpdates} alignItems="right">Save</Button>
          
                 <ListItem>
                   <ListItemIcon>
@@ -235,7 +235,7 @@ const DisplayPreferences  = () => {
 
               </List>
             </Card>
-        </Card>
+        </Paper>
         
     
   )
