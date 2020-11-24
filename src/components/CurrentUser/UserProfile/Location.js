@@ -20,28 +20,6 @@ import {useInput} from '../../../Hooks/inputHook'
 //need a view mode ~ see pal profile 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: 10,
-    padding: 20,
-    width: '99%',
-    justifyContent: 'center'
-  },
-  paper: {
-    width: '80%',
-    marginTop: theme.spacing(6),
-    marginLeft: theme.spacing(10),
-    marginBottom: theme.spacing(2),
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-  },
-  title: {
-    padding: 10,
-    display: 'none',
-    justifyContent: 'center',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
   subtitle: {
     padding: 20,
   },
@@ -59,18 +37,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     // marginBottom: theme.spacing(1),
   },
-  tastes: {
-    width: '80%', // Fix IE 11 issue.
-    paddingLeft: '5%',
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    borderRadius: 3
-  },
-  displayPrefCell: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-    },
 }));
 
 const Location = () => {

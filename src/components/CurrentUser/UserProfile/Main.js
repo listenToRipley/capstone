@@ -28,6 +28,7 @@ import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../../../Hooks/inputHook'
 import Info from './Info'
 import Location from './Location'
+import Contact from './Contact'
 
 //display information from user sign up 
   //name
@@ -141,39 +142,7 @@ const UserProfile = () => {
         </div>
 
         <div>
-          <Typography
-          component="h1" 
-          variant="h5"
-          className={classes.subtitle} 
-          >Contact Info</Typography>
-            <Grid
-              container
-              component="main" 
-              direction="row"
-              alignItems="center"
-              className={classes.form}
-            >
-            <CssBaseline/>
-            <Grid
-              item
-              xs={2} sm={8} md={2} component={Card} elevation={4}
-            >
-            <InputLabel
-            className={classes.fieldLabel}
-            >Phone</InputLabel>
-              <TextField 
-              disabled
-              className={classes.fields}
-              ></TextField>
-            <InputLabel
-            className={classes.fieldLabel}
-            >Email</InputLabel>
-              <TextField 
-              disabled
-              className={classes.fields}
-              ></TextField>
-          </Grid>
-         </Grid>
+          <Contact/>
         </div>
         </div>
         <div>
