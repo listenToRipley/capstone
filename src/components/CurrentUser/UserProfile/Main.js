@@ -75,7 +75,7 @@ const UserProfile = (props) => {
         <Info user={props.username}/>
         <Location user={props.username}/>
         <Contact user={props.username}/>
-        <Tastes user={props.username}/>
+        <Tastes user={props.username} />
         <DisplayPreferences user={props.username}/>
         <button>Save</button>
       </Card>

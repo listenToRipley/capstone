@@ -8,10 +8,11 @@ import Container from '@material-ui/core/Container';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/styles';
+import { getThemeProps, withStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {useInput} from '../../../Hooks/inputHook'
+import Food from '../../Food';
 
 //display information from user sign up 
   //name
@@ -25,8 +26,6 @@ import {useInput} from '../../../Hooks/inputHook'
 //dislikes 
 //diets 
 //allergies 
-
-let mock = ['apples', 'bananas', 'rasberries', 'potatos']
 
 //SAVE BUTTON TO COMMIT ANY CHANGES
 
@@ -72,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Tastes = () => {
+const Tastes = (props) => {
   const classes = useStyles();
   //need to populate originally from the sign in info of the user
 
@@ -107,6 +106,8 @@ const Tastes = () => {
     //would be better to have an on handle change? 
   }
 
+  let mock = ['apples', 'bananas', 'rasberries', 'potatos']
+
   return (
       <Card>
       <Typography
@@ -127,22 +128,50 @@ const Tastes = () => {
         item
         xs={8} sm={8} md={2} component={Card} elevation={4}
         >
-          <Typography
+        <div>
+        <Typography
           className={classes.subtitle} 
           >Likes</Typography>
-        
+          <Button>Add</Button>
+          <Paper>
+          {mock.map((item, idx) => {
+            return <Chip key={idx} label={`${item}`}/>
+          })}
+          </Paper>
+        </div>
+        <div>
           <Typography
           className={classes.subtitle} 
           >Dislikes</Typography>
-      
-      
+            <Button>Add</Button>
+            <Paper>
+            {mock.map((item, idx) => {
+              return <Chip key={idx} label={`${item}`}/>
+            })}
+            </Paper>
+        </div>
+        <div>
           <Typography
           className={classes.subtitle} 
           >Diets</Typography>
-       
+            <Button>Add</Button>
+            <Paper>
+            {mock.map((item, idx) => {
+              return <Chip key={idx} label={`${item}`}/>
+            })}
+            </Paper>
+       </div>
+       <div>
           <Typography
           className={classes.subtitle} 
           >Allergies</Typography>
+            <Button>Add</Button>
+            <Paper>
+            {mock.map((item, idx) => {
+              return <Chip key={idx} label={`${item}`}/>
+            })}
+            </Paper>
+        </div>
         </Grid>
       </Grid>
     </Card>
