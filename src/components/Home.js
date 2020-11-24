@@ -2,7 +2,7 @@ import React from 'react';
 import ShoppingList from './ShopList/ShoppingList';
 import Pantry from './Pantry/Pantry';
 import PalList from './PalLists/PalsList';
-import UserProfile from './CurrentUser/UserProfile'; 
+import UserProfile from './CurrentUser/UserProfile/Main'; 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card'
 import Paper from '@material-ui/core/Paper';
