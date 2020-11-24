@@ -2,7 +2,6 @@ import React from 'react';
 import {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card'
-import { shadows } from '@material-ui/system';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import Chip from '@material-ui/core/Chip';
@@ -64,11 +63,12 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     borderRadius: 3
   },
-  displayPrefCell: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+  chipPaper: {
+    padding: theme.spacing(1),
     },
+  chipItems: {
+    margin: '.5em'
+  }
 }));
 
 const Tastes = (props) => {
@@ -133,9 +133,9 @@ const Tastes = (props) => {
           className={classes.subtitle} 
           >Likes</Typography>
           <Button>Add</Button>
-          <Paper>
+          <Paper className={classes.chipPaper}>
           {mock.map((item, idx) => {
-            return <Chip key={idx} label={`${item}`}/>
+            return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
           })}
           </Paper>
         </div>
@@ -144,9 +144,9 @@ const Tastes = (props) => {
           className={classes.subtitle} 
           >Dislikes</Typography>
             <Button>Add</Button>
-            <Paper>
+            <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
-              return <Chip key={idx} label={`${item}`}/>
+              return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
             })}
             </Paper>
         </div>
@@ -155,9 +155,9 @@ const Tastes = (props) => {
           className={classes.subtitle} 
           >Diets</Typography>
             <Button>Add</Button>
-            <Paper>
+            <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
-              return <Chip key={idx} label={`${item}`}/>
+              return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
             })}
             </Paper>
        </div>
@@ -166,9 +166,9 @@ const Tastes = (props) => {
           className={classes.subtitle} 
           >Allergies</Typography>
             <Button>Add</Button>
-            <Paper>
+            <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
-              return <Chip key={idx} label={`${item}`}/>
+              return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
             })}
             </Paper>
         </div>
