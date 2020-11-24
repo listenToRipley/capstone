@@ -86,7 +86,7 @@ const Contact = () => {
         <CssBaseline/>
         <Grid
           item
-          xs={2} sm={8} md={2} component={Card} elevation={4}
+          xs={8} sm={8} md={8} component={Card} elevation={4} 
         >
         <InputLabel
         className={classes.fieldLabel}

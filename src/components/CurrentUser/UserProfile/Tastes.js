@@ -118,7 +118,7 @@ const Tastes = (props) => {
   let mock = ['apples', 'bananas', 'rasberries', 'potatos']
 
   return (
-      <Card>
+      <Card className={classes.body}>
       <Typography
         component="h1" 
         variant="h5"
@@ -135,7 +135,7 @@ const Tastes = (props) => {
         <CssBaseline/>
         <Grid
         item
-        xs={8} sm={8} md={2} component={Card} elevation={4}
+        xs={8} sm={8} md={8} component={Card} elevation={4} 
         >
         <div>
         <Typography

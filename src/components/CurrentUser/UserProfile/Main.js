@@ -56,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     }
+  },
+  body: {
+    marginBottom: theme.spacing(4),
+    marginLeft: theme.spacing(2),
+    width: '95%'
   }
 }));
 
@@ -71,7 +76,7 @@ const UserProfile = (props) => {
       component="h1" 
       variant="h4"
       >  USERNAME Profile </Typography>
-      <Card>
+      <Card className={classes.body}>
         <Info user={props.username}/>
         <Location user={props.username}/>
         <Contact user={props.username}/>
