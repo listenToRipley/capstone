@@ -1,8 +1,8 @@
 import React from 'react';
 import {useState} from 'react'
 import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box'
-
+import Card from '@material-ui/core/Card'
+import { shadows } from '@material-ui/system';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import Chip from '@material-ui/core/Chip';
@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../../../Hooks/inputHook'
 
 //display information from user sign up 
@@ -92,7 +90,7 @@ const Tastes = () => {
       <div 
       className={classes.form}
       >
-      <Box
+      <Card
       className={classes.tastes}
       boxShadow={3}
       >
@@ -116,7 +114,7 @@ const Tastes = () => {
         className={classes.subtitle} 
         >Allergies</Typography>
         </div>
-      </Box> 
+      </Card> 
       </div>
     </div>
   ) 
