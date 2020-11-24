@@ -3,6 +3,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 
+
 const foodSearchBar = () => {
 
   const handleSearch = () => {
@@ -28,4 +29,3 @@ const foodSearchBar = () => {
 }
 
 export default foodSearchBar
-
