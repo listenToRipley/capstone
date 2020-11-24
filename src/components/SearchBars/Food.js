@@ -9,19 +9,21 @@ const foodSearchBar = () => {
 
   }
 
-  <div className='searchbar'>
-  <MenuItem className='search'>
-   <div className='searchIcon'>
-     <SearchIcon />
+  return(
+    <div className='searchbar'>
+    <MenuItem className='search'>
+     <div className='searchIcon'>
+       <SearchIcon />
+     </div>
+     <InputBase
+       placeholder="Search…"
+       className={'inputRoot','inputInput'}
+       
+       inputProps={{ 'aria-label': 'search' }}
+     />
+    </MenuItem>
    </div>
-   <InputBase
-     placeholder="Search…"
-     className={'inputRoot','inputInput'}
-     
-     inputProps={{ 'aria-label': 'search' }}
-   />
-  </MenuItem>
- </div>
+  )
 
 }
 

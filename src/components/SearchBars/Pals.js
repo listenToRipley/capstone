@@ -3,25 +3,27 @@ import MenuItem from '@material-ui/core/MenuItem'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 
-const PalSearchBar = () => {
+const PalsSearchBar = () => {
 
   const handleSearch = () => {
 
   }
 
-  <div className='searchbar'>
-  <MenuItem className='search'>
-   <div className='searchIcon'>
-     <SearchIcon />
+  return (
+    <div className='searchbar'>
+    <MenuItem className='search'>
+     <div className='searchIcon'>
+       <SearchIcon />
+     </div>
+     <InputBase
+       placeholder="Search…"
+       className={'inputRoot','inputInput'}
+       
+       inputProps={{ 'aria-label': 'search' }}
+     />
+    </MenuItem>
    </div>
-   <InputBase
-     placeholder="Search…"
-     className={'inputRoot','inputInput'}
-     
-     inputProps={{ 'aria-label': 'search' }}
-   />
-  </MenuItem>
- </div>
+  )
 
 }
 

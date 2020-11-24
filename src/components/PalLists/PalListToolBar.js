@@ -14,6 +14,7 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faCogs} from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
 import PalsListActions from './PalsListActions'
+import PalsSearchBar from '../SearchBars/Pals'
 
 library.add(faCogs)
 dom.watch()
