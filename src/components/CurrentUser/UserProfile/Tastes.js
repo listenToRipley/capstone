@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton'
 import {useInput} from '../../../Hooks/inputHook';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
-import Food from '../../Food';
+import Food from '../../Food/Food';
 
 
 library.add(faPlusCircle) 

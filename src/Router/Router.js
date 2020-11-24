@@ -10,7 +10,7 @@ import PalProfile from '../Components/PalProfile/PalProfile'
 import CreateUser from '../Components/AppFunc/CreateUser';
 import About from '../Components/About'
 import Inbox from '../Components/CurrentUser/Inbox/Inbox'
-import Food from '../Components/Food'
+import Food from '../Components/Food/Food'
 import ForgotPassword from '../Components/AppFunc/ForgotPassword'
 // import cookie from 'cookie'
 
