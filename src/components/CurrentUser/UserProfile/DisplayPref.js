@@ -110,6 +110,9 @@ const DisplayPreferences  = () => {
                 variant="h5"
                 className={classes.subtitle} 
               >Display Preferences</Typography>} >
+             
+                <Button alignItems="right">Save</Button>
+         
                 <ListItem>
                   <ListItemIcon>
                     <svg className="fas fa-birthday-cake"/>
