@@ -25,10 +25,11 @@ import WifiIcon from '@material-ui/icons/Wifi';
 import BluetoothIcon from '@material-ui/icons/Bluetooth';
 // import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import {useInput} from '../../../Hooks/inputHook'
-import Info from './Info'
-import Location from './Location'
-import Contact from './Contact'
+import {useInput} from '../../../Hooks/inputHook';
+import Info from './Info';
+import Location from './Location';
+import Contact from './Contact';
+import Tastes from './Tastes';
 
 //display information from user sign up 
   //name
@@ -146,46 +147,7 @@ const UserProfile = () => {
         </div>
         </div>
         <div>
-        <Typography
-          component="h1" 
-          variant="h5"
-          className={classes.subtitle} 
-          >Taste Preferences</Typography>
-          {/* Will need a way to add to each of these fields and remove.  */}
-        <div 
-        className={classes.form}
-        >
-        <Box
-        className={classes.tastes}
-        boxShadow={3}
-        >
-
-        <div>
-          <Typography
-          className={classes.subtitle} 
-          >Likes</Typography>
-          </div>
-
-          <div>
-          <Typography
-          className={classes.subtitle} 
-          >Dislikes</Typography>
-          </div>
-
-          <div>
-          <Typography
-          className={classes.subtitle} 
-          >Diets</Typography>
-          </div>
-
-          <div>
-          <Typography
-          className={classes.subtitle} 
-          >Allergies</Typography>
-          </div>
-        </Box>
-
-        </div>
+        <Tastes/>
       </div>
 
         <div>
