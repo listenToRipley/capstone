@@ -18,6 +18,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Switch from '@material-ui/core/Switch';
 import WifiIcon from '@material-ui/icons/Wifi';
 import BluetoothIcon from '@material-ui/icons/Bluetooth';
+import { Container } from '@material-ui/core';
 
   //birthday
 //option to update information - button for update and save those updates 
@@ -98,7 +99,7 @@ const DisplayPreferences  = () => {
   }
 
   return (
-        <div>
+        <Container component={Card}>
         <Typography
           component="h1" 
           variant="h5"
@@ -135,7 +136,7 @@ const DisplayPreferences  = () => {
                   </ListItemSecondaryAction>
                 </ListItem>
               </List>
-          <Grid
+          {/* <Grid
             container
             component="main" 
             direction="column"
@@ -161,8 +162,8 @@ const DisplayPreferences  = () => {
             <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>diets</Grid>
             <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
 
-          </Grid>
-        </div>
+          </Grid> */}
+        </Container>
         
     
   )

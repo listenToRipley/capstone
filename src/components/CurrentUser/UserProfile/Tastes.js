@@ -9,6 +9,7 @@ import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
+import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {useInput} from '../../../Hooks/inputHook'
 
@@ -75,48 +76,76 @@ const Tastes = () => {
   const classes = useStyles();
   //need to populate originally from the sign in info of the user
 
-  const handleUpdates = () => {
+  const handleRemoveLike = () => {
+    //would be better to have an on handle change? 
+  }
+
+  const handleAddLike = () => {
+    //would be better to have an on handle change? 
+  }
+
+  const handleRemoveDislike = () => {
+    //would be better to have an on handle change? 
+  }
+
+  const handleAddDislike = () => {
+    //would be better to have an on handle change? 
+  }
+
+  const handleRemoveAllergy = () => {
+    //would be better to have an on handle change? 
+  }
+
+  const handleAddAllergy = () => {
+    //would be better to have an on handle change? 
+  }
+  const handleRemoveDiet = () => {
+    //would be better to have an on handle change? 
+  }
+
+  const handleAddDiet = () => {
     //would be better to have an on handle change? 
   }
 
   return (
-      <div>
+      <Card>
       <Typography
         component="h1" 
         variant="h5"
         className={classes.subtitle} 
         >Taste Preferences</Typography>
-        {/* Will need a way to add to each of these fields and remove.  */}
-      <div 
-      className={classes.form}
-      >
-      <Card
-      className={classes.tastes}
-      boxShadow={3}
-      >
-      <div>
-        <Typography
-        className={classes.subtitle} 
-        >Likes</Typography>
-        </div> 
-        <div>
-        <Typography
-        className={classes.subtitle} 
-        >Dislikes</Typography>
-        </div> 
-        <div>
-        <Typography
-        className={classes.subtitle} 
-        >Diets</Typography>
-        </div> 
-        <div>
-        <Typography
-        className={classes.subtitle} 
-        >Allergies</Typography>
-        </div>
-      </Card> 
-      </div>
-    </div>
+        {/* Will need a way to add to each of these fields and remove.  */} 
+        <Grid
+          container
+          component="main" 
+          direction="row"
+          alignItems="center"
+          className={classes.form}
+        >
+        <CssBaseline/>
+        <Grid
+        item
+        xs={8} sm={8} md={2} component={Card} elevation={4}
+        >
+          <Typography
+          className={classes.subtitle} 
+          >Likes</Typography>
+        
+          <Typography
+          className={classes.subtitle} 
+          >Dislikes</Typography>
+      
+      
+          <Typography
+          className={classes.subtitle} 
+          >Diets</Typography>
+       
+          <Typography
+          className={classes.subtitle} 
+          >Allergies</Typography>
+        </Grid>
+      </Grid>
+    </Card>
   ) 
 }
 
