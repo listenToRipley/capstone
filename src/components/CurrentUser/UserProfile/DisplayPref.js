@@ -16,9 +16,11 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Switch from '@material-ui/core/Switch';
-import WifiIcon from '@material-ui/icons/Wifi';
-import BluetoothIcon from '@material-ui/icons/Bluetooth';
-import { Container } from '@material-ui/core';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faStar,  faSkullCrossbones, faThumbsDown, faSeedling, faBirthdayCake, faSearchLocation, faEnvelopeOpenText, faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faStar,faSkullCrossbones, faThumbsDown, faSeedling, faBirthdayCake, faSearchLocation, faEnvelopeOpenText, faPhoneVolume) 
+dom.watch()
 
   //birthday
 //option to update information - button for update and save those updates 
@@ -84,6 +86,7 @@ const DisplayPreferences  = () => {
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
+    //this will actually need to import the settings from backend. 
 
     if (currentIndex === -1) {
       newChecked.push(value);
@@ -99,71 +102,137 @@ const DisplayPreferences  = () => {
   }
 
   return (
-        <Container component={Card}>
-        <Typography
-          component="h1" 
-          variant="h5"
-          className={classes.subtitle} 
-          >Display Preferences</Typography>
+        <Card className={classes.root}>
+            <Card>
+            <List subheader={
+            <Typography
+               component="h1" 
+                variant="h5"
+                className={classes.subtitle} 
+              >Display Preferences</Typography>} >
+                <ListItem>
+                  <ListItemIcon>
+                    <svg className="fas fa-birthday-cake"/>
+                  </ListItemIcon>
+                  <ListItemText id="switch-list-label-wifi" primary="Birthday" />
+                  <ListItemSecondaryAction>
+                    <Switch
+                      edge="end"
+                      onChange={handleToggle('birthday')}
+                      checked={checked.indexOf('birthday') !== -1}
+                      inputProps={{ 'aria-labelledby': 'switch-list-label-birthday' }}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <svg className="fas fa-search-location"/>
+                  </ListItemIcon>
+                  <ListItemText id="switch-list-label-location" primary="Location" />
+                  <ListItemSecondaryAction>
+                    <Switch
+                      edge="end"
+                      onChange={handleToggle('location')}
+                      checked={checked.indexOf('location') !== -1}
+                      inputProps={{ 'aria-labelledby': 'switch-list-label-location' }}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
 
-            <List subheader={<ListSubheader>View</ListSubheader>} className={classes.root}>
                 <ListItem>
                   <ListItemIcon>
-                    <WifiIcon />
+                    <svg className="fas fa-envelope-open-text"/>
                   </ListItemIcon>
-                  <ListItemText id="switch-list-label-wifi" primary="Wi-Fi" />
+                  <ListItemText id="switch-list-label-email" primary="Email" />
                   <ListItemSecondaryAction>
                     <Switch
                       edge="end"
-                      onChange={handleToggle('wifi')}
-                      checked={checked.indexOf('wifi') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-wifi' }}
+                      onChange={handleToggle('email')}
+                      checked={checked.indexOf('email') !== -1}
+                      inputProps={{ 'aria-labelledby': 'switch-list-label-email' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>
+
                 <ListItem>
                   <ListItemIcon>
-                    <BluetoothIcon />
+                    <svg className="fas fa-phone-volume"/>
                   </ListItemIcon>
-                  <ListItemText id="switch-list-label-bluetooth" primary="Bluetooth" />
+                  <ListItemText id="switch-list-label-phone" primary="Phone" />
                   <ListItemSecondaryAction>
                     <Switch
                       edge="end"
-                      onChange={handleToggle('bluetooth')}
-                      checked={checked.indexOf('bluetooth') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-bluetooth' }}
+                      onChange={handleToggle('phone')}
+                      checked={checked.indexOf('phone') !== -1}
+                      inputProps={{ 'aria-labelledby': 'switch-list-label-phone' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>
+
+                <ListItem>
+                  <ListItemIcon>
+                    <svg className="fas fa-star"/>
+                  </ListItemIcon>
+                  <ListItemText id="switch-list-label-phone" primary="Likes" />
+                  <ListItemSecondaryAction>
+                    <Switch
+                      edge="end"
+                      onChange={handleToggle('likes')}
+                      checked={checked.indexOf('likes') !== -1}
+                      inputProps={{ 'aria-labelledby': 'switch-list-label-likes' }}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+
+                <ListItem>
+                  <ListItemIcon>
+                    <svg className="fas fa-thumbs-down"/>
+                  </ListItemIcon>
+                  <ListItemText id="switch-list-label-dislikes" primary="Dislikes" />
+                  <ListItemSecondaryAction>
+                    <Switch
+                      edge="end"
+                      onChange={handleToggle('dislikes')}
+                      checked={checked.indexOf('dislikes') !== -1}
+                      inputProps={{ 'aria-labelledby': 'switch-list-label-dislikes' }}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+
+
+                <ListItem>
+                  <ListItemIcon>
+                    <svg className="fas fa-seedling"/>
+                  </ListItemIcon>
+                  <ListItemText id="switch-list-label-diets" primary="diets" />
+                  <ListItemSecondaryAction>
+                    <Switch
+                      edge="end"
+                      onChange={handleToggle('diets')}
+                      checked={checked.indexOf('diets') !== -1}
+                      inputProps={{ 'aria-labelledby': 'switch-list-label-diets' }}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+
+                <ListItem>
+                  <ListItemIcon>
+                    <svg className="fas fa-skull-crossbones"/>
+                  </ListItemIcon>
+                  <ListItemText id="switch-list-label-allergies" primary="allergies" />
+                  <ListItemSecondaryAction>
+                    <Switch
+                      edge="end"
+                      onChange={handleToggle('allergies')}
+                      checked={checked.indexOf('allergies') !== -1}
+                      inputProps={{ 'aria-labelledby': 'switch-list-label-allergies' }}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+
               </List>
-          {/* <Grid
-            container
-            component="main" 
-            direction="column"
-            alignItems="center"
-            className={classes.form}
-          >
-            <CssBaseline/>
-       
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>birthday</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>location</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>email</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>phone</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>likes</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>dislikes</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>allergies</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>diets</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-
-          </Grid> */}
-        </Container>
+            </Card>
+        </Card>
         
     
   )
