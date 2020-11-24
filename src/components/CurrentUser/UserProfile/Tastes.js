@@ -10,8 +10,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import { getThemeProps, withStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {useInput} from '../../../Hooks/inputHook'
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton'
+import {useInput} from '../../../Hooks/inputHook';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import Food from '../../Food';
+
+library.add(faPlusCircle) 
+dom.watch()
 
 //display information from user sign up 
   //name
@@ -131,8 +138,13 @@ const Tastes = (props) => {
         <div>
         <Typography
           className={classes.subtitle} 
-          >Likes</Typography>
-          <Button>Add</Button>
+          >Likes
+            <Tooltip title="Add a like">
+              <IconButton  alignItems="right" aria-label="Add Item to Your Likes List">
+              <svg className="fas fa-plus-circle"></svg>
+              </IconButton>
+            </Tooltip>
+          </Typography>
           <Paper className={classes.chipPaper}>
           {mock.map((item, idx) => {
             return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
@@ -142,8 +154,13 @@ const Tastes = (props) => {
         <div>
           <Typography
           className={classes.subtitle} 
-          >Dislikes</Typography>
-            <Button>Add</Button>
+          >Dislikes
+            <Tooltip title="Add a dislike">
+              <IconButton alignItems="right" aria-label="Add Item to Your Dislikes List">
+              <svg className="fas fa-plus-circle"></svg>
+              </IconButton>
+            </Tooltip>
+          </Typography>
             <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
               return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
@@ -153,8 +170,14 @@ const Tastes = (props) => {
         <div>
           <Typography
           className={classes.subtitle} 
-          >Diets</Typography>
-            <Button>Add</Button>
+          >Diets
+            <Tooltip title="Add a diet">
+              <IconButton alignItems="right"  aria-label="Add Item to Your Diet List">
+              <svg className="fas fa-plus-circle"></svg>
+              </IconButton>
+            </Tooltip>
+          </Typography>
+
             <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
               return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
@@ -164,8 +187,13 @@ const Tastes = (props) => {
        <div>
           <Typography
           className={classes.subtitle} 
-          >Allergies</Typography>
-            <Button>Add</Button>
+          >Allergies
+            <Tooltip title="Add a allergy">
+              <IconButton alignItems="right" aria-label="Add Item to Allergy List">
+              <svg className="fas fa-plus-circle"></svg>
+              </IconButton>
+            </Tooltip>
+          </Typography>
             <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
               return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
