@@ -25,3 +25,5 @@ const foodSearchBar = () => {
 
 }
 
+export default foodSearchBar
+
