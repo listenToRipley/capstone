@@ -30,6 +30,7 @@ import Info from './Info';
 import Location from './Location';
 import Contact from './Contact';
 import Tastes from './Tastes';
+import DisplayPreferences from './DisplayPref'
 
 //display information from user sign up 
   //name
@@ -151,70 +152,7 @@ const UserProfile = () => {
       </div>
 
         <div>
-        <Typography
-          component="h1" 
-          variant="h5"
-          className={classes.subtitle} 
-          >Display Preferences</Typography>
-
-            <List subheader={<ListSubheader>View</ListSubheader>} className={classes.root}>
-                <ListItem>
-                  <ListItemIcon>
-                    <WifiIcon />
-                  </ListItemIcon>
-                  <ListItemText id="switch-list-label-wifi" primary="Wi-Fi" />
-                  <ListItemSecondaryAction>
-                    <Switch
-                      edge="end"
-                      onChange={handleToggle('wifi')}
-                      checked={checked.indexOf('wifi') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-wifi' }}
-                    />
-                  </ListItemSecondaryAction>
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <BluetoothIcon />
-                  </ListItemIcon>
-                  <ListItemText id="switch-list-label-bluetooth" primary="Bluetooth" />
-                  <ListItemSecondaryAction>
-                    <Switch
-                      edge="end"
-                      onChange={handleToggle('bluetooth')}
-                      checked={checked.indexOf('bluetooth') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-bluetooth' }}
-                    />
-                  </ListItemSecondaryAction>
-                </ListItem>
-              </List>
-          <Grid
-            container
-            component="main" 
-            direction="column"
-            alignItems="center"
-            className={classes.form}
-          >
-            <CssBaseline/>
-       
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>birthday</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>location</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>email</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>phone</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>likes</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>dislikes</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>allergies</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-            <Grid item xs={4} alignItems="left" className={classes.displayPrefCell}>diets</Grid>
-            <Grid item xs={4} alignItems="right" className={classes.displayPrefCell}>toggle place holder</Grid>
-
-          </Grid>
-          
+          <DisplayPreferences/>
         </div>
         <button>Save</button>
       </Card>
