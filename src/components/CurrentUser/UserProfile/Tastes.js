@@ -82,49 +82,44 @@ const Tastes = () => {
   }
 
   return (
-  
+      <div>
+      <Typography
+        component="h1" 
+        variant="h5"
+        className={classes.subtitle} 
+        >Taste Preferences</Typography>
+        {/* Will need a way to add to each of these fields and remove.  */}
+      <div 
+      className={classes.form}
+      >
+      <Box
+      className={classes.tastes}
+      boxShadow={3}
+      >
+      <div>
+        <Typography
+        className={classes.subtitle} 
+        >Likes</Typography>
+        </div> 
         <div>
         <Typography
-          component="h1" 
-          variant="h5"
-          className={classes.subtitle} 
-          >Taste Preferences</Typography>
-          {/* Will need a way to add to each of these fields and remove.  */}
-        <div 
-        className={classes.form}
-        >
-        <Box
-        className={classes.tastes}
-        boxShadow={3}
-        >
+        className={classes.subtitle} 
+        >Dislikes</Typography>
+        </div> 
         <div>
-          <Typography
-          className={classes.subtitle} 
-          >Likes</Typography>
-          </div>
-
-          <div>
-          <Typography
-          className={classes.subtitle} 
-          >Dislikes</Typography>
-          </div>
-
-          <div>
-          <Typography
-          className={classes.subtitle} 
-          >Diets</Typography>
-          </div>
-
-          <div>
-          <Typography
-          className={classes.subtitle} 
-          >Allergies</Typography>
-          </div>
-        </Box>
-
+        <Typography
+        className={classes.subtitle} 
+        >Diets</Typography>
+        </div> 
+        <div>
+        <Typography
+        className={classes.subtitle} 
+        >Allergies</Typography>
         </div>
+      </Box> 
       </div>
-  )
+    </div>
+  ) 
 }
 
 export default withStyles(useStyles)(Tastes)
