@@ -3,46 +3,18 @@ import {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
-import Box from '@material-ui/core/Box'
-import { shadows } from '@material-ui/system';
-import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
-import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Switch from '@material-ui/core/Switch';
-import WifiIcon from '@material-ui/icons/Wifi';
-import BluetoothIcon from '@material-ui/icons/Bluetooth';
 // import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../../../Hooks/inputHook'
-import Info from './Info'
 
 //display information from user sign up 
-  //name
-  //email
-  //password 
-  //birthday
-//option to update information - button for update and save those updates 
-  //setting for others to view -toggles 
-
-//likes  - favorites 
-//dislikes 
-//diets 
-//allergies 
-
-let mock = ['apples', 'bananas', 'rasberries', 'potatos']
-
+  //location information 
 //SAVE BUTTON TO COMMIT ANY CHANGES
 
 //need a view mode ~ see pal profile 
