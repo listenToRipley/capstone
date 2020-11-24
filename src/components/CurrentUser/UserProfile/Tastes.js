@@ -14,8 +14,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton'
 import {useInput} from '../../../Hooks/inputHook';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import Food from '../../Food';
+
 
 library.add(faPlusCircle) 
 dom.watch()
@@ -83,35 +84,37 @@ const Tastes = (props) => {
   //need to populate originally from the sign in info of the user
 
   const handleRemoveLike = () => {
-    //would be better to have an on handle change? 
+    console.log('like has been removed')
   }
 
   const handleAddLike = () => {
-    //would be better to have an on handle change? 
+    console.log('congrats! you just added a like!')
   }
 
   const handleRemoveDislike = () => {
-    //would be better to have an on handle change? 
+    console.log('dislike has been removed')
   }
 
   const handleAddDislike = () => {
-    //would be better to have an on handle change? 
+    console.log('congrats! you just added a dislike!')
   }
 
-  const handleRemoveAllergy = () => {
-    //would be better to have an on handle change? 
-  }
-
-  const handleAddAllergy = () => {
-    //would be better to have an on handle change? 
-  }
   const handleRemoveDiet = () => {
-    //would be better to have an on handle change? 
+    console.log('diet has been removed')
   }
 
   const handleAddDiet = () => {
-    //would be better to have an on handle change? 
+    console.log('congrats! you just added an diet!')
   }
+
+  const handleRemoveAllergy = () => {
+    console.log('allergy has been removed')
+  }
+
+  const handleAddAllergy = () => {
+    console.log('congrats! you just added an allergy!')
+  }
+
 
   let mock = ['apples', 'bananas', 'rasberries', 'potatos']
 
@@ -143,11 +146,11 @@ const Tastes = (props) => {
               <IconButton  alignItems="right" aria-label="Add Item to Your Likes List">
               <svg className="fas fa-plus-circle"></svg>
               </IconButton>
-            </Tooltip>
-          </Typography>
+            </Tooltip> 
+          </Typography> 
           <Paper className={classes.chipPaper}>
           {mock.map((item, idx) => {
-            return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
+            return <Chip color="primary" variant="outlined" className={classes.chipItems} key={idx} onDelete={handleRemoveLike} label={`${item}`}></Chip>
           })}
           </Paper>
         </div>
@@ -163,7 +166,7 @@ const Tastes = (props) => {
           </Typography>
             <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
-              return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
+              return <Chip color="primary" variant="outlined" className={classes.chipItems} key={idx} onDelete={handleRemoveDislike} label={`${item}`}></Chip>
             })}
             </Paper>
         </div>
@@ -180,7 +183,7 @@ const Tastes = (props) => {
 
             <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
-              return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
+              return <Chip color="primary" variant="outlined" className={classes.chipItems} key={idx} onDelete={handleRemoveDiet} label={`${item}`}></Chip>
             })}
             </Paper>
        </div>
@@ -196,7 +199,7 @@ const Tastes = (props) => {
           </Typography>
             <Paper className={classes.chipPaper}>
             {mock.map((item, idx) => {
-              return <Chip className={classes.chipItems} key={idx} label={`${item}`}/>
+              return <Chip color="primary" variant="outlined" className={classes.chipItems} key={idx} onDelete={handleRemoveAllergy} label={`${item}`}></Chip>
             })}
             </Paper>
         </div>
