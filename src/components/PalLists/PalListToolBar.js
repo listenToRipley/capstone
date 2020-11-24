@@ -116,19 +116,7 @@ const useStyles = makeStyles((theme) => ({
           spacing={6}
           >
         <Grid item xs={9} square>
-        <MenuItem className={classes.search}>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </MenuItem>
+          <PalsSearchBar/>
         </Grid> 
         <Grid item xs={3} square>
           <IconButton
