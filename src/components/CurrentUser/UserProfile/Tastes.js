@@ -13,8 +13,22 @@ import IconButton from '@material-ui/core/IconButton'
 import {useInput} from '../../../Hooks/inputHook';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
-import foodSearchBar from '../../SearchBars/Food'
 
+import MenuItem from '@material-ui/core/MenuItem'
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
+
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import CloseIcon from '@material-ui/icons/Close';
+
+import Slide from '@material-ui/core/Slide'
 
 library.add(faPlusCircle) 
 dom.watch()
@@ -74,20 +88,41 @@ const useStyles = makeStyles((theme) => ({
     },
   chipItems: {
     margin: '.5em'
-  }
+  },
+  appBar: {
+    position: 'relative',
+  },
+
 }));
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const Tastes = (props) => {
   const classes = useStyles();
+
+  const [open, setOpen] = useState(false);
   //need to populate originally from the sign in info of the user
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   //each action needs to import the index of the item and use the associated Container
   const handleRemoveLike = () => {
     console.log('like has been removed')
   }
 
-  const handleAddLike = () => {
+  const handleAddLike = (e) => {
     console.log('congrats! you just added a like!')
+    // e.preventDefault(); 
+    console.log(' e is for event', e)
+
   }
 
   const handleRemoveDislike = () => {
@@ -129,7 +164,6 @@ const Tastes = (props) => {
           container
           component="main" 
           direction="row"
-          alignItems="center"
           className={classes.form}
         >
         <CssBaseline/>
@@ -141,69 +175,103 @@ const Tastes = (props) => {
         <Typography
           className={classes.subtitle} 
           >Likes
-            <Tooltip title="Add a like">
-              <IconButton  alignItems="right" aria-label="Add Item to Your Likes List">
+            <Tooltip onClick={handleClickOpen} title="Add a like">
+              <IconButton   aria-label="Add Item to Your Likes List">
               <svg className="fas fa-plus-circle"></svg>
               </IconButton>
             </Tooltip> 
           </Typography> 
-          <Paper className={classes.chipPaper}>
+
+
+          <div className={classes.chipPaper}>
           {mock.map((item, idx) => {
             return <Chip color="primary" variant="outlined" className={classes.chipItems} key={idx} onDelete={handleRemoveLike} label={`${item}`}></Chip>
           })}
-          </Paper>
+          </div>
         </div>
         <div>
           <Typography
           className={classes.subtitle} 
           >Dislikes
             <Tooltip title="Add a dislike">
-              <IconButton alignItems="right" aria-label="Add Item to Your Dislikes List">
+              <IconButton  aria-label="Add Item to Your Dislikes List">
               <svg className="fas fa-plus-circle"></svg>
               </IconButton>
             </Tooltip>
           </Typography>
-            <Paper className={classes.chipPaper}>
+            <div className={classes.chipPaper}>
             {mock.map((item, idx) => {
               return <Chip color="primary" variant="outlined" className={classes.chipItems} key={idx} onDelete={handleRemoveDislike} label={`${item}`}></Chip>
             })}
-            </Paper>
+            </div>
         </div>
         <div>
           <Typography
           className={classes.subtitle} 
           >Diets
             <Tooltip title="Add a diet">
-              <IconButton alignItems="right"  aria-label="Add Item to Your Diet List">
+              <IconButton  aria-label="Add Item to Your Diet List">
               <svg className="fas fa-plus-circle"></svg>
               </IconButton>
             </Tooltip>
           </Typography>
 
-            <Paper className={classes.chipPaper}>
+          <div className={classes.chipPaper}>
             {mock.map((item, idx) => {
               return <Chip color="primary" variant="outlined" className={classes.chipItems} key={idx} onDelete={handleRemoveDiet} label={`${item}`}></Chip>
             })}
-            </Paper>
+            </div>
        </div>
        <div>
           <Typography
           className={classes.subtitle} 
           >Allergies
             <Tooltip title="Add a allergy">
-              <IconButton alignItems="right" aria-label="Add Item to Allergy List">
+              <IconButton aria-label="Add Item to Allergy List">
               <svg className="fas fa-plus-circle"></svg>
               </IconButton>
             </Tooltip>
           </Typography>
-            <Paper className={classes.chipPaper}>
+            <div className={classes.chipPaper}>
             {mock.map((item, idx) => {
               return <Chip color="primary" variant="outlined" className={classes.chipItems} key={idx} onDelete={handleRemoveAllergy} label={`${item}`}></Chip>
             })}
-            </Paper>
+            </div>
         </div>
         </Grid>
       </Grid>
+      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+    <AppBar 
+    className={classes.appBar}
+    >
+  <Toolbar>
+    <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+      <CloseIcon />
+    </IconButton>
+    <Typography variant="h6" 
+    className={classes.title}>
+      Find Foods
+    </Typography>
+    <Button edge="end" autoFocus color="inherit" onClick={handleClose}>
+        Done
+      </Button>
+  </Toolbar>
+</AppBar>
+
+<div className='searchbar'>
+    <MenuItem className='search'>
+     <div className='searchIcon'>
+       <SearchIcon />
+     </div>
+     <InputBase
+       placeholder="Search…"
+       className={'inputRoot','inputInput'}
+       
+       inputProps={{ 'aria-label': 'search' }}
+     />
+    </MenuItem>
+   </div>
+</Dialog>
     </Card>
   ) 
 }

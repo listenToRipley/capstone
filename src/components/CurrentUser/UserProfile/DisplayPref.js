@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(6),
     marginBottom: theme.spacing(4),
     justifyContent: 'space-evenly',
-    alignItems: 'center',
+
   },
   title: {
     padding: 10,
@@ -102,8 +102,8 @@ const DisplayPreferences  = () => {
   }
 
   return (
-        <Paper classes={classes.root}>
-            <Card className={classes.paper}>
+        <div classes={classes.root}>
+            <Paper className={classes.paper}>
             <List subheader={
             <Typography
                component="h1" 
@@ -111,7 +111,7 @@ const DisplayPreferences  = () => {
                 className={classes.subtitle} 
               >Display Preferences</Typography>} >
              
-                <Button onClick={handleUpdates} alignItems="right">Save</Button>
+                <Button onClick={handleUpdates} >Save</Button>
          
                 <ListItem>
                   <ListItemIcon>
@@ -234,8 +234,8 @@ const DisplayPreferences  = () => {
                 </ListItem>
 
               </List>
-            </Card>
-        </Paper>
+            </Paper>
+        </div>
         
     
   )
