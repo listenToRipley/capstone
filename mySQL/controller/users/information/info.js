@@ -58,6 +58,7 @@ const updateBirthday = (req, res) => {
 
 }
 const updateEmail = (req, res) => {
+  //should have validation the email doesn't currently exist in the system to prevent conflicts
 
   const {email} = req.body
 

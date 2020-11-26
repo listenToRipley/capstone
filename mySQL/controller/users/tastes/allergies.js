@@ -7,7 +7,7 @@ const { handleSQLError } = require('../../../sql/error')
 const justAllergies = (req, res) => {
 
   let sql='SELECT al.allergy, al.spoonId FROM  usersAllergies AS uAl JOIN allergies AS al ON uAl.allergy=al.allergyId WHERE uAl.active=1 AND uAl.username=?'
-
+  //should input be updated to req.body.user? add conditional? 
   sql=mysql.format(sql,[req.user])
 
   pool.query(sql, (err, row) => {

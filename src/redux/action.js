@@ -102,6 +102,172 @@ export const logIn = (user) => {
   }
 }
 
+//USER INFO
+export const userPersonInfo = (input) => {
+  return {
+    type: 'USER_PERSONAL_INFORMATION',
+    value: input //user
+  }
+}
+
+export const userLocation = (input) => {
+  return {
+    type: 'USER_LOCATION',
+    value: input //user
+  }
+}
+
+export const userBirthday = (input) => {
+  return {
+    type: 'USER_BIRTHDAY',
+    value: input //user
+  }
+}
+
+export const userDisplayInfo = (input) => {
+  //provides there users display preferences as they currently stand
+  return {
+    type: 'VIEW_USER_DISPLAY_PREFERENCES',
+    value: input //user
+  }
+}
+
+export const userAllergies = (input) => {
+  return {
+    type: 'VIEW_USERS_ALLERGIES',
+    value: input //user
+  }
+}
+
+export const userDiets = (input) => {
+  return {
+    type: 'VIEW_USERS_DIETS',
+    value: input //user
+  }
+}
+
+export const userDislike = (input) => {
+  return {
+    type: 'VIEW_USERS_DISLIKES',
+    value: input //user
+  }
+}
+
+export const userLike = (input) => {
+  return {
+    type: 'VIEW_USERS_LIKES',
+    value: input //user
+  }
+}
+//user actions 
+
+export const upBirthday = (input) => {
+  return {
+    type: 'UPDATE_USERS_BIRTHDAY',
+    value: input //user, possibly: year, date, month 
+  }
+}
+
+export const upEmail = (input) => {
+  return {
+    type: 'UPDATE_USERS_EMAIL',
+    value: input // user, email
+  }
+}
+
+export const upLocation = (input) => {
+  return {
+    type: 'UPDATE_USERS_LOCATION_INFO',
+    value: input //user, address, city, state, zip, country
+  }
+}
+
+export const upPhone = (input) => {
+  return {
+    type: 'UPDATE_USER_PHONE_NUMBER',
+    value: input //user, phone, must be 10 digits 
+  }
+}
+
+export const addUserAllergy = (input) => {
+  return {
+    type: 'ADD_USER_ALLERGY',
+    value: input //user, allergy id 
+  }
+}
+
+export const removeUserAllergy = (input) => {
+  return {
+    type: 'REMOVE_USER_ALLERGY',
+    value: input //user, entry id 
+  }
+}
+
+
+export const addUserDiet = (input) => {
+  return {
+    type: 'ADD_USER_DIET',
+    value: input //user, diet id 
+  }
+}
+
+export const removeUserDiet = (input) => {
+  return {
+    type: 'REMOVE_USER_DIET',
+    value: input //user, entry id
+  }
+}
+
+export const addUserDislike = (input) => {
+  return {
+    type: 'ADD_USER_DISLIKE',
+    value: input //user, item, spoon
+  }
+}
+
+export const removeUserDislike = (input) => {
+  return {
+    type: 'REMOVE_USER_DISLIKE',
+    value: input //user, entry id 
+  }
+}
+
+export const addUserLike = (input) => {
+  return {
+    type: 'ADD_USER_LIKE',
+    value: input //user, item, spoon
+  }
+}
+
+export const removeUserLike = (input) => {
+  return {
+    type: 'REMOVE_USER_LIKE',
+    value: input //user, entry id 
+  }
+}
+
+  //display 
+export const upDisplayPref = (input) => {
+  return {
+    type: 'UPDATE_USER_DISPLAY_PREFERENCES',
+    value: input//user, possibly booleans for the following: likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone
+  }
+}
+
+export const upDisplayPrivate = (input) => {
+  return {
+    type: 'UPDATE_USER_DISPLAY_PRIVATE',
+    value: input //user and boolean 
+  }
+}
+
+export const upDisplayPrefDefault = (input) => {
+  return {
+    type: 'RESET_USER_DISPLAY_PREFERENCES_TO_DEFAULT',
+    value: input //user
+  }
+}
+
 //PAL LIST 
 
 export const myPalList = (input) => {
