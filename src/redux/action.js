@@ -70,6 +70,20 @@ export const allDiets = (input) => {
 
 //app ACTIONS 
 
+export const addAllergies = (input) => {
+  return {
+    type: 'ADD_ALLERGIES',
+    value: input //new allergy
+  }
+}
+
+export const addDiets = (input) => {
+  return {
+    type: 'ADD_DIETS',
+    value: input //new diet
+  }
+}
+
 //this is specific to current user
 export const upPassword = (input) => {
   //this will be updateFromLogPassword
