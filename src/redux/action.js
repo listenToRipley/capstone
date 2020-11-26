@@ -27,6 +27,14 @@ export const findUsername = (input) => {
   }
 }
 
+export const forgotPassword = (input) => {
+  //this updatePassword in mysql 
+  return {
+    type: 'FORGOT_PASSWORD',
+    value: input //the email is required, then update password 
+  }
+}
+
 //app functions 
 export const findUsers = (input) => {
   return {
@@ -35,7 +43,15 @@ export const findUsers = (input) => {
   }
 }
 
-//add function 
+export const upPassword = (input) => {
+  //this will be updateFromLogPassword
+  return {
+    type: 'UPDATE_PASSWORD',
+    value: input //user and new password 
+  }
+}
+
+//LOGIN 
 export const logIn = (user) => {
   return {
     type: 'LOGIN',
@@ -44,46 +60,12 @@ export const logIn = (user) => {
   }
 }
 
-//pal list items 
+//PAL LIST 
+
 export const myPalList = (input) => {
   return {
     type: 'MY_PAL_LIST',
     value: input //username
-  }
-}
-
-export const sendPalReq = (input) => {
-  return {
-    type: 'SEND_PAL_REQ',
-    value: input //username of pal
-  }
-}
-
-export const viewPendingPals = (input) => {
-  return {
-    type: 'VIEW_PENDING_PAL_REQUESTS',
-    value: input //username
-  }
-}
-
-export const viewSentReq = (input) => {
-  return {
-    type: 'VIEW_SENT_PAL_REQUESTS',
-    value: input//username
-  }
-}
-
-export const acceptPal = (input) => {
-  return {
-    type: 'ACCEPT_PAL',
-    value: input
-  }
-}
-
-export const declinePal = (input) => {
-  return {
-    type: 'DECLINE_PAL',
-    value: input
   }
 }
 
@@ -94,26 +76,181 @@ export const palsPalList = (input) => {
   }
 }
 
-//PAL LIST SETTINGS
+
+//pal list - ACTIONS 
+export const sendPalReq = (input) => {
+  return {
+    type: 'SEND_PAL_REQ',
+    value: input //username of pal
+  }
+}
+
+export const viewPendingPals = (input) => {
+  return {
+    type: 'VIEW_PENDING_PAL_REQUESTS',
+    value: input //user
+  }
+}
+
+export const viewSentReq = (input) => {
+  return {
+    type: 'VIEW_SENT_PAL_REQUESTS',
+    value: input//user
+  }
+}
+
+export const acceptPal = (input) => {
+  return {
+    type: 'ACCEPT_PAL',
+    value: input // req id 
+  }
+}
+
+export const declinePal = (input) => {
+  return {
+    type: 'DECLINE_PAL',
+    value: input //req id
+  }
+}
+
+//pal list - SETTINGS
 export const upPalListName = (input) => {
   return {
     type: 'UPDATE_PAL_LIST_NAME',
-    value: input //new name
+    value: input //user, new title 
   }
   
 }
 
-export const updatePalRole = (input) => {
+export const upPalRole = (input) => {
   return {
     type: 'UPDATE_PALS_ROLES_ON_LISTS',
-    value: input //username 
+    value: input //pal's username 
   }
 }
 
-//shopping items 
+//SHOPPING LIST 
 export const myShopList = (input) => {
   return {
     type: 'MY_SHOPPING_LIST',
+    value: input //user
+  }
+}
+
+export const palsShopList = (input) => {
+  return {
+    type: 'PALS_SHOPPING_LIST',
+    value: input //pal's username 
+  }
+}
+
+export const shopListDetails = (input) => {
+  //provides the shop list id, owner, name and access, settings and merge status
+  return {
+    type: 'SHOPPING_LIST_DETAILS',
+    value: input //shop list id 
+  }
+}
+
+export const shopListCount = (input) => {
+  //provide as a count of how many items on currently on the shopping list 
+  return {
+    type: 'SHOPPING_LIST_ITEM_COUNT',
+    value: input // shop list id 
+  }
+}
+
+export const shopListItems = (input) => {
+  //a full list of all items currently on the list 
+  return {
+    type: 'ITEMS_ON_SHOPPING_LIST',
+    value: input //shop list id 
+  }
+} 
+
+//shop list - ACTIONS 
+export const addItemShopList = (input) => {
+  return {
+    type: 'ADD_ITEM_TO_SHOPPING_LIST',
+    value: input //shop list  and possibly : quantity, measure, item, spoon
+  }
+}
+
+export const upItemShopList = (input) => {
+  return {
+    type: 'UPDATE_ITEM_ON_SHOPPING_LIST',
+    value: input //item id, possibly: quantity, measure, item, spoonId
+  }
+}
+
+export const removeItemShopList = (input) => {
+  return {
+    type: 'REMOVE_FROM_SHOPPING_LIST',
+    value: input //item id 
+  }
+}
+
+export const markOffItem = (input) => {
+  return {
+    type: 'MARK_OFF_ITEM_ON_SHOPPING_LIST',
+    value: input //this feels like a whole process, but a single straight forward item
+  }
+}
+
+//shop list - REQUESTS 
+export const reqCount = (input) => {
+  //know how many requests on your list currently have pending 
+  return {
+    type: 'REQUEST_ITEM_COUNT',
+    value: input // shop list id 
+  }
+}
+
+export const viewShopReq = (input) => {
+  //provides a list of all items that have pending your approval 
+  return {
+    type: 'VIEW_REQUEST_ITEMS_ON_SHOPPING_LIST',
+    value: input //shop list id 
+  }
+}
+
+export const viewSentReq = (input) => {
+  //provide a list of all items the current user has sent to other lists
+  return {
+    type: 'VIEW_SENT_ITEM_REQUESTS',
+    value: input//user and list id 
+  }
+}
+
+// ~~ ACTIONS 
+export const sendReqItem = (input) => {
+  //can only be done is the current user is list a requesters 
+  return {
+    type: 'REQUEST_AN_ITEM',
+    value: input //user, list id possibly: quantity, measId, item, spoonId
+  }
+}
+
+export const acceptReqItem = (input) => {
+  //action can only be taken if you are the owner or co-owner currently listed 
+  return {
+    type: 'ACCEPT_REQUESTED_ITEM',
+    value: input //req id 
+  }
+}
+
+export const declineReqItem = (input) => {
+    //action can only be taken if you are the owner or co-owner currently listed 
+  return {
+    type: 'DECLINE_REQUESTED_ITEM',
+    value: input //req id 
+  }
+}
+
+//shop list  - SETTINGS
+export const autoAddToPantry = (input) => {
+  return {
+    type:'AUTO_ADD_TO_PANTRY',
     value: input
   }
 }
@@ -125,71 +262,8 @@ export const upShopListName = (input) => {
   }
 }
 
-export const palsShopList = (input) => {
-  return {
-    type: 'PALS_SHOPPING_LIST',
-    value: input
-  }
-}
 
-export const removeItemToShoppingList = (input) => {
-  return {
-    type: 'REMOVE_FROM_SHOPPING_LIST',
-    value: input //should this be a class? 
-  }
-}
-
-export const upItemOnShoppingList = (input) => {
-  return {
-    type: 'UPDATE_ITEM_ON_SHOPPING_LIST',
-    value: input //should this be a class? 
-  }
-}
-
-export const checkItemOnShoppingList = (input) => {
-  return {
-    type: 'CHECK_ITEM_ON_SHOPPING_LIST',
-    value: input //this feels like a whole process, but a single straight forward item
-  }
-}
-
-export const reqItem = (input) => {
-  return {
-    type: 'REQUEST_ITEM',
-    value: input
-  }
-}
-
-export const acceptReqItem = (input) => {
-  return {
-    type: 'ACCEPT_REQUESTED_ITEM',
-    value: input
-  }
-}
-
-export const declineReqItem = (input) => {
-  return {
-    type: 'DECLINE_REQUESTED_ITEM',
-    value: input
-  }
-}
-
-export const removeItemShopList = (input) => {
-  return {
-    type: 'REMOVE_ITEM_FROM_SHOPPING_LIST',
-    value: input //should this be a class? 
-  }
-}
-
-export const autoAddToPantry = (input) => {
-  return {
-    type:'AUTO_ADD_TO_PANTRY',
-    value: input
-  }
-}
-
-
-//pantry items
+//PANTRY
 export const myPantry = (input) => {
   return {
     type: 'MY_SHOPPING_LIST',
