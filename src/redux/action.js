@@ -38,12 +38,22 @@ export const forgotPassword = (input) => {
 
 //app functions 
 export const findUsers = (input) => {
+  //searchUsers path in mysql 
   return {
     type:'FIND_PALS',
     value: input //username or email
   }
 }
 
+export const listAllUsers = (input) => {
+  return {
+    type: 'ALL_USERS',
+    value: input //no input required 
+  }
+}
+
+
+//this is specific to current user
 export const upPassword = (input) => {
   //this will be updateFromLogPassword
   return {
