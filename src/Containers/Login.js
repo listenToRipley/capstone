@@ -1,10 +1,9 @@
 import {connect} from 'react-redux'
-import '../Components/LogIn'
 import LogIn from '../Components/LogIn'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, LogIn) => {
   return {
-    loggedIn: state.user
+    logIn: state.user
   }
 }
 

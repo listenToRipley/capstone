@@ -1,5 +1,5 @@
 export const createUser = (user) => {
-  return (distach) => {
+  return (dispatch) => {
     fetch('http://localhost:4001/preLogin/createUser')
     .then(req => req.json())
     dispatch({ //need to pull in the information, do I need to add the key here? 
@@ -20,70 +20,128 @@ export const createUser = (user) => {
   }
 }
 
-//add function 
-export const logIn = (status) => {
+export const findUsername = (input) => {
   return {
-    type: 'LOGIN',
-    value: status //should be boolean
+    type: 'FIND_USERNAME',
+    value: input //email
   }
 }
 
-
-//pal list items 
-export const myPalsList = (input) => {
-  return {
-    type: 'MY_PALS_LIST',
-    value: input 
-  }
-}
-
-export const findPals = (input) => {
+//app functions 
+export const findUsers = (input) => {
   return {
     type:'FIND_PALS',
-    value: input //has to look through the database to determine uses 
+    value: input //username or email
   }
 }
 
-export const addPal = (input) => {
+//add function 
+export const logIn = (user) => {
   return {
-    type: 'ADD_PAL',
+    type: 'LOGIN',
+    value: user 
+    //return a token 
+  }
+}
+
+//pal list items 
+export const myPalList = (input) => {
+  return {
+    type: 'MY_PAL_LIST',
+    value: input //username
+  }
+}
+
+export const sendPalReq = (input) => {
+  return {
+    type: 'SEND_PAL_REQ',
+    value: input //username of pal
+  }
+}
+
+export const viewPendingPals = (input) => {
+  return {
+    type: 'VIEW_PENDING_PAL_REQUESTS',
+    value: input //username
+  }
+}
+
+export const viewSentReq = (input) => {
+  return {
+    type: 'VIEW_SENT_PAL_REQUESTS',
+    value: input//username
+  }
+}
+
+export const acceptPal = (input) => {
+  return {
+    type: 'ACCEPT_PAL',
     value: input
   }
 }
 
-export const acceptPalRequest = (input) => {
+export const declinePal = (input) => {
   return {
-    type: 'ACCEPT_PAL_REQUEST',
+    type: 'DECLINE_PAL',
     value: input
   }
 }
 
-export const declinePalRequest = (input) => {
+export const palsPalList = (input) => {
   return {
-    type: 'DECLINE_PAL_REQUEST',
-    value: input
+    type: 'MY_PALS_LIST',
+    value: input //pal's username
   }
 }
 
-export const removePal = (input) => {
+//PAL LIST SETTINGS
+export const upPalListName = (input) => {
   return {
-    type: 'REMOVE_PAL',
-    value: input
+    type: 'UPDATE_PAL_LIST_NAME',
+    value: input //new name
   }
+  
 }
 
-export const blockPal = (input) => {
+export const updatePalRole = (input) => {
   return {
-    type: 'BLOCK_PAL',
-    value: input
+    type: 'UPDATE_PALS_ROLES_ON_LISTS',
+    value: input //username 
   }
 }
-
 
 //shopping items 
-export const addToShoppingList = (input) => {
+export const myShopList = (input) => {
   return {
-    type: 'ADD_TO_SHOPPING_LIST',
+    type: 'MY_SHOPPING_LIST',
+    value: input
+  }
+}
+
+export const upShopListName = (input) => {
+  return {
+    type: 'UPDATE_SHOPPING_LIST_NAME',
+    value: input
+  }
+}
+
+export const palsShopList = (input) => {
+  return {
+    type: 'PALS_SHOPPING_LIST',
+    value: input
+  }
+}
+
+export const removeItemToShoppingList = (input) => {
+  return {
+    type: 'REMOVE_FROM_SHOPPING_LIST',
+    value: input //should this be a class? 
+  }
+}
+
+export const upItemOnShoppingList = (input) => {
+  return {
+    type: 'UPDATE_ITEM_ON_SHOPPING_LIST',
     value: input //should this be a class? 
   }
 }
@@ -95,30 +153,30 @@ export const checkItemOnShoppingList = (input) => {
   }
 }
 
-export const requestItem = (input) => {
+export const reqItem = (input) => {
   return {
     type: 'REQUEST_ITEM',
     value: input
   }
 }
 
-export const acceptRequestedItem = (input) => {
+export const acceptReqItem = (input) => {
   return {
     type: 'ACCEPT_REQUESTED_ITEM',
     value: input
   }
 }
 
-export const declineRequestedItem = (input) => {
+export const declineReqItem = (input) => {
   return {
     type: 'DECLINE_REQUESTED_ITEM',
     value: input
   }
 }
 
-export const removeFromShoppingList = (input) => {
+export const removeItemShopList = (input) => {
   return {
-    type: 'REMOVE_FROM_SHOPPING_LIST',
+    type: 'REMOVE_ITEM_FROM_SHOPPING_LIST',
     value: input //should this be a class? 
   }
 }
@@ -130,83 +188,114 @@ export const autoAddToPantry = (input) => {
   }
 }
 
-export const requestShoppingListMerge = (input) => {
+
+//pantry items
+export const myPantry = (input) => {
   return {
-    type: 'REQUEST_SHOPPING_LIST_MERGE',
+    type: 'MY_SHOPPING_LIST',
     value: input
   }
 }
 
-export const acceptShoppingListMerge = (input) => {
+export const palsPantry = (input) => {
   return {
-    type: 'ACCEPT_SHOPPING_LIST_MERGE',
+    type: 'PALS_SHOPPING_LIST',
     value: input
   }
 }
 
-export const declineShoppingListMerge = (input) => {
+export const pantryDetails = (input) => {
+  //tells who is the pantry owner, the name on the pantry, the auto add setting and merge status on pantry 
   return {
-    type: 'DECLINE_SHOPPING_LIST_MERGE',
-    value: input
+    type:'PANTRY_DETAILED_INFO',
+    value: input //pantry Id
   }
 }
 
-export const permissionsShoppingList = (input) => {
+export const pantryCount = (input) => {
+  //provides a count of how many items are currently on in the pantry
   return {
-    type: 'PERMISSIONS_SHOPPING_LIST',
-    value: input
+    type: 'PANTRY_ITEM_COUNT',
+    value: input //pantry ID
   }
 }
 
+export const pantryItems = (input) => {
+  //a full list of all items in the pantry 
+  return {
+    type: 'PANTRY_ITEMS_LIST',
+    value: input //pantry id
+  }
+}
 
-//pantry items 
+export const pantryAccess = (input) => {
+  //who has access to the pantry currently 
+  return {
+    type: 'PANTRY_ACCESS_DETAILS',
+    value: input //pantry id 
+  }
+}
+
 export const addToPantry = (input) => {
   return {
     type: 'ADD_TO_PANTRY',
-    value: input //should this be a class? 
+    value: input //pantry Id, quantity, measId, item, spoonId
   }
 }
 
-export const removeFromPantry = (input) => {
+export const upPantryItem = (input) => {
+  //allows for a specific item to be updated 
   return {
-    type: 'REMOVE_FROM_PANTRY',
-    value: input //should this be a class? 
+    type: 'UPDATE_PANTRY_ITEM',
+    value: input //item id, possibly: quantity, measId, item, spoonId
   }
 }
 
-export const autoAddToShopping = (input) => {
+export const removeItemPantry = (input) => {
   return {
-    type: 'AUTO_ADD_TO_SHOPPING',
-    value: input 
+    type: 'REMOVE_ITEM_FROM_PANTRY',
+    value: input //item id
   }
 }
-export const requestPantryMerge = (input) => {
+
+//PANTRY SETTING
+export const autoAddToShopList = (input) => {
   return {
-    type: 'REQUEST_PANTRY_MERGE',
+    type: 'AUTO_ADD_TO_SHOP_LIST',
+    value: input //item id
+  }
+  
+}
+
+export const upPantryName = (input) => {
+  return {
+    type: 'UPDATE_PANTRY_NAME',
     value: input
   }
 }
 
-export const acceptPantryMerge = (input) => {
+//MERGE
+export const sendMergeReq = (input) => {
   return {
-    type: 'ACCEPT_PANTRY_MERGE',
+    type: 'SEND_MERGE_REQ',
     value: input
   }
 }
 
-export const declinePantryMerge = (input) => {
+export const acceptMerge = (input) => {
   return {
-    type: 'DECLINE_PANTRY_MERGE',
+    type: 'ACCEPT_MERGE_REQUEST',
     value: input
   }
 }
 
-export const permissionsPantry = (input) => {
+export const declineMerge = (input) => {
   return {
-    type: 'PERMISSIONS_PANTRY',
+    type: 'DECLINE_MERGE_REQUEST',
     value: input
   }
 }
+
 
 
 //food
@@ -225,3 +314,18 @@ export const fetchFood = () => {
       })
   }
 }
+
+//FUTURE STATE 
+// export const removePal = (input) => {
+//   return {
+//     type: 'REMOVE_PAL',
+//     value: input
+//   }
+// }
+
+// export const blockPal = (input) => {
+//   return {
+//     type: 'BLOCK_PAL',
+//     value: input
+//   }
+// }
