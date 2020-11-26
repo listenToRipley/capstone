@@ -46,6 +46,8 @@ const allDiets = (req, res) => {
     })
   }
 
+//don't have get measurements... oh bother
+
 //POST
 const addMeasurement = (req, res) => {
 

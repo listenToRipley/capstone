@@ -52,6 +52,23 @@ export const listAllUsers = (input) => {
   }
 }
 
+export const allAllergies = (input) => {
+  //provides a list of all allergies current in the system 
+  return {
+    type: 'ALL_ALLERGIES',
+    value: input //no input required 
+  }
+}
+
+export const allDiets = (input) => {
+  //provides a list of all diets current in the system 
+  return {
+    type: 'ALL_DIETS',
+    value: input //no input required 
+  }
+}
+
+//app ACTIONS 
 
 //this is specific to current user
 export const upPassword = (input) => {
