@@ -20,6 +20,7 @@ export const createUser = (user) => {
   }
 }
 
+//add function 
 export const logIn = (status) => {
   return {
     type: 'LOGIN',

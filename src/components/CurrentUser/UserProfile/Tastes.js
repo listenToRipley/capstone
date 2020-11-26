@@ -175,7 +175,7 @@ const Tastes = (props) => {
         <Typography
           className={classes.subtitle} 
           >Likes
-            <Tooltip onClick={handleClickOpen} title="Add a like">
+            <Tooltip onClick={() => {setOpen(true)}} title="Add a like">
               <IconButton   aria-label="Add Item to Your Likes List">
               <svg className="fas fa-plus-circle"></svg>
               </IconButton>
@@ -240,38 +240,7 @@ const Tastes = (props) => {
         </div>
         </Grid>
       </Grid>
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-    <AppBar 
-    className={classes.appBar}
-    >
-  <Toolbar>
-    <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-      <CloseIcon />
-    </IconButton>
-    <Typography variant="h6" 
-    className={classes.title}>
-      Find Foods
-    </Typography>
-    <Button edge="end" autoFocus color="inherit" onClick={handleClose}>
-        Done
-      </Button>
-  </Toolbar>
-</AppBar>
-
-<div className='searchbar'>
-    <MenuItem className='search'>
-     <div className='searchIcon'>
-       <SearchIcon />
-     </div>
-     <InputBase
-       placeholder="Search…"
-       className={'inputRoot','inputInput'}
-       
-       inputProps={{ 'aria-label': 'search' }}
-     />
-    </MenuItem>
-   </div>
-</Dialog>
+      <Dialog open={open} onClose={() => setOpen(false)}/>
     </Card>
   ) 
 }
