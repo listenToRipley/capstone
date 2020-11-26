@@ -20,9 +20,10 @@ export const createUser = (user) => {
   }
 }
 
-export const findUsername = (input) => {
+export const forgotUsername = (input) => {
+  //for current user
   return {
-    type: 'FIND_USERNAME',
+    type: 'FORGOT_USERNAME',
     value: input //email
   }
 }
