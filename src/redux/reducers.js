@@ -2,7 +2,11 @@ import {combineReducers} from 'redux';
 
 //add content for each action 
 const createUser = (state = [], action) => {
-  //create a new user 
+  switch(action.type) {
+    case 'CREATE USER' {
+      user = state
+    }
+  }
 }
 
 
@@ -15,8 +19,11 @@ const logIn = (state = [], action) => {
   }  
 }
 
-const food = () => {
-  
+const food = (state =[], action) => {
+  switch(action.type) {
+    case 'FETCH_FOOD':
+      return [...state, action.value] // should return the search items 
+  } // this is only function of this, it will be used in a number of other locations. 
 }
 
 const myPantry = (state=[], action) => {
