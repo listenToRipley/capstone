@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -259,7 +259,7 @@ const Pantry = (props) =>  {
                       </TableCell>
                       <TableCell align="left">{row.items}</TableCell>
                       <TableCell align="right">{row.unit}</TableCell>
-                      <TableCell align="left">{row.itemActions}
+                      <TableCell item={index} align="left">{row.itemActions}
                         <ItemActions/>
                         </TableCell>
                     </TableRow>

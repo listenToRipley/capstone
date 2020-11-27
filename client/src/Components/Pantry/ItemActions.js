@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -9,12 +9,9 @@ const ITEM_HEIGHT = 48;
 //need to tie in shop list actions here
 
 const ItemActions = (props) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const options = [
-    'Update',
-    'Remove'
-  ];
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [id, setId] = useState(props.item)
+  const [selected, upSeleted] = useState(false)
 
   const open = Boolean(anchorEl);
 
@@ -26,12 +23,15 @@ const ItemActions = (props) => {
     setAnchorEl(null);
   };
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     //need to add actions here 
+    console.log('you are trying to delete this', id)
   }
 
   const handleUpdate = () => {
     //need to add actions here 
+    console.log(' you are trying to update this')
+    //this field has to be changed to an text field here. 
   }
 
 
@@ -46,7 +46,7 @@ const ItemActions = (props) => {
        <MoreVertIcon/>
       </IconButton>
       <Menu
-
+        onClick={handleClose}
         anchorEl={anchorEl}
         keepMounted
         open={open}
@@ -58,11 +58,8 @@ const ItemActions = (props) => {
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Update'} onClick={handleClose}>
-            {option}
-          </MenuItem>
-        ))}
+      <MenuItem onClick={handleUpdate}>Update</MenuItem>
+      <MenuItem onClick={handleDelete}>Delete</MenuItem>
       </Menu>
     </div>
   );
