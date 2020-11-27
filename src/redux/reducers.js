@@ -3,7 +3,7 @@ import {combineReducers} from 'redux';
 //add content for each action 
 const createUser = (state = [], action) => {
   switch(action.type) {
-    case 'CREATE USER' {
+    case 'CREATE USER': {
       user = state
     }
   }
