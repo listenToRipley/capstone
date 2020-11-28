@@ -171,11 +171,11 @@ PantryHead.propTypes = {
 
 const Pantry = (props) =>  {
   const classes = useStyles();
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('item');
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('item');
+  const [selected, setSelected] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -259,8 +259,8 @@ const Pantry = (props) =>  {
                       </TableCell>
                       <TableCell align="left">{row.items}</TableCell>
                       <TableCell align="right">{row.unit}</TableCell>
-                      <TableCell item={index} align="left">{row.itemActions}
-                        <ItemActions/>
+                      <TableCell align="left">{row.itemActions}
+                        <ItemActions item={index} deleteItem={props.deleteItem} updateItem={props.updateItem}/>
                         </TableCell>
                     </TableRow>
                   );

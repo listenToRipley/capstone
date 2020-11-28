@@ -15,23 +15,26 @@ const ItemActions = (props) => {
 
   const open = Boolean(anchorEl);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (e) => {
     //need to add actions here 
-    console.log('you are trying to delete this', id)
+    console.log('you are trying to delete this', props.index)
+    // props.deleteItem(props.index)
+    
   }
 
   const handleUpdate = () => {
     //need to add actions here 
-    console.log(' you are trying to update this')
+    console.log(' you are trying to update this', props.index)
     //this field has to be changed to an text field here. 
+    // props.updateItem(props.index)
   }
 
 
