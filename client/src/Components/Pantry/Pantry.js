@@ -162,7 +162,6 @@ PantryHead.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
@@ -185,22 +184,23 @@ const Pantry = (props) =>  {
 
 
   //need to work on this since it is handle everything right now 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event, idx) => {
+    //right now this is selecting all the rows, not just one individual one 
+    const selectedIndex = selected[idx];
     let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
+      if (selectedIndex === -1) {
+        newSelected = newSelected.concat(selected, idx);
+      } else if (selectedIndex === 0) {
+        newSelected = newSelected.concat(selected.slice(1));
+      } else if (selectedIndex === selected.length - 1) {
+        newSelected = newSelected.concat(selected.slice(0, -1));
+      } else if (selectedIndex > 0) {
+        newSelected = newSelected.concat(
+          selected.slice(0, selectedIndex),
+          selected.slice(selectedIndex + 1),
+        );
+      }
+    
 
     setSelected(newSelected);
   };
@@ -215,7 +215,7 @@ const Pantry = (props) =>  {
     setPage(0);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (idx) => {selected.indexOf(idx); }
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -242,19 +242,20 @@ const Pantry = (props) =>  {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
-                  const labelId = `check box${index}`;
-
+                  const isItemSelected = isSelected(index);
+                    console.log(isSelected)
                   return (
                     <TableRow
                       hover
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={index}
+                      role="checkbox"
                       selected={isItemSelected}
+                      onClick={handleClick}
+                      index={index}
                     >
-
-                      <TableCell component="th" id={labelId} scope="row" align="center">
+                      <TableCell component="th" scope="row" align="center">
                         {row.quantity}
                       </TableCell>
                       <TableCell align="left">{row.items}</TableCell>

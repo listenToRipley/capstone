@@ -2,7 +2,6 @@ import React from 'react'
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faCogs } from '@fortawesome/free-solid-svg-icons';
 
@@ -31,11 +30,13 @@ const PantryActions = () => {
 
   const handleNameUpdate = () => {
     //add action here 
+    console.log('you want to update the name')
+    handleClose()
   }
 
   return (
 
-    <div>
+    <>
     <IconButton
       aria-label="more"
       aria-controls="pantry settings"
@@ -58,12 +59,12 @@ const PantryActions = () => {
       }}
     >
       {options.map((option) => (
-        <MenuItem key={option} selected={option === 'Update'} onClick={handleClose}>
+        <MenuItem key={option} selected={option === 'Update'} onClick={handleNameUpdate} >
           {option}
         </MenuItem>
       ))}
     </Menu>
-  </div>
+  </>
   )
 }
 

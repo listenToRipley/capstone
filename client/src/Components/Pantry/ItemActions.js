@@ -32,7 +32,7 @@ const ItemActions = (props) => {
 
   const handleUpdate = () => {
     //need to add actions here 
-    console.log(' you are trying to update this', props.index)
+    console.log(' you are trying to update this')
     //this field has to be changed to an text field here. 
     // props.updateItem(props.index)
   }

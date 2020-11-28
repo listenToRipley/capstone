@@ -17,17 +17,19 @@ dom.watch()
 //this will be actions that can be taken on the pantry as a whole
 const PantryToolbar = (props) => {
 
-  const handleItemAdd = () => {
+  const handleItemAdd = (e) => {
     //add items to add 
+    console.log('you want to add an item!')
       
   }
 
-  const handFindPantryItem = () => {
+  const handFindPantryItem = (e) => {
     //see if you currently have something in your pantry
+    console.log('you want to find an item in your pantry?')
   }
 
   return (
-    <div >
+
       <Toolbar className='root'>
         <Typography
         className='title'> 
@@ -46,14 +48,13 @@ const PantryToolbar = (props) => {
            />
           </MenuItem>
          </div>
-         <div
-         className='add'>
-         <Tooltip title="Add Item to Pantry">
+    
+         <Tooltip className="add" title="Add Item to Pantry">
            <IconButton aria-label="add item to pantry">
            <svg className="fas fa-plus-circle"></svg>
            </IconButton>
          </Tooltip>
-         </div>
+       
          <div
          className='settings'>
           <Tooltip title="Pantry Settings">
@@ -61,7 +62,7 @@ const PantryToolbar = (props) => {
          </Tooltip> 
          </div>
      </Toolbar>
-    </div>
+
   )
 }
 
