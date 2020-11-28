@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,7 +13,8 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import Home from './Home'
-import {useInput} from '../Hooks/inputHook'
+import {useInput} from '../Hooks/inputHook';
+import PropTypes from 'prop-types';
 
 
 //the main page, go not pass go, to not collect $200 without login in or creating a login
@@ -49,34 +50,46 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LogIn = () => {
+const LogIn = (props) => {
   const classes = useStyles();
   //states sets
   const {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
-  const {value: loggedIn, bind: bindLoggedIn, reset: resetLoggedIn} = useInput('')
-  console.log('user name is : ' ,username)
-  console.log('the password : ', password )
-  //need to set state on text before I add handlers 
-    //validate password and username 
+  const {value: login, bind: bindLogin, reset: resetLogin} = useInput(false)
   
-  const loggedInCookie = e => {
+  const {validation, setValidation} = useState(props)
+
+    //validate password and username 
+    const sendValidation = e => {
+      console.log('try to validate')
+      console.log('user name is : ' ,username)
+      console.log('the password : ', password )
+      if (validation) {
+        bindLogin=true
+        console.log('you are ready to be logged in!') 
+      } else {
+        console.log('something is wrong with that login')
+      }
+
+    }
+  
+  const loginCookie = e => {
     //need to try the auth token here
     e.preventDefault()
     document.cookie = "businessCookies="+JSON.stringify({
       "username":bindUsername,
       //will have to add validate for username and password, then can be true 
-      "loggedIn":bindLoggedIn,
+      "login":bindLogin,
       "max-Age":60*10000,
-      "reset": {
-        "resetUsername": resetUsername,
-        "resetLoggedIn": resetLoggedIn
-      }
+      // "reset": {
+      //   "resetUsername": resetUsername,
+      //   "resetLoggedIn": resetLogin
+      // }
     })
     window.location.replace('/home')
   }
-
-  return loggedIn ? <Home {...bindUsername} {...bindLoggedIn} /> :(
+ 
+  return validation ? <Home {...bindUsername} {...bindLoggedIn} /> : (
       <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -87,10 +100,11 @@ const LogIn = () => {
           </Avatar>
           <Typography component="h1" 
           variant="h5"
-          aria-label='sign in for pantry pals'>
+          aria-label='sign in for pantry pals'
+          >
             Sign in
           </Typography>
-          <form className={classes.form} onSubmit={e=> bindLoggedIn= true} noValidate>
+          <form className={classes.form} onSubmit={e=> bindLogin="true"} noValidate>
             <TextField
               {...bindUsername}
               variant="outlined"
@@ -123,7 +137,7 @@ const LogIn = () => {
               className={classes.submit}
               aria-label='sign in button'
               username={bindUsername}
-              loggedIn={true}
+              onSubmit={sendValidation}
             >
               Sign In
             </Button>
@@ -155,6 +169,13 @@ const LogIn = () => {
       </Grid>
     </Grid>
   );
+}
+
+LogIn.proptypes = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  login: PropTypes.bool.isRequired,
+  validation: PropTypes.object
 }
 
 export default withStyles(useStyles)(LogIn)
