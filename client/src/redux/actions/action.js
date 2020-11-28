@@ -1,10 +1,89 @@
+import axios from 'axios';
+import {
+CREATE_NEW_USER,
+FORGOT_USERNAME,
+FORGOT_PASSWORD,
+FIND_PALS,
+ALL_USERS,
+ALL_ALLERGIES,
+ALL_DIETS,
+ADD_ALLERGIES,
+ADD_DIETS,
+UPDATE_PASSWORD,
+LOGIN, 
+USER_PERSONAL_INFORMATION,
+USER_LOCATION,
+USER_BIRTHDAY,
+VIEW_USER_DISPLAY_PREFERENCES,
+VIEW_USERS_ALLERGIES,
+VIEW_USERS_DIETS,
+VIEW_USERS_DISLIKES,
+VIEW_USERS_LIKES,
+UPDATE_USERS_BIRTHDAY,
+UPDATE_USERS_EMAIL,
+UPDATE_USERS_LOCATION_INFO,
+UPDATE_USER_PHONE_NUMBER,
+ADD_USER_ALLERGY,
+REMOVE_USER_ALLERGY,
+ADD_USER_DIET,
+REMOVE_USER_DIET,
+ADD_USER_DISLIKE,
+REMOVE_USER_DISLIKE,
+ADD_USER_LIKE,
+REMOVE_USER_LIKE,
+UPDATE_USER_DISPLAY_PREFERENCES,
+UPDATE_USER_DISPLAY_PRIVATE,
+RESET_USER_DISPLAY_PREFERENCES_TO_DEFAULT,
+MY_PAL_LIST,
+MY_PALS_LIST,
+SEND_PAL_REQ,
+VIEW_PENDING_PAL_REQUESTS,
+VIEW_SENT_PAL_REQUESTS,
+ACCEPT_PAL,
+DECLINE_PAL,
+UPDATE_PAL_LIST_NAME,
+UPDATE_PALS_ROLES_ON_LISTS,
+MY_SHOPPING_LIST,
+PALS_SHOPPING_LIST,
+SHOPPING_LIST_DETAILS,
+SHOPPING_LIST_ITEM_COUNT,
+ITEMS_ON_SHOPPING_LIST,
+ADD_ITEM_TO_SHOPPING_LIST,
+UPDATE_ITEM_ON_SHOPPING_LIST,
+REMOVE_FROM_SHOPPING_LIST,
+MARK_OFF_ITEM_ON_SHOPPING_LIST,
+REQUEST_ITEM_COUNT,
+VIEW_REQUEST_ITEMS_ON_SHOPPING_LIST,
+VIEW_SENT_ITEM_REQUESTS,
+REQUEST_AN_ITEM,
+ACCEPT_REQUESTED_ITEM,
+DECLINE_REQUESTED_ITEM,
+AUTO_ADD_TO_PANTRY,
+UPDATE_SHOPPING_LIST_NAME,
+MY_SHOPPING_LIST,
+PALS_SHOPPING_LIST,
+PANTRY_DETAILED_INFO,
+PANTRY_ITEM_COUNT,
+PANTRY_ITEMS_LIST,
+PANTRY_ACCESS_DETAILS,
+ADD_TO_PANTRY,
+UPDATE_PANTRY_ITEM,
+REMOVE_ITEM_FROM_PANTRY,
+AUTO_ADD_SHOP_LIST,
+UPDATE_PANTRY_NAME,
+SEND_MERGE_REQ,
+ACCEPT_MERGE_REQUEST, 
+DECLINE_MERGE_REQUEST,
+FETCH_FOOD } from './types'
+
+
 export const createUser = (user) => {
   return (dispatch) => {
     fetch('http://localhost:4001/preLogin/createUser')
     .then(req => req.json())
     dispatch({ //need to pull in the information, do I need to add the key here? 
        
-      type: 'CREATE USER',
+      type: 'CREATE_NEW_USER',
       payload: {
         'username': '',
         'password': '',
@@ -20,19 +99,19 @@ export const createUser = (user) => {
   }
 }
 
-export const forgotUsername = (input) => {
+export const forgotUsername = (email) => {
   //for current user
   return {
     type: 'FORGOT_USERNAME',
-    payload: input //email
+    payload: email 
   }
 }
 
-export const forgotPassword = (input) => {
+export const forgotPassword = (email) => {
   //this updatePassword in mysql 
   return {
     type: 'FORGOT_PASSWORD',
-    payload: input //the email is required, then update password 
+    payload: email //the email is required, then update password 
   }
 }
 
@@ -103,65 +182,65 @@ export const logIn = (user) => {
 }
 
 //USER INFO
-export const userPersonInfo = (input) => {
+export const userPersonInfo = (user) => {
   return {
     type: 'USER_PERSONAL_INFORMATION',
-    payload: input //user
+    payload: user //user
   }
 }
 
-export const userLocation = (input) => {
+export const userLocation = (user) => {
   return {
     type: 'USER_LOCATION',
-    payload: input //user
+    payload: user //user
   }
 }
 
-export const userBirthday = (input) => {
+export const userBirthday = (user) => {
   return {
     type: 'USER_BIRTHDAY',
-    payload: input //user
+    payload: user //user
   }
 }
 
-export const userDisplayInfo = (input) => {
+export const userDisplayInfo = (user) => {
   //provides there users display preferences as they currently stand
   return {
     type: 'VIEW_USER_DISPLAY_PREFERENCES',
-    payload: input //user
+    payload: user //user
   }
 }
 
-export const userAllergies = (input) => {
+export const userAllergies = (user) => {
   return {
     type: 'VIEW_USERS_ALLERGIES',
-    payload: input //user
+    payload: user //user
   }
 }
 
-export const userDiets = (input) => {
+export const userDiets = (user) => {
   return {
     type: 'VIEW_USERS_DIETS',
-    payload: input //user
+    payload: user//user
   }
 }
 
-export const userDislike = (input) => {
+export const userDislike = (user) => {
   return {
     type: 'VIEW_USERS_DISLIKES',
-    payload: input //user
+    payload: user //user
   }
 }
 
-export const userLike = (input) => {
+export const userLike = (user) => {
   return {
     type: 'VIEW_USERS_LIKES',
-    payload: input //user
+    payload: user //user
   }
 }
 //user actions 
 
-export const upBirthday = (input) => {
+export const upBirthday = (user) => {
   return {
     type: 'UPDATE_USERS_BIRTHDAY',
     payload: input //user, possibly: year, date, month 
@@ -300,7 +379,7 @@ export const viewPendingPals = (input) => {
   }
 }
 
-export const viewSentReq = (input) => {
+export const viewSentReqPal = (input) => {
   return {
     type: 'VIEW_SENT_PAL_REQUESTS',
     payload: input//user
@@ -474,14 +553,14 @@ export const upShopListName = (input) => {
 //PANTRY
 export const myPantry = (input) => {
   return {
-    type: 'MY_SHOPPING_LIST',
+    type: 'MY_PANTRY',
     payload: input
   }
 }
 
 export const palsPantry = (input) => {
   return {
-    type: 'PALS_SHOPPING_LIST',
+    type: 'PALS_PANTRY',
     payload: input
   }
 }
@@ -584,10 +663,10 @@ export const declineMerge = (mergeId) => {
 
 
 //food
-export const findFood = () => {
+export const findFood = (searchItem) => {
   return (dispatch) => {
     //don't think the add of the api is quite right. 
-    fetch(`https://api.spoonacular.com/food/products/search?apiKey=${SPOON_API_KEY}query=${input}`)
+    fetch(`https://api.spoonacular.com/food/products/search?apiKey=${SPOON_API_KEY}query=${searchItem}`)
       .then(req => req.json())
       .then(res => {
         dispatch({ //need to pull in the information, do I need to add the key here? 
