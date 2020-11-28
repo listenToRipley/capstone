@@ -13,6 +13,8 @@ const ItemActions = (props) => {
   const [id, setId] = useState(props.item)
   const [selected, upSeleted] = useState(false)
 
+  // console.log('id', id)
+
   const open = Boolean(anchorEl);
 
   const handleClick = (e) => {
@@ -30,7 +32,7 @@ const ItemActions = (props) => {
     
   }
 
-  const handleUpdate = () => {
+  const handleUpdate = (e) => {
     //need to add actions here 
     console.log(' you are trying to update this')
     //this field has to be changed to an text field here. 
