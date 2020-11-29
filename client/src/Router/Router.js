@@ -12,23 +12,23 @@ import About from '../Components/About'
 import Inbox from '../Components/CurrentUser/Inbox/Inbox'
 import Food from '../Components/Food/Food'
 import ForgotPassword from '../Components/AppFunc/ForgotPassword'
-import cookie from 'cookie'
+// import cookie from 'cookie'
 
 //this will be for when you move to login required status
-const checkAuth = () => {
-  // associate with token created during login? 
-  const cookies = cookies.parse(document.cookie)
-  // const status = JSON.parse(cookies."cookie object name here"). "element related to login"
-}
+// const checkAuth = () => {
+//   // associate with token created during login? 
+//   const cookies = cookies.parse(document.cookie)
+//   // const status = JSON.parse(cookies."cookie object name here"). "element related to login"
+// }
 
-const ProtectedRoute = ({component: Component, ...rest}) => {
-  return (
-      <Route
-          {...rest}
-          render={(props) => checkAuth() ? <Component {...props}/> : <Redirect to={{pathname:'/'}}/> }
-      />
-  )
-}
+// const ProtectedRoute = ({component: Component, ...rest}) => {
+//   return (
+//       <Route
+//           {...rest}
+//           render={(props) => checkAuth() ? <Component {...props}/> : <Redirect to={{pathname:'/'}}/> }
+//       />
+//   )
+// }
 
 
 //would like everything but the login to be protected routes, the route can be protected through the user name, if I can pass it correctly 

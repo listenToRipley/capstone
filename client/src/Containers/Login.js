@@ -1,10 +1,18 @@
 import {connect} from 'react-redux'
 import Login from '../Components/LogIn'
+import {login}from '../redux/actions/login'
 
-const mapStateToProps = (state, LogIn) => {
+const mapStateToProps = (user) => {
   return {
-    logIn: state.logIn
+    loggedin: user
   }
 }
 
-export default connect(mapStateToProps)(Login)
+const mapStateToDispatch = (dispatch) => {
+  console.log('hit this?')
+  return {
+    login: (username, password) => dispatch(login(username, password))
+  }
+}
+
+export default connect(mapStateToProps, mapStateToDispatch)(Login)

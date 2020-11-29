@@ -75,7 +75,7 @@ import {
   // ACCEPT_MERGE_REQUEST, 
   // DECLINE_MERGE_REQUEST,
   // FETCH_FOOD 
-} from './actions/types'
+} from '../actions/types'
 
 const startState = {}
 

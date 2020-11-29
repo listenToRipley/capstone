@@ -13,7 +13,7 @@ const util = require('./util')
 // const all = require('./all')
 const {auth, mou}= require('../../middleware/authentication')
 
-start.get('/:user', login, createSession)
+start.get('/:user/:password', login, createSession)
 
 
 // start.use('/all', mou, all) <- needs work, something up

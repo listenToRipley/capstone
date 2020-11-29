@@ -52,27 +52,28 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = (props) => {
   const classes = useStyles();
+  let {state} = props.loggedin
+  console.log(state)
+
   //states sets
-  const {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
-  const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
-  const {value: login, bind: bindLogin, reset: resetLogin} = useInput(false)
+  let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
+  let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
+  // const {value: login, bind: bindLogin, reset: resetLogin} = useInput(false)
   
-  const {validation, setValidation} = useState(props)
+  let {valid, setValid} = useState(state.user.validation)
+  let {nowUsername, setNowUsername} = useState(state.user.username)
+  let {nowPassword, setNowPassword} = useState(state.user.password)
 
     //validate password and username 
-    const sendValidation = e => {
-      console.log('try to validate')
-      console.log('user name is : ' ,username)
-      console.log('the password : ', password )
-      if (validation) {
-        bindLogin=true
-        console.log('you are ready to be logged in!') 
-      } else {
-        console.log('something is wrong with that login')
-      }
-
-    }
+    // const sendValidation = e => {
+    //   console.log(e)
+    //   console.log('try to validate')
+      
+    //   console.log(user)
+    // }
   
+    // console.log('send validation :',sendValidation)
+
   const loginCookie = e => {
     //need to try the auth token here
     e.preventDefault()
@@ -80,16 +81,17 @@ const LogIn = (props) => {
       "username":bindUsername,
       //will have to add validate for username and password, then can be true 
       "login":bindLogin,
-      "max-Age":60*10000,
+      // "max-Age":60*10000,
       // "reset": {
       //   "resetUsername": resetUsername,
       //   "resetLoggedIn": resetLogin
       // }
     })
-    window.location.replace('/home')
+    // window.location.replace('/home')
   }
  
-  return validation ? <Home {...bindUsername} {...bindLoggedIn} /> : (
+  // valid ? <Home {...bindUsername} {...bindLoggedIn} /> :
+  return  (
       <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -104,7 +106,7 @@ const LogIn = (props) => {
           >
             Sign in
           </Typography>
-          <form className={classes.form} onSubmit={e=> bindLogin="true"} noValidate>
+          <form className={classes.form}>
             <TextField
               {...bindUsername}
               variant="outlined"
@@ -137,7 +139,7 @@ const LogIn = (props) => {
               className={classes.submit}
               aria-label='sign in button'
               username={bindUsername}
-              onSubmit={sendValidation}
+              onClick={() => {props.login({...bindUsername},password={...bindPassword}, true)}}
             >
               Sign In
             </Button>
@@ -171,11 +173,11 @@ const LogIn = (props) => {
   );
 }
 
-LogIn.proptypes = {
-  username: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  login: PropTypes.bool.isRequired,
-  validation: PropTypes.object
-}
+// LogIn.proptypes = {
+//   username: PropTypes.string.isRequired,
+//   password: PropTypes.string.isRequired,
+//   login: PropTypes.bool.isRequired,
+//   validation: PropTypes.object
+// }
 
 export default withStyles(useStyles)(LogIn)

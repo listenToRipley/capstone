@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken')
 //validate login
 const login = (req, res, next) => {
 
-  let { user, password } = req.body
+  let { user, password } = req.params
 
     sql='SELECT password FROM appInfo WHERE username= ?'
   
