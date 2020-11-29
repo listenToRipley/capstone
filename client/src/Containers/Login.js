@@ -9,7 +9,7 @@ const mapStateToProps = (user) => {
 }
 
 const mapStateToDispatch = (dispatch) => {
-  console.log('hit this?')
+  console.log('hit my dispatcher')
   return {
     login: (username, password) => dispatch(login(username, password))
   }

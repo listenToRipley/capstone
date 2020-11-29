@@ -10,24 +10,34 @@ export const login = (username, password) => async dispatch => {
   console.log('the path : ', fullPath)
 
     try{
-
+        
         let res = await fetch(fullPath,{
           method: 'GET',
           headers: {
-              'Content-type': 'application/json'
+            Accept: "application/json", "Content-Type": "application/json"
             }
         }
         )
+        debugger
+        console.log('can you see res? : ',res)
+        .then(res)
         .then(res => res.json())
         .then(
         dispatch( {
             type: LOGIN,
-            payload: res.json()
+            payload: {
+              user: {
+                username: username.value,
+                password: '',
+                validation: true,
+                token: res.json(token)
+              }
+            }
         })
       )
     }
     catch(e){
-        console.log(`can't find that user ${username.value}`)
+        console.log('what is the error? ', {e})
     }
-
+    debugger
 }

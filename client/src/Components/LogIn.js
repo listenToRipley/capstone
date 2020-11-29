@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +15,7 @@ import { withStyles } from '@material-ui/styles';
 import Home from './Home'
 import {useInput} from '../Hooks/inputHook';
 import PropTypes from 'prop-types';
+import Login from '../Containers/Login';
 
 
 //the main page, go not pass go, to not collect $200 without login in or creating a login
@@ -56,8 +57,8 @@ const LogIn = (props) => {
   console.log(state)
 
   //states sets
-  let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
-  let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
+  let {value: username, bind: bindUsername, reset:resetUsername} = useInput(state.user.username)
+  let {value: password, bind: bindPassword, reset: resetPassword} = useInput(state.user.password)
   // const {value: login, bind: bindLogin, reset: resetLogin} = useInput(false)
   
   let {valid, setValid} = useState(state.user.validation)
@@ -75,23 +76,32 @@ const LogIn = (props) => {
     // console.log('send validation :',sendValidation)
 
   const loginCookie = e => {
+    console.log('the event on your login cookie is: ', e)
+    console.log('the current state on validation is :', valid)
     //need to try the auth token here
     e.preventDefault()
-    document.cookie = "businessCookies="+JSON.stringify({
-      "username":bindUsername,
-      //will have to add validate for username and password, then can be true 
-      "login":bindLogin,
-      // "max-Age":60*10000,
-      // "reset": {
-      //   "resetUsername": resetUsername,
-      //   "resetLoggedIn": resetLogin
-      // }
-    })
-    // window.location.replace('/home')
+    if(valid===true) {
+      debugger
+      setNowUsername=state.user.username
+      setNowPassword
+      console.log('yes, valid is now true ')
+      document.cookie = "businessCookies="+JSON.stringify({
+        "username":state.user.username,
+        "validation": true,
+        "token": state.user.token,
+        //will have to add validate for username and password, then can be true 
+        "max-Age":60*10000,
+        "reset": {
+          "resetUsername": resetUsername,
+          "resetLoggedIn": resetLogin
+        }
+      })
+    }
+    window.location.replace('/home')
   }
  
-  // valid ? <Home {...bindUsername} {...bindLoggedIn} /> :
-  return  (
+  // 
+  return valid===true ? <Home cookie={loginCookie} /> : (
       <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -106,6 +116,7 @@ const LogIn = (props) => {
           >
             Sign in
           </Typography>
+       
           <form className={classes.form}>
             <TextField
               {...bindUsername}
@@ -138,8 +149,7 @@ const LogIn = (props) => {
               color="primary"
               className={classes.submit}
               aria-label='sign in button'
-              username={bindUsername}
-              onClick={() => {props.login({...bindUsername},password={...bindPassword}, true)}}
+              onClick={() => {props.login(username={...bindUsername},password={...bindPassword}, true)}}
             >
               Sign In
             </Button>
@@ -180,4 +190,5 @@ const LogIn = (props) => {
 //   validation: PropTypes.object
 // }
 
-export default withStyles(useStyles)(LogIn)
+// export default withStyles(useStyles)(LogIn)
+export default LogIn

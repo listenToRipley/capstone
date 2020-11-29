@@ -11,7 +11,7 @@ const ITEM_HEIGHT = 48;
 const ItemActions = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [id, setId] = useState(props.item)
-  const [selected, upSeleted] = useState(false)
+  const [upSelected, setUpSeleted] = useState(false)
 
   // console.log('id', id)
 

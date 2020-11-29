@@ -347,6 +347,7 @@ const NavBar = () => {
   );
 }
 
-export default withStyles(useStyles)(NavBar)
+// export default withStyles(useStyles)(NavBar)
+export default NavBar
 
 //from https://material-ui.com/components/drawers/

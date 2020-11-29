@@ -69,7 +69,7 @@ const Home = (props) => {
         >
           Your Shopping List
         </ListItem>
-          <ShoppingList/>
+          {/* <ShoppingList/> */}
         </Card>
 
         <Card className={classes.cards} >
@@ -81,7 +81,7 @@ const Home = (props) => {
                 >
                 Your Pantry
           </ListItem>
-          <Pantry/>
+          {/* <Pantry/> */}
         </Card>
 
         <Card className={classes.cards} >
@@ -93,7 +93,7 @@ const Home = (props) => {
             > 
             Your Pal's List
           </ListItem>
-          <PalList/>
+          {/* <PalList/> */}
         </Card>
 
         <Card className={classes.cards} >
@@ -106,7 +106,7 @@ const Home = (props) => {
             Your Pal's List
           </ListItem>
           <Paper className={classes.paper}>
-            <UserProfile/>
+            {/* <UserProfile/> */}
           </Paper>
         </Card>
 
