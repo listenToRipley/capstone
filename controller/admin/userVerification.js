@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken')
 //search database to validate username and password match the provided input
 //validate login
 const login = (req, res, next) => {
+  console.log('are you getting to the sql? ')
 
   let { user, password } = req.params
 

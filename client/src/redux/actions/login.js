@@ -1,17 +1,17 @@
 import {LOGIN} from './types'
 
-const baseline = `http:localhost:4001/`
+const baseline = `http://localhost:4001/`
 
 export const login = (username, password) => async dispatch => {
-  console.log('tell me the username', username.value, " and your password? ", password.value)
   let path = `postLogin/`
   let params = `${username.value}/${password.value}`
+  let fullPath = `${baseline}${path}${params}`.trim()
 
-  console.log('the path : ', `${baseline}${path}${params}`)
+  console.log('the path : ', fullPath)
 
     try{
-      // axios.default.header.get['Content-Type'] = ''
-        let res = await fetch(`${baseline}/${path}/${params}`,{
+
+        let res = await fetch(fullPath,{
           method: 'GET',
           headers: {
               'Content-type': 'application/json'

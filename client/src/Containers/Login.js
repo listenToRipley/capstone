@@ -15,4 +15,4 @@ const mapStateToDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapStateToDispatch)(Login)
+export default connect(mapStateToProps, mapStateToDispatch)(Login) 
