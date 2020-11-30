@@ -4,7 +4,7 @@ import {login}from '../redux/actions/login'
 
 const mapStateToProps = (user) => {
   return {
-    loggedin: user
+    user: user
   }
 }
 

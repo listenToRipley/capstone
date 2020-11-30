@@ -13,8 +13,9 @@ export default function(state = startState, action){
     console.log(action.payload)
     switch(action.type){
         case LOGIN:
-        return [...state, JSON.stringify(action.payload.user)]
+        let newState = action.payload.user
+        return newState
         default: return state
     }
-    debugger
+
 }

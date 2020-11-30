@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
 // CREATE_NEW_USER,
 // FORGOT_USERNAME,
@@ -174,25 +173,19 @@ export const upPassword = (input) => {
 }
 
 //LOGIN 
-export const logIn = (user, password) => (dispatch) => {
-  return dispatch => {
-  axios.default.header.get['Content-Type'] = 'application/json'
-  axios({
-    url: `/preLogin/${user}`,
-    data: {
-      user: `${user}`,
-      password: `${password}`
+export const login = (username, password) => {
+    console.log('the username  is :', username,'the password:',password)
+  return {
+    type: LOGIN,
+    payload: {
+      user: {
+        username: username.value,
+        password: password.value,
+        validation: true,
+        token: `${username.value}+${password.value}=true~START_USING!`
+      }
     }
-  })
-  .then(res => {
-      dispatch({
-        type: 'LOGIN',
-        payload: res.json()
-      })
-    }, (err) => {
-      console.log(err)
-    })
-  }
+  } 
 }
 
 //USER INFO

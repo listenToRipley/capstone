@@ -18,7 +18,7 @@ import cookie from 'cookie'
 const checkAuth = () => {
   // associate with token created during login? 
   const cookies = cookie.parse(document.cookie)
-  const status = JSON.parse(cookies.loginCookie).validation
+  const status = JSON.parse(cookies.loggedInCookie).validation
   if (status) {
     console.log('what is the status?')
   } else {

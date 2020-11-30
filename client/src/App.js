@@ -6,6 +6,10 @@ import {BrowserRouter} from 'react-router-dom';
 import NavBar from './Components/AppFunc/NavBar';
 import {Provider } from 'react-redux'; 
 import store from './redux/store';
+import ReactDom from 'react-dom';
+window.React2 = require('react');
+
+console.log(window.React1 === window.React2);
 
 const App = () => {
 

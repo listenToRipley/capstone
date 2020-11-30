@@ -77,7 +77,7 @@ import {
   // FETCH_FOOD 
 } from '../actions/types'
 
-const startState = {}
+// const startState = {}
 
 //add content for each action 
 // const createUser = (state = [], action) => {
@@ -132,14 +132,14 @@ const startState = {}
 // }
 
 
-const logIn = (state = [], action) => {
-  switch(action.type) {
-    case LOGIN:
-      return action.payload
-    default: 
-      return state
-  }  
-}
+// const logIn = (state = [], action) => {
+//   switch(action.type) {
+//     case LOGIN:
+//       return action.payload
+//     default: 
+//       return state
+//   }  
+// }
 
 // const userInfo = (state = [], action) => {
 //   switch(action.type) {

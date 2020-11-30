@@ -1,5 +1,20 @@
-// import {LOGIN} from './types'
+import {LOGIN} from './types'
 
+
+export const login = (username, password) => {
+  console.log('the username  is :', username.value,'the password:',password.value)
+return {
+  type: LOGIN,
+  payload: {
+    user: {
+      username: username.value,
+      password: password.value,
+      validation: true,
+      token: `${username.value}+${password.value}=true~START_USING!`
+    }
+  }
+ }
+}
 // const baseline = `http://localhost:4001/`
 
 // export const login = (username, password) => async dispatch => {

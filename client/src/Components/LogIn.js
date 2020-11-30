@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, { useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,7 +16,7 @@ import Home from './Home'
 import {useInput} from '../Hooks/inputHook';
 import PropTypes from 'prop-types';
 import Login from '../Containers/Login';
-
+import ReactDom from 'react-dom'
 
 //the main page, go not pass go, to not collect $200 without login in or creating a login
 
@@ -53,57 +53,47 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = (props) => {
   const classes = useStyles();
-  let {state} = props.loggedin
-  console.log(state)
+  let {state} = props.user
+  console.log('starting state',state)
 
   //states sets
-  let {value: username, bind: bindUsername, reset:resetUsername} = useInput(state.user.username)
-  let {value: password, bind: bindPassword, reset: resetPassword} = useInput(state.user.password)
-  // const {value: login, bind: bindLogin, reset: resetLogin} = useInput(false)
-  
-  let {valid, setValid} = useState(state.user.validation)
-  let {nowUsername, setNowUsername} = useState(state.user.username)
-  let {nowPassword, setNowPassword} = useState(state.user.password)
+  let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
+  let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
 
     //validate password and username 
     //back end build when it is ready, pass info along 
     //() => {props.login(username={...bindUsername},password={...bindPassword}, true)}
     const sendValidation = e => {
-      console.log(e)
-      console.log('try to validate')
-      
-      console.log(user)
+      console.log({e})
+      console.log('your name', {...bindUsername},'password',{...bindPassword})
+     return props.login(username={...bindUsername},password={...bindPassword})
     }
-  
-    // console.log('send validation :',sendValidation)
 
   const loginCookie = e => {
     console.log('the event on your login cookie is: ', e)
     console.log('the current state on validation is :', valid)
     //need to try the auth token here
     e.preventDefault()
-    if(valid===true) {
-      debugger
-      setNowUsername=state.user.username
-      setNowPassword
-      console.log('yes, valid is now true ')
-      document.cookie = "businessCookies="+JSON.stringify({
-        "username":state.user.username,
-        "validation": true,
-        "token": state.user.token,
-        //will have to add validate for username and password, then can be true 
-        "max-Age":60*10000,
-        "reset": {
-          "resetUsername": resetUsername,
-          "resetLoggedIn": resetLogin
-        }
-      })
-    }
-    window.location.replace('/home')
-  }
+      if (valid) {
+        document.cookie = "businessCookies="+JSON.stringify({
+          "username":state.username,
+          "validation": true,
+          "token": state.token,
+          //will have to add validate for username and password, then can be true 
+          "max-Age":60*10000,
+          "reset": {
+            "resetUsername": '',
+            "resetLoggedIn": ''
+          }
+          
+        })
+        window.location.replace('/home')
+      } else {
+        console.log('cannot login')
+      }
+    } 
  
-  // 
-  return valid===true ? <Home cookie={loginCookie} /> : (
+  return state.validation ? <Home  onChange={loginCookie}/> : (
       <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -151,8 +141,7 @@ const LogIn = (props) => {
               color="primary"
               className={classes.submit}
               aria-label='sign in button'
-              onClick={}
-              
+              onClick={sendValidation}
             >
               Sign In
             </Button>
