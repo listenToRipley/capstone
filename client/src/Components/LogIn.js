@@ -66,12 +66,14 @@ const LogIn = (props) => {
   let {nowPassword, setNowPassword} = useState(state.user.password)
 
     //validate password and username 
-    // const sendValidation = e => {
-    //   console.log(e)
-    //   console.log('try to validate')
+    //back end build when it is ready, pass info along 
+    //() => {props.login(username={...bindUsername},password={...bindPassword}, true)}
+    const sendValidation = e => {
+      console.log(e)
+      console.log('try to validate')
       
-    //   console.log(user)
-    // }
+      console.log(user)
+    }
   
     // console.log('send validation :',sendValidation)
 
@@ -149,7 +151,8 @@ const LogIn = (props) => {
               color="primary"
               className={classes.submit}
               aria-label='sign in button'
-              onClick={() => {props.login(username={...bindUsername},password={...bindPassword}, true)}}
+              onClick={}
+              
             >
               Sign In
             </Button>
