@@ -64,8 +64,7 @@ const LogIn = (props) => {
     //back end build when it is ready, pass info along 
     //() => {props.login(username={...bindUsername},password={...bindPassword}, true)}
     const sendValidation = e => {
-      console.log({e})
-      console.log('your name', {...bindUsername},'password',{...bindPassword})
+      e.preventDefault()
      return props.login(username={...bindUsername},password={...bindPassword})
     }
 
@@ -93,7 +92,7 @@ const LogIn = (props) => {
       }
     } 
  
-  return state.validation ? <Home  onChange={loginCookie}/> : (
+  return state.validation ? <Home/> : (
       <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -142,6 +141,7 @@ const LogIn = (props) => {
               className={classes.submit}
               aria-label='sign in button'
               onClick={sendValidation}
+              onChange={loginCookie}
             >
               Sign In
             </Button>
@@ -175,12 +175,11 @@ const LogIn = (props) => {
   );
 }
 
-// LogIn.proptypes = {
-//   username: PropTypes.string.isRequired,
-//   password: PropTypes.string.isRequired,
-//   login: PropTypes.bool.isRequired,
-//   validation: PropTypes.object
-// }
+LogIn.proptypes = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  login: PropTypes.bool.isRequired,
+  validation: PropTypes.object
+}
 
-// export default withStyles(useStyles)(LogIn)
 export default LogIn

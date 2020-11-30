@@ -25,7 +25,7 @@ export const login = (username, password) => async dispatch => {
   console.log('the path : ', fullPath)
 
     try{
-        
+  
         let res = await fetch(fullPath,{
           method: 'GET',
           headers: {

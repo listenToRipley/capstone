@@ -105,14 +105,14 @@ const useStyles = makeStyles((theme) => ({
 //if not logged in, the top panel should only have the name and about. 
 //the content on the page should also shift if the drawer is expanded  
 
-const NavBar = () => {
+const NavBar = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
   const cookies = cookie.parse(document.cookie)
   const status = cookies.loggedInCookie
-  console.log('current status is :',status)
+  console.log('current status is :',cookie)
 
   const handleDrawerOpen = () => {
     setOpen(true);
