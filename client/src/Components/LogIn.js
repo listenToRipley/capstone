@@ -53,28 +53,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const loginCookie = () => {
-  preventDefault(e) 
-  if (user.validation) {
-    document.cookie = "logCookies="+JSON.stringify({
-      "username":user.username,
-      "validation": true,
-      "token": user.token,
-      //will have to add validate for username and password, then can be true 
-      "max-Age":60*10000,
-      "reset": {
-        "resetUsername": '',
-        "resetLoggedIn": ''
-      }
-      
-        })
-        window.location.replace('/home')
-  } else {
-    console.log('sorry, no cookie')
-  }
-  }
-
-
 const LogIn = (props) => {
   const classes = useStyles();
   let {user}= props.state
@@ -92,8 +70,29 @@ const LogIn = (props) => {
       e.preventDefault();
      return props.login(username={...bindUsername},password={...bindPassword})
     }
+    const loginCookie = e => {
+        preventDefault(e) 
+        if (user.validation) {
+          document.cookie = "logCookies="+JSON.stringify({
+            "username":user.username,
+            "validation": true,
+            "token": user.token,
+            //will have to add validate for username and password, then can be true 
+            "max-Age":60*10000,
+            "reset": {
+              "resetUsername": '',
+              "resetLoggedIn": ''
+            }
+            
+              })
+              window.location.replace('/home')
+        } else {
+          console.log('sorry, no cookie')
+        }
+        }
+  
  
-  return user.validation ? <Home username={user.user} token={user.token} valid={user.validation} onChange={loginCookie}/> : (
+  return user.validation ? <Home username={user.user} token={user.token}/> : (
       <Grid 
       container 
       component="main" 
@@ -111,6 +110,7 @@ const LogIn = (props) => {
           >
             Sign in
           </Typography>
+       
           <form className={classes.form}>
             <TextField
               {...bindUsername}
