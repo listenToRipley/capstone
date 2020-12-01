@@ -41,8 +41,10 @@ const useStyles = makeStyles((theme) => ({
 const Home = (props) => {
   const classes = useStyles();
   // const theme = useTheme();
+  console.log('hello to home props : ',props)
 
   return (
+  <div >
    <Box
     className={classes.root}
       >
@@ -59,7 +61,7 @@ const Home = (props) => {
         >
 
         <Grid
-        item xs={10} sm={10} md={9} elevation={10} square>
+        item xs={10} sm={10} md={9} elevation={10}>
         <Card className={classes.cards} >
         <ListItem 
         button 
@@ -113,7 +115,7 @@ const Home = (props) => {
         </Grid>
       </Grid>
    </Box>
-  
+  </div>
   )
 
 }

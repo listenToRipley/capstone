@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
+import {withRouter} from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -105,14 +106,15 @@ const useStyles = makeStyles((theme) => ({
 //if not logged in, the top panel should only have the name and about. 
 //the content on the page should also shift if the drawer is expanded  
 
-const NavBar = () => {
+const NavBar = (props) => {
+  console.log('what is my nav bar? ',props)
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
   const cookies = cookie.parse(document.cookie)
-  const status = cookies.loggedInCookie
-  console.log('current status is :',status)
+  const status = cookie
+  console.log('current status is on nav bar:',status)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -165,8 +167,9 @@ const NavBar = () => {
       {status === true ? 
       <Drawer
         className={classes.drawer}
-        variant="persistent"
+        // variant="persistent"
         anchor="left"
+        variant="persistent"
         open={open}
         classes={{
           paper: classes.drawerPaper

@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = (props) => {
   const classes = useStyles();
-  let {state} = props.user
-  console.log('starting state',state)
+  let {user} = props
+  console.log('starting state',user)
 
   //states sets
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
@@ -68,36 +68,35 @@ const LogIn = (props) => {
       console.log('your name', {...bindUsername},'password',{...bindPassword})
      return props.login(username={...bindUsername},password={...bindPassword})
     }
-
-  const loginCookie = e => {
-    console.log('the event on your login cookie is: ', e)
-    console.log('the current state on validation is :', valid)
-    //need to try the auth token here
-    e.preventDefault()
-      if (valid) {
-        document.cookie = "businessCookies="+JSON.stringify({
-          "username":state.username,
-          "validation": true,
-          "token": state.token,
-          //will have to add validate for username and password, then can be true 
-          "max-Age":60*10000,
-          "reset": {
-            "resetUsername": '',
-            "resetLoggedIn": ''
-          }
-          
-        })
-        window.location.replace('/home')
-      } else {
-        console.log('cannot login')
-      }
-    } 
+    const loginCookie = e => {
+      console.log('the event on your login cookie is: ', e)
+      //need to try the auth token here
+      e.preventDefault()
  
-  return state.validation ? <Home  onChange={loginCookie}/> : (
-      <Grid container component="main" className={classes.root}>
+      document.cookie = "businessCookies="+JSON.stringify({
+        "username":user.username,
+        "validation": true,
+        "token": user.token,
+        //will have to add validate for username and password, then can be true 
+        "max-Age":60*10000,
+        "reset": {
+          "resetUsername": '',
+          "resetLoggedIn": ''
+        }
+        
+          })
+          window.location.replace('/home')
+        }
+  
+ 
+  return user.validation ? <Home onChange={loginCookie} /> : (
+      <Grid 
+      container 
+      component="main" 
+      className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} >
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -172,7 +171,8 @@ const LogIn = (props) => {
         </div>
       </Grid>
     </Grid>
-  );
+
+  )
 }
 
 // LogIn.proptypes = {

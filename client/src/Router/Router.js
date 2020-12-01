@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router';
 import LogIn from '../Containers/Login'
-import Home from '../Components/Home';
+import Home from '../Containers/Home';
 import ShoppingList from '../Components/ShopList/ShoppingList';
 import Pantry from '../Components/Pantry/Pantry';
 import PalList from '../Components/PalLists/PalsList';
@@ -14,6 +14,7 @@ import Food from '../Components/Food/Food'
 import ForgotPassword from '../Components/AppFunc/ForgotPassword'
 import cookie from 'cookie'
 
+console.log(cookie)
 //this will be for when you move to login required status
 const checkAuth = () => {
   // associate with token created during login? 

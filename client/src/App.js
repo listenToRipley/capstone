@@ -18,7 +18,7 @@ const App = () => {
     <Provider store={store}>
       <CssBaseline>
          <BrowserRouter>
-         <NavBar/>
+          <NavBar variant="persistent"/>
            <Router/>
         </BrowserRouter>
       </CssBaseline>
