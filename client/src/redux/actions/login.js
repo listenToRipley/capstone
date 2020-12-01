@@ -34,12 +34,8 @@ export const login = (username, password) => async dispatch => {
         }
         )
         console.log('can you see res? : ',res)
-        .then(res)
-        .then(res => {
-          console.log(res.json())
-          return res.json() 
-        })
-        .then(
+        let token = await res.json() 
+        console.log('token?', token)
         dispatch( {
             type: LOGIN,
             payload: {
@@ -47,11 +43,10 @@ export const login = (username, password) => async dispatch => {
                 username: username.value,
                 password: password.value,
                 validation: true,
-                token: res.json(token)
+                pass: token
               }
             }
         })
-      )
     }
     catch(e){
         return 'what is the error? ', {e}
