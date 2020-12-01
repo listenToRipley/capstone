@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -58,7 +58,6 @@ const LogIn = (props) => {
   let {user}= props.state
   console.log('starting state',user)
 
-  let [cookie, makeCookie] = useState('false')
 
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
@@ -70,29 +69,28 @@ const LogIn = (props) => {
       e.preventDefault();
      return props.login(username={...bindUsername},password={...bindPassword})
     }
-    const loginCookie = e => {
-        preventDefault(e) 
-        if (user.validation) {
-          document.cookie = "logCookies="+JSON.stringify({
-            "username":user.username,
-            "validation": true,
-            "token": user.token,
-            //will have to add validate for username and password, then can be true 
-            "max-Age":60*10000,
-            "reset": {
-              "resetUsername": '',
-              "resetLoggedIn": ''
-            }
-            
-              })
-              window.location.replace('/home')
-        } else {
-          console.log('sorry, no cookie')
-        }
-        }
-  
+
+    useEffect(()=> {
+      console.log('checking use effect', user.validation)
+      if(user.validation) {
+        document.cookie = "logCookies="+JSON.stringify({
+          "username":user.username,
+          "validation": true,
+          "token": user.token,
+          //will have to add validate for username and password, then can be true 
+          "max-Age":60*10000,
+          "reset": {
+            "resetUsername": '',
+            "resetLoggedIn": ''
+          }
+          
+            })
+            window.location.replace('/home')
+      }
+    })
+
  
-  return user.validation ? <Home username={user.user} token={user.token}/> : (
+  return (
       <Grid 
       container 
       component="main" 
