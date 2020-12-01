@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = (props) => {
   const classes = useStyles();
-  let {user} = props
+  let {user }= props
   console.log('starting state',user)
 
   //states sets
