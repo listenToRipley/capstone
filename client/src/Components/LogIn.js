@@ -85,7 +85,7 @@ const LogIn = (props) => {
           }
           
             })
-            window.location.replace('/home')
+        window.location.replace('/home')
       }
     })
 
