@@ -22,7 +22,6 @@ app.use(express.json())
 
 
 app.use('/postLogin', user)
-
 app.use('/preLogin',preLogin)
 
 
