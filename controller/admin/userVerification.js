@@ -41,8 +41,8 @@ const createSession = (req, res) => {
   }
 
   const token =jwt.sign(current, 'pals') //second agr needs to be saved in to env
-
-  res.json({token: token }) // this will be a cookie once we get to the front end 
+  console.log('you making your token? ', token)
+  return res.json({token: token }) // this will be a cookie once we get to the front end 
 }
 
 module.exports = { 

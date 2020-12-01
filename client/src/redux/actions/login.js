@@ -54,6 +54,6 @@ export const login = (username, password) => async dispatch => {
       )
     }
     catch(e){
-        console.log('what is the error? ', {e})
+        return 'what is the error? ', {e}
     }
 }
