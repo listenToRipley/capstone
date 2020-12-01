@@ -35,7 +35,10 @@ export const login = (username, password) => async dispatch => {
         )
         console.log('can you see res? : ',res)
         .then(res)
-        .then(res => res.json())
+        .then(res => {
+          console.log(res.json())
+          return res.json() 
+        })
         .then(
         dispatch( {
             type: LOGIN,
