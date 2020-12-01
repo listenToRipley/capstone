@@ -16,7 +16,7 @@ import Home from './Home'
 import {useInput} from '../Hooks/inputHook';
 import PropTypes from 'prop-types';
 import Login from '../Containers/Login';
-import ReactDom from 'react-dom'
+import {useHistory} from 'react-router-dom'
 import cookie from 'cookie'
 
 console.log('cook on the home?', cookie)
@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = (props) => {
   const classes = useStyles();
+  const history = useHistory();
   let {user}= props.state
   console.log('starting state',user)
 
@@ -85,7 +86,7 @@ const LogIn = (props) => {
           }
           
             })
-        window.location.replace('/home')
+        history.push('/home')
       }
     })
 

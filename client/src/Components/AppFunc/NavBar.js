@@ -163,7 +163,7 @@ const NavBar = (props) => {
           </div> */}
         </Toolbar>
       </AppBar>
-      {status === true ? 
+      {props.isLoggedIn === true ? 
       <Drawer
         className={classes.drawer}
         // variant="persistent"
