@@ -17,7 +17,9 @@ import {useInput} from '../Hooks/inputHook';
 import PropTypes from 'prop-types';
 import Login from '../Containers/Login';
 import ReactDom from 'react-dom'
+import cookie from 'cookie'
 
+console.log('cook on the home?', cookie)
 //the main page, go not pass go, to not collect $200 without login in or creating a login
 
 const useStyles = makeStyles((theme) => ({
@@ -51,10 +53,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const loginCookie = () => {
+  preventDefault(e) 
+  if (user.validation) {
+    document.cookie = "logCookies="+JSON.stringify({
+      "username":user.username,
+      "validation": true,
+      "token": user.token,
+      //will have to add validate for username and password, then can be true 
+      "max-Age":60*10000,
+      "reset": {
+        "resetUsername": '',
+        "resetLoggedIn": ''
+      }
+      
+        })
+        window.location.replace('/home')
+  } else {
+    console.log('sorry, no cookie')
+  }
+  }
+
+
 const LogIn = (props) => {
   const classes = useStyles();
   let {user}= props.state
   console.log('starting state',user)
+
+  let [cookie, makeCookie] = useState('false')
 
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
@@ -66,28 +92,8 @@ const LogIn = (props) => {
       e.preventDefault();
      return props.login(username={...bindUsername},password={...bindPassword})
     }
-    const loginCookie = e => {
-      console.log('the event on your login cookie is: ', e)
-      //need to try the auth token here
-      e.preventDefault()
  
-      document.cookie = "businessCookies="+JSON.stringify({
-        "username":user.username,
-        "validation": true,
-        "token": user.token,
-        //will have to add validate for username and password, then can be true 
-        "max-Age":60*10000,
-        "reset": {
-          "resetUsername": '',
-          "resetLoggedIn": ''
-        }
-        
-          })
-          window.location.replace('/home')
-        }
-  
- 
-  return user.validation ? <Home onChange={loginCookie} /> : (
+  return user.validation ? <Home username={user.user} token={user.token} valid={user.validation} onChange={loginCookie}/> : (
       <Grid 
       container 
       component="main" 
@@ -105,7 +111,6 @@ const LogIn = (props) => {
           >
             Sign in
           </Typography>
-       
           <form className={classes.form}>
             <TextField
               {...bindUsername}

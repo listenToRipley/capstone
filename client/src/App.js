@@ -14,17 +14,16 @@ console.log(window.React1 === window.React2);
 const App = () => {
 
   return(
-    
+
     <Provider store={store}>
       <CssBaseline>
          <BrowserRouter>
-          <NavBar variant="persistent"/>
+          <NavBar />
            <Router/>
         </BrowserRouter>
       </CssBaseline>
     </Provider>
-
-  )
+  ) 
 
 }
 

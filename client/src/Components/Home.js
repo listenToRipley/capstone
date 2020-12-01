@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
-// import cookie from 'cookie'
+import cookie from 'cookie'
 
 //this view is based on the current user and their primary
 
@@ -42,14 +42,19 @@ const Home = (props) => {
   const classes = useStyles();
   // const theme = useTheme();
   console.log('hello to home props : ',props)
+  console.log('is there a cookie?', cookie)
+
+  const getInfo = e => {
+    return props.userInfo(props.username)
+  }
 
   return (
-  <div >
+  <div>
    <Box
     className={classes.root}
       >
       <Card className={classes.cards}>
-    <Typography component="h1" variant="h5" className="welcome">Welcome {props.bindUsername}</Typography>
+    <Typography component="h1" variant="h5" className="welcome">Welcome {props.username}</Typography>
     </Card> 
       <Grid
         container

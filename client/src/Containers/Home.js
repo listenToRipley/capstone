@@ -3,6 +3,7 @@ import Home from '../Components/Home'
 import {userInfo} from '../redux/actions/types'
 
 const mapStateToProps = (userInfo) => {
+  console.log('hello to home', userInfo)
   return {
     userInfo: userInfo
   }

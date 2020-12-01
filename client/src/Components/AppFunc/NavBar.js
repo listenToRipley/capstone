@@ -23,7 +23,7 @@ import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutA
 import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 // import { Button } from '@material-ui/core';
-import cookie from 'cookie'
+import Login from '../LogIn'
 import { withStyles } from '@material-ui/styles';
 
 //svg icons 
@@ -102,19 +102,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 //NEED TO WORK ON GETTING THE DRAWER TO CLOSE prelogin 
 //if not logged in, the top panel should only have the name and about. 
 //the content on the page should also shift if the drawer is expanded  
 
 const NavBar = (props) => {
+
   console.log('what is my nav bar? ',props)
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-
-  const cookies = cookie.parse(document.cookie)
-  const status = cookie
-  console.log('current status is on nav bar:',status)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const handleDrawerOpen = () => {
     setOpen(true);
