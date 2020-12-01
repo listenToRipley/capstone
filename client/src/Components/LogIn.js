@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,8 +16,10 @@ import Home from './Home'
 import {useInput} from '../Hooks/inputHook';
 import PropTypes from 'prop-types';
 import Login from '../Containers/Login';
-import ReactDom from 'react-dom'
+import {useHistory} from 'react-router-dom'
+import cookie from 'cookie'
 
+console.log('cook on the home?', cookie)
 //the main page, go not pass go, to not collect $200 without login in or creating a login
 
 const useStyles = makeStyles((theme) => ({
@@ -53,31 +55,29 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = (props) => {
   const classes = useStyles();
-  let {state} = props.user
-  console.log('starting state',state)
+  const history = useHistory();
+  let {user}= props.state
+  console.log('starting state',user)
 
-  //states sets
+
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
 
-    //validate password and username 
+  
     //back end build when it is ready, pass info along 
     //() => {props.login(username={...bindUsername},password={...bindPassword}, true)}
     const sendValidation = e => {
-      e.preventDefault()
-     return props.login(username={...bindUsername},password={...bindPassword})
+      e.preventDefault();
+   return props.login(username={...bindUsername},password={...bindPassword})
     }
 
-  const loginCookie = e => {
-    console.log('the event on your login cookie is: ', e)
-    console.log('the current state on validation is :', valid)
-    //need to try the auth token here
-    e.preventDefault()
-      if (valid) {
-        document.cookie = "businessCookies="+JSON.stringify({
-          "username":state.username,
+    useEffect(()=> {
+      console.log('checking use effect', user.validation)
+      if(user.validation) {
+        document.cookie = "logCookies="+JSON.stringify({
+          "username":user.username,
           "validation": true,
-          "token": state.token,
+          "token": user.token,
           //will have to add validate for username and password, then can be true 
           "max-Age":60*10000,
           "reset": {
@@ -85,18 +85,20 @@ const LogIn = (props) => {
             "resetLoggedIn": ''
           }
           
-        })
-        window.location.replace('/home')
-      } else {
-        console.log('cannot login')
+            })
+        history.push('/home')
       }
-    } 
+    })
+
  
-  return state.validation ? <Home/> : (
-      <Grid container component="main" className={classes.root}>
+  return (
+      <Grid 
+      container 
+      component="main" 
+      className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} >
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -172,7 +174,8 @@ const LogIn = (props) => {
         </div>
       </Grid>
     </Grid>
-  );
+
+  )
 }
 
 LogIn.proptypes = {

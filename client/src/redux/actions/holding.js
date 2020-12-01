@@ -9,8 +9,8 @@ import {
 // ADD_ALLERGIES,
 // ADD_DIETS,
 // UPDATE_PASSWORD,
-LOGIN, 
-// USER_PERSONAL_INFORMATION,
+// LOGIN, 
+// USER_INFORMATION
 // USER_LOCATION,
 // USER_BIRTHDAY,
 // VIEW_USER_DISPLAY_PREFERENCES,
@@ -173,20 +173,20 @@ export const upPassword = (input) => {
 }
 
 //LOGIN 
-export const login = (username, password) => {
-    console.log('the username  is :', username,'the password:',password)
-  return {
-    type: LOGIN,
-    payload: {
-      user: {
-        username: username.value,
-        password: password.value,
-        validation: true,
-        token: `${username.value}+${password.value}=true~START_USING!`
-      }
-    }
-  } 
-}
+// export const login = (username, password) => {
+//     console.log('the username  is :', username,'the password:',password)
+//   return {
+//     type: LOGIN,
+//     payload: {
+//       user: {
+//         username: username.value,
+//         password: password.value,
+//         validation: true,
+//         token: `${username.value}+${password.value}=true~START_USING!`
+//       }
+//     }
+//   } 
+// }
 
 //USER INFO
 export const userPersonInfo = (user) => {

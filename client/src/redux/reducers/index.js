@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 import loginRed from './loginRed'
+import userInfo from './userInfo'
 
 export default combineReducers({
-  state: loginRed
+    user: loginRed,
+    userInfo: userInfo
 })

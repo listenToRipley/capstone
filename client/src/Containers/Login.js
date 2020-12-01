@@ -2,9 +2,10 @@ import {connect} from 'react-redux'
 import Login from '../Components/LogIn'
 import {login}from '../redux/actions/login'
 
-const mapStateToProps = (user) => {
+const mapStateToProps = (state) => {
+  console.log('this is the map',state)
   return {
-    user: user
+    state: state
   }
 }
 

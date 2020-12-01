@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
+import {withRouter} from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -22,7 +23,7 @@ import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutA
 import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 // import { Button } from '@material-ui/core';
-import cookie from 'cookie'
+import Login from '../LogIn'
 import { withStyles } from '@material-ui/styles';
 
 //svg icons 
@@ -101,18 +102,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 //NEED TO WORK ON GETTING THE DRAWER TO CLOSE prelogin 
 //if not logged in, the top panel should only have the name and about. 
 //the content on the page should also shift if the drawer is expanded  
 
 const NavBar = (props) => {
+  console.log('what is my nav bar? ',props)
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false)
 
-  const cookies = cookie.parse(document.cookie)
-  const status = cookies.loggedInCookie
-  console.log('current status is :',cookie)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -162,11 +163,12 @@ const NavBar = (props) => {
           </div> */}
         </Toolbar>
       </AppBar>
-      {status === true ? 
+      {props.isLoggedIn === true ? 
       <Drawer
         className={classes.drawer}
-        variant="persistent"
+        // variant="persistent"
         anchor="left"
+        variant="persistent"
         open={open}
         classes={{
           paper: classes.drawerPaper
