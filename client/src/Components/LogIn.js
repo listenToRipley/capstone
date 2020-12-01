@@ -53,19 +53,17 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = (props) => {
   const classes = useStyles();
-  let {user }= props
+  let {user}= props.state
   console.log('starting state',user)
 
-  //states sets
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
 
-    //validate password and username 
+  
     //back end build when it is ready, pass info along 
     //() => {props.login(username={...bindUsername},password={...bindPassword}, true)}
     const sendValidation = e => {
       e.preventDefault();
-      console.log('your name', {...bindUsername},'password',{...bindPassword})
      return props.login(username={...bindUsername},password={...bindPassword})
     }
     const loginCookie = e => {
