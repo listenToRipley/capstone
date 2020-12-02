@@ -45,6 +45,8 @@ const {
 } = require('../../controller/appFunc/password/password')
 
 const just = express.Router({mergeParams: true})
+//KEEP HERE FOR NOW 
+// const {auth}= require('../../middleware/authentication')
 //NEED TO CONSIDER MODULARIZING 
 
 

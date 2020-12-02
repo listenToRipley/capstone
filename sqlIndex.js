@@ -5,8 +5,9 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-const user = require('./routers/login/logIn')
+const log = require('./routers/login/logIn')
 const preLogin = require('./routers/pre/admin')
+const postLogin = require('./routers/login/currentUser')
 
 
 app.get('/', (req, res) => {
@@ -21,8 +22,9 @@ app.use(bodyParser.json())
 app.use(express.json())
 
 
-app.use('/postLogin', user)
+app.use('/login', log)
 app.use('/preLogin',preLogin)
+app.use('/postLogin', postLogin)
 
 
 

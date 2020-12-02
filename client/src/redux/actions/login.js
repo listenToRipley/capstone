@@ -1,7 +1,7 @@
 import {LOGIN} from './types'
 
 export const login = (username, password) => async dispatch => {
-  let path = `postLogin/`
+  let path = `login/`
   let params = `${username.value}/${password.value}`
   let fullPath = `${path}${params}`.trim()
 
