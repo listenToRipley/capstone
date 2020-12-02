@@ -125,6 +125,11 @@ const NavBar = (props) => {
   useEffect( () => {
     console.log('use effect in nav bar ')
     setLoggedIn=== props.user.validation
+
+    if (setLoggedIn===true) {
+      console.log('hey, you need to get the users information and pass it to the links')
+    }
+
   })
 
   return (
@@ -167,7 +172,7 @@ const NavBar = (props) => {
           </div> */}
         </Toolbar>
       </AppBar>
-      {setLoggedIn ? 
+      {setLoggedIn === true ? 
       <Drawer
         className={classes.drawer}
         // variant="persistent"
