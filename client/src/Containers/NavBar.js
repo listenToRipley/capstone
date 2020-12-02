@@ -3,7 +3,7 @@ import NavBar from '../Components/AppFunc/NavBar'
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.user.validation
+    user: state.user
   }
 }
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import clsx from 'clsx';
 import {withRouter} from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -114,7 +114,6 @@ const NavBar = (props) => {
   const [open, setOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false)
 
-
   const handleDrawerOpen = () => {
     setOpen(true);
   }; //need to add something for when this is open, make the view of the component adjusts 
@@ -122,6 +121,11 @@ const NavBar = (props) => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  useEffect( () => {
+    console.log('use effect in nav bar ')
+    setLoggedIn=== props.user.validation
+  })
 
   return (
     <div>
@@ -163,7 +167,7 @@ const NavBar = (props) => {
           </div> */}
         </Toolbar>
       </AppBar>
-      {props.isLoggedIn === true ? 
+      {setLoggedIn ? 
       <Drawer
         className={classes.drawer}
         // variant="persistent"

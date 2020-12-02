@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,14 +12,12 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
-import Home from './Home'
 import {useInput} from '../Hooks/inputHook';
 import PropTypes from 'prop-types';
 import Login from '../Containers/Login';
 import {useHistory} from 'react-router-dom'
 import cookie from 'cookie'
 
-console.log('cook on the home?', cookie)
 //the main page, go not pass go, to not collect $200 without login in or creating a login
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +55,6 @@ const LogIn = (props) => {
   const classes = useStyles();
   const history = useHistory();
   let {user}= props.state
-  console.log('starting state',user)
 
 
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
@@ -72,7 +69,6 @@ const LogIn = (props) => {
     }
 
     useEffect(()=> {
-      console.log('checking use effect', user.validation)
       if(user.validation) {
         document.cookie = "logCookies="+JSON.stringify({
           "username":user.username,
