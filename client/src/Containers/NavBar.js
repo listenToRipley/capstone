@@ -7,4 +7,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(NavBar)
+const mapStateToDispatch = (dispatch) => {
+
+}
+
+export default connect(mapStateToProps, mapStateToDispatch)(NavBar)

@@ -5,8 +5,6 @@ export const login = (username, password) => async dispatch => {
   let params = `${username.value}/${password.value}`
   let fullPath = `${path}${params}`.trim()
 
-  console.log('the path : ', fullPath)
-
     try{
   
         let res = await fetch(fullPath,{
