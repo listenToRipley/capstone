@@ -23,7 +23,7 @@ import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutA
 import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 // import { Button } from '@material-ui/core';
-import Login from '../LogIn'
+import {useHistory} from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
 
 //svg icons 
@@ -112,6 +112,9 @@ const NavBar = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+
+  const history = useHistory()
+
   let {validation} = props.user
 
   const handleDrawerOpen = () => {
@@ -127,6 +130,8 @@ const NavBar = (props) => {
 
     if (validation) {
       console.log('hey, you need to get the users information and pass it to the links')
+    } else if (validation === false) {
+      history.push('/')
     }
 
   })
