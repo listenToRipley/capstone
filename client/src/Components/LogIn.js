@@ -143,7 +143,6 @@ const LogIn = (props) => {
               className={classes.submit}
               aria-label='sign in button'
               onClick={sendValidation}
-              onChange={loginCookie}
             >
               Sign In
             </Button>
