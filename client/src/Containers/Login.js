@@ -3,7 +3,6 @@ import Login from '../Components/LogIn'
 import {login}from '../redux/actions/login'
 
 const mapStateToProps = (state) => {
-  console.log('this is the map',state)
   return {
     state: state
   }
