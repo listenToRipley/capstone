@@ -6,7 +6,7 @@ let startingState = {...state}
 console.log('find the state ?  this is for updates',startingState)
 
 export default function(state = {...startingState}, action){
-    console.log(action.payload)
+    console.log('nav bar action payload',action.payload)
     switch(action.type){
         case USER_INFORMATION:
         let newState = [{...state.userInfo}]

@@ -53,8 +53,7 @@ const useStyles = makeStyles((theme) => ({
 const LogIn = (props) => {
   const classes = useStyles();
   const history = useHistory();
-  let {user}= props.state
-
+  let {state}= props
 
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
@@ -68,7 +67,7 @@ const LogIn = (props) => {
     }
 
     useEffect(()=> {
-      if(user.validation) {
+      if(state.validation) {
         document.cookie = "logCookies="+JSON.stringify({
           "username":user.username,
           "validation": true,

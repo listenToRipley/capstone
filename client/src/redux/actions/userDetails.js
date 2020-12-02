@@ -2,7 +2,7 @@
 import {USER_INFORMATION} from './types'
 
 export const userInfo = (pass, user) => async dispatch => {
-  let path = `/postLogin/${user}/current/info`
+  let path = `/postLogin/${user.username}/current/info`
   let intake = pass.token
   let today = new Date()
   // console.log('in the call, your token', intake)
