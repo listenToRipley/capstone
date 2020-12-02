@@ -11,6 +11,6 @@ export default function(state ={...startingState}, action) {
     case USER_INFORMATION: 
     let newState = [{...state}]
     return newState = action.payload
-    default: return stat
+    default: return state
   }
 }

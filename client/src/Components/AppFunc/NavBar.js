@@ -108,7 +108,6 @@ const useStyles = makeStyles((theme) => ({
 //the content on the page should also shift if the drawer is expanded  
 
 const NavBar = (props) => {
-  console.log('what is my nav bar? ',props)
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -127,12 +126,12 @@ const NavBar = (props) => {
   };
 
   useEffect( () => {
-    console.log(' what is the props on the users? ',validation, 'and the user is : ', username)
+    console.log(' what is the login on the users? ',validation, 'and the user is : ', username)
 
     if (validation) {
       let {token} = props.user.pass 
       console.log('hey, token', token)
-      return props.userInfo(token={token}, username={username})
+      return props.userDetails(token={token}, username={username})
     } else if (validation === false) {
       //need to add trigger of some time to reset the store to clear
       history.push('/')

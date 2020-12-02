@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LogIn = (props) => {
+  console.log('props on login', props)
   const classes = useStyles();
   const history = useHistory();
   let {state}= props

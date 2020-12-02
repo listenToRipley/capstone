@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapStateToDispatch = (dispatch) => {
   console.log('dispatch for nav')
   return {
-    userInfo: (intake, username) => dispatch(userInfo(intake, username))
+    userDetails: (intake, username) => dispatch(userInfo(intake, username))
   }
 }
 
