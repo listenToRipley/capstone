@@ -11,7 +11,7 @@ const login = (req, res, next) => {
 
   let { user, password } = req.params
 
-  console.log('are you getting to the sql? ', user, password)
+  console.log('are you getting to the sql? ')
 
     sql='SELECT password FROM appInfo WHERE username= ?'
   
