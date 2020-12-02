@@ -5,7 +5,7 @@ export const userInfo = (pass, user) => async dispatch => {
   let path = `/postLogin/${user}/current/info`
   let intake = pass.token
   let today = new Date()
-  console.log('in the call, your token', intake)
+  // console.log('in the call, your token', intake)
 
   try{
       let res = await fetch(path, {
@@ -22,16 +22,16 @@ export const userInfo = (pass, user) => async dispatch => {
         type: USER_INFORMATION,
           payload: {
             userInfo: {
-              username: '',
-              email: '', 
-              firstName:'', 
-              lastName:'', 
-              userLocationId:'' ,
-              displayPrefId:'', 
-              pantryId:'', 
-              shopListId:'', 
-              palListId:'', 
-              accessId:'',
+              username: result.username,
+              email: result.email, 
+              firstName: result.firstName, 
+              lastName:result.lastName, 
+              userLocationId:result.userLocationId,
+              displayPrefId:result.displayPrefId, 
+              pantryId:result.pantrySettingId, 
+              shopListId:result.shopListSetId, 
+              palListId:result.palListSettingsId, 
+              accessId:result.accessId,
               loggedIn: today
             }
           }

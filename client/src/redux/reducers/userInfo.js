@@ -3,7 +3,7 @@ import state from '../state'
 
 let startingState = {...state}
 
-console.log('find the state ? ',startingState)
+console.log('find the state ?  this is for updates',startingState)
 
 export default function(state = {...startingState}, action){
     console.log(action.payload)
