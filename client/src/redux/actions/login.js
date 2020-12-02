@@ -14,9 +14,7 @@ export const login = (username, password) => async dispatch => {
             }
         }
         )
-        console.log('can you see res? : ',res)
         let token = await res.json() 
-        console.log('token?', token)
         dispatch( {
             type: LOGIN,
             payload: {
