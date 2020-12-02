@@ -1,11 +1,11 @@
 //userPersonalInfo on back end 
 import {USER_INFORMATION} from './types'
 
-export const userInfo = (token) => async dispatch => {
+export const userInfo = (pass) => async dispatch => {
   let path = `/postLogin/current/info`
-  let intake = token
+  let intake = pass.token
   let today = new Date()
-  console.log('here is the token you nee for the path', token)
+  console.log('in the call, your token', intake)
 
   try{
       let res = await fetch(path, {
@@ -21,7 +21,7 @@ export const userInfo = (token) => async dispatch => {
         type: USER_INFORMATION,
           payload: {
             userInfo: {
-              username: user,
+              username: '',
               email: '', 
               firstName:'', 
               lastName:'', 
