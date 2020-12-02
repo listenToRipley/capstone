@@ -112,7 +112,7 @@ const NavBar = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false)
+  let {validation} = props.user
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -123,10 +123,9 @@ const NavBar = (props) => {
   };
 
   useEffect( () => {
-    console.log('use effect in nav bar ')
-    setLoggedIn=== {...props.user.validation}
+    console.log(' what is the props on the users? ',validation)
 
-    if (setLoggedIn===true) {
+    if (validation) {
       console.log('hey, you need to get the users information and pass it to the links')
     }
 
@@ -172,7 +171,7 @@ const NavBar = (props) => {
           </div> */}
         </Toolbar>
       </AppBar>
-      {setLoggedIn === true ? 
+      {validation === true ? 
       <Drawer
         className={classes.drawer}
         // variant="persistent"
