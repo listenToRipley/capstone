@@ -11,6 +11,7 @@ export const userInfo = (pass, user) => async dispatch => {
       let res = await fetch(path, {
         method: 'GET',
         headers: {
+          Accept: "application/json", "Content-Type": "application/json",
           token: `${intake}`
         }
       }
