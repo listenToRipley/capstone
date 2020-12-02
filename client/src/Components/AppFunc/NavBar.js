@@ -129,8 +129,11 @@ const NavBar = (props) => {
     console.log(' what is the props on the users? ',validation)
 
     if (validation) {
-      console.log('hey, you need to get the users information and pass it to the links')
+      let {token} = props.user.pass 
+      console.log('hey, you need to get the users information and pass it to the links', token)
+      return props
     } else if (validation === false) {
+      //need to add trigger of some time to reset the store to clear
       history.push('/')
     }
 
