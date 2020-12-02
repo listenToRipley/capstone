@@ -4,6 +4,7 @@ import {USER_INFORMATION} from './types'
 export const userInfo = (token) => async dispatch => {
   let path = `/postLogin/current/info`
   let intake = token
+  let today = new Date()
   console.log('here is the token you nee for the path', token)
 
   try{
@@ -29,7 +30,8 @@ export const userInfo = (token) => async dispatch => {
               pantryId:'', 
               shopListId:'', 
               palListId:'', 
-              accessId:''
+              accessId:'',
+              loggedIn: today
             }
           }
       })
