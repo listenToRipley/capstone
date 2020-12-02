@@ -68,7 +68,7 @@ const LogIn = (props) => {
     //() => {props.login(username={...bindUsername},password={...bindPassword}, true)}
     const sendValidation = e => {
       e.preventDefault();
-     return props.login(username={...bindUsername},password={...bindPassword})
+   return props.login(username={...bindUsername},password={...bindPassword})
     }
 
     useEffect(()=> {
@@ -143,6 +143,7 @@ const LogIn = (props) => {
               className={classes.submit}
               aria-label='sign in button'
               onClick={sendValidation}
+              onChange={loginCookie}
             >
               Sign In
             </Button>
@@ -177,12 +178,11 @@ const LogIn = (props) => {
   )
 }
 
-// LogIn.proptypes = {
-//   username: PropTypes.string.isRequired,
-//   password: PropTypes.string.isRequired,
-//   login: PropTypes.bool.isRequired,
-//   validation: PropTypes.object
-// }
+LogIn.proptypes = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  login: PropTypes.bool.isRequired,
+  validation: PropTypes.object
+}
 
-// export default withStyles(useStyles)(LogIn)
 export default LogIn

@@ -7,10 +7,11 @@ const jwt = require('jsonwebtoken')
 
 const auth = (req, res, next) => {
   const token = req.header('token') //save this a cookie in the future
-  
+  console.log('response in the auth', auth)
   try {
     const decodedToken = jwt.verify(token, 'pals')
     req.user = decodedToken.username
+    console.log(`yeah and its sweet`)
     next()
   } catch {
     res.send('Unauthorized ')

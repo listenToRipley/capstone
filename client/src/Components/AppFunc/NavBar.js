@@ -108,12 +108,12 @@ const useStyles = makeStyles((theme) => ({
 //the content on the page should also shift if the drawer is expanded  
 
 const NavBar = (props) => {
-
   console.log('what is my nav bar? ',props)
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false)
+
 
   const handleDrawerOpen = () => {
     setOpen(true);

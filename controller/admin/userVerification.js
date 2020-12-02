@@ -8,9 +8,10 @@ const jwt = require('jsonwebtoken')
 //search database to validate username and password match the provided input
 //validate login
 const login = (req, res, next) => {
-  console.log('are you getting to the sql? ')
 
   let { user, password } = req.params
+
+  console.log('are you getting to the sql? ', user, password)
 
     sql='SELECT password FROM appInfo WHERE username= ?'
   
@@ -31,7 +32,7 @@ const login = (req, res, next) => {
 } 
 
 const createSession = (req, res) => {
-  const {user, password } = req.body
+  const {user, password } = req.params
 
   const current = {
     username: user, 
@@ -40,8 +41,8 @@ const createSession = (req, res) => {
   }
 
   const token =jwt.sign(current, 'pals') //second agr needs to be saved in to env
-
-  res.json({token: token }) // this will be a cookie once we get to the front end 
+  console.log('you making your token? ', token)
+  return res.json({token: token }) // this will be a cookie once we get to the front end 
 }
 
 module.exports = { 
