@@ -10,7 +10,7 @@ const requests = require('./requests')
 const util = require('./util')
 const {auth}= require('../../middleware/authentication')
 
-currentUser.get('/', auth)
+currentUser.get('/:user', auth)
 
 currentUser.use('/current', user)
 currentUser.use('/merge', merge)

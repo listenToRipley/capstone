@@ -116,6 +116,7 @@ const NavBar = (props) => {
   const history = useHistory()
 
   let {validation} = props.user
+  let {username} = props.user
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -126,12 +127,12 @@ const NavBar = (props) => {
   };
 
   useEffect( () => {
-    console.log(' what is the props on the users? ',validation)
+    console.log(' what is the props on the users? ',validation, 'and the user is : ', username)
 
     if (validation) {
       let {token} = props.user.pass 
       console.log('hey, token', token)
-      return props.userInfo(token={token})
+      return props.userInfo(token={token}, username={username})
     } else if (validation === false) {
       //need to add trigger of some time to reset the store to clear
       history.push('/')

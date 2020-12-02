@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapStateToDispatch = (dispatch) => {
   return {
-    userInfo: (intake) => dispatch(userInfo(intake))
+    userInfo: (intake, username) => dispatch(userInfo(intake, username))
   }
 }
 

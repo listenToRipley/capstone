@@ -6,8 +6,7 @@ const { handleSQLError } = require('../../../sql/error')
 const userPersonalInfo = (req, res) => {
 
   let sql = 'SELECT aI.username aI.password,aI.email, uD.firstName, uD.lastName, uD.dobMonth, uD.dobDate, uD.dobYear, uD.signedUp, uL.userLocationId ,uDP.displayPrefId, pS.pantrySettingId, sLS.shopListSetId, pLS.palListSettingsId, a.accessId FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username JOIN access AS a ON aI.username=a.username JOIN usersLocations AS uL ON aI.username=uL.username JOIN usersDisplayPreferences AS uDP ON aI.username=uDP.username JOIN pantriesSettings AS pS ON a.pantry=pS.pantrySettingId JOIN shopListsSettings AS sLS ON a.shopList=sLS.shopListSetId JOIN palListsSettings AS pLS ON aI.username=pLS.owner WHERE aI.username= ? AND a.active=1 AND a.pantryRole=2 OR a.pantryRole=3 AND a.shopListRole=2 OR a.shopListRole=3 LIMIT 1'
- 
-  sql=mysql.format(sql, [req.user])
+  sql=mysql.format(sql, [req.params.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -19,7 +18,7 @@ const userLocation = (req, res) => {
 
   let sql = 'SELECT * FROM usersLocations WHERE username=?'
 
-  sql=mysql.format(sql,[req.user])
+  sql=mysql.format(sql,[req.params.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
@@ -32,7 +31,7 @@ const userBirthday = (req, res) => {
 
   let sql = 'SELECT username, dobYear, dobMonth, dobDate FROM usersDetails WHERE username=?'
 
-  sql=mysql.format(sql,[req.user])
+  sql=mysql.format(sql,[req.params.user])
 
   pool.query(sql, (err, row) => {
     if(err) return handleSQLError(res, err)
