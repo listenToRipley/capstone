@@ -48,7 +48,7 @@ const updateBirthday = (req, res) => {
 
   let sql='UPDATE usersDetails SET dobYear=COALESCE(?, dobYear), dobDate=COALESCE(?, dobDate), dobMonth=COALESCE(?, dobMonth) WHERE username=?'
 
-  sql=mysql.format(sql,[year, date, month, req.user])
+  sql=mysql.format(sql,[year, date, month, req.params.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -63,7 +63,7 @@ const updateEmail = (req, res) => {
 
   let sql='UPDATE appInfo SET email=? WHERE username=?'
 
-  sql=mysql.format(sql,[email, req.user])
+  sql=mysql.format(sql,[email, req.params.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -78,7 +78,7 @@ const updateLocation = (req, res) => {
 
   let sql='UPDATE usersLocations SET address=COALESCE(?, address), city=COALESCE(?, city), state=COALESCE(?, state), zipcode=COALESCE(?, zipcode), country=COALESCE(?,country) WHERE username=?'
 
-  sql=mysql.format(sql,[address, city, state, zip, country, req.user])
+  sql=mysql.format(sql,[address, city, state, zip, country, req.params.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
@@ -93,7 +93,7 @@ const updatePhoneNum = (req, res) => {
 
   let sql='UPDATE usersDetails SET phone=? WHERE username=?'
 
-  sql=mysql.format(sql,[phone , req.user])
+  sql=mysql.format(sql,[phone , req.params.user])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
