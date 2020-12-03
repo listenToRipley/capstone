@@ -9,8 +9,8 @@ export default function(state = {...startingState}, action){
     console.log('nav bar action payload',action.payload)
     switch(action.type){
         case USER_INFORMATION:
-        let newState = [{...state.userInfo}]
-        return newState = action.payload.userInfo
+        let newState = [{...state.userDetails}]
+        return newState = action.payload.userDetails
         default: return state
     }
 
