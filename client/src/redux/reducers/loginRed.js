@@ -1,4 +1,4 @@
-import {LOGIN} from '../actions/types'
+import {LOGIN, LOGOUT} from '../actions/types'
 import state from '../state'
 
 let startingState = {...state.user}
@@ -10,6 +10,8 @@ export default function(state = {...startingState}, action){
         case LOGIN:
         let newState = [{...state}]
         return newState = action.payload.user
+        case LOGOUT:
+        return state
         default: return state
     }
 

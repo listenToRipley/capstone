@@ -9,6 +9,7 @@
 // export const ADD_DIETS = 'ADD_DIETS'
 // export const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
 export const LOGIN = 'LOGIN' 
+export const LOGOUT = 'LOGOUT'
 export const USER_INFORMATION = 'USER_INFORMATION'
 // export const USER_PERSONAL_INFORMATION = 'USER_PERSONAL_INFORMATION'
 // export const USER_LOCATION = 'USER_LOCATION'

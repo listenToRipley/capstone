@@ -31,3 +31,10 @@ export const login = (username, password) => async dispatch => {
         return 'what is the error? ', {e}
     }
 }
+
+export const logout = () => {
+  return {
+    type: LOGOUT,
+    payload: {}
+  }
+}
