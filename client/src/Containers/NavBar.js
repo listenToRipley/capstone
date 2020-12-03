@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import NavBar from '../Components/AppFunc/NavBar'
-import {userInfo} from '../redux/actions/userDetails'
+import {userDetails} from '../redux/actions/userDetails'
 import state from '../redux/state'
 
 const mapStateToProps = (state) => {
