@@ -1,4 +1,4 @@
-import {USER_INFORMATION} from '../actions/types'
+import {USER_INFORMATION, LOGOUT} from '../actions/types'
 import state from '../state'
 
 let startingState = {...state}

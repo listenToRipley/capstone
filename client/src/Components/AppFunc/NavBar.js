@@ -293,6 +293,7 @@ const NavBar = (props) => {
             <ListItem 
             button 
             component={Link}
+            onClick={()=> {props.logout(true)}}
             to='/'
             aria-label='sign out'
             >
