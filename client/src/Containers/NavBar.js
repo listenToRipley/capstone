@@ -8,14 +8,16 @@ const mapStateToProps = (state) => {
   console.log('why is the userInfo turning into a functions? ', state)
   return {
     user: state.user,
-    userInfo: state.userDetails
+    userInfo: state.userDetails,
+    logout: state
   }
 }
 
 const mapStateToDispatch = (dispatch) => {
   console.log('dispatch for nav')
   return {
-    userDetails: (intake, username) => dispatch(userDetails(intake, username))
+    userDetails: (intake, username) => dispatch(userDetails(intake, username)),
+    logout: (boo) => dispatch(logout(boo))
   }
 }
 
