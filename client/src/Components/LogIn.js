@@ -70,9 +70,9 @@ const LogIn = (props) => {
     useEffect(()=> {
       if(state.validation) {
         document.cookie = "logCookies="+JSON.stringify({
-          "username":user.username,
+          "username":state.username,
           "validation": true,
-          "token": user.token,
+          "token": state.token,
           //will have to add validate for username and password, then can be true 
           "max-Age":60*10000,
           "reset": {
