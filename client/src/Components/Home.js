@@ -125,4 +125,4 @@ const Home = (props) => {
 
 }
 
-export default withStyles(useStyles)(Home)
+export default Home

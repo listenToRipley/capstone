@@ -24,15 +24,15 @@ export const userDetails = (pass, user) => async dispatch => {
           payload: {
             userInfo: {
               username: user.username,
-              email: result.email, 
-              firstName: result.firstName, 
-              lastName:result.lastName, 
-              userLocationId:result.userLocationId,
-              displayPrefId:result.displayPrefId, 
-              pantryId:result.pantrySettingId, 
-              shopListId:result.shopListSetId, 
-              palListId:result.palListSettingsId, 
-              accessId:result.accessId,
+              email: result[0].email, 
+              firstName: result[0].firstName, 
+              lastName: result[0].lastName, 
+              userLocationId: result[0].userLocationId,
+              displayPrefId: result[0].displayPrefId, 
+              pantryId: result[0].pantrySettingId, 
+              shopListId: result[0].shopListSetId, 
+              palListId: result[0].palListSettingsId, 
+              accessId: result[0].accessId,
               loggedIn: today
             }
           }
