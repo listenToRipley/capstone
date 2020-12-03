@@ -23,7 +23,7 @@ export const userDetails = (pass, user) => async dispatch => {
         type: USER_INFORMATION,
           payload: {
             userInfo: {
-              username: result.username,
+              username: user.username,
               email: result.email, 
               firstName: result.firstName, 
               lastName:result.lastName, 
