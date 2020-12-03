@@ -2,10 +2,10 @@
 import {USER_INFORMATION} from './types'
 
 export const userDetails = (pass, user) => async dispatch => {
-  let path = `/postLogin/${user.username}/current/info`
+  let path = `/postLogin/current/info`
   let intake = pass.token
   let today = new Date()
-  // console.log('in the call, your token', intake)
+  console.log('here is the path you are trying to use', path)
 
   try{
       let res = await fetch(path, {
@@ -16,6 +16,7 @@ export const userDetails = (pass, user) => async dispatch => {
         }
       }
       )
+      console.log('this is the res from the fetch? ', res)
       let result = await res.json()
       console.log('what is the result for the call? ', result)
       dispatch({
