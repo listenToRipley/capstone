@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   console.log('why is the userInfo turning into a functions? ', state)
   return {
     user: state.user,
-    userInfo: state.userInfo
+    userInfo: state.userDetails
   }
 }
 
