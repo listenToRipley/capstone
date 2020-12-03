@@ -7,15 +7,15 @@ export default {
   },  
   userInfo: {
     username: '',
-    email: 'email address', 
-    firstName:'first name', 
-    lastName:'last name', 
-    userLocationId:1 ,
-    displayPrefId:1, 
-    pantryId:1, 
-    shopListId:1, 
-    palListId:1, 
-    accessId:1
+    email: '', 
+    firstName:'', 
+    lastName:'', 
+    userLocationId:'' ,
+    displayPrefId:'', 
+    pantryId:'', 
+    shopListId:'', 
+    palListId:'', 
+    accessId:''
   }
   // createUser: {
   //   username: '',
