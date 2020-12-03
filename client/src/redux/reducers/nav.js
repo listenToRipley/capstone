@@ -11,6 +11,8 @@ export default function(state ={...startingState}, action) {
     case USER_INFORMATION: 
     let newState = [{...state}]
     return newState = action.payload
+    case LOGOUT:
+    return state
     default: return state
   }
 }
