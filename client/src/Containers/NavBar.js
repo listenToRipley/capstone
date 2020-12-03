@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import NavBar from '../Components/AppFunc/NavBar'
 import {userDetails} from '../redux/actions/userDetails'
+import {logout} from '../redux/actions/logout'
 import state from '../redux/state'
 
 const mapStateToProps = (state) => {
