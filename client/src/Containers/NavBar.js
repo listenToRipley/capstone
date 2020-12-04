@@ -17,6 +17,7 @@ const mapStateToDispatch = (dispatch) => {
   console.log('dispatch for nav')
   return {
     userDetails: (intake, username) => dispatch(userDetails(intake, username)),
+    //this must be structured wrong since I am getting back the call
     logout: (boo) => dispatch(logout(boo))
   }
 }
