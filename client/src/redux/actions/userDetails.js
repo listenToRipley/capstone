@@ -34,7 +34,8 @@ export const userDetails = (pass, user) => async dispatch => {
               shopListId: result[0].shopListSetId, 
               palListId: result[0].palListSettingsId, 
               accessId: result[0].accessId,
-              loggedIn: today
+              loggedIn: today,
+              run: true
             }
           }
       })

@@ -3,7 +3,7 @@ import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Router from './Router/Router';
 import {BrowserRouter} from 'react-router-dom';
-import NavBar from './Components/AppFunc/NavBar';
+import NavBar from './Components/NavBar';
 import {Provider } from 'react-redux'; 
 import store from './redux/store';
 import ReactDom from 'react-dom';

@@ -3,7 +3,7 @@ export default {
     username:'',
     password: '',
     validation:false,
-    token: ''
+    pass: ''
   },  
   userInfo: {
     username: '',
@@ -15,7 +15,8 @@ export default {
     pantryId:'', 
     shopListId:'', 
     palListId:'', 
-    accessId:''
+    accessId:'',
+    run: false
   }
   // createUser: {
   //   username: '',
