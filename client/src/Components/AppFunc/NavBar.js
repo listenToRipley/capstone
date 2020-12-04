@@ -25,6 +25,7 @@ import { Link } from 'react-router-dom';
 // import { Button } from '@material-ui/core';
 import {useHistory} from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
+import cookie from 'cookie'
 
 //svg icons 
 library.add(faShoppingBasket,faDoorClosed, faUsers, faHome, faUtensils, faUserCircle, faSignOutAlt, faPeopleArrows, faCarrot)
@@ -117,6 +118,11 @@ const NavBar = (props) => {
   let {validation} = props.user
   let {username} = props.user
 
+  const cookies = (cookie.parse(document.cookie))
+  const status = JSON.parse(cookies.logCookies)
+
+  console.log('status on cookie?',status.validation)
+
   const handleDrawerOpen = () => {
     setOpen(true);
   }; //need to add something for when this is open, make the view of the component adjusts 
@@ -128,11 +134,11 @@ const NavBar = (props) => {
   useEffect( () => {
     console.log(' what is the login on the users? ',validation, 'and the user is : ', username)
 
-    if (validation) {
+    if (status.validation) {
       let {token} = props.user.pass 
       console.log('hey, token', token)
       return props.userDetails(token={token}, username={username})
-    } else if (validation === false) {
+    } else if (status.validation === false) {
       //need to add trigger of some time to reset the store to clear
       history.push('/')
     }
@@ -179,7 +185,7 @@ const NavBar = (props) => {
           </div> */}
         </Toolbar>
       </AppBar>
-      {validation === true ? 
+      {status.validation === true ? 
       <Drawer
         className={classes.drawer}
         // variant="persistent"
