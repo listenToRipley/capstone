@@ -12,8 +12,8 @@ const allReducers = combineReducers({
 
 const root = (state, action) => {
     if(action.type === LOGOUT) {
-        const {user, userDetails, nav} = state
-        state = {user, userDetails, nav}
+        const {user, userDetails} = state
+        state = {user, userDetails}
     }
     return allReducers(state, action)
 }

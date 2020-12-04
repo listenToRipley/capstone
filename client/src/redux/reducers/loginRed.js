@@ -9,10 +9,10 @@ export default function(state = {...startingState}, action){
     switch(action.type){
         case LOGIN:
         let userState = {...state}
-        return userState = action.payload.user
+        return userState = action.payload
         case USER_INFORMATION: 
         let infoState = {...state}
-        return infoState = action.payload.userDetails
+        return infoState = action.payload
         default: return state
     }
 
