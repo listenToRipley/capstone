@@ -108,20 +108,17 @@ const useStyles = makeStyles((theme) => ({
 //if not logged in, the top panel should only have the name and about. 
 //the content on the page should also shift if the drawer is expanded  
 
-const NavBar = (props) => {
+const NavBar = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
   const history = useHistory()
 
-  let {validation} = props.user
-  let {username} = props.user
-
   const cookies = (cookie.parse(document.cookie))
   const status = JSON.parse(cookies.logCookies)
 
-  console.log('status on cookie?',status.validation)
+  console.log('status on cookie?')
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -131,19 +128,19 @@ const NavBar = (props) => {
     setOpen(false);
   };
 
-  useEffect( () => {
-    console.log(' what is the login on the users? ',validation, 'and the user is : ', username)
+  // useEffect( () => {
+  //   console.log(' what is the login on the users? ',validation, 'and the user is : ', username)
 
-    if (status.validation) {
-      let {token} = props.user.pass 
-      console.log('hey, token', token)
-      return props.userDetails(token={token}, username={username})
-    } else if (status.validation === false) {
-      //need to add trigger of some time to reset the store to clear
-      history.push('/')
-    }
+  //   if (status.validation) {
+  //     let {token} = props.user.pass 
+  //     console.log('hey, token', token)
+  //     return props.userDetails(token={token}, username={username})
+  //   } else if (status.validation === false) {
+  //     //need to add trigger of some time to reset the store to clear
+  //     history.push('/')
+  //   }
 
-  })
+  // })
 
   return (
     <div>
@@ -299,7 +296,7 @@ const NavBar = (props) => {
             <ListItem 
             button 
             component={Link}
-            onClick={()=> {props.logout(true)}}
+            onClick={() => {console.log('you want to log out')}}
             to='/'
             aria-label='sign out'
             >
@@ -372,7 +369,7 @@ const NavBar = (props) => {
   );
 }
 
-// export default withStyles(useStyles)(NavBar)
-export default NavBar
+export default withStyles(useStyles)(NavBar)
+// export default NavBar
 
 //from https://material-ui.com/components/drawers/

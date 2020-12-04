@@ -7,7 +7,7 @@ import { LOGOUT } from '../actions/types'
 const allReducers = combineReducers({
     user: loginRed,
     userDetails: userDetails,
-    nav: nav
+    // nav: nav
 })
 
 const root = (state, action) => {

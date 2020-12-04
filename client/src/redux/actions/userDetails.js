@@ -12,7 +12,8 @@ export const userDetails = (pass, user) => async dispatch => {
         method: 'GET',
         headers: {
           Accept: "application/json", "Content-Type": "application/json",
-          token: `${intake}`
+          token: `${intake}`,
+          "Access-Control-Allow-Origin": "*"
         }
       }
       )
