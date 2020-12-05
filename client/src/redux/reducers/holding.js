@@ -1,5 +1,5 @@
-import {combineReducers} from 'redux';
-import {
+// import {combineReducers} from 'redux';
+// import {
   // CREATE_NEW_USER,
   // FORGOT_USERNAME,
   // FORGOT_PASSWORD,
@@ -10,7 +10,7 @@ import {
   // ADD_ALLERGIES,
   // ADD_DIETS,
   // UPDATE_PASSWORD,
-  LOGIN, 
+  // LOGIN, 
   // USER_PERSONAL_INFORMATION,
   // USER_LOCATION,
   // USER_BIRTHDAY,
@@ -75,7 +75,7 @@ import {
   // ACCEPT_MERGE_REQUEST, 
   // DECLINE_MERGE_REQUEST,
   // FETCH_FOOD 
-} from '../actions/types'
+// } from '../actions/types'
 
 // const startState = {}
 
