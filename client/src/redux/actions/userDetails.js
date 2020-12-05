@@ -17,7 +17,9 @@ export const getDetails = (pass, user) => async dispatch => {
       }
       )
       let getResult = await res.json()
+      console.log('results ', getResult)
       let result = {...getResult}
+      console.log('what the response?', result)
       console.log('res', result[0])
       dispatch({
         type: USER_DETAILS,
