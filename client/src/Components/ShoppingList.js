@@ -283,7 +283,7 @@ const ShoppingList = (props) =>  {
   useEffect(() => {
     console.log('need to load the shop list first! ')
     return getShopList(shopListId)
-  }, [props.userDetails.shopListId])
+  }, [])
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
