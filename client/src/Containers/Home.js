@@ -2,19 +2,12 @@ import {connect} from 'react-redux'
 import Home from '../Components/Home'
 import {userInfo} from '../redux/actions/types'
 
-const mapStateToProps = (userInfo) => {
-  console.log('hello to home', userInfo)
+const mapStateToProps = (state) => {
+  console.log('hello to home', state)
   return {
-    
-
+    user: state.user,
+    userDetails: state.userDetails
   }
 }
 
-const mapStateToDispatch = (dispatch) => {
-  console.log('hit my dispatcher')
-  return {
-    userInfo: (user) => dispatch(login(user))
-  }
-}
-
-export default connect(mapStateToProps, mapStateToDispatch)(Home) 
+export default connect(mapStateToProps)(Home) 
