@@ -16,7 +16,7 @@ const mapStateToDispatch = (dispatch) => {
   return {
     
     //this must be structured wrong since I am getting back the call
-    userDetails: (username, token) => dispatch(userDetails(username,token))
+    userDetails: (intake, user) => dispatch(userDetails(intake, user))
   }
 }
 
