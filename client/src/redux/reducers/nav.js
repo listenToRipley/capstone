@@ -10,8 +10,7 @@ export default function(state = {...initialState.userDetails}, action){
   console.log('nav bar action payload',action.payload)
     switch(action.type){
         case USER_DETAILS:
-        let newState = [{...state.userDetails}]
-        return newState = action.payload.userDetails
+        return action.payload.userDetails
         case LOGOUT: 
         return action.payload
         default: return state
