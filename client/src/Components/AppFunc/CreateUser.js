@@ -54,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
 
 //use action from redux to create user
 
-const CreateUser = () => {
+const CreateUser = (props) => {
+  console.log('props on create user? ')
   const classes = useStyles();
 
   const {value: firstName, bind: bindFirstName, reset: resetFirstName} = useInput('')
@@ -68,15 +69,11 @@ const CreateUser = () => {
   //change this selected date 
   const [dob, onChange] = useState(new Date());
 
-  const handlePasswordMatch = () => {
-    //need to make sure the password matches
-    //if password and vPassword do not match, then they should not continue 
-  }
-
-  const handleDOB = () => {
-    //need to had this to handle birthday input 
-      //want to make sure they are over a specific age? 
-  }
+  //this will be future state
+  // const handlePasswordMatch = () => {
+  //   //need to make sure the password matches
+  //   //if password and vPassword do not match, then they should not continue 
+  // }
 
   const handleSubmit = () => {
     //this is where the use is actually created. 
@@ -163,21 +160,7 @@ const CreateUser = () => {
             aria-label="your new password"
             />
           <TextField
-            {...bindVPassword}
-            variant="outlined"
-            margin="normal"
-            required
-            id="passwordVerify"
-            label="Password Verification"
-            name="password"
-            type="password"
-            autoFocus
-            className={classes.fields}
-            aria-label="verify your password"
-            />
-            {/* might want to change this to a popout option  */}
-            <InputLabel>Birthday</InputLabel>
-          <TextField
+            {...bindBirthday}
             variant="outlined"
             margin="normal"
             required
@@ -186,6 +169,7 @@ const CreateUser = () => {
             label="Birthday"
             name="birthday"
             type="date"
+            placeholder=""
             autoFocus
             className={classes.fields}
             aria-label="your date of birth"
