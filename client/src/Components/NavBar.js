@@ -109,8 +109,7 @@ const NavBar = (props) => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
-  let {validation} = props.user
-  let {username} = props.user
+  let {validation, username} = props.user
   let {run} = props.userDetails
 
   const history = useHistory()
@@ -180,10 +179,10 @@ const NavBar = (props) => {
           </div> */}
         </Toolbar>
       </AppBar>
-      {status.validation === true ? 
+      {validation === true ? 
       <Drawer
         className={classes.drawer}
-        // variant="persistent"
+        variant="persistent"
         anchor="left"
         variant="persistent"
         open={open}

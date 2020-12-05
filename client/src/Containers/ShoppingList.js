@@ -1,9 +1,11 @@
 import {connect} from 'react-redux';
-import ShoppingList from '../Components/ShopList/ShoppingList';
+import ShoppingList from '../Components/ShoppingList';
 import {getShopList} from '../redux/actions/userShopList'
 
-const mapStateToProps = (state, ShoppingList) => {
+const mapStateToProps = (state) => {
   return {
+    user: state.user,
+    userDetails: state.userDetails,
     list: state.shoppingList
   }
 }
@@ -15,4 +17,4 @@ const mapStateToDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps)(ShoppingList)
+export default connect(mapStateToProps, mapStateToProps)(ShoppingList)

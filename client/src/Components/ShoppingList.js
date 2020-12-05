@@ -20,7 +20,6 @@ import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
-import uuid from 'uuid'
 
 
 library.add(faShoppingBasket, faCartArrowDown) 
