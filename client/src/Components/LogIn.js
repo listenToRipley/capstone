@@ -54,7 +54,7 @@ const LogIn = (props) => {
   const classes = useStyles();
   const history = useHistory();
   let {user}= props
-  console.log('props on user', user)
+
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
 

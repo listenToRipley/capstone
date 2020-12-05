@@ -23,7 +23,7 @@ const login = (req, res, next) => {
     const match = await bcrypt.compare(password, row[0].password)
 
     if (!match) {
-      res.send(`Sorry, we can't seem to find you with the information`)
+      res.send(false)
     } else {
       next() 
     }

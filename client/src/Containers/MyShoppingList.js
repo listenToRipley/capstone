@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
 import ShoppingList from '../Components/ShopList/ShoppingList';
-import { getDetails } from '../redux/actions/userDetails';
 import {getShopList} from '../redux/actions/userShopList'
 
 const mapStateToProps = (state, ShoppingList) => {

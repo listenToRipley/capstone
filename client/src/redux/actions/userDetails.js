@@ -3,6 +3,7 @@ import {USER_DETAILS} from './types'
 import moment from 'moment'
 
 export const getDetails = (pass, user) => async dispatch => {
+  console.log('object on user info? ', user.username, pass.token)
   let path = `/postLogin/${user.username}/current/info`
   let intake = pass.token
 
@@ -17,6 +18,7 @@ export const getDetails = (pass, user) => async dispatch => {
       )
       let getResult = await res.json()
       let result = {...getResult}
+      console.log('res', result[0])
       dispatch({
         type: USER_DETAILS,
           payload: {
