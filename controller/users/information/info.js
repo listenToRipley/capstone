@@ -4,7 +4,7 @@ const { handleSQLError } = require('../../../sql/error')
 
 //GET
 const userPersonalInfo = (req, res) => {
-  console.log('params coming through okay on the request? ',req.params.user)
+
   let sql = 'SELECT aI.username, uL.userLocationId ,uDP.displayPrefId, pS.pantrySettingId, sLS.shopListSetId, pLS.palListSettingsId, a.accessId FROM appInfo AS aI JOIN usersDetails AS uD ON aI.username=uD.username JOIN access AS a ON aI.username=a.username AND aI.username= ? JOIN usersLocations AS uL ON aI.username=uL.username JOIN usersDisplayPreferences AS uDP ON aI.username=uDP.username JOIN pantriesSettings AS pS ON a.pantry=pS.pantrySettingId JOIN shopListsSettings AS sLS ON a.shopList=sLS.shopListSetId JOIN palListsSettings AS pLS ON aI.username=pLS.owner WHERE a.active=1 AND pantryRole=2 OR pantryRole=1 OR pantryRole=3'
 
   sql=mysql.format(sql, [req.params.user])
