@@ -3,7 +3,7 @@ import Login from '../Components/LogIn'
 import {login}from '../redux/actions/login'
 
 const mapStateToProps = (state) => {
-  console.log('map your state', state)
+  
   return {
     user: state.user,
     userInfo: state.userInfo

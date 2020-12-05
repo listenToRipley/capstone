@@ -1,10 +1,11 @@
 //userPersonalInfo on back end 
 import {USER_DETAILS} from './types'
+import moment from 'moment'
 
-export const userDetails = (pass, user) => async dispatch => {
-  let path = `/postLogin/current/info`
+export const getDetails = (pass, user) => async dispatch => {
+  console.log('user in user details ?', user.username)
+  let path = `/postLogin/${user.username}/current/info`
   let intake = pass.token
-  let today = new Date()
   console.log('here is the path you are trying to use', path)
 
   try{
@@ -13,28 +14,24 @@ export const userDetails = (pass, user) => async dispatch => {
         headers: {
           Accept: "application/json", "Content-Type": "application/json",
           token: `${intake}`,
-          "Access-Control-Allow-Origin": "*"
         }
       }
       )
       console.log('this is the res from the fetch? ', res)
-      let result = await res.json()
-      console.log('what is the result for the call? ', result)
+      let getResult = await res.json()
+      let result = {...getResult}
+      console.log('what is the result for the call? ', result[0])
       dispatch({
         type: USER_DETAILS,
           payload: {
             userDetails: {
-              username: user.username,
-              email: result[0].email, 
-              firstName: result[0].firstName, 
-              lastName: result[0].lastName, 
               userLocationId: result[0].userLocationId,
               displayPrefId: result[0].displayPrefId, 
               pantryId: result[0].pantrySettingId, 
               shopListId: result[0].shopListSetId, 
               palListId: result[0].palListSettingsId, 
               accessId: result[0].accessId,
-              loggedIn: today,
+              time:moment(),
               run: true
             }
           }
