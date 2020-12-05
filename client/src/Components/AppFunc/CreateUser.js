@@ -55,9 +55,10 @@ const useStyles = makeStyles((theme) => ({
 //use action from redux to create user
 
 const CreateUser = (props) => {
-  console.log('props on create user? ')
+  console.log('props on create user? ', props)
   const classes = useStyles();
 
+  const {value: username, bind: bindUsername, reset: resetUsername} = useInput('') 
   const {value: firstName, bind: bindFirstName, reset: resetFirstName} = useInput('')
   const {value: lastName, bind: bindLastName, reset: resetLastName} = useInput('')
   const {value: email, bind: bindEmail, reset: resetEmail} = useInput('')
@@ -75,7 +76,10 @@ const CreateUser = (props) => {
   //   //if password and vPassword do not match, then they should not continue 
   // }
 
-  const handleSubmit = () => {
+  const createLogin = e => {
+    e.preventDefault(); 
+
+    console.log('tell me info', username)
     //this is where the use is actually created. 
   }
 
@@ -101,6 +105,21 @@ const CreateUser = (props) => {
        
         className={classes.form} 
         > 
+            <TextField
+            {...bindUsername}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="username"
+            label="Username"
+            name="username"
+            type="text"
+            autoFocus
+            className={classes.fields}
+            aria-label="your username for login"
+          />
+
           <TextField
             {...bindFirstName}
             variant="outlined"
@@ -180,7 +199,9 @@ const CreateUser = (props) => {
           style={{margin: '15px'}} 
           type="submit" 
           variant="contained" 
-          color="primary">
+          color="primary"
+          onClick={createLogin}
+          >
            Sign Up
         </Button>
        </Grid>
