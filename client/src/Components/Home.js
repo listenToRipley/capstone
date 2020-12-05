@@ -40,13 +40,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props) => {
   const classes = useStyles();
-  // const theme = useTheme();
+  const theme = useTheme();
   console.log('hello to home props : ',props)
-  console.log('is there a cookie?', cookie)
-
-  const getInfo = e => {
-    return props.userInfo(props.username)
-  }
+  console.log('is there a cookie in home?', cookie)
+  const {shopListId, palListId, pantryId} = props.userDetails
 
   return (
   <div>
@@ -54,7 +51,7 @@ const Home = (props) => {
     className={classes.root}
       >
       <Card className={classes.cards}>
-    <Typography component="h1" variant="h5" className="welcome">Welcome {props.username}</Typography>
+    <Typography component="h1" variant="h5" className="welcome">Welcome {props.user.username}</Typography>
     </Card> 
       <Grid
         container
@@ -73,6 +70,7 @@ const Home = (props) => {
         component={Link}
         to='/shoppingList'
         aria-label='shopping list'
+        shipList={shopListId}
         >
           Your Shopping List
         </ListItem>
@@ -85,6 +83,7 @@ const Home = (props) => {
               component={Link}
               to='/pantry'
               aria-label='pantry'
+              pantry={pantryId}
                 >
                 Your Pantry
           </ListItem>
@@ -97,6 +96,7 @@ const Home = (props) => {
             component={Link}
             to='/palsList'
             aria-label='pal list'
+            palList={palListId}
             > 
             Your Pal's List
           </ListItem>
@@ -110,7 +110,7 @@ const Home = (props) => {
             to='/userProfile'
             aria-label='pal list'
             > 
-            Your Pal's List
+            Your Profile
           </ListItem>
           <Paper className={classes.paper}>
             {/* <UserProfile/> */}
