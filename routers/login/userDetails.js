@@ -51,7 +51,7 @@ const just = express.Router({mergeParams: true})
 
 
 //GET
-just.get('/info/:user', userPersonalInfo)
+just.get('/info', userPersonalInfo)
 just.get('/displayPref', justDisplayPrefer)
 just.get('/location', userLocation)
 just.get('/DOB', userBirthday)

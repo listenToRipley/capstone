@@ -12,11 +12,11 @@ const {auth}= require('../../middleware/authentication')
 
 currentUser.get('/:user', auth)
 
-currentUser.use('/current', user)
-currentUser.use('/merge', merge)
-currentUser.use('/palList', palList)
-currentUser.use('/pantry', pantry)
-currentUser.use('/shopList', shopList)
+currentUser.use('/:user/current', user)
+currentUser.use('/:user/merge', merge)
+currentUser.use('/:user/palList', palList)
+currentUser.use('/:user/pantry', pantry)
+currentUser.use('/:ser/shopList', shopList)
 currentUser.use('/admin', requests)
 currentUser.use('/util', util)
 
