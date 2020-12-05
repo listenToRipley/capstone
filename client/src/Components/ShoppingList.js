@@ -20,6 +20,7 @@ import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
+import { getShopList } from '../redux/actions/userShopList';
 
 
 library.add(faShoppingBasket, faCartArrowDown) 
@@ -80,30 +81,18 @@ dom.watch()
 
 
     //quantity, measurement, item, spoonId
-const createData = (quantity, items, unit, actions) => {
-  return { quantity, items, unit, actions};
-}
+// const createData = (quantity, items, unit, actions) => {
+//   return { quantity, items, unit, actions};
+// }
 
 //there is an issue with the drawer and page content. 
 
 //need to add something to show role on table, are we going to need to write a query for that? 
 
 //this will need to be replaced by content from the server 
-const rows = [
-  createData( 305, 'Cupcake', 3.7),
-  createData( 452, 'Donut', 3.7),
-  createData( 305, 'Eclair', 3.7), 
-  createData( 5221, 'Frozen yoghurt', 159),  
-  createData( 5, 'Gingerbread', 356),  
-  createData( 1, 'Honeycomb', 408), 
-  createData( 32, 'Ice cream sandwich', 237), 
-  createData( 66, 'Jelly Bean', 375), 
-  createData( 23, 'KitKat', 518),  
-  createData( 6565, 'Lollipop', 392),
-  createData( 13.2, 'Marshmallow', 318),
-  createData( 33, 'Nougat', 360),
-  createData( 6666, 'Oreo', 437)
-];
+// const rows = [
+//     props.shopList
+// ];
 
 //sorting functions  DON'T TOUCH 
 const getComparator =(order, orderBy) => {
@@ -141,7 +130,6 @@ const headCells = [
   { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
 ];
 
-//EnhancedTableHead
 const ShoppingListHead = (props) =>  {
 
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
@@ -263,8 +251,11 @@ ShoppingListToolbar.propTypes = {
 
 }
 
-//EnhancedTable 
-const ShoppingList = () =>  {
+const ShoppingList = (props) =>  {
+  console.log('props on shopping list', props)
+
+  const {shopListId} = props.userDetails
+
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
@@ -272,12 +263,16 @@ const ShoppingList = () =>  {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  useEffect(() => {
+    console.log('the GET SHOPPING LIST should run on load and then again on any changes made.')
+    return getShopList(shopListId)
+  }, [props.userDetails.shopListId])
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
-
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = rows.map((n) => n.name);
@@ -395,4 +390,5 @@ const ShoppingList = () =>  {
   );
 }
 
-export default withStyles(useStyles)(ShoppingList)
+// export default withStyles(useStyles)(ShoppingList)
+export default ShoppingList

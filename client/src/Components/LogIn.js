@@ -69,7 +69,7 @@ const LogIn = (props) => {
           "username":user.username,
           "validation": true,
           "token": user.pass.token,
-          "max-Age":60*10000
+          // "max-Age":60*1000000
             })
         history.push('/home')
       }

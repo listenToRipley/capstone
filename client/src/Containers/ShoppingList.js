@@ -6,14 +6,14 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     userDetails: state.userDetails,
-    list: state.shoppingList
+    shopList: state.shoppingList
   }
 }
 
 const mapStateToDispatch = (dispatch) => {
   console.log('hitting the dispatch on shop list')
   return {
-    getShopList: (listId) => dispatch(getDetails(listId))
+    getShopList: (listId) => dispatch(getShopList(listId))
   }
 }
 
