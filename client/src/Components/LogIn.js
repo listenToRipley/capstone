@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LogIn = (props) => {
-  console.log('props on login', props)
   const classes = useStyles();
   const history = useHistory();
   let {user}= props
@@ -59,9 +58,6 @@ const LogIn = (props) => {
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
 
-  
-    //back end build when it is ready, pass info along 
-    //() => {props.login(username={...bindUsername},password={...bindPassword}, true)}
     const sendValidation = e => {
       e.preventDefault();
    return props.login(username={...bindUsername},password={...bindPassword})

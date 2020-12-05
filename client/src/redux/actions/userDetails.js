@@ -3,10 +3,8 @@ import {USER_DETAILS} from './types'
 import moment from 'moment'
 
 export const getDetails = (pass, user) => async dispatch => {
-  console.log('user in user details ?', user.username)
   let path = `/postLogin/${user.username}/current/info`
   let intake = pass.token
-  console.log('here is the path you are trying to use', path)
 
   try{
       let res = await fetch(path, {
@@ -17,10 +15,8 @@ export const getDetails = (pass, user) => async dispatch => {
         }
       }
       )
-      console.log('this is the res from the fetch? ', res)
       let getResult = await res.json()
       let result = {...getResult}
-      console.log('what is the result for the call? ', result[0])
       dispatch({
         type: USER_DETAILS,
           payload: {

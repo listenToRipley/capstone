@@ -103,11 +103,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-//NEED TO WORK ON GETTING THE DRAWER TO CLOSE prelogin 
-//if not logged in, the top panel should only have the name and about. 
-//the content on the page should also shift if the drawer is expanded  
-
 const NavBar = (props) => {
   console.log('props on the nav bar', props)
   const classes = useStyles();
@@ -133,7 +128,6 @@ const NavBar = (props) => {
   };
 
   useEffect( () => {
-    console.log(' what is the login on the users? ',validation, 'and the user is : ', username, ' and  the run ? ', run)
     
     if (validation && run=== false) {
       let {token} = props.user.pass 
