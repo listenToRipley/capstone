@@ -1,4 +1,5 @@
 import {LOGIN} from './types'
+import moment from 'moment'
 
 export const login = (username, password) => async dispatch => {
   let path = `login/`
@@ -23,7 +24,8 @@ export const login = (username, password) => async dispatch => {
                 username: username.value,
                 password: password.value,
                 validation: true,
-                pass: token
+                pass: token,
+                time: moment().format("dddd, MMMM Do YYYY, h:mm")
               }
             }
         })

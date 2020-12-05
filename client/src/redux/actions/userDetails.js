@@ -1,5 +1,5 @@
 //userPersonalInfo on back end 
-import {USER_INFORMATION} from './types'
+import {USER_DETAILS} from './types'
 
 export const userDetails = (pass, user) => async dispatch => {
   let path = `/postLogin/current/info`
@@ -21,7 +21,7 @@ export const userDetails = (pass, user) => async dispatch => {
       let result = await res.json()
       console.log('what is the result for the call? ', result)
       dispatch({
-        type: USER_INFORMATION,
+        type: USER_DETAILS,
           payload: {
             userInfo: {
               username: user.username,

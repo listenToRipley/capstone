@@ -16,7 +16,6 @@ import {useInput} from '../Hooks/inputHook';
 import PropTypes from 'prop-types';
 import {useHistory} from 'react-router-dom'
 import cookie from 'cookie'
-import { USER_INFORMATION } from '../redux/actions/types';
 
 //the main page, go not pass go, to not collect $200 without login in or creating a login
 
@@ -56,8 +55,7 @@ const LogIn = (props) => {
   const classes = useStyles();
   const history = useHistory();
   let {user}= props
-  let {userInfo} = props
-
+  console.log('props on user', user)
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
   let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
 
@@ -71,21 +69,11 @@ const LogIn = (props) => {
 
     useEffect(()=> {
       if(user.validation) {
-        return props.userDetails(user.pass.token, user.username)
-      }
-      console.log('token in the login stage? ', user.pass)
-      if(props.userInfo.run === true) {
         document.cookie = "logCookies="+JSON.stringify({
           "username":user.username,
           "validation": true,
           "token": user.pass.token,
-          "max-Age":60*10000,
-          "locId": userInfo.userLocationId,
-          "displayId": userInfo.displayPrefId,
-          "pantry": userInfo.pantryId,
-          "shopListId": userInfo.shopListId,
-          "palListId": userInfo.palListId,
-          "access": userInfo.accessId
+          "max-Age":60*10000
             })
         history.push('/home')
       }

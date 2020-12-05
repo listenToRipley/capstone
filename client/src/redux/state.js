@@ -3,13 +3,10 @@ export default {
     username:'',
     password: '',
     validation:false,
-    pass: ''
+    pass: '',
+    time:''
   },  
-  userInfo: {
-    username: '',
-    email: '', 
-    firstName:'', 
-    lastName:'', 
+  userDetails: { 
     userLocationId:'' ,
     displayPrefId:'', 
     pantryId:'', 

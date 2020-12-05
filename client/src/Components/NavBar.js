@@ -108,17 +108,20 @@ const useStyles = makeStyles((theme) => ({
 //if not logged in, the top panel should only have the name and about. 
 //the content on the page should also shift if the drawer is expanded  
 
-const NavBar = () => {
+const NavBar = (props) => {
+  console.log('props on the nav bar', props)
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
+  let {validation} = props.user
+  let {username} = props.user
+
   const history = useHistory()
 
   const cookies = (cookie.parse(document.cookie))
-  const status = JSON.parse(cookies.logCookies)
 
-  console.log('status on cookie?')
+  console.log('status on cookie?', status)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -128,19 +131,19 @@ const NavBar = () => {
     setOpen(false);
   };
 
-  // useEffect( () => {
-  //   console.log(' what is the login on the users? ',validation, 'and the user is : ', username)
+  useEffect( () => {
+    console.log(' what is the login on the users? ',validation, 'and the user is : ', username)
+    
+    if (validation) {
+      let {token} = props.user.pass 
+      console.log('hey, token', token)
+      return props.userDetails(token={token}, username={username})
+    } else if (validation === false) {
+      //need to add trigger of some time to reset the store to clear
+      history.push('/')
+    }
 
-  //   if (status.validation) {
-  //     let {token} = props.user.pass 
-  //     console.log('hey, token', token)
-  //     return props.userDetails(token={token}, username={username})
-  //   } else if (status.validation === false) {
-  //     //need to add trigger of some time to reset the store to clear
-  //     history.push('/')
-  //   }
-
-  // })
+  })
 
   return (
     <div>
@@ -369,7 +372,7 @@ const NavBar = () => {
   );
 }
 
-export default withStyles(useStyles)(NavBar)
-// export default NavBar
+// export default withStyles(useStyles)(NavBar)
+export default NavBar
 
 //from https://material-ui.com/components/drawers/

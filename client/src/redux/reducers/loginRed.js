@@ -1,16 +1,16 @@
 import {LOGIN} from '../actions/types'
 import state from '../state'
 
-let startingState = {...state}
+let initialState = {...state}
 
-console.log('find the state login ', startingState)
+console.log('find the state login ', initialState)
 
-export default function(state = {...startingState}, action){
+export default function(state = {...initialState}, action){
     switch(action.type){
-        case LOGIN:
-        let userState = {...state.user}
-        return userState = action.payload.user
-        default: return state
+      case LOGIN:
+        let newState = [{...state.user}]
+        return newState = action.payload.user
+      default: return state
     }
 
 }
