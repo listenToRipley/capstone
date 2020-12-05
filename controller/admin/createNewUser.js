@@ -9,7 +9,7 @@ const verifyUsername = (req, res, next) => {
 
   let sql = 'SELECT COUNT(username) FROM appInfo WHERE active=1 AND username= ? ORDER BY username;'
 
-  sql = mysql.format(sql, [req.params.username])
+  sql = mysql.format(sql, [req.body.username])
     pool.query (sql, (err, row ) => {
     if (err) return handleSQLError(res, err)
       let total = row[0]['COUNT(username)']
@@ -26,7 +26,7 @@ const verifyEmail = (req, res, next) => {
 
   let sql = 'SELECT COUNT(email) FROM appInfo WHERE active=1 AND email= ? ORDER BY email; '
 
-  sql = mysql.format(sql, [req.params.email])
+  sql = mysql.format(sql, [req.body.email])
   
   pool.query(sql, (err, row) => {
     if (err) return handleSQLError(res, err)

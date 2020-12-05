@@ -61,20 +61,12 @@ const CreateUser = () => {
   const {value: lastName, bind: bindLastName, reset: resetLastName} = useInput('')
   const {value: email, bind: bindEmail, reset: resetEmail} = useInput('')
   const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
-    const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
+  const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
   const {value: birthday, bind: bindBirthday, reset: resetBirthday} = useInput('')
 
 
   //change this selected date 
   const [dob, onChange] = useState(new Date());
-
-  const handleVerifyUsername = () => {
-    //verify this is not a username already in use
-  }
-
-  const handleVerifyEmail = () => {
-    //verify the email address isn't already in use 
-  }
 
   const handlePasswordMatch = () => {
     //need to make sure the password matches
@@ -113,6 +105,7 @@ const CreateUser = () => {
         className={classes.form} 
         > 
           <TextField
+            {...bindFirstName}
             variant="outlined"
             margin="normal"
             required
@@ -126,6 +119,7 @@ const CreateUser = () => {
             aria-label="your first name"
           />
           <TextField
+            {...bindLastName}
             variant="outlined"
             margin="normal"
             required
@@ -139,6 +133,7 @@ const CreateUser = () => {
             aria-label="your last name"
           />
           <TextField
+            {...bindEmail}
             variant="outlined"
             margin="normal"
             required
@@ -154,6 +149,7 @@ const CreateUser = () => {
             />
 
           <TextField
+            {...bindPassword}
             variant="outlined"
             margin="normal"
             required
@@ -167,6 +163,7 @@ const CreateUser = () => {
             aria-label="your new password"
             />
           <TextField
+            {...bindVPassword}
             variant="outlined"
             margin="normal"
             required
@@ -179,19 +176,6 @@ const CreateUser = () => {
             aria-label="verify your password"
             />
             {/* might want to change this to a popout option  */}
-            <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="password"
-            label="Password"
-            name="password"
-            type="password"
-            autoFocus
-            className={classes.fields}
-            aria-label="your new password"
-            />
             <InputLabel>Birthday</InputLabel>
           <TextField
             variant="outlined"
