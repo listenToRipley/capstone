@@ -1,4 +1,5 @@
 import React from 'react';
+import {useEffect} from 'react'
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -81,18 +82,30 @@ dom.watch()
 
 
     //quantity, measurement, item, spoonId
-// const createData = (quantity, items, unit, actions) => {
-//   return { quantity, items, unit, actions};
-// }
+const createData = (quantity, items, unit, actions) => {
+  return { quantity, items, unit, actions};
+}
 
 //there is an issue with the drawer and page content. 
 
 //need to add something to show role on table, are we going to need to write a query for that? 
 
 //this will need to be replaced by content from the server 
-// const rows = [
-//     props.shopList
-// ];
+const rows = [ 'pull the props from the state'
+  // createData( 305, 'Cupcake', 3.7),
+  // createData( 452, 'Donut', 3.7),
+  // createData( 305, 'Eclair', 3.7), 
+  // createData( 5221, 'Frozen yoghurt', 159),  
+  // createData( 5, 'Gingerbread', 356),  
+  // createData( 1, 'Honeycomb', 408), 
+  // createData( 32, 'Ice cream sandwich', 237), 
+  // createData( 66, 'Jelly Bean', 375), 
+  // createData( 23, 'KitKat', 518),  
+  // createData( 6565, 'Lollipop', 392),
+  // createData( 13.2, 'Marshmallow', 318),
+  // createData( 33, 'Nougat', 360),
+  // createData( 6666, 'Oreo', 437)
+];
 
 //sorting functions  DON'T TOUCH 
 const getComparator =(order, orderBy) => {
@@ -131,6 +144,7 @@ const headCells = [
 ];
 
 const ShoppingListHead = (props) =>  {
+  console.log('props on shop list head? ', props)
 
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
 
@@ -208,6 +222,9 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 const ShoppingListToolbar = (props) => {
+
+  console.log('props on the shop list tool bar', props)
+
   const classes = useToolbarStyles();
   const { numSelected } = props;
 console.log('what is number selected? ',numSelected)
@@ -252,9 +269,9 @@ ShoppingListToolbar.propTypes = {
 }
 
 const ShoppingList = (props) =>  {
-  console.log('props on shopping list', props)
+  console.log('props on shoppping list', props)
 
-  const {shopListId} = props.userDetails
+  // const {shopListId} = props.userDetails
 
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -264,7 +281,7 @@ const ShoppingList = (props) =>  {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   useEffect(() => {
-    console.log('the GET SHOPPING LIST should run on load and then again on any changes made.')
+    console.log('need to load the shop list first! ')
     return getShopList(shopListId)
   }, [props.userDetails.shopListId])
 
@@ -390,5 +407,4 @@ const ShoppingList = (props) =>  {
   );
 }
 
-// export default withStyles(useStyles)(ShoppingList)
-export default ShoppingList
+export default withStyles(useStyles)(ShoppingList)

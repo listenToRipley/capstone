@@ -1,4 +1,4 @@
-import {USER_DETAILS, ITEMS_ON_SHOPPING_LIST,LOGOUT} from '../actions/types'
+import {USER_DETAILS, LOGOUT} from '../actions/types'
 import state from '../state'
 
 let initialState = {...state}
