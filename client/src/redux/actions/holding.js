@@ -454,14 +454,6 @@ export const shopListCount = (input) => {
   }
 }
 
-export const shopListItems = (input) => {
-  //a full list of all items currently on the list 
-  return {
-    type: 'ITEMS_ON_SHOPPING_LIST',
-    payload: input //shop list id 
-  }
-} 
-
 //shop list - ACTIONS 
 export const addItemShopList = (input) => {
   return {
