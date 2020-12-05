@@ -7,10 +7,10 @@ const jwt = require('jsonwebtoken')
 
 const auth = (req, res, next) => {
   const token = req.header('token') //save this a cookie in the future
-  console.log('response in the auth', auth)
+  console.log('response in the auth', token)
   try {
-    const decodedToken = jwt.verify(token, 'pals')
-    req.user = decodedToken.username
+    const decodedToken = jwt.verify(token, 'other')
+    req.user.params = decodedToken.username
     console.log(`yeah and its sweet`)
     next()
   } catch {

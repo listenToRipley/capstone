@@ -11,8 +11,7 @@ export const login = (username, password) => async dispatch => {
         let res = await fetch(fullPath,{
           method: 'GET',
           headers: {
-            Accept: "application/json", "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"  
+            Accept: "application/json", "Content-Type": "application/json"
           }
         }
         )
