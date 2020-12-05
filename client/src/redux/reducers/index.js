@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import loginRed from './loginRed'
 // import userDetails from './userDetails'
 import store from '../store'
-import nav from './nav' //right now should not be added to anything since it is trying to stay global to pass information to components to create calls. 
+import nav from './nav' 
 import userShopList from './userShopList'
 import { LOGOUT } from '../actions/types'
 

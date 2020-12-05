@@ -66,7 +66,6 @@ const Home = (props) => {
         component={Link}
         to='/shoppingList'
         aria-label='shopping list'
-        shipList={shopListId}
         >
           Your Shopping List
         </ListItem>
@@ -92,7 +91,6 @@ const Home = (props) => {
             component={Link}
             to='/palsList'
             aria-label='pal list'
-            palList={palListId}
             > 
             Your Pal's List
           </ListItem>

@@ -23,8 +23,7 @@ export const getDetails = (pass, user) => async dispatch => {
         type: USER_DETAILS,
           payload: {
             userDetails: {
-              userLocationId: result[0].userLocationId,
-              displayPrefId: result[0].displayPrefId, 
+              username: result[0].username,
               pantryId: result[0].pantrySettingId, 
               shopListId: result[0].shopListSetId, 
               palListId: result[0].palListSettingsId, 
