@@ -12,7 +12,9 @@ import About from '../Components/About'
 import Inbox from '../Components/CurrentUser/Inbox/Inbox'
 import Food from '../Components/Food/Food'
 import ForgotPassword from '../Components/AppFunc/ForgotPassword'
+import Congrats from '../Components/Congrats'
 import cookie from 'cookie'
+import { route } from '../../../routers/pre/admin';
 
 console.log(cookie)
 //this will be for when you move to login required status
@@ -56,6 +58,7 @@ const Router = () => {
       <Route path="/createNewUser" component={CreateUser}/>
       <Route path="/about" component={About}/>
       <Route path="/forgotpassword" component={ForgotPassword}/>
+      <Router path="/congrats" component={Congrats}/>
     </Switch>
   )
 }
