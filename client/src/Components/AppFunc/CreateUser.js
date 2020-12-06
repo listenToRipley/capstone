@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -14,6 +14,7 @@ import { FormControl } from '@material-ui/core';
 // import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../../Hooks/inputHook'
+import { newUser } from '../../../../controller/admin/createNewUser';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -95,6 +96,15 @@ const CreateUser = (props) => {
     console.log('tell me info', bindUsername.value, bindFirstName.value, bindLastName.value ,dobMonth, dobDay, dobYear, bindPassword.value)
 
   }
+
+  useEffect(() => {
+    if(props.newUser!== false) {
+      console.log('congrads! you create a login! ')
+      //need to set up redirect here, for static page with a link to login 
+    }
+  })
+
+
 
   return(
     <Paper
