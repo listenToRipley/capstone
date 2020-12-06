@@ -22,30 +22,26 @@ const useStyles = makeStyles((theme) => ({
     margin: '5%',
     paddingLeft: '5%',
     width: '90%',
-    justifyContent: 'space-evenly'
   },
   paper: {
     width: '100%',
-    marginBottom: theme.spacing(2),
     justifyContent: 'space-evenly',
-    alignItems: 'center',
   },
   title: {
     padding: 10,
     display: 'none',
-    justifyContent: 'center',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
   },
   fields: {
-    margin: theme.spacing(4),
+    margin: theme.spacing(2.5),
     width: '90%',
     },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(2),
   },
 }));
 
@@ -76,10 +72,11 @@ const CreateUser = (props) => {
   // }
 
   const createLogin = e => {
+    console.log('let look at the event', e)
     e.preventDefault(); 
     console.log('make sure all my input looks good', bindUsername, bindFirstName, bindLastName, bindEmail, bindPassword, bindBirthday)
-
-    return props.createNewUser(username={...bindUsername}, firstName={...bindFirstName}, lastName={...bindLastName}, email={...bindEmail}, password={...bindPassword}, bDay={...bindBirthday})
+    debugger
+    return props.createNewUser(username={...bindUsername}, firstName={...bindFirstName}, lastName={...bindLastName}, email={...bindEmail}, bDay={...bindBirthday})
 
   }
 
@@ -121,9 +118,9 @@ const CreateUser = (props) => {
             margin="normal"
             required
             fullWidth
-            id="userName"
+            id="username"
             label="Username"
-            name="userName"
+            name="username"
             type="text"
             autoFocus
             className={classes.fields}
@@ -163,9 +160,9 @@ const CreateUser = (props) => {
             variant="outlined"
             margin="normal"
             required
-            id="eMail"
+            id="email"
             label="Email Address"
-            name="eMail"
+            name="email"
             autoComplete="email"
             autoFocus
             type="email"
@@ -180,9 +177,9 @@ const CreateUser = (props) => {
             margin="normal"
             required
             fullWidth
-            id="passWord"
+            id="password"
             label="Password"
-            name="passWord"
+            name="password"
             type="password"
             autoFocus
             className={classes.fields}
@@ -206,7 +203,7 @@ const CreateUser = (props) => {
           
         </FormControl>
         <Button    
-          style={{margin: '15px'}} 
+          style={{marginBottom: '5%', marginLeft: '10%', width: '80%'}} 
           type="submit" 
           variant="contained" 
           color="primary"

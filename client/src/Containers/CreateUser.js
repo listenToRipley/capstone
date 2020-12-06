@@ -5,7 +5,7 @@ import {createNewUser} from '../redux/actions/createNewUser'
 const mapStateToProps = (state) => {
   console.log(state, 'state in new user')
   return {
-    user: state.newUser
+    newUser: state.newUser
   }
 }
 
