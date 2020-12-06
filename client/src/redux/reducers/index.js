@@ -15,6 +15,8 @@ const allReducers = combineReducers({
     newUser: createNewUser
 })
 
+console.log('understand the all reducers', allReducers.userShopList)
+
 const root = (state, action) => {
     if(action.type === LOGOUT) {
         const {user, userDetails, userShopList, newUser} = state
