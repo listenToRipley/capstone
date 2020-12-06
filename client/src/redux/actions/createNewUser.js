@@ -17,7 +17,7 @@ export const createNewUser = (username, firstName, lastName, email, password, bD
       dobMonth=dob[2]
   }
 
-  modBirthday(bDay)
+  modBirthday(bDay.value)
 
   console.log('make sure on the birthday', dobMonth, dobDate, dobYear)
 
@@ -26,11 +26,11 @@ export const createNewUser = (username, firstName, lastName, email, password, bD
         method: 'POST',
         headers: {
           Accept: "application/json", "Content-Type": "application/json",
-          "username": `${username}`,
-          "password": `${password}`,
-          "email": `${email}`,
-          "firstName": `${firstName}`,
-          "lastName": `${lastName}`,
+          "username": `${username.value}`,
+          "password": `${password.value}`,
+          "email": `${email.value}`,
+          "firstName": `${firstName.value}`,
+          "lastName": `${lastName.value}`,
           "dobMonth": dobMonth,
           "dobDate": dobDate,
           "dobYear": dobYear

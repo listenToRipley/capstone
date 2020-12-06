@@ -64,7 +64,7 @@ const CreateUser = (props) => {
   const {value: lastName, bind: bindLastName, reset: resetLastName} = useInput('')
   const {value: email, bind: bindEmail, reset: resetEmail} = useInput('')
   const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
-  const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
+  // const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
   const {value: birthday, bind: bindBirthday, reset: resetBirthday} = useInput('')
 
 
@@ -79,8 +79,9 @@ const CreateUser = (props) => {
 
   const createLogin = e => {
     e.preventDefault(); 
+    console.log('make sure all my input looks good', bindUsername, bindFirstName, bindLastName, bindEmail, bindPassword, bindBirthday)
 
-    return props.createNewUser(username={...bindUsername.value}, firstName={...bindFirstName.value}, lastName={...bindLastName.value},password={...bindPassword.value},bDay={...bindBirthday})
+    return props.createNewUser(username={...bindUsername}, firstName={...bindFirstName}, lastName={...bindLastName}, email={...bindEmail},password={...bindPassword},bDay={...bindBirthday})
 
   }
 
