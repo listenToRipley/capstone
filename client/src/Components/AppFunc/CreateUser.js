@@ -75,12 +75,25 @@ const CreateUser = (props) => {
   //   //need to make sure the password matches
   //   //if password and vPassword do not match, then they should not continue 
   // }
+  let dobMonth = ''
+  let dobDate = ''
+  let dobYear = ''
+
+  const modBirthday = (day) => {
+    console.log('happy birthday!', day.value)
+      let dob = day.value.split('-')
+      console.log(dob)
+      dobYear=dob[0]
+      dobDate=dob[1]
+      dobMonth=dob[2]
+  }
 
   const createLogin = e => {
     e.preventDefault(); 
+    modBirthday(bindBirthday)
 
-    console.log('tell me info', username)
-    //this is where the use is actually created. 
+    console.log('tell me info', bindUsername.value, bindFirstName.value, bindLastName.value ,dobYear, dobDate, dobMonth, bindPassword.value)
+
   }
 
   return(
