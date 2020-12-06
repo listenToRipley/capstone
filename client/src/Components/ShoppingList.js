@@ -136,7 +136,7 @@ const ShoppingList = (props) =>  {
 
   useEffect(() => {
     console.log('need to load the shop list first! ')
-    return getShopList(props.shopListId)
+    return findShopList(props.shopListId)
   }, [])
 
   const handleRequestSort = (event, property) => {

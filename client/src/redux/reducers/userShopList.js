@@ -6,6 +6,7 @@ let initialState = {...state}
 console.log('state is shop list? ', state)
 
 export default function(state = {...initialState}, actions){
+  console.log('make sure I understand the ', state, 'and ', actions)
   switch(actions.type) {
     case ITEMS_ON_SHOPPING_LIST: 
     return [action.payload.shopList]

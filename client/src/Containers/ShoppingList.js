@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import ShoppingList from '../Components/ShoppingList';
-import {getShopList} from '../redux/actions/userShopList'
+import {findShopList} from '../redux/actions/userShopList'
 
 const mapStateToProps = (state) => {
   console.log('STATE shopping list', state)
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapStateToDispatch = (dispatch) => {
   console.log('hitting the dispatch on shop list')
   return {
-    getShopList: (listId) => dispatch(getShopList(listId))
+    findShopList: (listId) => dispatch(findShopList(listId))
   }
 }
 
