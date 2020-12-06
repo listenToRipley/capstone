@@ -2,13 +2,11 @@ import {LOGIN} from './types'
 import moment from 'moment'
 
 export const login = (username, password) => async dispatch => {
-  console.log('log in get ',username, password)
   let path = `login/`
   let params = `${username.value}/${password.value}`
   let fullPath = `${path}${params}`.trim()
 
     try{
-  
         let res = await fetch(fullPath,{
           method: 'GET',
           headers: {
@@ -17,7 +15,6 @@ export const login = (username, password) => async dispatch => {
         }
         )
         let token = await res.json() 
-        console.log('res',token)
         dispatch( {
             type: LOGIN,
             payload: {

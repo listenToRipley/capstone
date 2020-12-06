@@ -37,8 +37,6 @@ const useStyles = makeStyles((theme) => ({
 const Home = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  console.log('hello to home props : ',props)
-  console.log('is there a cookie in home?', cookie)
   const {shopListId, palListId, pantryId} = props.userDetails
 
   return (
