@@ -100,7 +100,7 @@ const CreateUser = (props) => {
   useEffect(() => {
     if(props.newUser) {
       console.log('congrads! you create a login! ')
-      //need to set up redirect here, for static page with a link to login 
+      history.pushState('/congrats')
     }
   })
 

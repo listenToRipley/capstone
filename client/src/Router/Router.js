@@ -14,7 +14,6 @@ import Food from '../Components/Food/Food'
 import ForgotPassword from '../Components/AppFunc/ForgotPassword'
 import Congrats from '../Components/Congrats'
 import cookie from 'cookie'
-import { route } from '../../../routers/pre/admin';
 
 console.log(cookie)
 //this will be for when you move to login required status
