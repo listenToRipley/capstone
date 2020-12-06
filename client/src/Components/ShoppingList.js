@@ -138,10 +138,11 @@ const ShoppingList = (props) =>  {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  useEffect(() => {
-    // if (call===false) {
-      return findShopList(shopListId, token)
-    // }
+
+  useEffect( () => {
+    if (call===false) {
+      return props.findShopList(shopListId, token)
+    }
   })
 
   const handleRequestSort = (event, property) => {

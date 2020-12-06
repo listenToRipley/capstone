@@ -1,11 +1,8 @@
 import {YOUR_SHOPPING_LIST} from './types'
 
-console.log('make sure the shop list is here', YOUR_SHOPPING_LIST)
-
 export const findShopList = (listId, pass) => async dispatch => {
-  console.log('what is the intake ? ', listId)
+  console.log('what is the intake ? ', listId, 'and pass : ', pass)
   let path = `/postLogin/shopList/items/${listId}`
-
 
   try {
     let res = await fetch(path, {
@@ -23,7 +20,7 @@ export const findShopList = (listId, pass) => async dispatch => {
       payload: {
         userShopList: {
           call: true,
-          list: [ result]
+          list: [result]
         }
       }
     })
