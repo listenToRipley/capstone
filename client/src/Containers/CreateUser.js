@@ -3,7 +3,13 @@ import CreateUser from '../Components/AppFunc/CreateUser';
 
 const mapStateToProps = (state, CreateUser) => {
   return {
-    user: state.user
+    user: state.newUser
+  }
+}
+
+const mapDispatchToProps = (dipatch) => {
+  return {
+    createNewUser: (username, firstName, lastName, email, password, dobMonth, dobDay, dobYear) => dispatchEvent(createNewUser(username, firstName, lastName, email, password, dobMonth, dobDay, dobYear))
   }
 }
 
