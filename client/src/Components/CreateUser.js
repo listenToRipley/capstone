@@ -13,9 +13,7 @@ import Card from '@material-ui/core/Card';
 import { FormControl } from '@material-ui/core';
 // import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import {useInput} from '../../Hooks/inputHook'
-import { newUser } from '../../../../controller/admin/createNewUser';
-
+import {useInput} from '../Hooks/inputHook'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -98,7 +96,7 @@ const CreateUser = (props) => {
   }
 
   useEffect(() => {
-    if(props.newUser!== false) {
+    if(props.createUser!== false) {
       console.log('congrads! you create a login! ')
       //need to set up redirect here, for static page with a link to login 
     }
