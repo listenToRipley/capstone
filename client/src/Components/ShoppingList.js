@@ -15,7 +15,7 @@ import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
-import { getShopList } from '../redux/actions/userShopList';
+import { findShopList, getShopList } from '../redux/actions/userShopList';
 import ShopListToolBar from './ShopListToolBar'
 import ShopListHeaders from './ShopListHeaders'
 
@@ -125,7 +125,7 @@ const stableSort = (array, comparator) =>{
 const ShoppingList = (props) =>  {
   console.log('props on shopping list', props)
 
-  // const {shopListId} = props.userDetails
+  const {shopListId} = props.userDetails
 
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -136,7 +136,7 @@ const ShoppingList = (props) =>  {
 
   useEffect(() => {
     console.log('need to load the shop list first! ')
-    return findShopList(props.shopListId)
+    return findShopList(shopListId)
   }, [])
 
   const handleRequestSort = (event, property) => {
@@ -212,13 +212,13 @@ const ShoppingList = (props) =>  {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(index);
+                  const isItemSelected = isSelected(row.quantity);
                   const labelId = `check box${index}`;
                     console.log('is item selected? ', isItemSelected)
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, index)}
+                      onClick={(event) => handleClick(event, row.quantity)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}

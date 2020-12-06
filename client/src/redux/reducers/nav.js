@@ -3,7 +3,7 @@ import state from '../state'
 
 let initialState = {...state}
 
-export default function(state = {...initialState}, action){
+export default function(state = {...initialState.userDetails}, action){
     switch(action.type){
         case USER_DETAILS:
         return action.payload.userDetails
