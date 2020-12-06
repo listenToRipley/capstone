@@ -15,6 +15,7 @@ import { FormControl } from '@material-ui/core';
 import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../Hooks/inputHook'
 import {useHistory} from 'react-router-dom'
+import createNewUser from '../redux/reducers/createNewUser';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,7 +93,7 @@ const CreateUser = (props) => {
     e.preventDefault(); 
     modBirthday(bindBirthday)
 
-    console.log('tell me info', bindUsername.value, bindFirstName.value, bindLastName.value ,dobMonth, dobDay, dobYear, bindPassword.value)
+    return props.createNewUser(username={...bindUsername.value}, firstName={...bindFirstName.value}, lastName={...bindLastName.value},password={...bindPassword.value},dobMonth={...dobMonth}, dobDay={...dobDate}, dobYear={...dobYear})
 
   }
 

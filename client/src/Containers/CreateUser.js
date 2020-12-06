@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dipatch) => {
+const mapDispatchToProps = (dispatch) => {
+  console.log('you ready to dispatch in create user?')
   return {
     createNewUser: (username, firstName, lastName, email, password, dobMonth, dobDay, dobYear) => dispatchEvent(createNewUser(username, firstName, lastName, email, password, dobMonth, dobDay, dobYear))
   }
