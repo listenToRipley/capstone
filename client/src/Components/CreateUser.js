@@ -91,7 +91,6 @@ const CreateUser = (props) => {
 
   const createLogin = e => {
     e.preventDefault(); 
-    modBirthday(bindBirthday)
 
     return props.createNewUser(username={...bindUsername.value}, firstName={...bindFirstName.value}, lastName={...bindLastName.value},password={...bindPassword.value},dobMonth={...dobMonth}, dobDay={...dobDate}, dobYear={...dobYear})
 
@@ -99,7 +98,7 @@ const CreateUser = (props) => {
 
   useEffect(() => {
     if(props.newUser) {
-      console.log('congrads! you create a login! ')
+      console.log('congrats! you create a login! ')
       history.pushState('/congrats')
     }
   })
@@ -215,6 +214,7 @@ const CreateUser = (props) => {
             autoFocus
             className={classes.fields}
             aria-label="your date of birth"
+            onChange={() => {modBirthday(bindBirthday)}}
             />
           
         </FormControl>
