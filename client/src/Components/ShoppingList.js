@@ -1,18 +1,12 @@
 import React from 'react';
 import {useEffect} from 'react'
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
@@ -23,6 +17,7 @@ import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-i
 import { withStyles } from '@material-ui/styles';
 import { getShopList } from '../redux/actions/userShopList';
 import ShopListToolBar from './ShopListToolBar'
+import ShopListHeaders from './ShopListHeaders'
 
 
 library.add(faShoppingBasket, faCartArrowDown) 
@@ -126,81 +121,6 @@ const stableSort = (array, comparator) =>{
   return stabilizedThis.map((el) => el[0]);
 }
 
-//sorting functions  DON'T TOUCH 
-const descendingComparator = (a, b, orderBy) => {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
-
-const headCells = [
-  { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
-  { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
-  { id: 'unit', numeric: true, disablePadding: false, label: 'Unit' },
-  { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
-];
-
-const ShoppingListHead = (props) =>  {
-  console.log('props on shop list head? ', props)
-
-  const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-
-  const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property);
-  };
-
-  return (
-    <TableHead>
-      <TableRow>
-        <TableCell >
-        {/* update this, should only appear if they are in shop mode! If box is checked after shopping is completed, then it should be auto added to pantry and removed from list. */}
-          <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ 'check box for': 'items' }}
-          />
-        </TableCell>
-        {headCells.map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? 'center' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'default'}
-            /* We don't really need sorting on update and delete, we should change that  */
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <span className={classes.visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </span>
-              ) : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
-  );
-}
-
-ShoppingListHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
-  onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired,
-};
 
 
 const ShoppingList = (props) =>  {
@@ -210,10 +130,10 @@ const ShoppingList = (props) =>  {
 
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState('item');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   useEffect(() => {
     console.log('need to load the shop list first! ')
@@ -281,7 +201,7 @@ const ShoppingList = (props) =>  {
             aria-labelledby="your shopping list"
             aria-label="shopping list"
           >
-            <ShoppingListHead
+            <ShopListHeaders 
               classes={classes}
               numSelected={selected.length}
               order={order}
