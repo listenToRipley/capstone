@@ -6,7 +6,7 @@ let initialState = {...state}
 export default function(state = {...initialState.userShopList}, action) {
   switch(action.type) {
     case YOUR_SHOPPING_LIST:
-    return action.payload.userShopList
+    return [{...action.payload.userShopList.list}]
     default: return state
   }
 }

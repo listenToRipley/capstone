@@ -36,7 +36,10 @@ export default {
 
   //   }, 
   // },
-  userShopList: ''
+  userShopList: {
+    call: false,
+    list: []
+  }
 
   // pantryList:[
   //   [ 305, 'Cupcake', 3.7],

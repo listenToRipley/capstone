@@ -135,9 +135,10 @@ const ShoppingList = (props) =>  {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   useEffect(() => {
-    console.log('need to load the shop list first! ')
-    return findShopList(shopListId)
-  }, [])
+    if (props.userShopList.call===false) {
+      return findShopList(shopListId)
+    }
+  })
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
