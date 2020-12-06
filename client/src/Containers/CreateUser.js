@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import CreateUser from '../Components/AppFunc/CreateUser';
+import {createNewUser} from '../redux/actions/createNewUser'
 
 const mapStateToProps = (state, CreateUser) => {
   return {
