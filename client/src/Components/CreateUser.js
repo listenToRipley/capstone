@@ -76,23 +76,11 @@ const CreateUser = (props) => {
   //   //need to make sure the password matches
   //   //if password and vPassword do not match, then they should not continue 
   // }
-  let dobMonth = ''
-  let dobDate = ''
-  let dobYear = ''
-
-  const modBirthday = (day) => {
-    console.log('happy birthday!', day.value)
-      let dob = day.value.split('-')
-      console.log(dob)
-      dobYear=dob[0]
-      dobDate=dob[1]
-      dobMonth=dob[2]
-  }
 
   const createLogin = e => {
     e.preventDefault(); 
 
-    return props.createNewUser(username={...bindUsername.value}, firstName={...bindFirstName.value}, lastName={...bindLastName.value},password={...bindPassword.value},dobMonth={...dobMonth}, dobDay={...dobDate}, dobYear={...dobYear})
+    return props.createNewUser(username={...bindUsername.value}, firstName={...bindFirstName.value}, lastName={...bindLastName.value},password={...bindPassword.value},bDay={...bindBirthday})
 
   }
 
@@ -214,7 +202,6 @@ const CreateUser = (props) => {
             autoFocus
             className={classes.fields}
             aria-label="your date of birth"
-            onChange={() => {modBirthday(bindBirthday)}}
             />
           
         </FormControl>
