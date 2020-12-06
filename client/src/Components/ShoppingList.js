@@ -19,7 +19,6 @@ import { getShopList } from '../redux/actions/userShopList';
 import ShopListToolBar from './ShopListToolBar'
 import ShopListHeaders from './ShopListHeaders'
 
-
 library.add(faShoppingBasket, faCartArrowDown) 
 dom.watch()
 
@@ -187,7 +186,6 @@ const ShoppingList = (props) =>  {
   };
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
-
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
