@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
  const mapStateToDispatch = (dispatch) => {
 
   return {
-    findShopList: (listId) => dispatch(findShopList(listId))
+    findShopList: (listId, pass) => dispatch(findShopList(listId, pass))
   }
  }
 

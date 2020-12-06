@@ -126,6 +126,10 @@ const ShoppingList = (props) =>  {
   console.log('props on shopping list', props)
 
   const {shopListId} = props.userDetails
+  const {call} = props.userShopList
+  const {token} = props.user.pass
+
+  console.log('can you see the call ? ', call)
 
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -135,9 +139,9 @@ const ShoppingList = (props) =>  {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   useEffect(() => {
-    if (props.userShopList.call===false) {
-      return findShopList(shopListId)
-    }
+    // if (call===false) {
+      return findShopList(shopListId, token)
+    // }
   })
 
   const handleRequestSort = (event, property) => {
