@@ -16,7 +16,10 @@ export const createNewUser = (pass, user) => async dispatch => {
       let result = {...getResult}
       dispatch({
         type: CREATE_NEW_USER,
-          payload: true
+          payload: {
+            created: true,
+            returned: result
+          }
       })
     } catch (e) {
       return 'what the error the user details? ', {e}

@@ -15,14 +15,7 @@ export default {
     accessId:'',
     run: false
   },
-  // createUser: {
-  //   username: '',
-  //   firstName: '',
-  //   lastName: '',
-  //   email: '',
-  //   birthday: '',
-  //   password: ''
-  // },
+  createUser: false,
 
   //   location: {
 
