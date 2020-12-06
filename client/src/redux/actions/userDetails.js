@@ -1,4 +1,3 @@
-//userPersonalInfo on back end 
 import {USER_DETAILS} from './types'
 import moment from 'moment'
 

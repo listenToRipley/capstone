@@ -92,7 +92,7 @@ const CreateUser = (props) => {
     e.preventDefault(); 
     modBirthday(bindBirthday)
 
-    console.log('tell me info', bindUsername.value, bindFirstName.value, bindLastName.value ,dobYear, dobDate, dobMonth, bindPassword.value)
+    console.log('tell me info', bindUsername.value, bindFirstName.value, bindLastName.value ,dobMonth, dobDay, dobYear, bindPassword.value)
 
   }
 

@@ -77,27 +77,10 @@ import {
 } from './types'
 
 
-export const createUser = (user) => {
-  return (dispatch) => {
-    fetch('http://localhost:4001/preLogin/createUser')
-    .then(req => req.json())
-    dispatch({ //need to pull in the information, do I need to add the key here? 
-       
-      type: 'CREATE_NEW_USER',
-      payload: {
-        'username': '',
-        'password': '',
-        'email':'',
-        'firstName':'',
-        'lastName':'',
-        'dobMonth':'', 
-        'dobDate':'', 
-        'dobYear':''
-      }
-    
-  })
-  }
-}
+// export const createUser = (user) => {
+//   return (dispatch) => {
+
+// }
 
 export const forgotUsername = (email) => {
   //for current user
