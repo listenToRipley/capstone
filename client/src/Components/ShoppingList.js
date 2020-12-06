@@ -123,7 +123,7 @@ const stableSort = (array, comparator) =>{
 
 
 const ShoppingList = (props) =>  {
-  console.log('props on shoppping list', props)
+  console.log('props on shopping list', props)
 
   // const {shopListId} = props.userDetails
 
@@ -260,4 +260,5 @@ const ShoppingList = (props) =>  {
   );
 }
 
-export default withStyles(useStyles)(ShoppingList)
+// export default withStyles(useStyles)(ShoppingList)
+export default ShoppingList

@@ -3,6 +3,7 @@ import ShoppingList from '../Components/ShoppingList';
 import {getShopList} from '../redux/actions/userShopList'
 
 const mapStateToProps = (state) => {
+  console.log('STATE shopping list', state)
   return {
     user: state.user,
     userDetails: state.userDetails,
