@@ -4,19 +4,21 @@ import loginRed from './loginRed'
 import store from '../store'
 import nav from './nav' 
 import userShopList from './userShopList'
+import createNewUser from './createNewUser'
 import { LOGOUT } from '../actions/types'
 
 const allReducers = combineReducers({
     user: loginRed,
     // userInfo: userInfo,
     userDetails: nav,
-    userShopList: userShopList
+    userShopList: userShopList,
+    newUser: createNewUser
 })
 
 const root = (state, action) => {
     if(action.type === LOGOUT) {
-        const {user, userDetails, userShopList} = state
-        state = {user, userDetails, userShopList}
+        const {user, userDetails, userShopList, newUser} = state
+        state = {user, userDetails, userShopList, newUser}
     } else {
         return allReducers(state, action)
     }

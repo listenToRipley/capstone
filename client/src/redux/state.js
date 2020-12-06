@@ -15,7 +15,7 @@ export default {
     accessId:'',
     run: false
   },
-  createUser: false,
+  newUser: false,
 
   //   location: {
 

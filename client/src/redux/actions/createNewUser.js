@@ -25,8 +25,10 @@ export const createNewUser = (username, firstName, lastName, email, password, do
       dispatch({
         type: CREATE_NEW_USER,
           payload: {
-            created: true,
-            returned: result
+            newUser: {
+              created: true,
+              returned: result
+            }
           }
       })
     } catch (e) {

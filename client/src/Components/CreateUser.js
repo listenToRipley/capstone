@@ -96,7 +96,7 @@ const CreateUser = (props) => {
   }
 
   useEffect(() => {
-    if(props.createUser!== false) {
+    if(props.newUser!== false) {
       console.log('congrads! you create a login! ')
       //need to set up redirect here, for static page with a link to login 
     }
@@ -232,4 +232,5 @@ const CreateUser = (props) => {
   )
 }
 
-export default withStyles(useStyles)(CreateUser)
+// export default withStyles(useStyles)(CreateUser)
+export default CreateUser

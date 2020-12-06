@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import CreateUser from '../Components/CreateUser';
 import {createNewUser} from '../redux/actions/createNewUser'
 
-const mapStateToProps = (state, CreateUser) => {
+const mapStateToProps = (state) => {
   return {
     user: state.newUser
   }
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dipatch) => {
   }
 }
 
-export default connect(mapStateToProps)(CreateUser)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateUser)
