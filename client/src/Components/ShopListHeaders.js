@@ -9,9 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-
-    const useStyles = makeStyles((theme) => ({
+import Tooltip from '@material-ui/core/Tooltip';   const useStyles = makeStyles((theme) => ({
       visuallyHidden: {
         border: 0,
         clip: 'rect(0 0 0 0)',
@@ -50,7 +48,7 @@ const ShopListHeaders = (props) =>  {
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
-            inputProps={{ 'check box for': 'items' }}
+            // inputProps={{ 'check box for': 'items' }}
           />
         </TableCell>
         {headCells.map((headCell) => (

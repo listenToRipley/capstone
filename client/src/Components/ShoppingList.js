@@ -146,7 +146,7 @@ const ShoppingList = (props) =>  {
   };
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n.quantity);
       setSelected(newSelecteds);
       return;
     }
@@ -158,7 +158,7 @@ const ShoppingList = (props) =>  {
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, quantity);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -168,7 +168,7 @@ const ShoppingList = (props) =>  {
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1),
       );
-      console.log('click', name)
+      console.log('click', quantity)
     }
 
     setSelected(newSelected);
@@ -212,24 +212,24 @@ const ShoppingList = (props) =>  {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(index);
                   const labelId = `check box${index}`;
                     console.log('is item selected? ', isItemSelected)
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+                      onClick={(event) => handleClick(event, index)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={index}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
                           padding="10"
                           checked={isItemSelected}
-                          inputProps={{ 'list item number ': labelId }}
+                          // inputProps={{ 'list item number ': labelId }}
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" align="center">
