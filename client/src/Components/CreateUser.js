@@ -26,8 +26,6 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     width: '100%',
-    marginTop: theme.spacing(6),
-    marginLeft: theme.spacing(10),
     marginBottom: theme.spacing(2),
     justifyContent: 'space-evenly',
     alignItems: 'center',
@@ -59,11 +57,11 @@ const CreateUser = (props) => {
   console.log('props on create user? ', props)
   const classes = useStyles();
 
-  const {value: username, bind: bindUsername, reset: resetUsername} = useInput('') 
+  const {value: userName, bind: bindUsername, reset: resetUsername} = useInput('') 
   const {value: firstName, bind: bindFirstName, reset: resetFirstName} = useInput('')
   const {value: lastName, bind: bindLastName, reset: resetLastName} = useInput('')
-  const {value: email, bind: bindEmail, reset: resetEmail} = useInput('')
-  const {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
+  const {value: eMail, bind: bindEmail, reset: resetEmail} = useInput('')
+  const {value: passWord, bind: bindPassword, reset: resetPassword} = useInput('')
   // const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
   const {value: birthday, bind: bindBirthday, reset: resetBirthday} = useInput('')
 
@@ -81,7 +79,7 @@ const CreateUser = (props) => {
     e.preventDefault(); 
     console.log('make sure all my input looks good', bindUsername, bindFirstName, bindLastName, bindEmail, bindPassword, bindBirthday)
 
-    return props.createNewUser(username={...bindUsername}, firstName={...bindFirstName}, lastName={...bindLastName}, email={...bindEmail},password={...bindPassword},bDay={...bindBirthday})
+    return props.createNewUser(username={...bindUsername}, firstName={...bindFirstName}, lastName={...bindLastName}, email={...bindEmail}, password={...bindPassword}, bDay={...bindBirthday})
 
   }
 
@@ -103,6 +101,7 @@ const CreateUser = (props) => {
       </Typography>
 
       <Grid
+        className={classes.paper}
         container
         component="main" 
         direction="row"
@@ -111,7 +110,7 @@ const CreateUser = (props) => {
         <CssBaseline/>
        <Grid
        item 
-       xs={12} sm={8} md={5} component={Card} elevation={4} square>
+       xs={12} sm={10} md={5} component={Card} elevation={4} square>
        <FormControl
        
         className={classes.form} 
@@ -122,9 +121,9 @@ const CreateUser = (props) => {
             margin="normal"
             required
             fullWidth
-            id="username"
+            id="userName"
             label="Username"
-            name="username"
+            name="userName"
             type="text"
             autoFocus
             className={classes.fields}
@@ -164,9 +163,9 @@ const CreateUser = (props) => {
             variant="outlined"
             margin="normal"
             required
-            id="email"
+            id="eMail"
             label="Email Address"
-            name="email"
+            name="eMail"
             autoComplete="email"
             autoFocus
             type="email"
@@ -181,9 +180,9 @@ const CreateUser = (props) => {
             margin="normal"
             required
             fullWidth
-            id="password"
+            id="passWord"
             label="Password"
-            name="password"
+            name="passWord"
             type="password"
             autoFocus
             className={classes.fields}

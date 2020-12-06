@@ -1,7 +1,7 @@
 import {CREATE_NEW_USER} from './types'
 import moment from 'moment'
 
-export const createNewUser = (username, firstName, lastName, email, password, bDay) => async dispatch => {
+export const createNewUser = (userId, firstName, lastName, email, password, bDay) => async dispatch => {
   console.log('the input looks like? ', username, firstName, lastName, email, password, bDay)
 
   let dobMonth = ''
@@ -26,7 +26,7 @@ export const createNewUser = (username, firstName, lastName, email, password, bD
         method: 'POST',
         headers: {
           Accept: "application/json", "Content-Type": "application/json",
-          "username": `${username.value}`,
+          "username": `${userId.value}`,
           "password": `${password.value}`,
           "email": `${email.value}`,
           "firstName": `${firstName.value}`,
