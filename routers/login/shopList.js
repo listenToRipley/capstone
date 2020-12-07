@@ -24,7 +24,7 @@ const requests = require('./requests')
 const shopList = express.Router({mergeParams: true})
 //WOULD MY REQUEST BE EASIER IF I ESTABLISHED THE PRIMARY LIST ID? 
 
-shopList.use('/:listId', requests)
+// shopList.use('/:listId', requests)
 
 //GET
 shopList.get('/details/:listId', shopListDetails)

@@ -141,7 +141,7 @@ const ShoppingList = (props) =>  {
 
   useEffect( () => {
     if (call===false) {
-      return props.findShopList(shopListId, token)
+      return props.findShopList(shopListId, token, props.user.username)
     }
   })
 

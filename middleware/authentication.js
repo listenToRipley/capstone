@@ -6,12 +6,13 @@ const moment = require('moment')
 const jwt = require('jsonwebtoken')
 
 const auth = (req, res, next) => {
-  const token = req.header('token') //save this a cookie in the future
-  console.log('response in the auth', token)
+  const token = req.header('token') 
+  console.log('response in the auth', token, 'what about params > ', req.params.user)
   try {
+    console.log(`${req.user.params}, is trying to get access`)
     const decodedToken = jwt.verify(token, 'other')
-    req.user.params = decodedToken.username
-    console.log(`yeah and its sweet`)
+    req.params.user = decodedToken.username
+
     next()
   } catch {
     res.send('Unauthorized ')
