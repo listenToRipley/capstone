@@ -68,7 +68,8 @@ const ShopListToolBar = (props) => {
          </div>
             :
          <Tooltip className="add" title="Add Item to your shopping list">
-           <IconButton aria-label="add item to shopping list">
+           <IconButton aria-label="add item to shopping list"
+           onClick={() => setFindFood=true}>
            <svg className="fas fa-plus-circle"></svg>
            </IconButton>
          </Tooltip>
@@ -76,7 +77,8 @@ const ShopListToolBar = (props) => {
        
          {setShopping ? (
         <Tooltip title="Finished Shopping">
-          <IconButton aria-label="finish shopping">
+          <IconButton aria-label="finish shopping"
+          onClick={()=> setShopping=true}>
           <svg className="fas fa-cart-arrow-down"/> 
           </IconButton>
         </Tooltip>
