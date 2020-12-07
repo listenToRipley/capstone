@@ -45,15 +45,21 @@ const ShopListToolBar = (props) => {
   let {shopping, setShopping} = useState(false)
 
   const openSearch = (e) => {
+    e.preventDefault();
     console.log('you want to search for food')
+    setShopping=true
   }
 
   const startShopping = (e) => {
+    e.preventDefault();
     console.log('so you want to start shopping')
+    setShopping=true
   }
 
   const doneShopping = (e) => {
+    e.preventDefault();
     console.log('your done shopping, should get added to pantry now')
+    setShopping=false
   }
 
   return (
