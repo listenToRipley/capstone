@@ -7,7 +7,7 @@ export default function(state = {...initialState.userShopList}, action) {
   console.log('let me about the state on shop list', state, ' action ',action)
   switch(action.type) {
     case YOUR_SHOPPING_LIST:
-    return [{...action.payload.userShopList}]
+    return action.payload.userShopList
     default: return state
   }
 }

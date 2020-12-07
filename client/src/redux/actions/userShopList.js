@@ -20,7 +20,7 @@ export const findShopList = (listId, pass, username) => async dispatch => {
       payload: {
         userShopList: {
           call: true,
-          list: [result]
+          list: result
         }
       }
     })
