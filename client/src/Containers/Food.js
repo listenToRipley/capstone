@@ -7,4 +7,6 @@ const mapStateToProps = (state, Food) => {
   }
 }
 
+//add items to shop list 
+
 export default connect(mapStateToProps)(Food)
