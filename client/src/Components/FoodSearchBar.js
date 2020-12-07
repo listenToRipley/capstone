@@ -95,6 +95,8 @@ import {useInput} from '../Hooks/inputHook';
 const foodSearchBar = (open, children) => {
   console.log('are you hitting?')
 
+  let {value:searchWord, bind:bindSearchWord, reset:resetSearch} = useInput('')
+
 
   const handleSearch = () => {
     //need to map for search result using food. 
@@ -110,10 +112,14 @@ const foodSearchBar = (open, children) => {
        <SearchIcon />
      </div>
      <InputBase
+        {...bindSearchWord}
        placeholder="Search…"
        className={'inputRoot','inputInput'}
-       
        inputProps={{ 'aria-label': 'search' }}
+       id="searchWord"
+       name="searchWord"
+       type="text"
+       autoFocus
      />
     </MenuItem>
    </div>
