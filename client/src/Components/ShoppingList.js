@@ -224,7 +224,7 @@ const ShoppingList = (props) =>  {
                         <TableCell align="left">{row.item}</TableCell>
                         <TableCell align="right">{row.measId}</TableCell>
                         <TableCell align="left">{row.actions}
-                          <Actions/>
+                        <Actions action={userShopList.list.entryId}/>
                           </TableCell>
                       </TableRow>
                     );

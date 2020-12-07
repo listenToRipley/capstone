@@ -9,6 +9,7 @@ const ITEM_HEIGHT = 48;
 //need to tie in shop list actions here
 
 const ShopListActions = (props) => {
+  console.log('props on actions ? ', props)
   const [anchorEl, setAnchorEl] = React.useState(null);
 //the props getting passed in should the the reqId 
   const options = [
