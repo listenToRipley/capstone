@@ -438,26 +438,7 @@ export const shopListCount = (input) => {
 }
 
 //shop list - ACTIONS 
-export const addItemShopList = (input) => {
-  return {
-    type: 'ADD_ITEM_TO_SHOPPING_LIST',
-    payload: input //shop list  and possibly : quantity, measure, item, spoon
-  }
-}
 
-export const upItemShopList = (input) => {
-  return {
-    type: 'UPDATE_ITEM_ON_SHOPPING_LIST',
-    payload: input //item id, possibly: quantity, measure, item, spoonId
-  }
-}
-
-export const removeItemShopList = (input) => {
-  return {
-    type: 'REMOVE_FROM_SHOPPING_LIST',
-    payload: input //item id 
-  }
-}
 
 export const markOffItem = (input) => {
   return {
@@ -645,21 +626,6 @@ export const declineMerge = (mergeId) => {
 
 
 //food
-export const findFood = (searchItem) => {
-  return (dispatch) => {
-    //don't think the add of the api is quite right. 
-    fetch(`https://api.spoonacular.com/food/products/search?apiKey=${SPOON_API_KEY}query=${searchItem}`)
-      .then(req => req.json())
-      .then(res => {
-        dispatch({ //need to pull in the information, do I need to add the key here? 
-       
-            type: 'FETCH_FOOD',
-            payload: res.Results
-          
-        })
-      })
-  }
-}
 
 //FUTURE STATE 
 // export const removePal = (input) => {
