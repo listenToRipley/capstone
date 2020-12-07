@@ -1,5 +1,5 @@
 import React from 'react';
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -8,78 +8,61 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs  } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
+import Button from '@material-ui/core/Button'
+import FoodSearchBar from './FoodSearchBar';
+import './toolbar.css'
+import Food from './Food/Food';
 
-
-library.add(faShoppingBasket, faCartArrowDown) 
+library.add(faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs) 
 dom.watch()
-
-const useToolbarStyles = makeStyles((theme) => ({
-  root: {
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(1),
-  },
-  highlight:
-    theme.palette.type === 'light'
-      ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
-      : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
-  title: {
-    flex: '1 1 90%',
-  },
-}));
 
 const ShopListToolBar = (props) => {
 
-  console.log('props on the shop list tool bar', props)
+  let {findFood, setFindFood} = useState(false)
 
-  const classes = useToolbarStyles();
-  const { numSelected } = props;
-console.log('what is number selected? ',numSelected)
+  const handleItemAdd = (e) => {
+    //add items to add 
+    console.log('you want to add an item!')
+      
+  }
+
+  const handFindPantryItem = (e) => {
+    //see if you currently have something in your pantry
+    console.log('you want to find an item in your pantry?')
+  }
+
   return (
-    <Toolbar
-      className={clsx(classes.root, {
-        [classes.highlight]: numSelected > 0,
-      })}
-    >
-      {numSelected > 0 ? (
-        <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-        {/* This will have to be  imported from SQL*/}
-          Your Shopping List 
-          {/* add items there needs to be a button here */}
-        </Typography>
-      )}
 
-      {numSelected > 0 ? (
-        <Tooltip title="Finished Shopping">
-          <IconButton aria-label="finish shopping">
-          <svg className="fas fa-cart-arrow-down"/> 
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Start Shopping">
-          <IconButton aria-label="start shopping">
-          <svg className="fas fa-shopping-basket"/>
-          </IconButton>
-        </Tooltip>
-        )}
-    </Toolbar>
-  );
-};
+      <Toolbar className='root'>
+        <Typography
+        className='title'> 
+        Your Shopping List
+         </Typography>
+          {setFindFood ? 
+            <div className='searchbar'>
+          <MenuItem className='search'>
+           <FoodSearchBar/>
+          </MenuItem>
+         </div>
+            :
+         <Tooltip className="add" title="Add Item to Pantry">
+           <IconButton aria-label="add item to pantry">
+           <svg className="fas fa-plus-circle"></svg>
+           </IconButton>
+         </Tooltip>
+         }
+       
+         <div
+         className='settings'>
+          <Tooltip title="Pantry Settings">
+           <PantryActions/>
+         </Tooltip> 
+         </div>
+     </Toolbar>
 
-ShopListToolBar.propTypes = {
-  numSelected: PropTypes.number.isRequired
-
+  )
 }
 
 export default ShopListToolBar

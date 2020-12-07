@@ -9,7 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faPlusCircle, faCogs } from '@fortawesome/free-solid-svg-icons';
 import PantryActions from './PantryActions';
-import './Pantrycss.css'
+import './toolbar.css'
 
 library.add( faPlusCircle, faCogs) 
 dom.watch()

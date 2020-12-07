@@ -3,7 +3,7 @@ import {Switch, Route} from 'react-router';
 import LogIn from '../Containers/Login'
 import Home from '../Containers/Home';
 import ShoppingList from '../Containers/ShoppingList';
-import Pantry from '../Components/Pantry/Pantry';
+import Pantry from '../Components/Pantry';
 import PalList from '../Components/PalLists/PalsList';
 import UserProfile from '../Components/CurrentUser/UserProfile/Main';
 import PalProfile from '../Components/PalProfile/PalProfile'
