@@ -1,6 +1,7 @@
 import React from 'react';
 import {useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,9 +17,8 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
 import { findShopList, getShopList } from '../redux/actions/userShopList';
-import ShopListToolBar from './ShopListToolBar'
-import ShopListHeaders from './ShopListHeaders'
-import e from 'express';
+import ShopListToolBar from './ShopListToolBar';
+import ShopListHeaders from './ShopListHeaders';
 
 library.add(faShoppingBasket, faCartArrowDown) 
 dom.watch()

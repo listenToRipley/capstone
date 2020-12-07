@@ -33,7 +33,7 @@ const shopListCount = (req, res) => {
 
 const thisShopList = (req, res) => {
 
-let sql = 'SELECT sLS.shopListName,sL.entryId, sL.quantity, m.short AS measId, sL.item, sL.spoonId, sL.activeItem, sL.reqItem FROM shoppingLists AS sL LEFT JOIN measurements AS m ON sL.measId=m.measurementId JOIN shopListsSettings AS sLS ON sLS.shopListSetId=sL.shopList WHERE sL.activeItem=1 AND sL.shopList=? ORDER BY sL.item '
+let sql = 'SELECT sLS.shopListName,sL.entryId, sL.quantity, m.short AS measId, sL.item, sL.spoonId, sL.activeItem, sL.reqItem FROM shoppingLists AS sL LEFT JOIN measurements AS m ON sL.measId=m.measurementId JOIN shopListsSettings AS sLS ON sLS.shopListSetId=sL.shopList WHERE sL.activeItem=1 AND sL.shopList=? ORDER BY sL.item'
 
 sql=mysql.format(sql,[req.params.listId])
 
