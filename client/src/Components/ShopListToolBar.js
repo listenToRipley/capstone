@@ -44,6 +44,18 @@ const ShopListToolBar = (props) => {
   let {findFood, setFindFood} = useState(false)
   let {shopping, setShopping} = useState(false)
 
+  const openSearch = (e) => {
+    console.log('you want to search for food')
+  }
+
+  const startShopping = (e) => {
+    console.log('so you want to start shopping')
+  }
+
+  const doneShopping = (e) => {
+    console.log('your done shopping, should get added to pantry now')
+  }
+
   return (
 
     <Toolbar
@@ -69,7 +81,7 @@ const ShopListToolBar = (props) => {
             :
          <Tooltip className="add" title="Add Item to your shopping list">
            <IconButton aria-label="add item to shopping list"
-           onClick={() => setFindFood=true}>
+           onClick={openSearch}>
            <svg className="fas fa-plus-circle"></svg>
            </IconButton>
          </Tooltip>
@@ -78,13 +90,14 @@ const ShopListToolBar = (props) => {
          {setShopping ? (
         <Tooltip title="Finished Shopping">
           <IconButton aria-label="finish shopping"
-          onClick={()=> setShopping=true}>
+          onClick={doneShopping}>
           <svg className="fas fa-cart-arrow-down"/> 
           </IconButton>
         </Tooltip>
       ) : (
         <Tooltip title="Start Shopping">
-          <IconButton aria-label="start shopping">
+          <IconButton aria-label="start shopping"
+          onClick={startShopping}>
           <svg className="fas fa-shopping-basket"/>
           </IconButton>
         </Tooltip>
