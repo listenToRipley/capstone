@@ -8,7 +8,6 @@ const {
 } = require('../../controller/appFunc/shoppingLists/byItem')
 
 const {
-  shopListDetails, 
   shopListCount,
   thisShopList,
   addToShopList
@@ -27,7 +26,6 @@ const shopList = express.Router({mergeParams: true})
 // shopList.use('/:listId', requests)
 
 //GET
-shopList.get('/details/:listId', shopListDetails)
 shopList.get('/items/:listId', thisShopList)
 shopList.get('/count/:listId', shopListCount)
 

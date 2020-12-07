@@ -2,20 +2,20 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//GET
-const shopListDetails = (req, res) => {
+//GET COMBINE WITH SHOP LIST ITEMS FOR NOW
+// const shopListDetails = (req, res) => {
 
-  let sql='SELECT a.shopList, sLS.owner, sLS.shopListName, a.username AS pals, a.shopListRole, a.palReq, sLS.autoAdd, sLS.mergeStatus FROM shopListsSettings AS sLS JOIN access AS a ON a.shopList=sLS.shopListSetId WHERE a.active=1 AND sLS.active=1 AND a.username<>sLS.owner AND a.shopList= ? ORDER BY a.username'
+//   let sql='SELECT a.shopList, sLS.owner, sLS.shopListName, a.username AS pals, a.shopListRole, a.palReq, sLS.autoAdd, sLS.mergeStatus FROM shopListsSettings AS sLS JOIN access AS a ON a.shopList=sLS.shopListSetId WHERE a.active=1 AND sLS.active=1 AND a.username<>sLS.owner AND a.shopList= ? ORDER BY a.username'
 
-  sql=mysql.format(sql, [req.params.listId])
+//   sql=mysql.format(sql, [req.params.listId])
 
-  pool.query(sql, (err, row) => {
-    if(err) return handleSQLError(res, err)
+//   pool.query(sql, (err, row) => {
+//     if(err) return handleSQLError(res, err)
 
-    return res.json(row);
-  })
+//     return res.json(row);
+//   })
 
-}
+// }
 
 const shopListCount = (req, res) => {
 
@@ -63,7 +63,6 @@ const addToShopList = (req, res) => {
 //PUT
 
 module.exports = {
-  shopListDetails, 
   shopListCount,
   thisShopList,
   addToShopList
