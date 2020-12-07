@@ -25,6 +25,7 @@ import { Link } from 'react-router-dom';
 // import { Button } from '@material-ui/core';
 import {useHistory} from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
+import Logout from './Logout'
 import cookie from 'cookie'
 
 //svg icons 
@@ -289,19 +290,7 @@ const NavBar = (props) => {
               </ListItemIcon>
               <ListItemText primary={'Profile'} />
             </ListItem>
-
-            <ListItem 
-            button 
-            component={Link}
-            onClick={() => {console.log('you want to log out')}}
-            to='/'
-            aria-label='sign out'
-            >
-              <ListItemIcon>
-              <svg className="fas fa-sign-out-alt"></svg>
-              </ListItemIcon>
-              <ListItemText primary={'Sign Out'} />
-            </ListItem>
+          <Logout/>
         </List>
       </Drawer>
       :
