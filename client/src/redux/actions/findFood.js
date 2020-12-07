@@ -20,3 +20,10 @@ export const findFood = (searchItem)  => async dispatch => {
     return 'what is the error ', {e}
   }
 }
+
+export const resetFood = () => {
+  return {
+    type: RESET_FOOD_SEARCH,
+    payload: []
+  }
+}
