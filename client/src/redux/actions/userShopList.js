@@ -14,7 +14,7 @@ export const findShopList = (listId, pass, username) => async dispatch => {
     })
     let getResults = await res.json()
     let result =[...getResults]
-    console.log('let me about the result of shop list', results)
+    console.log('let me about the result of shop list', result)
     dispatch({
       type: YOUR_SHOPPING_LIST,
       payload: {
