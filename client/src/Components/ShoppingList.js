@@ -75,32 +75,9 @@ dom.watch()
       }
     }));
 
-
-    //quantity, measurement, item, spoonId
-const createData = (quantity, items, unit, actions) => {
-  return { quantity, items, unit, actions};
-}
-
 //there is an issue with the drawer and page content. 
 
 //need to add something to show role on table, are we going to need to write a query for that? 
-
-//this will need to be replaced by content from the server 
-const rows = [ 'pull the props from the state'
-  // createData( 305, 'Cupcake', 3.7),
-  // createData( 452, 'Donut', 3.7),
-  // createData( 305, 'Eclair', 3.7), 
-  // createData( 5221, 'Frozen yoghurt', 159),  
-  // createData( 5, 'Gingerbread', 356),  
-  // createData( 1, 'Honeycomb', 408), 
-  // createData( 32, 'Ice cream sandwich', 237), 
-  // createData( 66, 'Jelly Bean', 375), 
-  // createData( 23, 'KitKat', 518),  
-  // createData( 6565, 'Lollipop', 392),
-  // createData( 13.2, 'Marshmallow', 318),
-  // createData( 33, 'Nougat', 360),
-  // createData( 6666, 'Oreo', 437)
-];
 
 //sorting functions  DON'T TOUCH 
 const getComparator =(order, orderBy) => {
@@ -120,16 +97,15 @@ const stableSort = (array, comparator) =>{
   return stabilizedThis.map((el) => el[0]);
 }
 
-
-
 const ShoppingList = (props) =>  {
   console.log('props on shopping list', props)
 
   const {shopListId} = props.userDetails
   const {call} = props.userShopList
   const {token} = props.user.pass
+  const {userShopList} = props
 
-  console.log('can you see the call ? ', call)
+  console.log('can you see the shop list ? ', userShopList)
 
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -152,7 +128,7 @@ const ShoppingList = (props) =>  {
   };
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.quantity);
+      const newSelecteds = userS.map((n) => n.item);
       setSelected(newSelecteds);
       return;
     }
@@ -164,7 +140,7 @@ const ShoppingList = (props) =>  {
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, quantity);
+      newSelected = newSelected.concat(selected, item);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -174,7 +150,7 @@ const ShoppingList = (props) =>  {
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1),
       );
-      console.log('click', quantity)
+      console.log('click', item)
     }
 
     setSelected(newSelected);
@@ -195,75 +171,105 @@ const ShoppingList = (props) =>  {
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-  return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <ShopListToolBar  numSelected={selected.length} />
-        <TableContainer>
-          <Table
-            className={classes.table}
-            aria-labelledby="your shopping list"
-            aria-label="shopping list"
-          >
-            <ShopListHeaders 
-              classes={classes}
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={rows.length}
-            />
-            <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.quantity);
-                  const labelId = `check box${index}`;
-                    console.log('is item selected? ', isItemSelected)
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event) => handleClick(event, row.quantity)}
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={index}
-                      selected={isItemSelected}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox
-                          padding="10"
-                          checked={isItemSelected}
-                          // inputProps={{ 'list item number ': labelId }}
-                        />
-                      </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" align="center">
-                        {row.quantity}
-                      </TableCell>
-                      <TableCell align="left">{row.items}</TableCell>
-                      <TableCell align="right">{row.unit}</TableCell>
-                      <TableCell align="left">{row.actions}
-                        <Actions/>
+  if(call) {
+    return (
+      <div className={classes.root}>
+        <Paper className={classes.paper}>
+          <ShopListToolBar  numSelected={selected.length} />
+          <TableContainer>
+            <Table
+              className={classes.table}
+              aria-labelledby="your shopping list"
+              aria-label="shopping list"
+            >
+              <ShopListHeaders 
+                classes={classes}
+                numSelected={selected.length}
+                order={order}
+                orderBy={orderBy}
+                onSelectAllClick={handleSelectAllClick}
+                onRequestSort={handleRequestSort}
+                rowCount={userShopList.list.length}
+              />
+              <TableBody>
+                {/* {stableSort(rows, getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                   */}
+                  {userShopList.list.map((row, index) => {
+                    const isItemSelected = isSelected(row.entryId);
+                    const labelId = `check box${index}`;
+                      console.log('is item selected? ', isItemSelected)
+                    return (
+                      <TableRow
+                        hover
+                        onClick={(event) => handleClick(event, row.ent)}
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.entryId}
+                        selected={isItemSelected}
+                      >
+                        <TableCell padding="checkbox">
+                          <Checkbox
+                            padding="10"
+                            checked={isItemSelected}
+                            // inputProps={{ 'list item number ': labelId }}
+                          />
                         </TableCell>
-                    </TableRow>
-                  );
-                })}
+                        <TableCell component="th" id={labelId} scope="row" align="center">
+                          {null ? 1 : row.quantity}
+                        </TableCell>
+                        <TableCell align="left">{row.item}</TableCell>
+                        <TableCell align="right">{row.measId}</TableCell>
+                        <TableCell align="left">{row.actions}
+                          <Actions/>
+                          </TableCell>
+                      </TableRow>
+                    );
+                  })
+                  }
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 50]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onChangePage={handleChangePage}
+            onChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+        </Paper>
+      </div>
+    );
+  } else {
+    return (
+      <Paper>
+      <ShopListToolBar  numSelected={selected.length} />
+        <TableContainer>
+        <Table
+              className={classes.table}
+              aria-labelledby="your shopping list"
+              aria-label="shopping list"
+            >
+              <ShopListHeaders 
+                classes={classes}
+                numSelected={selected.length}
+                order={order}
+                orderBy={orderBy}
+                onSelectAllClick={handleSelectAllClick}
+                onRequestSort={handleRequestSort}
+                rowCount={rows.length}
+              />
+            <TableBody>
+              <TableRow></TableRow>
             </TableBody>
-          </Table>
+            </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 50]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
-        />
-      </Paper>
-    </div>
-  );
+    </Paper>
+    )
+  }
 }
 
 // export default withStyles(useStyles)(ShoppingList)
