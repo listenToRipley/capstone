@@ -18,6 +18,7 @@ import { withStyles } from '@material-ui/styles';
 import { findShopList, getShopList } from '../redux/actions/userShopList';
 import ShopListToolBar from './ShopListToolBar'
 import ShopListHeaders from './ShopListHeaders'
+import e from 'express';
 
 library.add(faShoppingBasket, faCartArrowDown) 
 dom.watch()
@@ -128,19 +129,20 @@ const ShoppingList = (props) =>  {
   };
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = userS.map((n) => n.item);
+      const newSelecteds = userShopList.list.map((n) => n.entryId);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
+  const handleClick = (e, name) => {
+    e.preventDefault();
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, item);
+      newSelected = newSelected.concat(selected, name);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -169,7 +171,7 @@ const ShoppingList = (props) =>  {
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, userShopList.list.length - page * rowsPerPage);
 
   if(call) {
     return (
@@ -202,7 +204,7 @@ const ShoppingList = (props) =>  {
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, row.ent)}
+                        onClick={(e) => handleClick(e, userShopList.list.entryId)}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -234,7 +236,7 @@ const ShoppingList = (props) =>  {
           <TablePagination
             rowsPerPageOptions={[10, 25, 50]}
             component="div"
-            count={rows.length}
+            count={userShopList.list.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onChangePage={handleChangePage}
@@ -260,7 +262,7 @@ const ShoppingList = (props) =>  {
                 orderBy={orderBy}
                 onSelectAllClick={handleSelectAllClick}
                 onRequestSort={handleRequestSort}
-                rowCount={rows.length}
+                rowCount={userShopList.list.length}
               />
             <TableBody>
               <TableRow></TableRow>
