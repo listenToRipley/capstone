@@ -9,7 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs  } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
-import FoodSearchBar from '../Containers/FoodSearchBar';
+import FoodSearchBar from '../Containers/FoodSearchBar'
 import MenuItem from '@material-ui/core/MenuItem'
 import './toolbar.css'
 
@@ -41,7 +41,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const ShopListToolBar = (props, children) => {
+const ShopListToolBar = (props) => {
   const classes = useToolbarStyles();
   console.log('shopping list tool bar props : ', props)
   const {numSelected} = props

@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import {useInput} from '../Hooks/inputHook';
+import { TextField } from '@material-ui/core';
 
 // import Card from '@material-ui/core/Card'
 // import Paper from '@material-ui/core/Paper';
@@ -110,15 +111,15 @@ const foodSearchBar = (props) => {
      <div className='searchIcon'>
        <SearchIcon />
      </div>
-     <InputBase
+     <TextField
         {...bindSearchWord}
        placeholder="Find Food to Add"
-       className={'inputRoot','inputInput'}
        aria-lable="find food"
        id="searchWord"
        name="searchWord"
        type="text"
        onKeyPress={handleSearch}
+       margin="normal"
        autoFocus
      />
     </MenuItem>
