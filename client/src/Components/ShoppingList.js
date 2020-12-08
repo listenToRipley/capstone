@@ -3,13 +3,15 @@ import {useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
+import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Actions from './ShopActions'
@@ -18,7 +20,6 @@ import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-i
 import { withStyles } from '@material-ui/styles';
 import { findShopList, getShopList } from '../redux/actions/userShopList';
 import ShopListToolBar from './ShopListToolBar';
-import ShopListHeaders from './ShopListHeaders';
 import FoodSearchBar from '../Containers/FoodSearchBar';
 
 library.add(faShoppingBasket, faCartArrowDown) 
@@ -171,30 +172,67 @@ const ShoppingList = (props) =>  {
     console.log('set pages?', setPage(0))
   };
 
+  const createSortHandler = (property) => (event) => {
+    onRequestSort(event, property);
+  };
+
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, userShopList.list.length - page * rowsPerPage);
+
+  const headCells = [
+    { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
+    { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
+    { id: 'unit', numeric: true, disablePadding: false, label: 'Unit' },
+    { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
+  ];
+  
 
   if(call) {
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
-          <ShopListToolBar  numSelected={selected.length} />
+          
+          <ShopListToolBar   numSelected={selected.length} />
+          
+          
           <TableContainer>
             <Table
               className={classes.table}
               aria-labelledby="your shopping list"
               aria-label="shopping list"
             >
-              <ShopListHeaders 
-                classes={classes}
-                numSelected={selected.length}
-                order={order}
-                orderBy={orderBy}
-                onSelectAllClick={handleSelectAllClick}
-                onRequestSort={handleRequestSort}
-                rowCount={userShopList.list.length}
-              />
+
+                <TableHead>
+                  <TableRow>
+                    <TableCell >
+
+                    </TableCell>
+                    {headCells.map((headCell) => (
+                      <TableCell
+                        key={headCell.id}
+                        align={headCell.numeric ? 'center' : 'left'}
+                        padding={headCell.disablePadding ? 'none' : 'default'}
+                        /* We don't really need sorting on update and delete, we should change that  */
+                        sortDirection={orderBy === headCell.id ? order : false}
+                      >
+                        <TableSortLabel
+                          active={orderBy === headCell.id}
+                          direction={orderBy === headCell.id ? order : 'asc'}
+                          onClick={createSortHandler(headCell.id)}
+                        >
+                          {headCell.label}
+                          {orderBy === headCell.id ? (
+                            <span className={classes.visuallyHidden}>
+                              {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                            </span>
+                          ) : null}
+                        </TableSortLabel>
+                      </TableCell>
+                    ))}
+                 </TableRow>
+              </TableHead>
+
               <TableBody>
                 {/* {stableSort(rows, getComparator(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -229,7 +267,7 @@ const ShoppingList = (props) =>  {
                         <Actions action={userShopList.list.entryId}/>
                           </TableCell>
                       </TableRow>
-                    );
+                    )
                   })
                   }
               </TableBody>
@@ -257,15 +295,9 @@ const ShoppingList = (props) =>  {
               aria-labelledby="your shopping list"
               aria-label="shopping list"
             >
-              <ShopListHeaders 
-                classes={classes}
-                numSelected={selected.length}
-                order={order}
-                orderBy={orderBy}
-                onSelectAllClick={handleSelectAllClick}
-                onRequestSort={handleRequestSort}
-                rowCount={userShopList.list.length}
-              />
+            <TableHead>
+            
+            </TableHead>
             <TableBody>
               <TableRow></TableRow>
             </TableBody>
