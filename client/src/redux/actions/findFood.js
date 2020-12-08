@@ -13,7 +13,7 @@ export const findFood = (searchItem)  => async dispatch => {
     let result = await res.json()
       dispatch({ 
           type: FETCH_FOOD,
-          payload: result
+          payload: [...result]
        })
   }
   catch(e) {
