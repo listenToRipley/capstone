@@ -1,7 +1,10 @@
 import {FETCH_FOOD} from './types'
 
-export const findFood = (searchItem)  => async dispatch => {
-  let path = `https://api.spoonacular.com/food/products/search?apiKey=${SPOON_API_KEY}query=${searchItem}`
+export const findFood = (input)  => async dispatch => {
+
+  console.log('what is the input you are getting?', input.value)
+
+  let path = `https://api.spoonacular.com/food/products/search?query=${input.value}&number=10&apiKey=${SPOON_API_KEY}`
 
   try {
     let res = await fetch(path, {

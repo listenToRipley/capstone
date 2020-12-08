@@ -4,6 +4,7 @@ import FoodSearchBar from '../Components/FoodSearchBar'
 import {findFood} from '../redux/actions/findFood'
 
 const mapStateToProps = state => {
+  console.log('are you getting the stateon find food? ', state)
   return {
     foodSearchList: state.foodSearchList
   }
@@ -16,4 +17,4 @@ const mapStateToDispatch = (dispatch) => {
   }
 }
 
-export default connect (mapStateToProps, mapStateToDispatch)(FoodSearchBar)
+export default connect(mapStateToProps, mapStateToDispatch)(FoodSearchBar)
