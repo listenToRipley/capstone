@@ -1,7 +1,9 @@
-import React from 'react';
-import {useEffect} from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useEffect, useState}  from 'react';
+import { lighten, makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import clsx from 'clsx'
+import Typography from '@material-ui/core/Typography';
+import Toolbar from '@material-ui/core/Toolbar';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
@@ -16,13 +18,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingBasket, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { withStyles } from '@material-ui/styles';
+import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs } from '@fortawesome/free-solid-svg-icons';
 import { findShopList, getShopList } from '../redux/actions/userShopList';
-import ShopListToolBar from './ShopListToolBar';
+import MenuItem from '@material-ui/core/MenuItem'
+import './toolbar.css'
 import FoodSearchBar from '../Containers/FoodSearchBar';
 
-library.add(faShoppingBasket, faCartArrowDown) 
+library.add(faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs) 
 dom.watch()
 
 
@@ -62,6 +64,12 @@ dom.watch()
         marginLeft: theme.spacing(4),
         marginBottom: theme.spacing(2),
       },
+      toolbar: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignSelf: 'start',
+        padding: '2%'
+      },
       table: {
         minWidth: 750,
       },
@@ -75,30 +83,18 @@ dom.watch()
         position: 'absolute',
         top: 20,
         width: 1,
-      }
+      },
+      highlight:
+      theme.palette.type === 'light'
+        ? {
+            color: theme.palette.secondary.main,
+            backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+          }
+        : {
+            color: theme.palette.text.primary,
+            backgroundColor: theme.palette.secondary.dark,
+          },
     }));
-
-//there is an issue with the drawer and page content. 
-
-//need to add something to show role on table, are we going to need to write a query for that? 
-
-//sorting functions  DON'T TOUCH 
-const getComparator =(order, orderBy) => {
-  return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-//sorting functions  DON'T TOUCH 
-const stableSort = (array, comparator) =>{
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) return order;
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -112,12 +108,13 @@ const ShoppingList = (props) =>  {
   const {userShopList} = props
 
   const classes = useStyles();
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('item');
-  const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('item');
+  const [selected, setSelected] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const {findFood, setFindFood} = useState(false)
+  const {shopping, setShopping} = useState(false)
 
   useEffect( () => {
     if (call===false) {
@@ -125,20 +122,7 @@ const ShoppingList = (props) =>  {
     }
   })
 
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = userShopList.list.map((n) => n.entryId);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
-
+  //click handlers 
   const handleClick = (e, name) => {
     e.preventDefault();
     const selectedIndex = selected.indexOf(name);
@@ -161,6 +145,9 @@ const ShoppingList = (props) =>  {
     setSelected(newSelected);
   };
 
+  const isSelected = (name) => selected.indexOf(name) !== -1;
+
+  //page handlers
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
     console.log('new page', newPage)
@@ -172,36 +159,119 @@ const ShoppingList = (props) =>  {
     console.log('set pages?', setPage(0))
   };
 
-  const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property);
-  };
-
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const getComparator =(order, orderBy) => {
+    return order === 'desc'
+      ? (a, b) => descendingComparator(a, b, orderBy)
+      : (a, b) => -descendingComparator(a, b, orderBy);
+  }
+  
+  
+  const stableSort = (array, comparator) =>{
+    const stabilizedThis = array.map((el, index) => [el, index]);
+    stabilizedThis.sort((a, b) => {
+      const order = comparator(a[0], b[0]);
+      if (order !== 0) return order;
+      return a[1] - b[1];
+    });
+    return stabilizedThis.map((el) => el[0]);
+  }
+  
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, userShopList.list.length - page * rowsPerPage);
 
+  //header sorting 
   const headCells = [
     { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
     { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
     { id: 'unit', numeric: true, disablePadding: false, label: 'Unit' },
     { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
-  ];
-  
+  ]
+
+  const createSortHandler = (property) => (event) => {
+    onRequestSort(event, property);
+  };
+
+  const handleRequestSort = (event, property) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
+  };
+
+  //tool bar
+  const openSearch = (e) => {
+    e.preventDefault();
+    console.log('you want to search for food')
+    setShopping=true
+  }
+
+  const startShopping = (e) => {
+    e.preventDefault();
+    console.log('so you want to start shopping')
+    setShopping=true
+  }
+
+  const doneShopping = (e) => {
+    e.preventDefault();
+    console.log('your done shopping, should get added to pantry now')
+    setShopping=false
+  }
+
 
   if(call) {
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
-          
-          <ShopListToolBar   numSelected={selected.length} />
-          
+
+          <Toolbar
+            className={clsx(classes.toolbar, {
+            [classes.highlight]: selected.length > 0,
+          })}
+            > 
+            {selected.length > 0 ? (
+              <Typography className={classes.title} color="inherit" variant="subtitle1"     component="div">
+                {selected.length} selected
+              </Typography>
+            ) : (
+              <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+                Your Shopping List 
+              </Typography>
+            )}
+                {/* {!findFood ?  */}
+                <Tooltip className='searchbar' title="add food">
+                  <FoodSearchBar />
+               </Tooltip>
+            
+               {/* <Tooltip className="add" title="Add Item to your shopping list">
+                 <IconButton aria-label="add item to shopping list"
+                 onClick={openSearch}>
+                 <svg className="fas fa-plus-circle"></svg>
+                 </IconButton>
+               </Tooltip> */}
+             
+             
+               {setShopping ? (
+              <Tooltip title="Finished Shopping">
+                <IconButton aria-label="finish shopping"
+                onClick={doneShopping}>
+                <svg className="fas fa-cart-arrow-down"/> 
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <Tooltip title="Start Shopping">
+                <IconButton aria-label="start shopping"
+                onClick={startShopping}>
+                <svg className="fas fa-shopping-basket"/>
+                </IconButton>
+              </Tooltip>
+              )}
+           </Toolbar>
           
           <TableContainer>
             <Table
               className={classes.table}
               aria-labelledby="your shopping list"
               aria-label="shopping list"
-            >
+              >
 
                 <TableHead>
                   <TableRow>
