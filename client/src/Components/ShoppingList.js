@@ -99,15 +99,16 @@ const stableSort = (array, comparator) =>{
   return stabilizedThis.map((el) => el[0]);
 }
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const ShoppingList = (props) =>  {
-  console.log('props on shopping list', props)
 
   const {shopListId} = props.userDetails
   const {call} = props.userShopList
   const {token} = props.user.pass
   const {userShopList} = props
-
-  console.log('can you see the shop list ? ', userShopList)
 
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');

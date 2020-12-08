@@ -11,7 +11,6 @@ library.add(faSignOutAlt)
 dom.watch()
 
 const Logout = (props) => {
-  console.log(props)
 
   const loggingOut = e => {
     e.preventDefault()

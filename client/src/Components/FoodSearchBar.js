@@ -86,13 +86,8 @@ import {useInput} from '../Hooks/inputHook';
 // }));
 
 
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//   return <Slide direction="up" ref={ref} {...props} />;
-// });
-
-
-const foodSearchBar = (open, children) => {
-  console.log('what is open ? ')
+const foodSearchBar = (props) => {
+  console.log('props on search bar ? ', props)
 
   let {value:searchWord, bind:bindSearchWord, reset:resetSearch} = useInput('')
 
@@ -119,7 +114,7 @@ const foodSearchBar = (open, children) => {
         {...bindSearchWord}
        placeholder="Find Food to Add"
        className={'inputRoot','inputInput'}
-       inputProps={{ 'aria-label': 'search too list' }}
+       aria-lable="find food"
        id="searchWord"
        name="searchWord"
        type="text"

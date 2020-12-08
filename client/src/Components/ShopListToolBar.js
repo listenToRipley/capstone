@@ -37,7 +37,11 @@ const useToolbarStyles = makeStyles((theme) => ({
         },
 }));
 
-const ShopListToolBar = (props) => {
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+const ShopListToolBar = (props, children) => {
   const classes = useToolbarStyles();
   console.log('shopping list tool bar props : ', props)
   const {numSelected} = props
