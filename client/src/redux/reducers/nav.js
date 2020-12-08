@@ -7,8 +7,6 @@ export default function(state = {...initialState.userDetails}, action){
     switch(action.type){
         case USER_DETAILS:
         return action.payload.userDetails
-        // case LOGOUT:
-        // return reset
         default: return state
     }
 }

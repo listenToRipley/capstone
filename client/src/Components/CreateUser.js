@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -14,7 +15,6 @@ import { FormControl } from '@material-ui/core';
 // import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../Hooks/inputHook'
-import {useHistory} from 'react-router-dom'
 import createNewUser from '../redux/reducers/createNewUser';
 
 const useStyles = makeStyles((theme) => ({
@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateUser = (props) => {
   console.log('props on create user? ', props)
+  const history = useHistory(); 
   const classes = useStyles();
 
   const {value: userName, bind: bindUsername, reset: resetUsername} = useInput('') 
@@ -89,9 +90,8 @@ const CreateUser = (props) => {
   }
 
   useEffect(() => {
-    if(props.newUser!==false) {
-      console.log('congrats! you create a login! ')
-     return history.push('/congrats')
+    if(props.newUser) {
+        history.push('/congrats')
     }
   })
 

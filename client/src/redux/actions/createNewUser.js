@@ -22,13 +22,14 @@ export const createNewUser = (username, firstName, lastName, email, password, bM
         },
         body: sendUser
        } )
-      console.log('res? ', res)
+
       let result = await res.json()
-      console.log('result from post? ',result)
-     
+      
       dispatch({
         type: CREATE_NEW_USER,
-          payload: { ...result  }
+          payload: { 
+            newUser: result
+          }
       })
     } catch (e) {
       return 'what the error the user details? ', {e}

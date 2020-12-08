@@ -2,7 +2,7 @@ import React from 'react'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
-const Congrats = () => {
+const Congrats = (props) => {
   //should add something here to reset the state of the newUser state
   return (
     <Paper>
