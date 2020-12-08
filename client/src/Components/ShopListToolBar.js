@@ -10,6 +10,7 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs  } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
 import FoodSearchBar from './FoodSearchBar';
+import MenuItem from '@material-ui/core/MenuItem'
 import './toolbar.css'
 
 library.add(faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs) 
@@ -78,20 +79,18 @@ const ShopListToolBar = (props) => {
           Your Shopping List 
         </Typography>
       )}
-          {setFindFood ? 
-            <div className='searchbar'>
-          <MenuItem className='search'>
-           <FoodSearchBar/>
-          </MenuItem>
-         </div>
-            :
-         <Tooltip className="add" title="Add Item to your shopping list">
+          {/* {!findFood ?  */}
+          <Tooltip className='searchbar' title="add food">
+            <FoodSearchBar/>
+         </Tooltip>
+            
+         {/* <Tooltip className="add" title="Add Item to your shopping list">
            <IconButton aria-label="add item to shopping list"
            onClick={openSearch}>
            <svg className="fas fa-plus-circle"></svg>
            </IconButton>
-         </Tooltip>
-         }
+         </Tooltip> */}
+         
        
          {setShopping ? (
         <Tooltip title="Finished Shopping">
