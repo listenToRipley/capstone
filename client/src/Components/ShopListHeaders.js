@@ -31,7 +31,7 @@ const headCells = [
 ];
 
 const ShopListHeaders = (props) =>  {
-  console.log('props on shop list head? ', props)
+  // console.log('props on shop list head? ', props)
 
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
 

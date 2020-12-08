@@ -92,6 +92,7 @@ import {useInput} from '../Hooks/inputHook';
 
 
 const foodSearchBar = (open, children) => {
+  console.log('what is open ? ')
 
   let {value:searchWord, bind:bindSearchWord, reset:resetSearch} = useInput('')
 
