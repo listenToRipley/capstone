@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = (props) => {
-  console.log('props on the nav bar', props)
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -116,8 +116,6 @@ const NavBar = (props) => {
   const history = useHistory()
 
   const cookies = (cookie.parse(document.cookie))
-
-  console.log('status on cookie?', status)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -131,7 +129,7 @@ const NavBar = (props) => {
     
     if (validation && run=== false) {
       let {token} = props.user.pass 
-      console.log('hey, token', token)
+
       return props.getDetails(token={token}, username={username})
     } else if (validation === false) {
       //need to add trigger of some time to reset the store to clear

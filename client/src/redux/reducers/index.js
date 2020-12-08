@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import loginRed from './loginRed'
-// import userDetails from './userDetails'
 import state from '../state'
 import store from '../store'
 import nav from './nav' 
@@ -10,13 +9,10 @@ import { LOGOUT } from '../actions/types'
 
 const allReducers = combineReducers({
     user: loginRed,
-    // userInfo: userInfo,
     userDetails: nav,
     userShopList: userShopList,
     newUser: createNewUser
 })
-
-console.log('understand the all reducers', allReducers.userShopList)
 
 const root = (state, action) => {
     if(action.type === LOGOUT) {
