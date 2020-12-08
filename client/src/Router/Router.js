@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router';
+import {Switch, Route ,browserHistory} from 'react-router';
 import LogIn from '../Containers/Login'
 import Home from '../Containers/Home';
 import ShoppingList from '../Containers/ShoppingList';
@@ -40,10 +40,12 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
 
 //would like everything but the login to be protected routes, the route can be protected through the user name, if I can pass it correctly 
 const Router = () => {
+
+  
   console.log('the router change is occurring?')
   return(
     <Switch>
-      <Route  exact path="/" component={LogIn}/>
+      <Route exact path="/" component={LogIn}/>
       <Route path="/home" component={Home}/>
       <Route path="/shoppingList" component={ShoppingList}/>
       <Route path="/pantry" component={Pantry}/>

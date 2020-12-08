@@ -25,7 +25,7 @@ import { Link } from 'react-router-dom';
 // import { Button } from '@material-ui/core';
 import {useHistory} from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
-import Logout from './Logout'
+import Logout from '../Containers/Logout'
 import cookie from 'cookie'
 
 //svg icons 
