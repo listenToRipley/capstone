@@ -1,20 +1,19 @@
 import {CREATE_NEW_USER} from './types'
 import moment from 'moment'
 
+
+
 export const createNewUser = (userId, firstName, lastName, email, password, bDay) => async dispatch => {
+ console.log('values', userId.value, firstName.value, lastName.value, email.value, password.value, bDay.value)
+ 
+ let dob = ''
 
-  let dobMonth = ''
-  let dobDate = ''
-  let dobYear = ''
-
-  const modBirthday = (day) => {
-      let dob = day.value.split('-')
-      dobYear=dob[0]
-      dobDate=dob[1]
-      dobMonth=dob[2]
-  }
-
-  modBirthday(bDay.value)
+const modBirthday = (day) => {
+  console.log(day)
+    return dob = day.split('-')
+}
+ 
+ modBirthday(bDay.value)
 
   try{
       let res = await fetch('/preLogin/createUser', {
@@ -26,9 +25,9 @@ export const createNewUser = (userId, firstName, lastName, email, password, bDay
           "email": `${email.value}`,
           "firstName": `${firstName.value}`,
           "lastName": `${lastName.value}`,
-          "dobMonth": dobMonth,
-          "dobDate": dobDate,
-          "dobYear": dobYear
+          "dobMonth": dob[2],
+          "dobDate": dob[1],
+          "dobYear": dob[0]
         }
       }
       )

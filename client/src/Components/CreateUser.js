@@ -75,7 +75,6 @@ const CreateUser = (props) => {
     console.log('let look at the event', e)
     e.preventDefault(); 
     console.log('make sure all my input looks good', bindUsername, bindFirstName, bindLastName, bindEmail, bindPassword, bindBirthday)
-    debugger
     return props.createNewUser({...bindUsername}, {...bindFirstName}, {...bindLastName}, {...bindEmail}, {...bindBirthday})
 
   }
