@@ -13,7 +13,9 @@ export const findFood = (searchItem)  => async dispatch => {
     let result = await res.json()
       dispatch({ 
           type: FETCH_FOOD,
-          payload: [...result]
+          payload: {
+            searchFood: [...result]
+          }
        })
   }
   catch(e) {
@@ -24,6 +26,8 @@ export const findFood = (searchItem)  => async dispatch => {
 export const resetFood = () => {
   return {
     type: RESET_FOOD_SEARCH,
-    payload: []
+    payload: {
+      searchFood: []
+    }
   }
 }

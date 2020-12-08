@@ -19,6 +19,7 @@ import { withStyles } from '@material-ui/styles';
 import { findShopList, getShopList } from '../redux/actions/userShopList';
 import ShopListToolBar from './ShopListToolBar';
 import ShopListHeaders from './ShopListHeaders';
+import FoodSearchBar from '../Containers/FoodSearchBar';
 
 library.add(faShoppingBasket, faCartArrowDown) 
 dom.watch()

@@ -81,7 +81,7 @@ const ShopListToolBar = (props) => {
       )}
           {/* {!findFood ?  */}
           <Tooltip className='searchbar' title="add food">
-            <FoodSearchBar/>
+            <FoodSearchBar />
          </Tooltip>
             
          {/* <Tooltip className="add" title="Add Item to your shopping list">

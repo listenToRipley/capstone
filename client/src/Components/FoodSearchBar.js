@@ -3,7 +3,6 @@ import {useState} from 'react'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import Food from './Food/Food';
 import {useInput} from '../Hooks/inputHook';
 
 // import Card from '@material-ui/core/Card'
