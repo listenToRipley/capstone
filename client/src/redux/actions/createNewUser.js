@@ -1,45 +1,34 @@
 import {CREATE_NEW_USER} from './types'
 
-export const createNewUser = (username, firstName, lastName, email, password, birthday) => async dispatch => {
- console.log('values', username, firstName, lastName, email, password, birthday)
- 
- let dob = ''
+export const createNewUser = (username, firstName, lastName, email, password, bMonth, bDay, bYear) => async dispatch => {
+ console.log('values', username, firstName, lastName, email, password, bMonth, bDay, bYear)
 
-const modBirthday = (day) => {
-    return dob = day.split('-')
-}
+ let sendUser =  JSON.stringify({
+    "username": `${username}`,
+    "password": `${password}`,
+    "email": `${email}`,
+    "firstName": `${firstName}`,
+    "lastName": `${lastName}`,
+    "dobMonth": bMonth,
+    "dobDate": bDay,
+    "dobYear": bYear
+  })
  
- modBirthday(birthday)
-
   try{
-      let res = await fetch('/preLogin/createUser', {
+      let res = await fetch('preLogin/createUser', {
         method: 'POST',
         headers: {
           Accept: "application/json", "Content-Type": "application/json",
         },
-        body: {
-          "username": `${userId}`,
-          "password": `${password}`,
-          "email": `${email}`,
-          "firstName": `${firstName}`,
-          "lastName": `${lastName}`,
-          "dobMonth": dob[2],
-          "dobDate": dob[1],
-          "dobYear": dob[0]
-        }
-      }
-      )
-      let getResult = await res.json()
-      console.log('result from post? ',getResult)
-      let result = {...getResult}
+        body: sendUser
+       } )
+      console.log('res? ', res)
+      let result = await res.json()
+      console.log('result from post? ',result)
+     
       dispatch({
         type: CREATE_NEW_USER,
-          payload: {
-            newUser: {
-              created: true,
-              returned: result
-            }
-          }
+          payload: { ...result  }
       })
     } catch (e) {
       return 'what the error the user details? ', {e}

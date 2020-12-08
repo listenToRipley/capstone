@@ -74,8 +74,17 @@ const CreateUser = (props) => {
   const createLogin = e => {
     console.log('let look at the event', e)
     e.preventDefault(); 
+
+    let dob = ''
+
+    const modBirthday = (day) => {
+     return dob = day.split('-').map(n => parseInt(n))
+  }
+
+  modBirthday(bindBirthday.value)
+  
     console.log('make sure all my input looks good', bindUsername, bindFirstName, bindLastName, bindEmail, bindPassword, bindBirthday)
-    return props.createNewUser(bindUsername.value, bindFirstName.value, bindLastName.value, bindEmail.value, bindPassword.value, bindBirthday.value)
+    return props.createNewUser(bindUsername.value, bindFirstName.value, bindLastName.value, bindEmail.value, bindPassword.value,dob[1], dob[2], dob[0])
 
   }
 
@@ -85,8 +94,6 @@ const CreateUser = (props) => {
      return history.push('/congrats')
     }
   })
-
-
 
   return(
     <Paper

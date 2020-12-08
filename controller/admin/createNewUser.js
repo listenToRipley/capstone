@@ -42,6 +42,9 @@ const verifyEmail = (req, res, next) => {
 const createUsername = (req, res, next) => {
 
   const { username, password, email } = req.body
+
+  console.log('tell me about the input ', username, password, email)
+
   bcrypt.hash(password, saltRounds, (err, hash) => {
 
     let sql='INSERT INTO appInfo (username, password, email ) VALUES (? ,?, ?);'
@@ -59,6 +62,8 @@ const createUserDetails = (req, res, next) => {
 
   const { username, firstName, lastName, dobMonth, dobDate, dobYear} = req.body
 
+  console.log('tell me about the input ', username, firstName, lastName ,dobMonth, dobDate, dobYear)
+
    let sql=	'INSERT INTO usersDetails (username, firstName,lastName, dobMonth, dobDate, dobYear, signedUp) VALUES (?, ?, ?, ?, ?, ?, NOW())'
 
    sql = mysql.format(sql, [ username, firstName, lastName,dobMonth, dobDate, dobYear ])
@@ -75,6 +80,8 @@ const createUserLocation = (req, res, next) => {
 
    sql = mysql.format(sql, [ req.body.username])
 
+   console.log('location', req.body.username)
+
    pool.query(sql, (err, results) => {
      if(err) return handleSQLError(res, err)
      next()
@@ -87,6 +94,8 @@ const createDefaultDisplay = (req, res, next) => {
    let sql=	'INSERT INTO usersDisplayPreferences (username) VALUES (?)'
 
    sql = mysql.format(sql, [ req.body.username])
+
+   console.log('display', req.body.username)
 
    pool.query(sql, (err, results) => {
      if(err) return handleSQLError(res, err)
@@ -101,6 +110,8 @@ const createPantry = (req, res, next) => {
 
    sql = mysql.format(sql, [ req.body.username])
 
+   console.log('pantry', req.body.username)
+
    pool.query(sql, (err, results) => {
      if(err) return handleSQLError(res, err)
      next()
@@ -114,6 +125,8 @@ const createShoppingList = (req, res, next) => {
 
    sql = mysql.format(sql, [ req.body.username])
 
+   console.log('shop list', req.body.username)
+
    pool.query(sql, (err, results) => {
      if(err) return handleSQLError(res, err)
     next()
@@ -126,6 +139,8 @@ const createPalList = (req, res, next) => {
    let sql=	'INSERT INTO palListsSettings (owner) VALUES (?)'
 
    sql = mysql.format(sql, [req.body.username])
+
+   console.log('pal list', req.body.username)
 
    pool.query(sql, (err, results) => {
      if(err) return handleSQLError(res, err)
@@ -142,9 +157,11 @@ const createUserAccess = (req, res, next) => {
 
    sql = mysql.format(sql, [ username])
 
+   console.log('access', req.body.username)
+
    pool.query(sql, (err, results) => {
      if(err) return handleSQLError(res, err)
-     return res.send('CONGRATULATIONS! YOUR ARE NOW A PANTRY PAL USER!')
+     return res.json({newUser: true})
    })  
 
 }

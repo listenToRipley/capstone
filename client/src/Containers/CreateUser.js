@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   console.log('you ready to dispatch in create user?')
   return {
-    createNewUser: (username, firstName, lastName, email, password, birthday) => dispatch(createNewUser(username, firstName, lastName, email, password, birthday))
+    createNewUser: (username, firstName, lastName, email, password, bMonth, bDay, bYear) => dispatch(createNewUser(username, firstName, lastName, email, password, bMonth, bDay, bYear))
   }
 }
 
