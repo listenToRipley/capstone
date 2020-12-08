@@ -93,7 +93,6 @@ import {useInput} from '../Hooks/inputHook';
 
 
 const foodSearchBar = (open, children) => {
-  console.log('are you hitting?')
 
   let {value:searchWord, bind:bindSearchWord, reset:resetSearch} = useInput('')
 
@@ -106,6 +105,8 @@ const foodSearchBar = (open, children) => {
   }
 
   if(!open) return null
+
+  console.log('are you hitting?', bindSearchWord.value)
 
   return(
 

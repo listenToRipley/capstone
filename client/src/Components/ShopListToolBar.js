@@ -9,7 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs  } from '@fortawesome/free-solid-svg-icons';
 import { withStyles } from '@material-ui/styles';
-import FoodSearchBar from './FoodSearchBar';
+import FoodSearchBar from '../Containers/FoodSearchBar';
 import MenuItem from '@material-ui/core/MenuItem'
 import './toolbar.css'
 
