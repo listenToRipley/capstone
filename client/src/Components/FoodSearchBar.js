@@ -98,8 +98,11 @@ const foodSearchBar = (open, children) => {
   let {value:searchWord, bind:bindSearchWord, reset:resetSearch} = useInput('')
 
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
     //need to map for search result using food. 
+    if(e.key === 'Enter' || e.key==='Return') {
+      console.log('you pressed enter or return!')
+    }
   }
 
   if(!open) return null
@@ -113,12 +116,13 @@ const foodSearchBar = (open, children) => {
      </div>
      <InputBase
         {...bindSearchWord}
-       placeholder="Search…"
+       placeholder="Find Food to Add"
        className={'inputRoot','inputInput'}
-       inputProps={{ 'aria-label': 'search' }}
+       inputProps={{ 'aria-label': 'search too list' }}
        id="searchWord"
        name="searchWord"
        type="text"
+       onKeyPress={handleSearch}
        autoFocus
      />
     </MenuItem>
