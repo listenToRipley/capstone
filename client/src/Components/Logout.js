@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 
@@ -11,15 +11,16 @@ library.add(faSignOutAlt)
 dom.watch()
 
 const Logout = (props) => {
+  const history = useHistory();
 
   const loggingOut = e => {
-    e.preventDefault()
+
     return props.logout(false)
   }
 
   useEffect(() => {
     if(props.state.user.validation===false) {
-      window.location.replace('/')
+      return history.push('/')
     }
 
   })

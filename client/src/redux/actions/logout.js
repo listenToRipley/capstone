@@ -3,7 +3,6 @@ import state from '../state'
 
 export const logout = (b00) => {
   return {
-    type: LOGOUT,
-    payload: {...state}
+    type: LOGOUT
   }
 }

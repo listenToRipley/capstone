@@ -288,7 +288,9 @@ const NavBar = (props) => {
               </ListItemIcon>
               <ListItemText primary={'Profile'} />
             </ListItem>
+
           <Logout/>
+        
         </List>
       </Drawer>
       :

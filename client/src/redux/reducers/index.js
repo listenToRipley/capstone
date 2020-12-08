@@ -10,6 +10,33 @@ import findFood from './findFood'
 import resetSearch from './resetSearch'
 import { LOGOUT } from '../actions/types'
 
+let reset = {
+    user: {
+      username:'',
+      password: '',
+      validation:false,
+      pass: '',
+      time:''
+    },  
+    userDetails: { 
+      userLocationId:'' ,
+      displayPrefId:'', 
+      pantryId:'', 
+      shopListId:'', 
+      palListId:'', 
+      accessId:'',
+      run: false
+    },
+    newUser: false,
+    userShopList: {
+      call: false,
+      list: []
+    },
+    openFoodFinder: false,
+    searchResults: []
+
+  }
+
 const allReducers = combineReducers({
     user: loginRed,
     userDetails: nav,
@@ -22,7 +49,7 @@ const allReducers = combineReducers({
 
 const root = (state, action) => {
     if(action.type === LOGOUT) {
-        return state
+        return reset
     } else {
         return allReducers(state, action)
     }
