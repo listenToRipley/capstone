@@ -1,30 +1,28 @@
 import {CREATE_NEW_USER} from './types'
-import moment from 'moment'
 
-
-
-export const createNewUser = (userId, firstName, lastName, email, password, bDay) => async dispatch => {
- console.log('values', userId.value, firstName.value, lastName.value, email.value, password.value, bDay.value)
+export const createNewUser = (username, firstName, lastName, email, password, birthday) => async dispatch => {
+ console.log('values', username, firstName, lastName, email, password, birthday)
  
  let dob = ''
 
 const modBirthday = (day) => {
-  console.log(day)
     return dob = day.split('-')
 }
  
- modBirthday(bDay.value)
+ modBirthday(birthday)
 
   try{
       let res = await fetch('/preLogin/createUser', {
         method: 'POST',
         headers: {
           Accept: "application/json", "Content-Type": "application/json",
-          "username": `${userId.value}`,
-          "password": `${password.value}`,
-          "email": `${email.value}`,
-          "firstName": `${firstName.value}`,
-          "lastName": `${lastName.value}`,
+        },
+        body: {
+          "username": `${userId}`,
+          "password": `${password}`,
+          "email": `${email}`,
+          "firstName": `${firstName}`,
+          "lastName": `${lastName}`,
           "dobMonth": dob[2],
           "dobDate": dob[1],
           "dobYear": dob[0]
@@ -32,6 +30,7 @@ const modBirthday = (day) => {
       }
       )
       let getResult = await res.json()
+      console.log('result from post? ',getResult)
       let result = {...getResult}
       dispatch({
         type: CREATE_NEW_USER,

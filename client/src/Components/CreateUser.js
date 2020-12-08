@@ -75,14 +75,14 @@ const CreateUser = (props) => {
     console.log('let look at the event', e)
     e.preventDefault(); 
     console.log('make sure all my input looks good', bindUsername, bindFirstName, bindLastName, bindEmail, bindPassword, bindBirthday)
-    return props.createNewUser({...bindUsername}, {...bindFirstName}, {...bindLastName}, {...bindEmail}, {...bindBirthday})
+    return props.createNewUser(bindUsername.value, bindFirstName.value, bindLastName.value, bindEmail.value, bindPassword.value, bindBirthday.value)
 
   }
 
   useEffect(() => {
-    if(props.newUser) {
+    if(props.newUser!==false) {
       console.log('congrats! you create a login! ')
-      history.pushState('/congrats')
+     return history.push('/congrats')
     }
   })
 
