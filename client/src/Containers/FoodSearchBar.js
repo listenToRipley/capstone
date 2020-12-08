@@ -6,7 +6,7 @@ import {findFood} from '../redux/actions/findFood'
 const mapStateToProps = state => {
   console.log('are you getting the stateon find food? ', state)
   return {
-    foodSearchList: state.foodSearchList
+    searchResults: state.searchResults
   }
 }
 

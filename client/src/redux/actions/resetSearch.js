@@ -5,8 +5,10 @@ export const resetSearch = (boo) => {
   return {
     type: RESET_FOOD_SEARCH,
     payload: {
-      openFoodSearch: boo,
-      searchResults: []
+
+        openFoodFinder: boo,
+        searchResults: []
+      
     }
   }
 }

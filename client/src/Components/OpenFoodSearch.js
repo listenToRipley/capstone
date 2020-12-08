@@ -9,10 +9,12 @@ dom.watch()
 
 const OpenFoodSearch = (props) => {
 
+  console.log('looking at Open Food Search > ', props)
+
   return(
     <Tooltip className="add" title="Add Item to your shopping list">
       <IconButton aria-label="add item to shopping list"
-      onClick={() => props.openFoodFinder(true)}>
+      onClick={() => props.openFoodSearch(true)}>
         <svg className="fas fa-plus-circle"></svg>
       </IconButton>
     </Tooltip> 

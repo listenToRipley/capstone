@@ -16,8 +16,7 @@ export default {
     run: false
   },
   newUser: false,
-  openFoodSearch: false,
-  searchResults: [],
+
   //   location: {
 
   //   },
@@ -40,8 +39,9 @@ export default {
   userShopList: {
     call: false,
     list: []
-  }
-
+  },
+  openFoodFinder: false,
+  searchResults: []
   // pantryList:[
   //   [ 305, 'Cupcake', 3.7],
   //   [ 452, 'Donut', 3.7],

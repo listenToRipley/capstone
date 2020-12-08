@@ -1,6 +1,7 @@
 import React, {useEffect, useState}  from 'react';
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -176,7 +177,7 @@ const ShoppingList = (props) =>  {
     });
     return stabilizedThis.map((el) => el[0]);
   }
-  
+
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, userShopList.list.length - page * rowsPerPage);
 
@@ -222,6 +223,8 @@ const ShoppingList = (props) =>  {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
   if(call) {
     return (
       <div className={classes.root}>
@@ -242,7 +245,9 @@ const ShoppingList = (props) =>  {
               </Typography>
             )}
                <OpenFoodSearch/>
+
                {props.openFoodSearch===true ? <SearchPage/> : <div/>}
+               
                {setShopping ? (
               <Tooltip title="Finished Shopping">
                 <IconButton aria-label="finish shopping"
@@ -289,7 +294,7 @@ const ShoppingList = (props) =>  {
                               {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                             </span>
                           ) : null}
-                          
+
                         </TableSortLabel>
                       </TableCell>
                     ))}

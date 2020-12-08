@@ -4,7 +4,7 @@ import Food from '../Components/Food/Food';
 const mapStateToProps = (state) => {
   return {
     searchResults: state.searchResults,
-    openFoodSearch: state.openFoodSearch
+    openFoodFinder: state.openFoodFinder
   }
 }
 

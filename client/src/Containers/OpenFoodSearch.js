@@ -4,13 +4,13 @@ import {openFoodFinder} from '../redux/actions/openFoodFinder'
 
 const mapStateToProps = (state) => {
   return {
-    openFoodSearch: state.openFoodSearch
+    openFoodFinder: state.openFoodFinder
   }
 }
 
  const mapStateToDispatch = (dispatch) => {
   return {
-    openFoodFinder: (boo) => dispatch(openFoodFinder(boo))
+    openFoodSearch: (boo) => dispatch(openFoodSearch(boo))
   }
  }
 

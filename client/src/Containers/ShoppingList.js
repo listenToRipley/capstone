@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
     user:state.user,
     userDetails: state.userDetails,
     userShopList: state.userShopList,
-    openFoodSearch: state.openFoodSearch,
+    openFoodFinder: state.openFoodFinder,
     searchResults: state.searchResults
   }
 }

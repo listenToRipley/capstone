@@ -17,7 +17,9 @@ export const findFood = (input)  => async dispatch => {
       dispatch({ 
           type: FETCH_FOOD,
           payload: {
+            
             searchResults: [...result]
+  
           }
        })
   }
