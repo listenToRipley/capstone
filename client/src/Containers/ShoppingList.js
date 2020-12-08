@@ -6,7 +6,9 @@ const mapStateToProps = (state) => {
   return {
     user:state.user,
     userDetails: state.userDetails,
-    userShopList: state.userShopList
+    userShopList: state.userShopList,
+    openFoodSearch: state.openFoodSearch,
+    searchResults: state.searchResults
   }
 }
 

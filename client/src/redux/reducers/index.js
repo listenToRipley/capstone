@@ -5,13 +5,18 @@ import store from '../store'
 import nav from './nav' 
 import userShopList from './userShopList'
 import createNewUser from './createNewUser'
+import setFoodFinder from './openFoodFinder'
+import findFood from './findFood'
+import resetSearch from './resetSearch'
 import { LOGOUT } from '../actions/types'
 
 const allReducers = combineReducers({
     user: loginRed,
     userDetails: nav,
     userShopList: userShopList,
-    newUser: createNewUser
+    newUser: createNewUser,
+    openFoodFinder: setFoodFinder || resetSearch,
+    searchResults: findFood || resetSearch
 })
 
 const root = (state, action) => {

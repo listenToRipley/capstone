@@ -1,12 +1,13 @@
 import {connect} from 'react-redux';
 import Food from '../Components/Food/Food';
 
-const mapStateToProps = (state, Food) => {
+const mapStateToProps = (state) => {
   return {
-    food: state
+    searchResults: state.searchResults,
+    openFoodSearch: state.openFoodSearch
   }
 }
 
-//add items to shop list 
+
 
 export default connect(mapStateToProps)(Food)

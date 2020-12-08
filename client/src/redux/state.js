@@ -16,7 +16,8 @@ export default {
     run: false
   },
   newUser: false,
-
+  openFoodSearch: false,
+  searchResults: [],
   //   location: {
 
   //   },

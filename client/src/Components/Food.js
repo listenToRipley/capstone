@@ -120,19 +120,19 @@ const Food = (props) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent 
           className="actionList">
-            <Button
+            {/* <Button
              fullWidth="true"
              className="actions"
             ><svg className="fas fa-door-open"/>  
             Add To Pantry
-            <svg className="fas fa-door-open"/></Button>
+            <svg className="fas fa-door-open"/></Button> */}
             <Button
             fullWidth="true"
             className="actions"
             ><svg className="fas fa-cart-arrow-down"/> 
             Add To Shopping List 
             <svg className="fas fa-cart-arrow-down"/></Button>
-            <Button
+            {/* <Button
              fullWidth="true"
              className="actions"
             ><svg className="fas fa-star"/> 
@@ -149,7 +149,7 @@ const Food = (props) => {
             className="actions"
             ><svg className="fas fa-skull-crossbones"/>
              Add to My Allergies 
-             <svg className="fas fa-skull-crossbones"/></Button>
+             <svg className="fas fa-skull-crossbones"/></Button> */}
           </CardContent>
         </Collapse>
        </Card>

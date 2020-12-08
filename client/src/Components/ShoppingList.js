@@ -21,8 +21,10 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs } from '@fortawesome/free-solid-svg-icons';
 import { findShopList, getShopList } from '../redux/actions/userShopList';
 import MenuItem from '@material-ui/core/MenuItem'
+import SearchPage from './SearchPage'
+import OpenFoodSearch from '../Containers/OpenFoodSearch'
 import './toolbar.css'
-import FoodSearchBar from '../Containers/FoodSearchBar';
+
 
 library.add(faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs) 
 dom.watch()
@@ -113,7 +115,6 @@ const ShoppingList = (props) =>  {
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const {findFood, setFindFood} = useState(false)
   const {shopping, setShopping} = useState(false)
 
   useEffect( () => {
@@ -201,7 +202,7 @@ const ShoppingList = (props) =>  {
   const openSearch = (e) => {
     e.preventDefault();
     console.log('you want to search for food')
-    setShopping=true
+    props.openFoodSearch = true 
   }
 
   const startShopping = (e) => {
@@ -216,6 +217,10 @@ const ShoppingList = (props) =>  {
     setShopping=false
   }
 
+  //food search page
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
 
   if(call) {
     return (
@@ -236,19 +241,8 @@ const ShoppingList = (props) =>  {
                 Your Shopping List 
               </Typography>
             )}
-                {/* {!findFood ?  */}
-                <Tooltip className='searchbar' title="add food">
-                  <FoodSearchBar />
-               </Tooltip>
-            
-               {/* <Tooltip className="add" title="Add Item to your shopping list">
-                 <IconButton aria-label="add item to shopping list"
-                 onClick={openSearch}>
-                 <svg className="fas fa-plus-circle"></svg>
-                 </IconButton>
-               </Tooltip> */}
-             
-             
+               <OpenFoodSearch/>
+               {props.openFoodSearch===true ? <SearchPage/> : <div/>}
                {setShopping ? (
               <Tooltip title="Finished Shopping">
                 <IconButton aria-label="finish shopping"
@@ -275,9 +269,7 @@ const ShoppingList = (props) =>  {
 
                 <TableHead>
                   <TableRow>
-                    <TableCell >
 
-                    </TableCell>
                     {headCells.map((headCell) => (
                       <TableCell
                         key={headCell.id}
@@ -297,6 +289,7 @@ const ShoppingList = (props) =>  {
                               {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                             </span>
                           ) : null}
+                          
                         </TableSortLabel>
                       </TableCell>
                     ))}
@@ -358,7 +351,7 @@ const ShoppingList = (props) =>  {
   } else {
     return (
       <Paper>
-      <ShopListToolBar  numSelected={selected.length} />
+      <Toolbar/>
         <TableContainer>
         <Table
               className={classes.table}
