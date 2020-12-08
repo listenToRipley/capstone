@@ -15,7 +15,7 @@ import ForgotPassword from '../Components/AppFunc/ForgotPassword'
 import Congrats from '../Components/Congrats'
 import cookie from 'cookie'
 
-console.log(cookie)
+// console.log(cookie)
 //this will be for when you move to login required status
 const checkAuth = () => {
   // associate with token created during login? 
@@ -41,8 +41,6 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
 //would like everything but the login to be protected routes, the route can be protected through the user name, if I can pass it correctly 
 const Router = () => {
 
-  
-  console.log('the router change is occurring?')
   return(
     <Switch>
       <Route exact path="/" component={LogIn}/>
@@ -50,7 +48,7 @@ const Router = () => {
       <Route path="/shoppingList" component={ShoppingList}/>
       <Route path="/pantry" component={Pantry}/>
       <Route path="/palsList" component={PalList}/>
-       <Route path="/userProfile" component={UserProfile}/>
+      <Route path="/userProfile" component={UserProfile}/>
       <Route path="/palProfile" component={PalProfile}/>
       <Route path="/inbox" component={Inbox}/>
       <Route path='/food' component={Food}/>
