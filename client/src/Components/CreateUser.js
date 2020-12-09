@@ -48,10 +48,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//need to add text handling for input, use Hooks/inputHook
-
-//use action from redux to create user
-
 const CreateUser = (props) => {
   console.log('props on create user? ', props)
   const history = useHistory(); 
@@ -66,8 +62,6 @@ const CreateUser = (props) => {
   const {value: passWord, bind: bindPassword, reset: resetPassword} = useInput('')
   // const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
   const {value: birthday, bind: bindBirthday, reset: resetBirthday} = useInput('')
-
-
 
   //this will be future state
   // const handlePasswordMatch = () => {

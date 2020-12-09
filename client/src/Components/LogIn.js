@@ -133,13 +133,13 @@ const LogIn = (props) => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <ListItem
+                {/* <ListItem
                 button
                 component={Link}
                 to="/forgotPassword" 
                 primary={'Forgot password'}
                 aria-label='forgot password?'
-                >Forgot Password</ListItem>
+                >Forgot Password</ListItem> */}
               </Grid>
               <Grid item>
                 <ListItem
