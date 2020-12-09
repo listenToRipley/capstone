@@ -17,7 +17,7 @@ let updateThisEntry = JSON.stringify({
 
 try{
     let res = await fetch(path, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         Accept: "application/json", "Content-Type": "application/json",
         token: `${intake}`,
