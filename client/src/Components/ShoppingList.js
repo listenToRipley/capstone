@@ -109,14 +109,10 @@ const ShoppingList = (props) =>  {
   const lLength = list.length 
 
   const classes = useStyles();
-  const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('item');
-  const [selected, setSelected] = useState([]);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
   const {shopping, setShopping} = useState(false)
-  const {isSelected, setIsSelected} = useState(0)
+  const [selected, setSelected] = useState([]);
   const {numSelected , setNumSelected } = useState(0)
+  const {checked, setChecked} = useState(false)
 
   useEffect( () => {
     if (call===false) {
@@ -127,8 +123,18 @@ const ShoppingList = (props) =>  {
   //click handlers 
   const handleClick = (e, name) => {
     e.preventDefault();
-      console.log('checked')
+      console.log('checked', name)
     }
+
+  const handleCheckUpdate = (e, item, status) => {
+    checked=!status
+    console.log('you want to had the item to the hold list it check and remove if un checked', item)
+    if(status) {
+      setSelected.push(item)
+    } else {
+      console.log('remove item from selected list ')
+    }
+  }
 
 
   //header sorting 
@@ -150,11 +156,6 @@ const ShoppingList = (props) =>  {
     console.log('so you want to start shopping')
     setShopping(true)
   }
-
-  //food search page
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
 
   if(call) {
     return (
@@ -181,7 +182,7 @@ const ShoppingList = (props) =>  {
                {setShopping ? (
               <Tooltip title="Finished Shopping">
                 <IconButton aria-label="finish shopping"
-                onClick={() => { console.log('you should had these items to the pantry')}}>
+                onClick={() => { console.log('you should add the items on hold list to pantry and reset hold list and well as render place')}}>
                 <svg className="fas fa-cart-arrow-down"/> 
                 </IconButton>
               </Tooltip>
@@ -207,7 +208,7 @@ const ShoppingList = (props) =>  {
 
                   <TableCell padding="checkbox">
                       <Checkbox
-                      checked={() => console.log('what is this doing? ')}
+                      checked={setNumSelected<=lLength}
                       onChange={() => console.log('you the list count')}
                       inputProps={{ 'aria-label': 'select all items on shopping list' }}
                     />
@@ -217,39 +218,38 @@ const ShoppingList = (props) =>  {
                       <TableCell
                         key={headCell.id}
                         align={'center'}
-                        /* We don't really need sorting on update and delete, we should change that  */
-
+                        inputProps={{ 'aria-label': 'select to mark item off' }}
                       >
+                      <TableSortLabel
+                        align={'center'}>
+                        {headCell.id}
+                      </TableSortLabel>
                       </TableCell>
                     ))}
                  </TableRow>
               </TableHead>
 
               <TableBody>
-                {/* {stableSort(rows, getComparator(order, orderBy))
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                   */}
+
                   {userShopList.list.map((row, index) => {
-                    {/* const isItemSelected = setIsSelected(row.entryId); */}
-                    const labelId = `check box${row.entryId}`;
-                   
+                
                     return (
                       <TableRow
                         hover
-                        onClick={(e) => console.log(`you selected ${row.entryId}, do something with it`)}
+                        onClick={() => console.log('should be the opposite of what is currently is and added it or remove it to the hold list')}
                         role="checkbox"
-                        itemId={row.entryId}
+                        itemId={`${row.entryId} is selected`}
                         key={row.entryId}
-                        // selected={isItemSelected}
                       >
                         <TableCell padding="checkbox">
                           <Checkbox
                             padding="10"
-                            // checked={isItemSelected}
-                            inputProps={{ 'list item number ': labelId }}
+                            checked={checked}
+                            inputProps={{ 'list item number ': row.entryId }}
+                            onChange={handleCheckUpdate(row.entryId, checked)}
                           />
                         </TableCell>
-                        <TableCell component="th" id={labelId} scope="row" align="center">
+                        <TableCell component="th" id={row.entryId} scope="row" align="center">
                           {null ? 1 : row.quantity}
                         </TableCell>
                         <TableCell align="left">{row.item}</TableCell>
