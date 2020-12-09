@@ -13,9 +13,13 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { FormControl } from '@material-ui/core';
 // import Calendar from 'react-calendar';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import 'react-calendar/dist/Calendar.css';
 import {useInput} from '../Hooks/inputHook'
-import createNewUser from '../redux/reducers/createNewUser';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,6 +58,8 @@ const CreateUser = (props) => {
   const history = useHistory(); 
   const classes = useStyles();
 
+  const [open, setOpen] = useState(false);
+
   const {value: userName, bind: bindUsername, reset: resetUsername} = useInput('') 
   const {value: firstName, bind: bindFirstName, reset: resetFirstName} = useInput('')
   const {value: lastName, bind: bindLastName, reset: resetLastName} = useInput('')
@@ -63,8 +69,6 @@ const CreateUser = (props) => {
   const {value: birthday, bind: bindBirthday, reset: resetBirthday} = useInput('')
 
 
-  //change this selected date 
-  const [dob, onChange] = useState(new Date());
 
   //this will be future state
   // const handlePasswordMatch = () => {
@@ -91,9 +95,13 @@ const CreateUser = (props) => {
 
   useEffect(() => {
     if(props.newUser) {
-        history.push('/congrats')
+        setOpen(true)
     }
   })
+
+  const handleRedirect = () => {
+    history.push('/')
+  };
 
   return(
     <Paper
@@ -219,6 +227,26 @@ const CreateUser = (props) => {
         </Button>
        </Grid>
       </Grid>
+
+     
+        <Dialog
+        open={props.newUser}
+        aria-labelledby="alert, log in created"
+        aria-describedby="congratulation on becoming a pantry pal user"
+      >
+        <DialogTitle id="alert-dialog-title">{"      Congratulations!"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+          You are now a Pantry Pal user!
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleRedirect} autoFocus color="primary">
+            Login here
+          </Button>
+        </DialogActions>
+      </Dialog> 
+
     </Paper>
      
   )

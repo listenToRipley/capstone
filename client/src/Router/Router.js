@@ -11,7 +11,6 @@ import CreateUser from '../Containers/CreateUser';
 import About from '../Components/About'
 import Inbox from '../Components/CurrentUser/Inbox/Inbox'
 import ForgotPassword from '../Components/AppFunc/ForgotPassword'
-import Congrats from '../Components/Congrats'
 import cookie from 'cookie'
 
 // console.log(cookie)
@@ -42,7 +41,7 @@ const Router = () => {
 
   return(
     <Switch>
-      <Route exact path="/" component={LogIn}/>
+
       <Route path="/home" component={Home}/>
       <Route path="/shoppingList" component={ShoppingList}/>
       <Route path="/pantry" component={Pantry}/>
@@ -52,10 +51,10 @@ const Router = () => {
       <Route path="/inbox" component={Inbox}/>
       
 {/* un protected routes */}
+      <Route exact path="/" component={LogIn}/>
       <Route path="/createNewUser" component={CreateUser}/>
       <Route path="/about" component={About}/>
       <Route path="/forgotpassword" component={ForgotPassword}/>
-      <Router path="/congrats" component={Congrats}/>
     </Switch>
   )
 }
