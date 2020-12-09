@@ -3,12 +3,6 @@ import {RESET_FOOD_SEARCH} from './types'
 export const resetSearch = (boo) => {
   
   return {
-    type: RESET_FOOD_SEARCH,
-    payload: {
-
-        openFoodFinder: boo,
-        searchResults: []
-      
-    }
+    type: RESET_FOOD_SEARCH
   }
 }

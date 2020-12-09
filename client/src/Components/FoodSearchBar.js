@@ -32,7 +32,7 @@ const foodSearchBar = (props) => {
      </div>
      <TextField
         {...bindSearchWord}
-       placeholder="Find Food to Add"
+       placeholder="Search Foods"
        aria-lable="find food"
        id="searchWord"
        name="searchWord"

@@ -22,7 +22,7 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import Slide from '@material-ui/core/Slide';
 import FoodSearchBar from '../Containers/FoodSearchBar';
-import CloseSearch from './CloseSearch'
+import CloseIcon from '@material-ui/icons/Close';
 import './toolbar.css'
 
 library.add(faPlusCircle) 
@@ -94,7 +94,9 @@ const SearchPage = (props) => {
     <Dialog open={openFoodFinder} fullScreen >
     <AppBar className={classes.appBar}>
       <Toolbar>
-        <CloseSearch/>
+      <IconButton edge="start" color="inherit" onClick={() => openFoodSearch(false)} aria-label="close">
+       <CloseIcon />
+     </IconButton>
       </Toolbar>
     </AppBar>
     <FoodSearchBar/>
@@ -115,5 +117,5 @@ const SearchPage = (props) => {
     </div>
   )
 }
-
+//need to add an option to add manually at the bottom 
 export default SearchPage
