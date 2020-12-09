@@ -25,6 +25,7 @@ import Slide from '@material-ui/core/Slide';
 import FoodSearchBar from '../Containers/FoodSearchBar';
 import CloseIcon from '@material-ui/icons/Close';
 import AddToShoppingList from './AddToShoppingList'
+import ManualAdd from './ManualAdd'
 import './toolbar.css'
 
 library.add(faPlusCircle) 
@@ -157,6 +158,9 @@ const SearchPage = (props) => {
       <div/>}
 
     </List>
+
+    <ManualAdd/>
+
   </Dialog>
     </div>
   )
