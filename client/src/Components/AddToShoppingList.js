@@ -15,7 +15,7 @@ const AddToShoppingList = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('you want to add to shopping list', pass, listId, quantity, measurement, item , itemId)
-    addToShopList(pass.token, listId, (quantity<1 ? 1 : quantity), null, item, (itemId? itemId: null))
+    addToShopList(pass.token, listId, (quantity<1 ? 1 : quantity), (measurement ? measurement : null) , item, (itemId? itemId: null))
   }
 
   return (

@@ -99,7 +99,7 @@ const ManualAdd = () => {
           
       </FormControl>
       <div className={classes.button}>
-        <AddToShoppingList quantity={bindQuantity} item={bindItem} />
+        <AddToShoppingList quantity={bindQuantity} item={bindItem} measurement={null}/>
       </div>
     </Box>
   </Paper>
