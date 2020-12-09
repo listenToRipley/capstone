@@ -22,7 +22,6 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs } from '@fortawesome/free-solid-svg-icons';
 import MenuItem from '@material-ui/core/MenuItem'
 import SearchPage from '../Containers/SearchPage'
-import OpenFoodSearch from '../Containers/OpenFoodSearch'
 import './toolbar.css'
 
 

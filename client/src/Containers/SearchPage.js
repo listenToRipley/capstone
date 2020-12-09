@@ -2,8 +2,6 @@
 import {connect} from 'react-redux'
 import SearchPage from '../Components/SearchPage'
 import {openFoodSearch} from '../redux/actions/openFoodFinder'
-import {resetFoodSearch} from '../redux/actions/findFood'
-
 
 const mapStateToProps = (state) => {
   return {

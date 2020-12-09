@@ -5,7 +5,7 @@ let initialState = {...state}
 let searchResults = []
 
 export default function(state = [...initialState.searchResults], action) {
-  // console.log('tell me about the food state on reducer> ', state)
+  console.log('tell me about the food state on reducer> ', state)
   switch(action.type) {
     case FETCH_FOOD:
       return newState = action.payload.searchResults

@@ -4,9 +4,7 @@ export const openFoodSearch = (boo) => {
   return {
     type: OPEN_FOOD_FINDER,
     payload: {
-     
       openFoodFinder: boo
-      
     }
   }
 }
