@@ -16,7 +16,7 @@ currentUser.use('/:user/current', user)
 currentUser.use('/:user/merge', merge)
 currentUser.use('/:user/palList', palList)
 currentUser.use('/pantry', pantry)
-currentUser.use('/:user/shopList', shopList)
+currentUser.use('/shopList', shopList)
 currentUser.use('/admin', requests)
 currentUser.use('/util', util)
 

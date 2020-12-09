@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   console.log('you ready to dispatch in create user?')
   return {
-    addToShopList: (user,pass,listId, quantity, measurement, item, itemId) => dispatch(addToShopList(user, pass, listId, quantity, measurement, item, itemId))
+    addToShopList: (pass,listId, quantity, measurement, item, itemId) => dispatch(addToShopList(pass, listId, quantity, measurement, item, itemId))
   }
 }
 
