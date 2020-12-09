@@ -81,10 +81,10 @@ const SearchPage = (props) => {
   };
   
   return (
-    <Fragment>
+    <div>
     
     <Tooltip className="add" title="Add Item to your shopping list">
-      <IconButton aria-label="add item to shopping list"
+      <IconButton 
       onClick={() => openFoodSearch(true)}>
         <svg className="fas fa-plus-circle"></svg>
       </IconButton>
@@ -94,7 +94,9 @@ const SearchPage = (props) => {
     <Dialog open={openFoodFinder} fullScreen >
     <AppBar className={classes.appBar}>
       <Toolbar>
-      <IconButton edge="start" color="inherit" onClick={() => openFoodSearch(false)} aria-label="close">
+      <IconButton edge="start" color="inherit" onClick={() => openFoodSearch(false)} 
+
+      >
        <CloseIcon />
      </IconButton>
       </Toolbar>
@@ -114,7 +116,7 @@ const SearchPage = (props) => {
 
     </List>
   </Dialog>
-    </Fragment>
+    </div>
   )
 }
 //need to add an option to add manually at the bottom 

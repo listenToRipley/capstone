@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {useState} from 'react'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputBase from '@material-ui/core/InputBase';
@@ -18,25 +18,22 @@ const foodSearchBar = (props) => {
     if(e.key === 'Enter' || e.key==='Return') {
       console.log('search for :', bindSearchWord.find)
       findFood(bindSearchWord.value)
-      resetSearchWord('')
+      // resetSearchWord('')
     }
   }
 
   if(!open) return null
 
-  console.log('are you hitting?', bindSearchWord.value)
-
   return(
 
-    <Fragment className='searchbar'>
+    <div>
     <MenuItem className='search'>
-     <Fragment className='searchIcon'>
+     <div>
        <SearchIcon />
-     </Fragment>
+     </div>
      <TextField
         {...bindSearchWord}
        placeholder="Search Foods"
-       aria-lable="find food"
        id="searchWord"
        name="searchWord"
        type="text"
@@ -45,7 +42,7 @@ const foodSearchBar = (props) => {
        autoFocus
      />
     </MenuItem>
-   </Fragment>
+   </div>
 
   )
 }

@@ -16,7 +16,7 @@ export const findFood = (input)  => async dispatch => {
     let result = await res.json()
     console.log('the results is :', result)
       dispatch({ 
-          type: FETCH_FOOD,
+          type: FIND_FOOD,
           payload: {
             
             searchResults: [...result]
