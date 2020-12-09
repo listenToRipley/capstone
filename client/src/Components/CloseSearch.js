@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 const CloseSearch = (props) => {
   
   return (
-     <IconButton edge="start" color="inherit" onClick={props.resetSearch(false)} aria-label="close">
+     <IconButton edge="start" color="inherit" onClick={() => 'need to reset the search'} aria-label="close">
        <CloseIcon />
      </IconButton>
   )

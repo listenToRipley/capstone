@@ -28,11 +28,8 @@ export const findFood = (input)  => async dispatch => {
   }
 }
 
-export const resetFood = () => {
+export const resetFoodSearch = () => {
   return {
     type: RESET_FOOD_SEARCH,
-    payload: {
-      searchFood: []
-    }
   }
 }

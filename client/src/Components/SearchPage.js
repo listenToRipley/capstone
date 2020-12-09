@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,6 +10,7 @@ import List from '@material-ui/core/List';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -18,14 +19,13 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faCartArrowDown} from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import Slide from '@material-ui/core/Slide';
 import FoodSearchBar from '../Containers/FoodSearchBar';
 import CloseSearch from './CloseSearch'
-import AddFood from './AddFood'
 import './toolbar.css'
 
-library.add(faCartArrowDown) 
+library.add(faPlusCircle) 
 dom.watch()
 
 const useStyles = makeStyles((theme) => ({
@@ -71,24 +71,27 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchPage = (props) => {
   console.log('search page props',props)
-
-  const {searchResults} = props
+  const classes = useStyles();
+  const {searchResults, openFoodSearch, openFoodFinder} = props
 
   const [expanded, setExpanded] = useState(true)
-
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
-
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
   
   return (
-    <Dialog fullScreen TransitionComponent={Transition}>
+    <div>
+    
+    <Tooltip className="add" title="Add Item to your shopping list">
+      <IconButton aria-label="add item to shopping list"
+      onClick={() => openFoodSearch(true)}>
+        <svg className="fas fa-plus-circle"></svg>
+      </IconButton>
+    </Tooltip> 
+
+
+    <Dialog open={openFoodFinder} fullScreen >
     <AppBar className={classes.appBar}>
       <Toolbar>
         <CloseSearch/>
@@ -96,50 +99,20 @@ const SearchPage = (props) => {
     </AppBar>
     <FoodSearchBar/>
     <List>
-      <ListItem button>
-        <ListItemText primary="Phone ringtone" secondary="Titania" />
-      </ListItem>
 
-      {searchResults.map((item, id) => {
-      
-        <Card className={classes.resultCard}>
-        <CardMedia
-          className={classes.media}
-          image="/../../public/pantryImg.jpg"
-          title="Paella dish"
-        />
-        <CardContent>
-        <Typography
-        variant="body2" color="textSecondary" component="p"
-        >Food Title</Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent 
-          className="actionList">
-
-            <AddFood/>
-
-          </CardContent>
-        </Collapse>
-       </Card>
-      })
-
-      }
+      {searchResults.length <= 1  ? 
+      <div>
+          {
+            searchResults.map((item, id) => {
+              console.log('getting back in the map items ', item)
+            })
+          }
+      </div> : 
+      <div/>}
 
     </List>
   </Dialog>
+    </div>
   )
 }
 

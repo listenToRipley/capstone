@@ -1,5 +1,5 @@
 import React, {useEffect, useState}  from 'react';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { lighten, makeStyles, useTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx'
@@ -20,9 +20,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs } from '@fortawesome/free-solid-svg-icons';
-import { findShopList, getShopList } from '../redux/actions/userShopList';
 import MenuItem from '@material-ui/core/MenuItem'
-import SearchPage from './SearchPage'
+import SearchPage from '../Containers/SearchPage'
 import OpenFoodSearch from '../Containers/OpenFoodSearch'
 import './toolbar.css'
 
@@ -99,9 +98,6 @@ dom.watch()
           },
     }));
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const ShoppingList = (props) =>  {
 
@@ -203,7 +199,7 @@ const ShoppingList = (props) =>  {
   const openSearch = (e) => {
     e.preventDefault();
     console.log('you want to search for food')
-    props.openFoodSearch = true 
+    openFoodSearch(true)
   }
 
   const startShopping = (e) => {
@@ -212,18 +208,10 @@ const ShoppingList = (props) =>  {
     setShopping=true
   }
 
-  const doneShopping = (e) => {
-    e.preventDefault();
-    console.log('your done shopping, should get added to pantry now')
-    setShopping=false
-  }
-
   //food search page
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
-
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   if(call) {
     return (
@@ -236,7 +224,7 @@ const ShoppingList = (props) =>  {
           })}
             > 
             {selected.length > 0 ? (
-              <Typography className={classes.title} color="inherit" variant="subtitle1"     component="div">
+              <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
                 {selected.length} selected
               </Typography>
             ) : (
@@ -244,9 +232,8 @@ const ShoppingList = (props) =>  {
                 Your Shopping List 
               </Typography>
             )}
-               <OpenFoodSearch/>
-
-               {props.openFoodSearch===true ? <SearchPage/> : <div/>}
+              
+              <SearchPage/>
                
                {setShopping ? (
               <Tooltip title="Finished Shopping">
@@ -316,6 +303,7 @@ const ShoppingList = (props) =>  {
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
+                        itemId={row.entryId}
                         key={row.entryId}
                         selected={isItemSelected}
                       >

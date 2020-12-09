@@ -7,7 +7,7 @@ let reset = {
 }
 
 export default function(state = {...initialState}, actions){
-  console.log('what the payload look like?', state)
+  
   switch(actions.type) {
     case CREATE_NEW_USER: 
     let newState = [{...state.newUser}]

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import OpenFoodSearch from '../Components/OpenFoodSearch'
-import {openFoodFinder} from '../redux/actions/openFoodFinder'
+import {openFoodSearch} from '../redux/actions/openFoodFinder'
 
 const mapStateToProps = (state) => {
   return {

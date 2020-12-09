@@ -1,7 +1,6 @@
 import {CREATE_NEW_USER} from './types'
 
 export const createNewUser = (username, firstName, lastName, email, password, bMonth, bDay, bYear) => async dispatch => {
- console.log('values', username, firstName, lastName, email, password, bMonth, bDay, bYear)
 
  let sendUser =  JSON.stringify({
     "username": `${username}`,
