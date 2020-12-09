@@ -3,13 +3,6 @@ import {connect} from 'react-redux'
 import FoodSearchBar from '../Components/FoodSearchBar'
 import {findFood} from '../redux/actions/findFood'
 
-const mapStateToProps = state => {
-  console.log('are you getting the stateon find food? ', state)
-  return {
-    searchResults: state.searchResults
-  }
-}
-
 const mapStateToDispatch = (dispatch) => {
   console.log('what is the input you get for the search? ', dispatch)
   return {
@@ -17,4 +10,4 @@ const mapStateToDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapStateToDispatch)(FoodSearchBar)
+export default connect(null, mapStateToDispatch)(FoodSearchBar)

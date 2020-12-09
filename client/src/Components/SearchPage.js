@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
@@ -81,7 +81,7 @@ const SearchPage = (props) => {
   };
   
   return (
-    <div>
+    <Fragment>
     
     <Tooltip className="add" title="Add Item to your shopping list">
       <IconButton aria-label="add item to shopping list"
@@ -114,7 +114,7 @@ const SearchPage = (props) => {
 
     </List>
   </Dialog>
-    </div>
+    </Fragment>
   )
 }
 //need to add an option to add manually at the bottom 

@@ -1,4 +1,4 @@
-import {FETCH_FOOD} from './types'
+import {FIND_FOOD} from './types'
 
 export const findFood = (input)  => async dispatch => {
 

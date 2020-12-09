@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {useState} from 'react'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputBase from '@material-ui/core/InputBase';
@@ -28,11 +28,11 @@ const foodSearchBar = (props) => {
 
   return(
 
-    <div className='searchbar'>
+    <Fragment className='searchbar'>
     <MenuItem className='search'>
-     <div className='searchIcon'>
+     <Fragment className='searchIcon'>
        <SearchIcon />
-     </div>
+     </Fragment>
      <TextField
         {...bindSearchWord}
        placeholder="Search Foods"
@@ -45,7 +45,7 @@ const foodSearchBar = (props) => {
        autoFocus
      />
     </MenuItem>
-   </div>
+   </Fragment>
 
   )
 }
