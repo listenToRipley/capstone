@@ -67,10 +67,10 @@ const Home = (props) => {
         >
           Your Shopping List
         </ListItem>
-          {/* <ShoppingList/> */}
+       
         </Card>
 
-        <Card className={classes.cards} >
+        {/* <Card className={classes.cards} >
           <ListItem 
               button 
               component={Link}
@@ -80,7 +80,7 @@ const Home = (props) => {
                 >
                 Your Pantry
           </ListItem>
-          {/* <Pantry/> */}
+     
         </Card>
 
         <Card className={classes.cards} >
@@ -92,7 +92,7 @@ const Home = (props) => {
             > 
             Your Pal's List
           </ListItem>
-          {/* <PalList/> */}
+      
         </Card>
 
         <Card className={classes.cards} >
@@ -105,9 +105,9 @@ const Home = (props) => {
             Your Profile
           </ListItem>
           <Paper className={classes.paper}>
-            {/* <UserProfile/> */}
+         
           </Paper>
-        </Card>
+        </Card> */}
 
         </Grid>
       </Grid>
