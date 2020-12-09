@@ -31,7 +31,7 @@ export const createNewUser = (username, firstName, lastName, email, password, bM
           }
       })
     } catch (e) {
-      return 'what the error the user details? ', {e}
+      return 'what the error the user creation? ', {e}
   }
 
 }

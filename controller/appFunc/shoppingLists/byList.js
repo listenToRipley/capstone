@@ -50,6 +50,8 @@ const addToShopList = (req, res) => {
   const { quantity, measure, item, spoon} = req.body
   const {listId} = req.params
 
+  console.log('input looks okay on add to shop list>', req.body)
+
   let sql = 'INSERT INTO shoppingLists (shopList, quantity, measId, item, spoonId) VALUES (?, ?, ?, ?, ?) '
   
   sql = mysql.format(sql, [listId, quantity, measure, item, spoon])
@@ -59,8 +61,6 @@ const addToShopList = (req, res) => {
   })
 
 }
-
-//PUT
 
 module.exports = {
   shopListCount,

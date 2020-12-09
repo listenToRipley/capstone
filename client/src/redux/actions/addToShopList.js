@@ -4,6 +4,8 @@ export const addToShopList = (user,pass,listId, quantity, measurement, item, ite
   let path = `/postLogin/${user}/shopList/addToList/${listId}`
   let intake = pass.token
 
+  console.log('the path on add item to shop?', path)
+
   let createEntry = JSON.stringify({
     "quantity": quantity, 
     "measure":measurement, 
@@ -22,14 +24,15 @@ export const addToShopList = (user,pass,listId, quantity, measurement, item, ite
       }
       )
       let getResult = await res.json()
+      console.log('get results on add item? ', getResult)
       let result = {...getResult}
       console.log('view the results from call', result)
       dispatch({
         type: ADD_ITEM_TO_SHOPPING_LIST,
-          payload: result
+          payload: result//should return the id of the new item added 
       })
     } catch (e) {
-      return 'what the error the user details? ', {e}
+      return 'what the error the add to shop list? ', {e}
   }
 
 }
