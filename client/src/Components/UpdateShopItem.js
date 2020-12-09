@@ -3,10 +3,11 @@ import IconButton from '@material-ui/core/IconButton';
 import UpdateIcon from '@material-ui/icons/Update';
 
 const UpdateShopItem = (props) => {
-  console.log('see the props for update ', props)
+  const {action} = props
 
   const handleUpdateItem = () => {
     console.log('update this item!', props.action)
+    props.upShopItem(action)
   }
 
   return (

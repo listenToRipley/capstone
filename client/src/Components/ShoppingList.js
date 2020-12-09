@@ -19,8 +19,8 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs, faHandHoldingWater } from '@fortawesome/free-solid-svg-icons';
 import MenuItem from '@material-ui/core/MenuItem';
 import SearchPage from '../Containers/SearchPage';
-import DeleteShopItem from './DeleteShopItem';
-import UpdateShopItem from './UpdateShopItem';
+import DeleteShopItem from '../Containers/DeleteShopItem';
+import UpdateShopItem from '../Containers/UpdateShopItem';
 import './toolbar.css'
 
 

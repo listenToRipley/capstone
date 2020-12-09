@@ -1,17 +1,17 @@
 import {connect} from 'react-redux'
-import Logout from '../Components/Logout'
-import {deleteShopItem} from '../redux/actions/logout'
+import DeleteShopItem from '../Components/DeleteShopItem'
+import {removeShopItem} from '../redux/actions/deleteShopItem'
 
 const mapStateToProps = (state) => {
   return {
-    state: state
+    userShop  : state.userShopList
   }
 }
 
 const mapStateToDispatch = (dispatch) => {
   return {
-    logout: (b00) => dispatch(logout(b00))
+    removeShopItem: (entryId) => dispatch(removeShopItem(entryId))
   }
 }
 
-export default connect(mapStateToProps, mapStateToDispatch)(Logout)
+export default connect(mapStateToProps, mapStateToDispatch)(DeleteShopItem)

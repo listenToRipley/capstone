@@ -1,6 +1,6 @@
 import {UPDATE_ITEM_ON_SHOPPING_LIST} from './types'
 
-export const upItemShopList = (entryId, quantity, item, spoonId) => {
+export const upShopItem = (entryId, quantity, item, spoonId) => async dispatch =>{
 
 let path = `/postLogin/${user}/shopList/upItem/${entryId}`
 let intake = pass.token

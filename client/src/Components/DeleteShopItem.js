@@ -3,10 +3,12 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 const DeleteShopListItem = (props) => {
-  console.log('see the props for delete ', props)
+  console.log('see the props for delete ', props.action)
+  const {action} = props
 
   const handleDeleteItem = () => {
-    console.log('delete this item!', props.action)
+    console.log('delete this item!', action)
+    props.removeShopItem(action)
   }
 
   return (

@@ -1,6 +1,6 @@
 import {REMOVE_FROM_SHOPPING_LIST} from './types'
 
-export const removeItemShopList = (entryId) => {
+export const removeShopItem = (entryId) => async dispatch =>{
 
 let path = `/postLogin/${user}/shopList/remove/${entryId}`
 let intake = pass.token
