@@ -7,6 +7,7 @@ import userShopList from './userShopList'
 import createNewUser from './createNewUser'
 import openFoodFinder from './openFoodFinder'
 import findFood from './findFood'
+import contentShifter from './contentShifter'
 import { LOGOUT } from '../actions/types'
 
 let reset = {
@@ -37,6 +38,7 @@ let reset = {
   }
 
 const allReducers = combineReducers({
+    openDrawer: contentShifter,
     user: loginRed,
     userDetails: nav,
     userShopList: userShopList,

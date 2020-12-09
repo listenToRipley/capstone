@@ -26,6 +26,7 @@ import { Link } from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
 import Logout from '../Containers/Logout'
+import {drawerState} from '../redux/actions/drawerState'
 import cookie from 'cookie'
 
 //svg icons 
@@ -85,27 +86,11 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
   }
 }));
 
 const NavBar = (props) => {
-
+  console.log('props on nav', props)
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -123,6 +108,7 @@ const NavBar = (props) => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+
   };
 
   useEffect( () => {
@@ -134,6 +120,12 @@ const NavBar = (props) => {
     } else if (validation === false) {
       //need to add trigger of some time to reset the store to clear
       history.push('/')
+    }
+
+    if(setOpen) {
+      drawerState(true)
+    } else {
+      drawerState(false)
     }
 
   })
@@ -151,6 +143,7 @@ const NavBar = (props) => {
       >
         <Toolbar position="fixed">
           <IconButton
+            position="sticky"
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -162,29 +155,16 @@ const NavBar = (props) => {
           <Typography className={classes.title} variant="h6" noWrap>
             Pantry Pals
           </Typography>
-          {/* HID THIS FOR NOW ~ might want this to be only post login option  
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
         </Toolbar>
       </AppBar>
       {validation === true ? 
       <Drawer
         className={classes.drawer}
         variant="persistent"
+        position="absolute"
         anchor="left"
-        variant="persistent"
         open={open}
+        onChange={()=> drawerState()}
         classes={{
           paper: classes.drawerPaper
         }}
@@ -297,6 +277,7 @@ const NavBar = (props) => {
       <div>
       <Drawer
         className={classes.drawer}
+        position="absolute"
         variant="persistent"
         anchor="left"
         open={open}
@@ -305,7 +286,7 @@ const NavBar = (props) => {
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} >
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>

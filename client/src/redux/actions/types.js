@@ -1,3 +1,5 @@
+export const DRAWER_STATE = 'DRAWER_STATE'
+
 export const CREATE_NEW_USER = 'CREATE_NEW_USER'
 export const LOGIN = 'LOGIN' 
 export const LOGOUT = 'LOGOUT'

@@ -7,6 +7,7 @@ import NavBar from './Containers/NavBar';
 import {Provider } from 'react-redux'; 
 import store from './redux/store';
 window.React2 = require('react');
+// import ContentShifter from './Containers/ContentShifter'
 
 // console.log(window.React1 === window.React2);
 
@@ -17,8 +18,9 @@ const App = () => {
     <Provider store={store}>
       <CssBaseline>
          <BrowserRouter>
+         {/* <ContentShifter/> */}
           <NavBar />
-           <Router/>
+            <Router/>
         </BrowserRouter>
       </CssBaseline>
     </Provider>

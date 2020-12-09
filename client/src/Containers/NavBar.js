@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     userDetails: state.userDetails,
+    openDrawer: state.openDrawer
   }
 }
 
@@ -15,5 +16,6 @@ const mapStateToDispatch = (dispatch) => {
     getDetails: (intake, user) => dispatch(getDetails(intake, user))
   }
 }
+
 
 export default connect(mapStateToProps, mapStateToDispatch)(NavBar)

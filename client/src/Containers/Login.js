@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
   
   return {
     user: state.user,
-    userInfo: state.userInfo
+    userInfo: state.userInfo,
+    openDrawer: state.openDrawer
   }
 }
 

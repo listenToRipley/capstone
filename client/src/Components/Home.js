@@ -40,7 +40,7 @@ const Home = (props) => {
   const {shopListId, palListId, pantryId} = props.userDetails
 
   return (
-  <div>
+  <Paper>
    <Box
     className={classes.root}
       >
@@ -83,36 +83,12 @@ const Home = (props) => {
      
         </Card>
 
-        <Card className={classes.cards} >
-        <ListItem 
-            button 
-            component={Link}
-            to='/palsList'
-            aria-label='pal list'
-            > 
-            Your Pal's List
-          </ListItem>
-      
-        </Card>
-
-        <Card className={classes.cards} >
-        <ListItem 
-            button 
-            component={Link}
-            to='/userProfile'
-            aria-label='pal list'
-            > 
-            Your Profile
-          </ListItem>
-          <Paper className={classes.paper}>
-         
-          </Paper>
-        </Card> */}
+*/}
 
         </Grid>
       </Grid>
    </Box>
-  </div>
+  </Paper>
   )
 
 }

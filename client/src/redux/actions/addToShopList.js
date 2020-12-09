@@ -2,8 +2,6 @@ import {ADD_ITEM_TO_SHOPPING_LIST} from './types'
 
 export const addToShopList = (user,pass,listId, quantity, item, itemId) => async dispatch => {
 
-  console.log('the input: ', user,pass,listId, quantity, item, itemId)
-
   let path = `/postLogin/${user}/shopList/addToList/${listId}`
   let intake = pass.token
 

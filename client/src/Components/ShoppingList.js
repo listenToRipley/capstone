@@ -183,7 +183,9 @@ const ShoppingList = (props) =>  {
 
   if(call) {
     return (
-      <div className={classes.root}>
+      <div 
+      position="static"
+      className={classes.root}>
         <Paper className={classes.paper}>
 
           <Toolbar
