@@ -1,11 +1,13 @@
 import {connect} from 'react-redux';
 import AddToShoppingList from '../Components/AddToShoppingList';
-// import {} from '../redux/actions/'
+import {addToShopList} from '../redux/actions/addToShopList'
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
-    userDetails: state.userDetails
+    user:state.user,
+    userDetails: state.userDetails,
+    userShopList: state.userShopList,
+    searchResults: state.searchResults
   }
 }
 
@@ -16,4 +18,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateUser)
+export default connect(mapStateToProps, mapDispatchToProps)(AddToShoppingList)

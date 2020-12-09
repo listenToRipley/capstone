@@ -1,4 +1,4 @@
-import {UPDATE_ITEM_ON_SHOPPING_LIST, REMOVE_FROM_SHOPPING_LIST} from '../actions/types'
+import {UPDATE_ITEM_ON_SHOPPING_LIST, REMOVE_FROM_SHOPPING_LIST} from '../types'
 
 export const upItemShopList = (entryId, quantity, measure, item, spoonId) => {
   let path =``
