@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField'
 import { FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import {useInput} from '../Hooks/inputHook'
-import AddToShoppingList from './AddToShoppingList'
+import AddToShoppingList from '../Containers/AddToShoppingList'
 
 const useStyles = makeStyles((theme) => ({
   root: {
