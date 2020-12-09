@@ -65,7 +65,7 @@ const ManualAdd = () => {
             name="quantity"
             type="number"
             min="1"
-            placeholder={quantity}
+            placeholder="1"
             autoFocus
             className={classes.fields}
             aria-label="item you want to buy"
@@ -99,7 +99,7 @@ const ManualAdd = () => {
           
       </FormControl>
       <div className={classes.button}>
-        <AddToShoppingList quantity={bindQuantity} item={bindItem} measurement={null}/>
+        <AddToShoppingList quantity={bindQuantity} item={bindItem} itemId={0}/>
       </div>
     </Box>
   </Paper>

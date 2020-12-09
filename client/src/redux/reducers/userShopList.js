@@ -9,7 +9,7 @@ export default function(state = {...initialState.userShopList}, action) {
     case YOUR_SHOPPING_LIST:
     return action.payload.userShopList
     case ADD_ITEM_TO_SHOPPING_LIST: 
-    return action.payload.userShopList //the result of this action should be an amended shop list 
+    return state //the result of this action should be an amended shop list 
     default: return state
   }
 }

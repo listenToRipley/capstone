@@ -1,14 +1,17 @@
 import {ADD_ITEM_TO_SHOPPING_LIST} from './types'
 
-export const addToShopList = (user,pass,listId, quantity, measure, item, itemId) => async dispatch => {
-  let path = `/postLogin/shopList/${user}/addToList/${listId}`
+export const addToShopList = (user,pass,listId, quantity, item, itemId) => async dispatch => {
+
+  console.log('the input: ', user,pass,listId, quantity, item, itemId)
+
+  let path = `/postLogin/${user}/shopList/addToList/${listId}`
   let intake = pass.token
 
   console.log('the path on add item to shop?', path)
 
   let createEntry = JSON.stringify({
     "quantity": quantity, 
-    "measure":measure, 
+    "measure":null, 
     "item":item, 
     "spoon": itemId
   })
@@ -29,7 +32,9 @@ export const addToShopList = (user,pass,listId, quantity, measure, item, itemId)
       console.log('view the results from call', result)
       dispatch({
         type: ADD_ITEM_TO_SHOPPING_LIST,
-          payload: result//should return the id of the new item added 
+          payload: {
+            openFoodFinder: false
+          }
       })
     } catch (e) {
       return 'what the error the add to shop list? ', {e}

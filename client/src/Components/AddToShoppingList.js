@@ -11,12 +11,22 @@ const AddToShoppingList = (props) => {
   console.log('props on add item', props)
   const {pass} = props.user
   const {username} = props.user
-  const {listId} = props.userDetails
+  const {shopListId} = props.userDetails
+  const {item} = props
+  const {quantity} = props
+  const {itemId} = props
+
+  console.log('username', username)
+  console.log('token : ', pass)
+  console.log('list id : , ', shopListId)
+  console.log('quantity, ', quantity.value)
+  console.log('items, ', item.value)
+  console.log('item id : ', itemId)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('you want to add to shopping list', username, pass, listId, quantity, measurement, item , itemId)
-    addToShopList(username,pass.token, listId, (quantity<1 ? 1 : quantity), (measurement ? measurement : null) , item, (itemId? itemId: null))
+    
+    props.addToShopList(username,pass, shopListId, (quantity.value<1 ? 1 : quantity.value), item.value, (itemId!==0? itemId: null))
   }
 
   return (
