@@ -7,7 +7,6 @@ import userShopList from './userShopList'
 import createNewUser from './createNewUser'
 import openFoodFinder from './openFoodFinder'
 import findFood from './findFood'
-import resetSearch from './resetSearch'
 import { LOGOUT } from '../actions/types'
 
 let reset = {
@@ -44,7 +43,7 @@ const allReducers = combineReducers({
     newUser: createNewUser,
     openFoodFinder: openFoodFinder,
     searchResults: findFood,
-    resetSearch: resetSearch
+
 })
 
 const root = (state, action) => {

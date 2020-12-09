@@ -5,17 +5,20 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import {useInput} from '../Hooks/inputHook';
 import { TextField } from '@material-ui/core';
+import findFood from '../redux/reducers/findFood';
 
 const foodSearchBar = (props) => {
   console.log('props on search bar ? ', props)
 
-  let {value:searchWord, bind:bindSearchWord, reset:resetSearch} = useInput('')
+  let {value:searchWord, bind:bindSearchWord, reset:resetSearchWord} = useInput('')
 
 
   const handleSearch = (e) => {
     //need to map for search result using food. 
     if(e.key === 'Enter' || e.key==='Return') {
-      console.log('you pressed enter or return!')
+      console.log('search for :', bindSearchWord.find)
+      findFood(bindSearchWord.value)
+      resetSearchWord('')
     }
   }
 
