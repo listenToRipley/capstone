@@ -1,7 +1,5 @@
 import React, {useEffect, useState}  from 'react';
 import { lighten, makeStyles, useTheme } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -19,9 +17,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs, faHandHoldingWater } from '@fortawesome/free-solid-svg-icons';
-import MenuItem from '@material-ui/core/MenuItem'
-import SearchPage from '../Containers/SearchPage'
-import DeleteShopListItem from './DeleteShopItem'
+import MenuItem from '@material-ui/core/MenuItem';
+import SearchPage from '../Containers/SearchPage';
+import DeleteShopItem from './DeleteShopItem';
+import UpdateShopItem from './UpdateShopItem';
 import './toolbar.css'
 
 
@@ -166,7 +165,7 @@ const ShoppingList = (props) =>  {
   const headCells = [
     { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
     { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
-    { id: 'unit', numeric: true, disablePadding: false, label: 'Unit' },
+    // { id: 'unit', numeric: true, disablePadding: false, label: 'Unit' },
     { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
   ]
 
@@ -277,10 +276,11 @@ const ShoppingList = (props) =>  {
                         <TableCell component="th" id={row.entryId} scope="row" align="center">
                           {null ? 1 : row.quantity}
                         </TableCell>
-                        <TableCell align="left">{row.item}</TableCell>
-                        <TableCell align="right">{row.measId}</TableCell>
-                        <TableCell align="left">{row.actions}
-                        <DeleteShopListItem action={row.entryId}/>
+                        <TableCell align="center">{row.item}</TableCell>
+                        {/* <TableCell align="right">{row.measId}</TableCell> */}
+                        <TableCell align="center">{row.actions}
+                        <DeleteShopItem action={row.entryId}/>
+                        <UpdateShopItem action={row.entryId}/>
                           </TableCell>
                       </TableRow>
                     )

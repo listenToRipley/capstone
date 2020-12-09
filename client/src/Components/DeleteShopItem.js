@@ -13,7 +13,7 @@ const DeleteShopListItem = (props) => {
     <IconButton
     onClick={handleDeleteItem}
     aria-label='delete'
-    aria-controls='delete-business'
+    aria-controls='delete-item'
     aria-haspopup='false' >
       <DeleteForeverIcon />
     </IconButton>
