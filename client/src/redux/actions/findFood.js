@@ -15,11 +15,13 @@ export const findFood = (input)  => async dispatch => {
     })
     let result = await res.json()
     console.log('the results is :', result)
+    let product = result.product 
+    console.log('the product back is', product)
       dispatch({ 
           type: FIND_FOOD,
           payload: {
             
-            searchResults: [...result]
+            searchResults: [...product]
   
           }
        })

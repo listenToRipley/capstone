@@ -5,7 +5,6 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import {useInput} from '../Hooks/inputHook';
 import { TextField } from '@material-ui/core';
-import findFood from '../redux/reducers/findFood';
 
 const foodSearchBar = (props) => {
   console.log('props on search bar ? ', props)

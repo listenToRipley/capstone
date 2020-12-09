@@ -6,7 +6,7 @@ import { faCartArrowDown} from '@fortawesome/free-solid-svg-icons';
 library.add(faCartArrowDown) 
 dom.watch()
 
-const SearchPage = (props) => {
+const StartShopping = (props) => {
 
   const handleAddToList = () => {
     console.log('set this to close the page and reset the search bar and array')
@@ -23,4 +23,4 @@ const SearchPage = (props) => {
   )
 }
 
-export default SearchPage
+export default StartShopping

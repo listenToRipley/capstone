@@ -12,6 +12,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -19,10 +20,11 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import { faOtter, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import Slide from '@material-ui/core/Slide';
 import FoodSearchBar from '../Containers/FoodSearchBar';
 import CloseIcon from '@material-ui/icons/Close';
+import AddToShoppingList from './AddToShoppingList'
 import './toolbar.css'
 
 library.add(faPlusCircle) 
@@ -105,13 +107,53 @@ const SearchPage = (props) => {
     <List>
 
       {searchResults.length <= 1  ? 
-      <div>
+      <Grid
+        container
+        component="main" 
+        direction="row"
+        justify="center"
+        alignItems="center"
+        spacing={2}>
           {
-            searchResults.map((item, id) => {
-              console.log('getting back in the map items ', item)
-            })
+           searchResults.map((item, index) => (
+          <Grid item xs={10} sm={10} md={9} elevation={10}
+          key={item.id}
+
+          >
+            <Card className={classes.resultCard}>
+            <CardMedia
+              className={classes.media}
+              image={item.image}
+              title={item.title}
+            />
+            <CardContent>
+            <Typography
+            variant="body2" color="textSecondary" component="p"
+            >{item.title}</Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton
+                className={clsx(classes.expand, {
+                  [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </IconButton>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <CardContent 
+              className="actionList">
+              <AddToShoppingList item={item}/>
+              </CardContent>
+            </Collapse>
+           </Card>
+        </Grid>
+           ))
           }
-      </div> : 
+      </Grid> : 
       <div/>}
 
     </List>
