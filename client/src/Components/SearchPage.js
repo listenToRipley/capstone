@@ -84,7 +84,7 @@ const SearchPage = (props) => {
   };
   
   return (
-    <div>
+    <div >
     
     <Tooltip className="add" title="Add Item to your shopping list">
       <IconButton 

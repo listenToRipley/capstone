@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     margin: '5%',
     paddingLeft: '5%',
     width: '90%',
-    justifyContent: 'bottom'
   },
   box: {
     width: '100%',
@@ -37,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   button: {
-    margin: '2%'
+    width: '100%',
+    margin: '4%',
+    paddingLeft: '25%'
   }
 }));
 
