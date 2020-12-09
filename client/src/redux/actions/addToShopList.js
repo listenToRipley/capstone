@@ -31,7 +31,15 @@ export const addToShopList = (user,pass,listId, quantity, item, itemId) => async
       dispatch({
         type: ADD_ITEM_TO_SHOPPING_LIST,
           payload: {
-            openFoodFinder: false
+            newEntry: {
+              
+              "quantity": quantity, 
+              "measure":null, 
+              "item":item, 
+              "spoon": itemId,
+              "itemId": result
+              
+            }
           }
       })
     } catch (e) {

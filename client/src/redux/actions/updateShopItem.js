@@ -5,6 +5,14 @@ export const upItemShopList = (entryId, quantity, measure, item, spoonId) => {
 
   return {
     type: UPDATE_ITEM_ON_SHOPPING_LIST,
-    payload: input //item id, possibly: 
+    payload: {
+      updatedEntry: {
+        "quantity": quantity, 
+        "measure":null, 
+        "item":item, 
+        "spoon": itemId,
+        "entryId": entryId
+      }
+    }
   }
 }

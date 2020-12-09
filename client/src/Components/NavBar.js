@@ -104,6 +104,7 @@ const NavBar = (props) => {
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    props.openDrawer=true 
   }; //need to add something for when this is open, make the view of the component adjusts 
 
   const handleDrawerClose = () => {
