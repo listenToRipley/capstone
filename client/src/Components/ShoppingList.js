@@ -104,6 +104,9 @@ const ShoppingList = (props) =>  {
   const {call} = props.userShopList
   const {token} = props.user.pass
   const {userShopList} = props
+  const {list} = props.userShopList
+
+  const lLength = list.length 
 
   const classes = useStyles();
   const [order, setOrder] = useState('asc');
@@ -112,6 +115,8 @@ const ShoppingList = (props) =>  {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const {shopping, setShopping} = useState(false)
+  const {isSelected, setIsSelected} = useState(0)
+  const {numSelected , setNumSelected } = useState(0)
 
   useEffect( () => {
     if (call===false) {
@@ -122,59 +127,9 @@ const ShoppingList = (props) =>  {
   //click handlers 
   const handleClick = (e, name) => {
     e.preventDefault();
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-      console.log('click', item)
+      console.log('checked')
     }
 
-    setSelected(newSelected);
-  };
-
-  const isSelected = (name) => selected.indexOf(name) !== -1;
-
-  //page handlers
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-    console.log('new page', newPage)
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-    console.log('set pages?', setPage(0))
-  };
-
-  const getComparator =(order, orderBy) => {
-    return order === 'desc'
-      ? (a, b) => descendingComparator(a, b, orderBy)
-      : (a, b) => -descendingComparator(a, b, orderBy);
-  }
-  
-  
-  const stableSort = (array, comparator) =>{
-    const stabilizedThis = array.map((el, index) => [el, index]);
-    stabilizedThis.sort((a, b) => {
-      const order = comparator(a[0], b[0]);
-      if (order !== 0) return order;
-      return a[1] - b[1];
-    });
-    return stabilizedThis.map((el) => el[0]);
-  }
-
-
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, userShopList.list.length - page * rowsPerPage);
 
   //header sorting 
   const headCells = [
@@ -184,27 +139,16 @@ const ShoppingList = (props) =>  {
     { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
   ]
 
-  const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property);
-  };
-
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
-
   //tool bar
   const openSearch = (e) => {
     e.preventDefault();
-    console.log('you want to search for food')
     openFoodSearch(true)
   }
 
   const startShopping = (e) => {
     e.preventDefault();
     console.log('so you want to start shopping')
-    setShopping=true
+    setShopping(true)
   }
 
   //food search page
@@ -237,7 +181,7 @@ const ShoppingList = (props) =>  {
                {setShopping ? (
               <Tooltip title="Finished Shopping">
                 <IconButton aria-label="finish shopping"
-                onClick={doneShopping}>
+                onClick={() => { console.log('you should had these items to the pantry')}}>
                 <svg className="fas fa-cart-arrow-down"/> 
                 </IconButton>
               </Tooltip>
@@ -261,27 +205,21 @@ const ShoppingList = (props) =>  {
                 <TableHead>
                   <TableRow>
 
+                  <TableCell padding="checkbox">
+                      <Checkbox
+                      checked={() => console.log('what is this doing? ')}
+                      onChange={() => console.log('you the list count')}
+                      inputProps={{ 'aria-label': 'select all items on shopping list' }}
+                    />
+                  </TableCell>
+
                     {headCells.map((headCell) => (
                       <TableCell
                         key={headCell.id}
-                        align={headCell.numeric ? 'center' : 'left'}
-                        padding={headCell.disablePadding ? 'none' : 'default'}
+                        align={'center'}
                         /* We don't really need sorting on update and delete, we should change that  */
-                        sortDirection={orderBy === headCell.id ? order : false}
-                      >
-                        <TableSortLabel
-                          active={orderBy === headCell.id}
-                          direction={orderBy === headCell.id ? order : 'asc'}
-                          onClick={createSortHandler(headCell.id)}
-                        >
-                          {headCell.label}
-                          {orderBy === headCell.id ? (
-                            <span className={classes.visuallyHidden}>
-                              {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                            </span>
-                          ) : null}
 
-                        </TableSortLabel>
+                      >
                       </TableCell>
                     ))}
                  </TableRow>
@@ -292,25 +230,23 @@ const ShoppingList = (props) =>  {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                    */}
                   {userShopList.list.map((row, index) => {
-                    const isItemSelected = isSelected(row.entryId);
-                    const labelId = `check box${index}`;
-                      console.log('is item selected? ', isItemSelected)
+                    {/* const isItemSelected = setIsSelected(row.entryId); */}
+                    const labelId = `check box${row.entryId}`;
+                   
                     return (
                       <TableRow
                         hover
-                        onClick={(e) => handleClick(e, userShopList.list.entryId)}
+                        onClick={(e) => console.log(`you selected ${row.entryId}, do something with it`)}
                         role="checkbox"
-                        aria-checked={isItemSelected}
-                        tabIndex={-1}
                         itemId={row.entryId}
                         key={row.entryId}
-                        selected={isItemSelected}
+                        // selected={isItemSelected}
                       >
                         <TableCell padding="checkbox">
                           <Checkbox
                             padding="10"
-                            checked={isItemSelected}
-                            // inputProps={{ 'list item number ': labelId }}
+                            // checked={isItemSelected}
+                            inputProps={{ 'list item number ': labelId }}
                           />
                         </TableCell>
                         <TableCell component="th" id={labelId} scope="row" align="center">
@@ -328,15 +264,7 @@ const ShoppingList = (props) =>  {
               </TableBody>
             </Table>
           </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 50]}
-            component="div"
-            count={userShopList.list.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
-          />
+
         </Paper>
       </div>
     );
