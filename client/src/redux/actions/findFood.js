@@ -10,7 +10,7 @@ export const findFood = (input)  => async dispatch => {
     let res = await fetch(path, {
       method: 'GET',
       header: {
-
+        Accept: "application/json", "Content-Type": "application/json"
       }
     })
     let result = await res.json()
