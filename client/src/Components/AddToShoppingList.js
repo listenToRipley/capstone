@@ -9,9 +9,14 @@ dom.watch()
 const AddToShoppingList = (props) => {
 
   console.log('props on add item', props)
+  const {username} = props.user
+  const {pass} = props.user
+  const {listId} = props.userDetails
 
-  const handleSubmit = () => {
-    console.log('you want to add to shopping list')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('you want to add to shopping list', username, pass, listId, quantity, measurement, item , itemId)
+    addToShopList(username, pass.token, listId, (quantity<1 ? 1 : quantity), null, item, (itemId? null : itemId))
   }
 
   return (
