@@ -19,7 +19,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs, faHandHoldingWater } from '@fortawesome/free-solid-svg-icons';
 import MenuItem from '@material-ui/core/MenuItem'
 import SearchPage from '../Containers/SearchPage'
 import './toolbar.css'
@@ -110,8 +110,9 @@ const ShoppingList = (props) =>  {
 
   const classes = useStyles();
   const {shopping, setShopping} = useState(false)
-  const [selected, setSelected] = useState([]);
+  const [holding, setHolding] = useState([]);
   const {numSelected , setNumSelected } = useState(0)
+  const {selected, setSelected} = useState(0)
   const {checked, setChecked} = useState(false)
 
   useEffect( () => {
@@ -121,21 +122,45 @@ const ShoppingList = (props) =>  {
   })
 
   //click handlers 
-  const handleClick = (e, name) => {
+  const handleCheck = (e) => {
     e.preventDefault();
-      console.log('checked', name)
-    }
-
-  const handleCheckUpdate = (e, item, status) => {
-    checked=!status
-    console.log('you want to had the item to the hold list it check and remove if un checked', item)
-    if(status) {
-      setSelected.push(item)
-    } else {
-      console.log('remove item from selected list ')
-    }
+    let check = e.target.checked
+    let item = e.target.value
+    check? false : true
+    console.log('checked for singles', check, ' item', e.target.value)
+    
+      // if(check) {
+      //   setHolding([...setHolding, item])
+      // } else {
+      //   let finder = setHolding.indexOf(item)
+      //   if (finder) {
+      //     setHolding([...setHolding.splice(1,finder)])
+      //   }
+    // }
   }
 
+  // const handleSelected = (e) => {
+  //   e.preventDefault()
+  //   // let item = e.target.value
+  //   // setSelected(item)
+  // }
+
+  const handleSelectAll =(e) => {
+    // e.preventDefault()
+    let check = e.target.checked
+        check? false : true
+        console.log('checked event',e.target.checked)
+        
+          if(check) {
+            console.log('add all items entryIds to is selected')
+            // list.forEach((item) => { setHolding(item)})
+            // setNumSelected=lLength
+          } else {
+            console.log('return the state to original')
+            // setHolding('')
+            // setNumSelected=0
+          }
+  }
 
   //header sorting 
   const headCells = [
@@ -164,12 +189,12 @@ const ShoppingList = (props) =>  {
 
           <Toolbar
             className={clsx(classes.toolbar, {
-            [classes.highlight]: selected.length > 0,
+            [classes.highlight]: setHolding.length-1 > 0,
           })}
             > 
-            {selected.length > 0 ? (
+            {setHolding.length-1 > 0 ? (
               <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-                {selected.length} selected
+                {setHolding.length-1} selected
               </Typography>
             ) : (
               <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
@@ -208,8 +233,8 @@ const ShoppingList = (props) =>  {
 
                   <TableCell padding="checkbox">
                       <Checkbox
-                      checked={setNumSelected<=lLength}
-                      onChange={() => console.log('you the list count')}
+                       checked={checked}
+                      onClick={handleSelectAll}
                       inputProps={{ 'aria-label': 'select all items on shopping list' }}
                     />
                   </TableCell>
@@ -236,7 +261,6 @@ const ShoppingList = (props) =>  {
                     return (
                       <TableRow
                         hover
-                        onClick={() => console.log('should be the opposite of what is currently is and added it or remove it to the hold list')}
                         role="checkbox"
                         itemId={`${row.entryId} is selected`}
                         key={row.entryId}
@@ -246,7 +270,8 @@ const ShoppingList = (props) =>  {
                             padding="10"
                             checked={checked}
                             inputProps={{ 'list item number ': row.entryId }}
-                            onChange={handleCheckUpdate(row.entryId, checked)}
+                            onChange={handleCheck}
+                            // onClick={handleSelected}
                           />
                         </TableCell>
                         <TableCell component="th" id={row.entryId} scope="row" align="center">
