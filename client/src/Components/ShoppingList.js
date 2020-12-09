@@ -17,11 +17,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import Actions from './ShopActions'
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faCartArrowDown, faPlusCircle, faCogs, faHandHoldingWater } from '@fortawesome/free-solid-svg-icons';
 import MenuItem from '@material-ui/core/MenuItem'
 import SearchPage from '../Containers/SearchPage'
+import DeleteShopListItem from './DeleteShopItem'
 import './toolbar.css'
 
 
@@ -280,7 +280,7 @@ const ShoppingList = (props) =>  {
                         <TableCell align="left">{row.item}</TableCell>
                         <TableCell align="right">{row.measId}</TableCell>
                         <TableCell align="left">{row.actions}
-                        <Actions action={userShopList.list.entryId}/>
+                        <DeleteShopListItem action={row.entryId}/>
                           </TableCell>
                       </TableRow>
                     )
