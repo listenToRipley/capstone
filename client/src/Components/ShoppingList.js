@@ -129,13 +129,13 @@ const ShoppingList = (props) =>  {
     check? false : true
     console.log('checked for singles', check, ' item', e.target.value)
     
-      // if(check) {
-      //   setHolding([...setHolding, item])
-      // } else {
-      //   let finder = setHolding.indexOf(item)
-      //   if (finder) {
-      //     setHolding([...setHolding.splice(1,finder)])
-      //   }
+    //   if(check) {
+    //     setHolding([...setHolding, item])
+    //   } else {
+    //     let finder = setHolding.indexOf(item)
+    //     if (finder) {
+    //       setHolding([...setHolding.splice(1,finder)])
+    //     }
     // }
   }
 
