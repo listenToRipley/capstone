@@ -3,15 +3,19 @@ import {Switch, Route ,browserHistory} from 'react-router';
 import LogIn from '../Containers/Login'
 import Home from '../Containers/Home';
 import ShoppingList from '../Containers/ShoppingList';
-import Pantry from '../Components/Pantry';
-import PalList from '../Components/PalLists/PalsList';
-import UserProfile from '../Components/CurrentUser/UserProfile/Main';
-import PalProfile from '../Components/PalProfile/PalProfile'
 import CreateUser from '../Containers/CreateUser';
 import About from '../Components/About'
-import Inbox from '../Components/CurrentUser/Inbox/Inbox'
-import ForgotPassword from '../Components/AppFunc/ForgotPassword'
+
 import cookie from 'cookie'
+
+//futureStateItems
+// import Inbox from '../Components/CurrentUser/Inbox/Inbox'
+// import ForgotPassword from '../Components/AppFunc/ForgotPassword'
+// import Pantry from '../Components/Pantry';
+// import PalList from '../Components/PalLists/PalsList';
+// import UserProfile from '../Components/CurrentUser/UserProfile/Main';
+// import PalProfile from '../Components/PalProfile/PalProfile'
+
 
 // console.log(cookie)
 //this will be for when you move to login required status
@@ -44,19 +48,22 @@ const Router = () => {
 
       <Route path="/home" component={Home}/>
       <Route path="/shoppingList" component={ShoppingList}/>
-      <Route path="/pantry" component={Pantry}/>
-      <Route path="/palsList" component={PalList}/>
-      <Route path="/userProfile" component={UserProfile}/>
-      <Route path="/palProfile" component={PalProfile}/>
-      <Route path="/inbox" component={Inbox}/>
       
 {/* un protected routes */}
       <Route exact path="/" component={LogIn}/>
       <Route path="/createNewUser" component={CreateUser}/>
       <Route path="/about" component={About}/>
-      <Route path="/forgotpassword" component={ForgotPassword}/>
+
     </Switch>
   )
 }
 
 export default Router
+
+//futureStateRoutes
+// <Route path="/forgotpassword" component={ForgotPassword}/>
+// <Route path="/palProfile" component={PalProfile}/>
+// <Route path="/inbox" component={Inbox}/>
+// <Route path="/pantry" component={Pantry}/>
+// <Route path="/palsList" component={PalList}/>
+// <Route path="/userProfile" component={UserProfile}/>

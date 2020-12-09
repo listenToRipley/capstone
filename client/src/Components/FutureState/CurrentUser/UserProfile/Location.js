@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 // import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import {useInput} from '../../../Hooks/inputHook'
+import {useInput} from '../../../../Hooks/inputHook'
 
 //display information from user sign up 
   //location information 
