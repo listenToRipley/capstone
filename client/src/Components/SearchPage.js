@@ -77,6 +77,8 @@ const SearchPage = (props) => {
   const classes = useStyles();
   const {searchResults, openFoodSearch, openFoodFinder} = props
 
+  console.log('tell me about the props in food search', props)
+
   const [expanded, setExpanded] = useState(true)
 
   const handleExpandClick = () => {
