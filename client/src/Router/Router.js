@@ -5,13 +5,14 @@ import Home from '../Containers/Home';
 import ShoppingList from '../Containers/ShoppingList';
 import CreateUser from '../Containers/CreateUser';
 import About from '../Components/About'
+import Pantry from '../Components/Pantry';
 
 import cookie from 'cookie'
 
 //futureStateItems
 // import Inbox from '../Components/CurrentUser/Inbox/Inbox'
 // import ForgotPassword from '../Components/AppFunc/ForgotPassword'
-// import Pantry from '../Components/Pantry';
+
 // import PalList from '../Components/PalLists/PalsList';
 // import UserProfile from '../Components/CurrentUser/UserProfile/Main';
 // import PalProfile from '../Components/PalProfile/PalProfile'
@@ -48,7 +49,7 @@ const Router = () => {
 
       <Route path="/home" component={Home}/>
       <Route path="/shoppingList" component={ShoppingList}/>
-      
+      <Route path="/pantry" component={Pantry}/>
 {/* un protected routes */}
       <Route exact path="/" component={LogIn}/>
       <Route path="/createNewUser" component={CreateUser}/>
@@ -64,6 +65,5 @@ export default Router
 // <Route path="/forgotpassword" component={ForgotPassword}/>
 // <Route path="/palProfile" component={PalProfile}/>
 // <Route path="/inbox" component={Inbox}/>
-// <Route path="/pantry" component={Pantry}/>
 // <Route path="/palsList" component={PalList}/>
 // <Route path="/userProfile" component={UserProfile}/>

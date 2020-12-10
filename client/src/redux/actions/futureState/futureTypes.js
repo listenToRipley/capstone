@@ -73,7 +73,6 @@
 
 //pantry 
 
-// export const MY_PANTRY = 'MY_SHOPPING_LIST'
 // export const PALS_PANTRY = 'PALS_SHOPPING_LIST'
 // export const PANTRY_DETAILED_INFO = 'PANTRY_DETAILED_INFO'
 // export const PANTRY_ITEM_COUNT ='PANTRY_ITEM_COUNT'

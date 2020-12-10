@@ -4,6 +4,7 @@ import state from '../state'
 import store from '../store'
 import nav from './nav' 
 import userShopList from './userShopList'
+import userPantryList from './userPantryList'
 import createNewUser from './createNewUser'
 import openFoodFinder from './openFoodFinder'
 import findFood from './findFood'
@@ -42,6 +43,7 @@ const allReducers = combineReducers({
     user: loginRed,
     userDetails: nav,
     userShopList: userShopList,
+    userPantryList:userPantryList,
     newUser: createNewUser,
     openFoodFinder: openFoodFinder,
     searchResults: findFood,

@@ -41,6 +41,10 @@ export default {
     call: false,
     list: []
   },
+  userPantryList: {
+    call: false,
+    list: []
+  },
   openFoodFinder: false,
   searchResults: []
   // pantryList:[
