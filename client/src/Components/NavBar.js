@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = (props) => {
-  console.log('props on nav', props)
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -111,7 +111,7 @@ const NavBar = (props) => {
 
   };
 
-  useEffect( () => {
+  useEffect(() => {
     
     if (validation && run=== false) {
       let {token} = props.user.pass 
@@ -122,11 +122,11 @@ const NavBar = (props) => {
       history.push('/')
     }
 
-    if(setOpen) {
-      drawerState(true)
-    } else {
-      drawerState(false)
-    }
+    // if(setOpen) {
+    //   drawerState(true)
+    // } else {
+    //   drawerState(false)
+    // }
 
   })
 

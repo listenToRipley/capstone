@@ -19,7 +19,7 @@ const PalsSearchBar = () => {
        placeholder="Search…"
        className={'inputRoot','inputInput'}
        
-       inputProps={{ 'aria-label': 'search' }}
+       inputprops={{ 'aria-label': 'search' }}
      />
     </MenuItem>
    </div>

@@ -7,16 +7,16 @@ import {useInput} from '../Hooks/inputHook';
 import { TextField } from '@material-ui/core';
 
 const foodSearchBar = (props) => {
-  console.log('props on search bar ? ', props)
+
+  console.log('food search bar', props)
 
   let {value:searchWord, bind:bindSearchWord, reset:resetSearchWord} = useInput('')
-
 
   const handleSearch = (e) => {
     //need to map for search result using food. 
     if(e.key === 'Enter' || e.key==='Return') {
-      console.log('search for :', bindSearchWord.find)
-      findFood(bindSearchWord.value)
+      console.log('search for :', bindSearchWord.value)
+      props.findFood(bindSearchWord.value)
       // resetSearchWord('')
     }
   }

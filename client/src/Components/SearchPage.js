@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchPage = (props) => {
-  console.log('search page props',props)
+  // console.log('search page props',props)
   const classes = useStyles();
   const {searchResults, openFoodSearch, openFoodFinder} = props
 

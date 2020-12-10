@@ -4,9 +4,11 @@ import FoodSearchBar from '../Components/FoodSearchBar'
 import {findFood} from '../redux/actions/findFood'
 
 const mapStateToDispatch = (dispatch) => {
-  console.log('what is the input you get for the search? ', dispatch)
+  // console.log('what is the input you get for the search? ', dispatch)
   return {
-    findFood: (input) => dispatch(findFood(input))
+    findFood: (input) => {
+        console.log('INPUT : ',input)
+      return dispatch(findFood(input))}
   }
 }
 

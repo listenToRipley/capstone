@@ -55,12 +55,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const UpdateShopItem = (props) => {
   const classes = useStyles()
   const {entryId} = props
-  const currentItem = props.userShopList.list.find(entry => entry.entryId===action)
 
   const [open, setOpen] = useState(false)
-  const {value: quantity, bind: bindQuantity, reset: resetQuantity} = useInput(`${currentItem.quantity}`) 
-  const {value: item, bind: bindItem, reset: resetItem} = useInput(`${currentItem.item}`) 
-  const {value: measurement, bind: bindMeasurement, reset: resetMeasurement} = useInput(`${currentItem.measId}`) 
+  const {value: quantity, bind: bindQuantity, reset: resetQuantity} = useInput('') 
+  const {value: item, bind: bindItem, reset: resetItem} = useInput('') 
+  const {value: measurement, bind: bindMeasurement, reset: resetMeasurement} = useInput('') 
 
   const handleUpdateItem = (e) => {
     e.preventDefault()
@@ -74,17 +73,17 @@ const UpdateShopItem = (props) => {
   return (
     <div>
     <IconButton
-    onClick={openEditor}
+    // onClick={openEditor}
     aria-label='update'
     aria-controls='update-item'
     >
       <UpdateIcon />
     </IconButton>
 
-    <Dialog
-        open={setOpen}
-        TransitionComponent={Transition}
-        keepMounted
+    {/* <Dialog
+        // open={setOpen}
+        // TransitionComponent={Transition}
+        // keepMounted
         onClose={setOpen(false)}
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
@@ -102,7 +101,6 @@ const UpdateShopItem = (props) => {
             label="Quantity"
             name="quantity"
             type="number"
-            placeholder={quantity}
             autoFocus
             className={classes.fields}
             aria-label="item you want to buy"
@@ -115,7 +113,6 @@ const UpdateShopItem = (props) => {
             label="Item"
             name="item"
             type="text"
-            placeholder={item}
             autoFocus
             className={classes.fields}
             aria-label="item you want"
@@ -129,14 +126,14 @@ const UpdateShopItem = (props) => {
             label="Unit"
             name="measurement"
             type="text"
-            placeholder={measurement}
+            
             from="measurementsList"
             autoFocus
             className={classes.fields}
             aria-label="unit of measurement"
           /> */}
           
-          </FormControl>
+          {/* </FormControl>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -144,7 +141,7 @@ const UpdateShopItem = (props) => {
             Save Changes
           </Button>
         </DialogActions>
-      </Dialog>
+      </Dialog>  */}
 
     </div>
   )

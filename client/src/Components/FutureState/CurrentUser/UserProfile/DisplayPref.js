@@ -123,7 +123,7 @@ const DisplayPreferences  = () => {
                       edge="end"
                       onChange={handleToggle('birthday')}
                       checked={checked.indexOf('birthday') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-birthday' }}
+                      inputprops={{ 'aria-labelledby': 'switch-list-label-birthday' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>
@@ -137,7 +137,7 @@ const DisplayPreferences  = () => {
                       edge="end"
                       onChange={handleToggle('location')}
                       checked={checked.indexOf('location') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-location' }}
+                      inputprops={{ 'aria-labelledby': 'switch-list-label-location' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>
@@ -152,7 +152,7 @@ const DisplayPreferences  = () => {
                       edge="end"
                       onChange={handleToggle('email')}
                       checked={checked.indexOf('email') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-email' }}
+                      inputprops={{ 'aria-labelledby': 'switch-list-label-email' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>
@@ -167,7 +167,7 @@ const DisplayPreferences  = () => {
                       edge="end"
                       onChange={handleToggle('phone')}
                       checked={checked.indexOf('phone') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-phone' }}
+                      inputprops={{ 'aria-labelledby': 'switch-list-label-phone' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>
@@ -182,7 +182,7 @@ const DisplayPreferences  = () => {
                       edge="end"
                       onChange={handleToggle('likes')}
                       checked={checked.indexOf('likes') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-likes' }}
+                      inputprops={{ 'aria-labelledby': 'switch-list-label-likes' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>
@@ -197,7 +197,7 @@ const DisplayPreferences  = () => {
                       edge="end"
                       onChange={handleToggle('dislikes')}
                       checked={checked.indexOf('dislikes') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-dislikes' }}
+                      inputprops={{ 'aria-labelledby': 'switch-list-label-dislikes' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>
@@ -213,7 +213,7 @@ const DisplayPreferences  = () => {
                       edge="end"
                       onChange={handleToggle('diets')}
                       checked={checked.indexOf('diets') !== -1}
-                      inputProps={{ 'aria-labelledby': 'switch-list-label-diets' }}
+                      inputprops={{ 'aria-labelledby': 'switch-list-label-diets' }}
                     />
                   </ListItemSecondaryAction>
                 </ListItem>

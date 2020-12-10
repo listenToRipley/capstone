@@ -118,7 +118,7 @@ const ShoppingList = (props) =>  {
     if (call===false) {
       return props.findShopList(shopListId, token, props.user.username)
     }
-  })
+  },[])
 
   //click handlers 
   const handleCheck = (e) => {
@@ -236,7 +236,7 @@ const ShoppingList = (props) =>  {
                       <Checkbox
                        checked={checked}
                       onClick={handleSelectAll}
-                      inputProps={{ 'aria-label': 'select all items on shopping list' }}
+                      inputprops={{ 'aria-label': 'select all items on shopping list' }}
                     />
                   </TableCell>
 
@@ -244,7 +244,7 @@ const ShoppingList = (props) =>  {
                       <TableCell
                         key={headCell.id}
                         align={'center'}
-                        inputProps={{ 'aria-label': 'select to mark item off' }}
+                        inputprops={{ 'aria-label': 'select to mark item off' }}
                       >
                       <TableSortLabel
                         align={'center'}>
@@ -281,8 +281,8 @@ const ShoppingList = (props) =>  {
                         <TableCell align="center">{row.item}</TableCell>
                         {/* <TableCell align="right">{row.measId}</TableCell> */}
                         <TableCell align="center">{row.actions}
-                        <DeleteShopItem entryId={row.entryId}/>
-                        <UpdateShopItem entryId={row.entryId}/>
+                         <DeleteShopItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
+                        <UpdateShopItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
                           </TableCell>
                       </TableRow>
                     )

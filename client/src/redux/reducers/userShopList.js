@@ -11,12 +11,12 @@ export default function(state = {...initialState.userShopList}, action) {
     case ADD_ITEM_TO_SHOPPING_LIST: 
     return [...state.list, action.payload.newEntry] //the result of this action should be an amended shop list 
     case UPDATE_ITEM_ON_SHOPPING_LIST:
-      const updateList = state.list.filter(item => item.entry=== action.payload.updatedEntry.itemId) //remove item by index id and replace updated information 
+      // const updateList = state.list.filter(item => item.entry=== action.payload.updatedEntry.itemId) //remove item by index id and replace updated information 
       const newState = [...updateList, action.payload.updatedEntry]
       return newState
     case REMOVE_FROM_SHOPPING_LIST:
-      const amendState = state.list.filter(item => item.entryId=== action.payload)//splice the item from the list and return 
-    return [...amendState]
+      // const amendState = state.list.filter(item => item.entryId=== action.payload)//splice the item from the list and return 
+    return [...state]
     default: return state
   }
 }
