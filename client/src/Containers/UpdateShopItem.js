@@ -4,7 +4,7 @@ import {upShopItem } from '../redux/actions/updateShopItem'
 
 const mapStateToProps = (state) => {
   return {
-    userShop  : state.userShopList
+    userShopList: state.userShopList
   }
 }
 

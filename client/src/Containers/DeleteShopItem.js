@@ -4,7 +4,7 @@ import {removeShopItem} from '../redux/actions/deleteShopItem'
 
 const mapStateToProps = (state) => {
   return {
-    userShop  : state.userShopList
+    userShopList: state.userShopList
   }
 }
 

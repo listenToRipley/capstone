@@ -8,20 +8,12 @@ dom.watch()
 
 const AddToShoppingList = (props) => {
 
-  console.log('props on add item', props)
   const {pass} = props.user
   const {username} = props.user
   const {shopListId} = props.userDetails
   const {item} = props
   const {quantity} = props
   const {itemId} = props
-
-  console.log('username', username)
-  console.log('token : ', pass)
-  console.log('list id : , ', shopListId)
-  console.log('quantity, ', quantity.value)
-  console.log('items, ', item.value)
-  console.log('item id : ', itemId)
 
   const handleSubmit = (e) => {
     e.preventDefault()
