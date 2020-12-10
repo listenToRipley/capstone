@@ -281,8 +281,8 @@ const ShoppingList = (props) =>  {
                         <TableCell align="center">{row.item}</TableCell>
                         {/* <TableCell align="right">{row.measId}</TableCell> */}
                         <TableCell align="center">{row.actions}
-                        <DeleteShopItem action={row.entryId}/>
-                        <UpdateShopItem action={row.entryId}/>
+                        <DeleteShopItem entryId={row.entryId}/>
+                        <UpdateShopItem entryId={row.entryId}/>
                           </TableCell>
                       </TableRow>
                     )

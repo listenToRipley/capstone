@@ -54,8 +54,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const UpdateShopItem = (props) => {
   const classes = useStyles()
-  console.log('update props ', props)
-  const {action} = props
+  const {entryId} = props
   const currentItem = props.userShopList.list.find(entry => entry.entryId===action)
 
   const [open, setOpen] = useState(false)
@@ -63,13 +62,12 @@ const UpdateShopItem = (props) => {
   const {value: item, bind: bindItem, reset: resetItem} = useInput(`${currentItem.item}`) 
   const {value: measurement, bind: bindMeasurement, reset: resetMeasurement} = useInput(`${currentItem.measId}`) 
 
-  const handleUpdateItem = () => {
-    console.log('update this item!', props.action)
-    props.upShopItem(action)
+  const handleUpdateItem = (e) => {
+    e.preventDefault()
+    props.upShopItem(entryId)
   }
 
   const openEditor = () => {
-    console.log('hello you want to edit it?')
     setOpen(!open)
   }
 
@@ -79,7 +77,7 @@ const UpdateShopItem = (props) => {
     onClick={openEditor}
     aria-label='update'
     aria-controls='update-item'
-    aria-haspopup='false' >
+    >
       <UpdateIcon />
     </IconButton>
 
