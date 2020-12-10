@@ -19,10 +19,8 @@ export const findFood = (input)  => async dispatch => {
     console.log('the product back is', product)
       dispatch({ 
           type: FIND_FOOD,
-          payload: {
-            searchResults: product
+          payload: product[0]
   
-          }
        })
   }
   catch(e) {
