@@ -42,7 +42,7 @@ export default {
     list: []
   },
   openFoodFinder: false,
-  searchResults: ''
+  searchResults: []
   // pantryList:[
   //   [ 305, 'Cupcake', 3.7],
   //   [ 452, 'Donut', 3.7],
