@@ -103,7 +103,7 @@ const Pantry = (props) =>  {
   const {selected, setSelected} = useState(0)
   const {checked, setChecked} = useState(false)
 
-  useEffect( () => {
+  useEffect(() => {
     if (call===false) {
       return props.findPantry(pantryId, token, props.user.username)
     }

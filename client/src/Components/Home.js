@@ -70,7 +70,7 @@ const Home = (props) => {
        
         </Card>
 
-        {/* <Card className={classes.cards} >
+        <Card className={classes.cards} >
           <ListItem 
               button 
               component={Link}
@@ -82,8 +82,6 @@ const Home = (props) => {
           </ListItem>
      
         </Card>
-
-*/}
 
         </Grid>
       </Grid>

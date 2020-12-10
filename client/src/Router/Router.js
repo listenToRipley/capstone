@@ -5,7 +5,7 @@ import Home from '../Containers/Home';
 import ShoppingList from '../Containers/ShoppingList';
 import CreateUser from '../Containers/CreateUser';
 import About from '../Components/About'
-import Pantry from '../Components/Pantry';
+import Pantry from '../Containers/Pantry';
 
 import cookie from 'cookie'
 
