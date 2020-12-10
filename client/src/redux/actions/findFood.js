@@ -2,15 +2,9 @@ import {FIND_FOOD} from './types'
 
 const API_KEY = process.env.REACT_APP_SPOON_API_KEY;
 
-console.log(typeof API_KEY)
-
 export const findFood = (input)  => async dispatch => {
 
-  console.log('what is the input you are getting?', input)
-
   let path = `https://api.spoonacular.com/food/products/search?query=${input}&number=10&apiKey=${API_KEY}`
-
-  console.log('what is the path? ', path)
 
   try {
     let res = await fetch(path, {
@@ -21,13 +15,12 @@ export const findFood = (input)  => async dispatch => {
     })
     let result = await res.json()
     console.log('the results is :', result)
-    let product = result.product 
+    let product = result.products 
     console.log('the product back is', product)
       dispatch({ 
           type: FIND_FOOD,
           payload: {
-            
-            searchResults: [...product]
+            searchResults: product
   
           }
        })

@@ -107,20 +107,11 @@ const SearchPage = (props) => {
     <FoodSearchBar/>
     <List>
 
-      {searchResults.length <= 1  ? 
-      <Grid
-        container
-        component="main" 
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={2}>
+      {searchResults.length-1 !==0  ? 
+      <div>
           {
            searchResults.map((item, index) => (
-          <Grid item xs={10} sm={10} md={9} elevation={10}
-          key={item.id}
-
-          >
+  
             <Card className={classes.resultCard}>
             <CardMedia
               className={classes.media}
@@ -151,10 +142,10 @@ const SearchPage = (props) => {
               </CardContent>
             </Collapse>
            </Card>
-        </Grid>
+        
            ))
           }
-      </Grid> : 
+      </div> : 
       <div/>}
 
     </List>

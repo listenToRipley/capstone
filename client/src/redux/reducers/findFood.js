@@ -8,10 +8,10 @@ export default function(state = [...initialState.searchResults], action){
 
   switch(action.type) {
     case FIND_FOOD: 
-    return actions.payload.searchResults
-    // case RESET_FOOD_SEARCH:
-    //   let resetState  = [...state.searchResults]
-    //   return resetState = []
+    return [...state.searchResults, actions.payload.searchResults]
+    case RESET_FOOD_SEARCH:
+      let resetState  = [...state.searchResults]
+      return resetState = []
     default: return state 
   }
 }

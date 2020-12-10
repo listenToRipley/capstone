@@ -8,8 +8,6 @@ import { TextField } from '@material-ui/core';
 
 const foodSearchBar = (props) => {
 
-  console.log('food search bar', props)
-
   let {value:searchWord, bind:bindSearchWord, reset:resetSearchWord} = useInput('')
 
   const handleSearch = (e) => {
