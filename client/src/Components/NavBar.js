@@ -15,14 +15,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import SearchIcon from '@material-ui/icons/Search';
-// import InputBase from '@material-ui/core/InputBase';
 import CssBaseline from '@material-ui/icons/Menu'; 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutAlt, faPeopleArrows, faCarrot} from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
-// import { Button } from '@material-ui/core';
 import {useHistory} from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
 import Logout from '../Containers/Logout'
@@ -84,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   }
@@ -105,7 +101,7 @@ const NavBar = (props) => {
 
   const handleDrawerOpen = () => {
     setOpen(true);
-  }; //need to add something for when this is open, make the view of the component adjusts 
+  }; 
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -119,12 +115,6 @@ const NavBar = (props) => {
 
       return props.getDetails(token={token}, username={username})
     } 
-
-    // if(setOpen) {
-    //   drawerState(true)
-    // } else {
-    //   drawerState(false)
-    // }
 
   })
 
@@ -174,7 +164,6 @@ const NavBar = (props) => {
         </div>
         <Divider />
         <List>
-          {/* main app content available on the home page - needs to be links*/}
 
               <ListItem 
               button 
@@ -227,7 +216,7 @@ const NavBar = (props) => {
         <Divider />
         <Divider />
         <List>
-          {/* main app content available on the home page - elements related to list functionality*/}
+  
             <ListItem 
             button 
             component={Link}
@@ -254,7 +243,7 @@ const NavBar = (props) => {
         </List>
         <Divider />
         <List>
-          {/* functional routes related to the user - needs to be links, token and cookie should be deleted */}
+      
           <ListItem 
           button 
           component={Link}
@@ -334,7 +323,5 @@ const NavBar = (props) => {
   );
 }
 
-// export default withStyles(useStyles)(NavBar)
 export default NavBar
 
-//from https://material-ui.com/components/drawers/

@@ -22,7 +22,6 @@ const Logout = (props) => {
     if(props.state.user.validation===false) {
       return history.push('/')
     }
-
   })
 
   return(
