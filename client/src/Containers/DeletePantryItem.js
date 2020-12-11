@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapStateToDispatch = (dispatch) => {
   return {
-    removePantryItem: (entryId) => dispatch(removePantryItem(entryId))
+    removePantryItem: (user,pass, itemId) => dispatch(removePantryItem(user,pass, itemId))
   }
 }
 

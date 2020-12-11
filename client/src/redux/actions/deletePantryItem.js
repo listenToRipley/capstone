@@ -1,9 +1,8 @@
 import {REMOVE_FROM_PANTRY_LIST} from './types'
 
-export const removePantryItem = (entryId) => async dispatch =>{
+export const removePantryItem = (user,pass, itemId) => async dispatch =>{
 
-let path = `/postLogin/${user}/pantry/remove/${entryId}`
-let intake = pass.token
+let path = `/postLogin/${user}/pantry/remove/${itemId}`
 
 console.log('the path on add item to shop?', path)
 
@@ -12,7 +11,7 @@ try{
       method: 'PUT',
       headers: {
         Accept: "application/json", "Content-Type": "application/json",
-        token: `${intake}`,
+        token: `${pass}`,
       }
     }
     )
@@ -22,7 +21,7 @@ try{
     console.log('view the results from call', result)
     dispatch({
       type: REMOVE_FROM_PANTRY_LIST,
-        payload: entryId
+        payload: itemId
     })
   } catch (e) {
     return 'what the error the remove from shop list? ', {e}
