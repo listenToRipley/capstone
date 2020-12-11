@@ -3,11 +3,11 @@ import state from '../state'
 
 let initialState = {...state}
 
-export default function(state = {...initialState.userPantryList}, action) {
+export default function(state = {...initialState.userPantry}, action) {
  
   switch(action.type) {
     case YOUR_PANTRY_LIST:
-    return [...state, action.payload.userPantryList]
+    return [...state, action.payload.userPantry]
     case ADD_ITEM_TO_PANTRY_LIST: 
     return [...state.list, action.payload.newEntry] //the result of this action should be an amended shop list 
     case UPDATE_ITEM_ON_PANTRY_LIST:

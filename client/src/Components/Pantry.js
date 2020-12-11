@@ -90,10 +90,10 @@ dom.watch()
 const Pantry = (props) =>  {
 
   const {pantryId} = props.userDetails
-  const {call} = props.userPantryList
+  const {call} = props.userPantry
   const {token} = props.user.pass
   const {userPantry} = props
-  const {list} = props.userPantryList
+  const {list} = props.userPantry
 
   const lLength = list.length 
 
@@ -222,7 +222,7 @@ const Pantry = (props) =>  {
 
               <TableBody>
 
-                  {userPantryList.list.map((row, index) => {
+                  {userPantry.list.map((row, index) => {
                 
                     return (
                       <TableRow
