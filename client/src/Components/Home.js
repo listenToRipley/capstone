@@ -4,13 +4,10 @@ import Card from '@material-ui/core/Card'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
-import cookie from 'cookie'
 
-//this view is based on the current user and their primary
 
 const useStyles = makeStyles((theme) => ({
   root: {

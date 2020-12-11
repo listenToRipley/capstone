@@ -17,8 +17,6 @@ import PropTypes from 'prop-types';
 import {useHistory} from 'react-router-dom'
 import cookie from 'cookie'
 
-//the main page, go not pass go, to not collect $200 without login in or creating a login
-
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -69,7 +67,6 @@ const LogIn = (props) => {
           "username":user.username,
           "validation": true,
           "token": user.pass.token,
-          // "max-Age":60*1000000
             })
         history.push('/home')
       }
@@ -133,13 +130,6 @@ const LogIn = (props) => {
             </Button>
             <Grid container>
               <Grid item xs>
-                {/* <ListItem
-                button
-                component={Link}
-                to="/forgotPassword" 
-                primary={'Forgot password'}
-                aria-label='forgot password?'
-                >Forgot Password</ListItem> */}
               </Grid>
               <Grid item>
                 <ListItem
