@@ -45,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     margin: '4%',
     paddingLeft: '25%'
+  },
+  dialogActions: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
   }
 }));
 
@@ -55,39 +59,50 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const UpdateShopItem = (props) => {
   const classes = useStyles()
-  const {entryId} = props
+  const {entryId, q, it, m} = props
+  const {username} = props.user
+  const {token} = props.user.pass
 
-  const [open, setOpen] = useState(false)
-  const {value: quantity, bind: bindQuantity, reset: resetQuantity} = useInput('') 
-  const {value: item, bind: bindItem, reset: resetItem} = useInput('') 
-  const {value: measurement, bind: bindMeasurement, reset: resetMeasurement} = useInput('') 
+  const [open, setOpen] = useState('')
+  const {value: quantity, bind: bindQuantity, reset: resetQuantity} = useInput(q) 
+  const {value: item, bind: bindItem, reset: resetItem} = useInput(it) 
+  const {value: measurement, bind: bindMeasurement, reset: resetMeasurement} = useInput(m) 
+
+  console.log('item it', entryId)
 
   const handleUpdateItem = (e) => {
     e.preventDefault()
-    props.upShopItem(entryId)
+    props.upShopItem(username, token ,entryId, bindQuantity.value ? bindQuantity.value : q , bindItem.value? bindItem.value : item)
+    setOpen(false)
   }
 
-  const openEditor = () => {
-    setOpen(!open)
+  const openEditor = (e) => {
+    console.log('click update')
+    setOpen(true)
   }
+
+  const closeEditor = () => {
+    setOpen(false)
+  }
+
+  console.log('what is open >', open)
 
   return (
     <div>
     <Tooltip title="update-item">
       <IconButton
-      // onClick={openEditor}
+      onClick={openEditor}
       aria-label='update'
       aria-controls='update-item'
       >
         <UpdateIcon />
       </IconButton>
     </Tooltip>
-
-    {/* <Dialog
-        // open={setOpen}
-        // TransitionComponent={Transition}
-        // keepMounted
-        onClose={setOpen(false)}
+    {open? 
+      <Dialog
+        open={setOpen}
+        TransitionComponent={Transition}
+        keepMounted
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
@@ -95,7 +110,7 @@ const UpdateShopItem = (props) => {
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
           <FormControl className={classes.form}>
-      <TextField
+          <TextField
             {...bindQuantity}
             variant="outlined"
             margin="normal"
@@ -107,8 +122,9 @@ const UpdateShopItem = (props) => {
             autoFocus
             className={classes.fields}
             aria-label="item you want to buy"
+            defaultValue={quantity}
           />
-                <TextField
+            <TextField
             {...bindItem}
             variant="outlined"
             margin="normal"
@@ -119,8 +135,9 @@ const UpdateShopItem = (props) => {
             autoFocus
             className={classes.fields}
             aria-label="item you want"
+            defaultValue={item}
           />
-            {/* <TextField
+           {/* <TextField
             {...bindMeasurement}
             variant="outlined"
             margin="normal"
@@ -134,18 +151,22 @@ const UpdateShopItem = (props) => {
             autoFocus
             className={classes.fields}
             aria-label="unit of measurement"
-          /> */}
-          
-          {/* </FormControl>
+          />
+          */}
+          </FormControl>
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={classes.dialogActions}>
+        <Button onClick={closeEditor} color="primary">
+            Cancel Changes
+          </Button>
           <Button onClick={handleUpdateItem} color="primary">
             Save Changes
           </Button>
         </DialogActions>
-      </Dialog>  */}
-
+      </Dialog> 
+       : <div/> }
+    
     </div>
   )
 }

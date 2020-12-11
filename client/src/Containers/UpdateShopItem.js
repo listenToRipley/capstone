@@ -2,10 +2,18 @@ import {connect} from 'react-redux'
 import UpdateShopItem from '../Components/UpdateShopItem'
 import {upShopItem } from '../redux/actions/updateShopItem'
 
-const mapStateToDispatch = (dispatch) => {
+
+const mapStateToProps = (state) => {
   return {
-    upShopItem : (entryId) => dispatch(upShopItem(entryId))
+    user: state.user,
+    userShopList: state.userShopList
   }
 }
 
-export default connect(null, mapStateToDispatch)(UpdateShopItem)
+const mapStateToDispatch = (dispatch) => {
+  return {
+    upShopItem : (user, pass, itemId, quantity, item) => dispatch(upShopItem(user, pass, itemId, quantity, item))
+  }
+}
+
+export default connect(mapStateToProps, mapStateToDispatch)(UpdateShopItem)

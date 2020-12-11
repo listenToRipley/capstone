@@ -1,18 +1,15 @@
 import {UPDATE_ITEM_ON_SHOPPING_LIST} from './types'
 
-export const upShopItem = (entryId, quantity, item, spoonId) => async dispatch =>{
+export const upShopItem = (user, pass, itemId, quantity, item) => async dispatch =>{
 
-let path = `/postLogin/${user}/shopList/upItem/${entryId}`
-let intake = pass.token
+let path = `/postLogin/${user}/shopList/upItem/${itemId}`
 
 console.log('the path on add item to shop?', path)
 
 let updateThisEntry = JSON.stringify({
   "quantity": quantity, 
   "measure":null, 
-  "item":item, 
-  "spoon": spoonId,
-  "entryId": entryId
+  "item":item
 })
 
 try{
@@ -20,7 +17,7 @@ try{
       method: 'PUT',
       headers: {
         Accept: "application/json", "Content-Type": "application/json",
-        token: `${intake}`,
+        token: `${pass}`,
       },
       body: updateThisEntry
     }
