@@ -10,7 +10,7 @@ const login = (req, res, next) => {
   let { user, password } = req.params
 
     sql='SELECT password FROM appInfo WHERE username= ?'
-    console.log('what is the user name', user , 'and password from client side? ', password)
+   
     sql = mysql.format(sql, [user])
   
     pool.query(sql, async (err, row) => {
