@@ -99,20 +99,6 @@ const ManualAdd = (props) => {
             className={classes.fields}
             aria-label="item you want"
           />
-            {/* <TextField
-            {...bindMeasurement}
-            variant="outlined"
-            margin="normal"
-            required
-            id="measurement"
-            label="Unit"
-            name="measurement"
-            type="text"
-            from="measurementsList"
-            autoFocus
-            className={classes.fields}
-            aria-label="unit of measurement"
-          /> */}
           
       </FormControl>
       <div className={classes.button}>
