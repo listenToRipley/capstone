@@ -99,7 +99,8 @@ const ManualAdd = (props) => {
             className={classes.fields}
             aria-label="item you want"
           />
-            {/* <TextField
+            {/* 
+            <TextField
             {...bindMeasurement}
             variant="outlined"
             margin="normal"
