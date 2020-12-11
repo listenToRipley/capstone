@@ -1,7 +1,6 @@
 import React, {useState, Fragment} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Dialog from '@material-ui/core/Dialog';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -21,7 +20,6 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
-import Slide from '@material-ui/core/Slide';
 import FoodSearchBar from '../Containers/FoodSearchBar';
 import CloseIcon from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField'
@@ -79,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchPage = (props) => {
-  // console.log('search page props',props)
+
   const classes = useStyles();
   const {searchResults, openFoodSearch, openFoodFinder, list} = props
 
@@ -184,5 +182,5 @@ const SearchPage = (props) => {
     </div>
   )
 }
-//need to add an option to add manually at the bottom 
+
 export default SearchPage
