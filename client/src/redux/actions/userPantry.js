@@ -24,7 +24,7 @@ export const findPantry = (listId, pass, user) => async dispatch => {
       }
     })
   } catch (e) {
-    console.log('error ? ', {e})
+    
     return 'what is the error on pantry? ', {e}
   }
 

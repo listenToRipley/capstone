@@ -24,7 +24,6 @@ export const findShopList = (listId, pass, username) => async dispatch => {
       }
     })
   } catch (e) {
-    console.log('error ? ', {e})
     return 'what is the error on shop list? ', {e}
   }
 
