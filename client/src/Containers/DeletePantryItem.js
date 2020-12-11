@@ -14,4 +14,4 @@ const mapStateToDispatch = (dispatch) => {
   }
 }
 
-export default connect(null, mapStateToDispatch)(DeletePantryItem)
+export default connect(mapStateToProps, mapStateToDispatch)(DeletePantryItem)
