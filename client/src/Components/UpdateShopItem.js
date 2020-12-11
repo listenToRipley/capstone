@@ -85,8 +85,6 @@ const UpdateShopItem = (props) => {
     setOpen(false)
   }
 
-  console.log('what is open >', open)
-
   return (
     <div>
     <Tooltip title="update-item">
