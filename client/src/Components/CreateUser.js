@@ -3,11 +3,9 @@ import {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -60,14 +58,7 @@ const CreateUser = (props) => {
   const {value: lastName, bind: bindLastName, reset: resetLastName} = useInput('')
   const {value: eMail, bind: bindEmail, reset: resetEmail} = useInput('')
   const {value: passWord, bind: bindPassword, reset: resetPassword} = useInput('')
-  // const {value: vPassword, bind: bindVPassword, reset: resetVPassword} = useInput('')
   const {value: birthday, bind: bindBirthday, reset: resetBirthday} = useInput('')
-
-  //this will be future state
-  // const handlePasswordMatch = () => {
-  //   //need to make sure the password matches
-  //   //if password and vPassword do not match, then they should not continue 
-  // }
 
   const createLogin = e => {
     console.log('let look at the event', e)
@@ -245,5 +236,4 @@ const CreateUser = (props) => {
   )
 }
 
-// export default withStyles(useStyles)(CreateUser)
 export default CreateUser
