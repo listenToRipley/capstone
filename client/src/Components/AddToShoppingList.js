@@ -24,12 +24,14 @@ const AddToShoppingList = (props) => {
   }
 
   return (
+  
     <Button
     onClick={handleSubmit}
     ><svg className="fas fa-cart-arrow-down"/> 
     Add To Shopping List 
     <svg className="fas fa-cart-arrow-down"/>
     </Button>
+  
   )
 }
 
