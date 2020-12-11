@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//GET 
+
 const justLikes = (req, res) => {
 
   let sql='SELECT likeId AS id, item, spoonId FROM likes WHERE active=1 AND username=?'
@@ -16,7 +16,7 @@ const justLikes = (req, res) => {
 
 } 
 
-//POST
+
 const addLike = (req, res) => {
 
   const {item, spoon} = req.body
@@ -32,7 +32,7 @@ const addLike = (req, res) => {
 
 }
 
-//PUT
+
 const removeLike = (req, res) => {
 
   const {entryId} = req.params

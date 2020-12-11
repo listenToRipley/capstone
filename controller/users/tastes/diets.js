@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//GET
+
 const justDiets = (req, res) => {
 
   let sql='SELECT uD.uDietId AS id, d.diet FROM usersDiets AS uD JOIN diets AS d ON uD.diet=d.dietId WHERE uD.active=1 AND uD.username=?'
@@ -16,7 +16,6 @@ const justDiets = (req, res) => {
 
 } 
 
-//POST
 
 const addDiet = (req, res) => {
 
@@ -33,7 +32,6 @@ const addDiet = (req, res) => {
 
 }
 
-//PUT
 
 const removeDiet = (req, res) => {
 

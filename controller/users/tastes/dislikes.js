@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//GET
+
 const justDislikes = (req, res) => {
 
   let sql='SELECT dislikeId AS id, item, spoonId FROM dislikes WHERE active=1 AND username=?'
@@ -16,7 +16,7 @@ const justDislikes = (req, res) => {
 
 } 
 
-//POST
+
 const addDislike = (req, res) => {
 
   const {item, spoon} = req.body
