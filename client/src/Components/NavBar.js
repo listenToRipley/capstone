@@ -247,7 +247,7 @@ const NavBar = (props) => {
           <ListItem 
           button 
           component={Link}
-          to='/userProfile'
+          to='/profile'
           aria-label='your profile'
           >
               <ListItemIcon>
