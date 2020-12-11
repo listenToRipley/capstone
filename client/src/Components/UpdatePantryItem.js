@@ -64,30 +64,35 @@ const UpdatePantryItem = (props) => {
 
   const handleUpdateItem = (e) => {
     e.preventDefault()
-    props.upPantryItem(entryId)
+    props.upPantryItem(username, token ,entryId, bindQuantity.value ? bindQuantity.value : q , bindItem.value? bindItem.value : item)
+    setOpen(false)
   }
 
-  const openEditor = () => {
-    setOpen(!open)
+  const openEditor = (e) => {
+    console.log('click update')
+    setOpen(true)
+  }
+
+  const closeEditor = () => {
+    setOpen(false)
   }
 
   return (
     <div>
-    <Tooltip title="update item">
-    <IconButton
-    // onClick={openEditor}
-    aria-label='update'
-    aria-controls='update-item'
-    >
-      <UpdateIcon />
-    </IconButton>
+    <Tooltip title="update-item">
+      <IconButton
+      onClick={openEditor}
+      aria-label='update'
+      aria-controls='update-item'
+      >
+        <UpdateIcon />
+      </IconButton>
     </Tooltip>
-
-    {/* <Dialog
-        // open={setOpen}
-        // TransitionComponent={Transition}
-        // keepMounted
-        onClose={setOpen(false)}
+    {open? 
+      <Dialog
+        open={setOpen}
+        TransitionComponent={Transition}
+        keepMounted
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
@@ -95,7 +100,7 @@ const UpdatePantryItem = (props) => {
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
           <FormControl className={classes.form}>
-      <TextField
+          <TextField
             {...bindQuantity}
             variant="outlined"
             margin="normal"
@@ -107,8 +112,9 @@ const UpdatePantryItem = (props) => {
             autoFocus
             className={classes.fields}
             aria-label="item you want to buy"
+            defaultValue={quantity}
           />
-                <TextField
+            <TextField
             {...bindItem}
             variant="outlined"
             margin="normal"
@@ -119,33 +125,21 @@ const UpdatePantryItem = (props) => {
             autoFocus
             className={classes.fields}
             aria-label="item you want"
+            defaultValue={item}
           />
-            {/* <TextField
-            {...bindMeasurement}
-            variant="outlined"
-            margin="normal"
-            required
-            id="measurement"
-            label="Unit"
-            name="measurement"
-            type="text"
-            
-            from="measurementsList"
-            autoFocus
-            className={classes.fields}
-            aria-label="unit of measurement"
-          /> */}
-          
-          {/* </FormControl>
+          </FormControl>
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={classes.dialogActions}>
+        <Button onClick={closeEditor} color="primary">
+            Cancel Changes
+          </Button>
           <Button onClick={handleUpdateItem} color="primary">
             Save Changes
           </Button>
         </DialogActions>
-      </Dialog>  */}
-
+      </Dialog> 
+       : <div/> }
     </div>
   )
 }
