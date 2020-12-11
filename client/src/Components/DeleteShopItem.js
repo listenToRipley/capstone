@@ -10,7 +10,7 @@ const DeleteShopListItem = (props) => {
   const {token} = props.user.pass
 
   const handleDeleteItem = () => {
-    console.log('delete this item!', entryId)
+  
     props.removeShopItem(username, token,entryId)
   }
 

@@ -11,7 +11,7 @@ const DeletePantryItem = (props) => {
 
   const handleDeleteItem = () => {
     // console.log('delete this item!', entryId)
-    props.removePantryItem(username,pass, itemId)
+    props.removePantryItem(username, token, entryId)
   }
 
   return (
