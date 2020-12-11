@@ -78,9 +78,6 @@ const ShoppingList = (props) =>  {
   const {call} = props.userShopList
   const {token} = props.user.pass
   const {userShopList} = props
-  const {list} = props.userShopList
-
-  const lLength = list.length 
 
   const classes = useStyles();
   const {shopping, setShopping} = useState(false)
@@ -100,7 +97,6 @@ const ShoppingList = (props) =>  {
     let check = e.target.checked
     let item = e.target.value
     check? false : true
-
   }
 
 
@@ -111,14 +107,12 @@ const ShoppingList = (props) =>  {
 
   }
 
-  //header sorting 
   const headCells = [
     { id: 'quantity', numeric: true, disablePadding: false, label: 'Quantity' },
     { id: 'items', numeric: false, disablePadding: false, label: 'Items' },
     { id: 'actions', numeric: false, disablePadding: false, label: 'Actions' },
   ]
 
-  //tool bar
   const openSearch = (e) => {
     e.preventDefault();
     openFoodSearch(true)
