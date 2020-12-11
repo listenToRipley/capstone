@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux'
 import loginRed from './loginRed'
-import state from '../state'
-import store from '../store'
 import nav from './nav' 
 import userShopList from './userShopList'
 import userPantry from './userPantry'
