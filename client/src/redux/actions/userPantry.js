@@ -13,9 +13,7 @@ export const findPantry = (listId, pass, user) => async dispatch => {
       }
     })
     let getResults = await res.json()
-    console.log('get result', getResults)
-    // let result =[...getResults]
-    // console.log('results', result)
+
     dispatch({
       type: YOUR_PANTRY_LIST,
       payload: {

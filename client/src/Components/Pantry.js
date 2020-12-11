@@ -98,55 +98,13 @@ const Pantry = (props) =>  {
   const lLength = list.length 
 
   const classes = useStyles();
-  const [holding, setHolding] = useState([]);
-  const {numSelected , setNumSelected } = useState(0)
-  const {selected, setSelected} = useState(0)
-  const {checked, setChecked} = useState(false)
 
   useEffect(() => {
-      return props.findPantry(pantryId, token, props.user.username)
+      if(call=== false) {
+        return props.findPantry(pantryId, token, props.user.username)
+      }
   },[])
 
-  //click handlers 
-  const handleCheck = (e) => {
-    e.preventDefault();
-    let check = e.target.checked
-    let item = e.target.value
-    check? false : true
-    console.log('checked for singles', check, ' item', e.target.value)
-    
-    //   if(check) {
-    //     setHolding([...setHolding, item])
-    //   } else {
-    //     let finder = setHolding.indexOf(item)
-    //     if (finder) {
-    //       setHolding([...setHolding.splice(1,finder)])
-    //     }
-    // }
-  }
-
-  // const handleSelected = (e) => {
-  //   e.preventDefault()
-  //   // let item = e.target.value
-  //   // setSelected(item)
-  // }
-
-  const handleSelectAll =(e) => {
-    // e.preventDefault()
-    let check = e.target.checked
-        check? false : true
-        console.log('checked event',e.target.checked)
-        
-          if(check) {
-            console.log('add all items entryIds to is selected')
-            // list.forEach((item) => { setHolding(item)})
-            // setNumSelected=lLength
-          } else {
-            console.log('return the state to original')
-            // setHolding('')
-            // setNumSelected=0
-          }
-  }
 
   //header sorting 
   const headCells = [
@@ -169,41 +127,19 @@ const Pantry = (props) =>  {
       className={classes.root}>
         <Paper className={classes.paper}>
 
-          <Toolbar
-            className={clsx(classes.toolbar, {
-            [classes.highlight]: setHolding.length-1 > 0,
-          })}
-            > 
-            {setHolding.length-1 > 0 ? (
-              <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-                {setHolding.length-1} selected
-              </Typography>
-            ) : (
-              <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+          <Toolbar> 
+            <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
                 Your Pantry List
               </Typography>
-            )}
-              
-              <SearchPage/>
-               
+              <SearchPage/>   
            </Toolbar>
-          
           <TableContainer>
             <Table
               className={classes.table}
-              aria-labelledby="your-pantry-list"
-              >
+              aria-labelledby="your-pantry-list">
 
                 <TableHead>
                   <TableRow>
-
-                  <TableCell padding="checkbox">
-                      <Checkbox
-                       checked={checked}
-                      onClick={handleSelectAll}
-                      inputprops={{ 'aria-label': 'select all items in the pantry' }}
-                    />
-                  </TableCell>
 
                     {headCells.map((headCell) => (
                       <TableCell
@@ -227,19 +163,10 @@ const Pantry = (props) =>  {
                     return (
                       <TableRow
                         hover
-                        role="checkbox"
+            
                         itemId={`${row.entryId} is selected`}
                         key={row.entryId}
                       >
-                        <TableCell padding="checkbox">
-                          <Checkbox
-                            padding="10"
-                            checked={checked}
-                            inputProps={{ 'number ': row.entryId }}
-                            onChange={handleCheck}
-                            // onClick={handleSelected}
-                          />
-                        </TableCell>
                         <TableCell component="th" id={row.entryId} scope="row" align="center">
                           {null ? 1 : row.quantity}
                         </TableCell>
