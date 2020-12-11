@@ -37,7 +37,8 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex'
+    display: 'flex',
+    position: 'absolute !important' 
   },
   toolbar: theme.mixins.toolbar,
   appBar: {
