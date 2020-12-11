@@ -20,12 +20,14 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faOtter, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import Slide from '@material-ui/core/Slide';
 import FoodSearchBar from '../Containers/FoodSearchBar';
 import CloseIcon from '@material-ui/icons/Close';
+import TextField from '@material-ui/core/TextField'
 import AddToShoppingList from '../Containers/AddToShoppingList'
 import ManualAdd from './ManualAdd'
+import {useInput} from '../Hooks/inputHook'
 import './toolbar.css'
 
 library.add(faPlusCircle) 
@@ -81,9 +83,10 @@ const SearchPage = (props) => {
   const classes = useStyles();
   const {searchResults, openFoodSearch, openFoodFinder} = props
 
-  console.log('tell me about the props in food search', props.searchResults[0])
+  console.log('tell me about the props in food search', props.searchResults)
 
   const [expanded, setExpanded] = useState(true)
+  const {value: quantity, bind: bindQuantity, reset: resetQuantity} = useInput(1) 
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -113,12 +116,14 @@ const SearchPage = (props) => {
     <FoodSearchBar/>
     <List>
 
-      {searchResults[0].length-1 !==0  ? 
+      {searchResults.length-1 !==undefined  ? 
       <div className={classes.cardContainer}>
           {
-            searchResults[0].map((item, index) => (
+            searchResults.map((item, index) => (
   
-            <Card className={classes.resultCard}>
+            <Card 
+            className={classes.resultCard}
+            key={item.id}>
             <CardMedia
               // component="img"
               className={classes.media}
@@ -145,7 +150,22 @@ const SearchPage = (props) => {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent 
               className="actionList">
-              <AddToShoppingList item={item}/>
+                    <TextField
+            {...bindQuantity}
+            variant="outlined"
+            margin="normal"
+            required
+            id="quantity"
+            label="Quantity"
+            name="quantity"
+            type="number"
+            min="1"
+            placeholder="1"
+            autoFocus
+            className={classes.fields}
+            aria-label="item you want to buy"
+          />
+              <AddToShoppingList itemId={item.id} item={item.title} quantity={bindQuantity} item={item}/>
               </CardContent>
             </Collapse>
            </Card>

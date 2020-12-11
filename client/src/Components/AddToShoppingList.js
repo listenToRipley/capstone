@@ -8,6 +8,8 @@ dom.watch()
 
 const AddToShoppingList = (props) => {
 
+  console.log('PROP ADD > ')
+
   const {pass} = props.user
   const {username} = props.user
   const {shopListId} = props.userDetails

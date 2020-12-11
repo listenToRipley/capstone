@@ -14,13 +14,10 @@ export const findFood = (input)  => async dispatch => {
       }
     })
     let result = await res.json()
-    console.log('the results is :', result)
     let product = result.products 
-    console.log('the product back is', product)
       dispatch({ 
           type: FIND_FOOD,
-          payload: product
-  
+          payload: product[0]
        })
   }
   catch(e) {
