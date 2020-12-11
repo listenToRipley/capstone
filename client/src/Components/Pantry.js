@@ -19,24 +19,7 @@ import SearchPage from '../Containers/SearchPage';
 import DeletePantryItem from '../Containers/DeletePantryItem';
 import UpdatePantryItem from '../Containers/UpdatePantryItem';
 import './toolbar.css'
-
- //IMPORTANT NOTES!!! 
-  //~there are three version of this component based on users roles on current list  
-  //the primary list of the current user :
-  //needs to include 
-    //edit pantry name
-    //add items
-    //remove items 
-
-//~editor 
-  //view items 
-  //add and remove items 
-
-//~ requesters 
-  //view 
-  //request items 
-
-
+ 
 library.add(faPlusCircle, faCogs) 
 dom.watch()
 
@@ -170,7 +153,6 @@ const Pantry = (props) =>  {
                           {null ? 1 : row.quantity}
                         </TableCell>
                         <TableCell align="center">{row.item}</TableCell>
-                        {/* <TableCell align="right">{row.measId}</TableCell> */}
                         <TableCell className={classes.actions} align="center">{row.actions}
                           <DeletePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
                           <UpdatePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
