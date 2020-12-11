@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import MenuItem from '@material-ui/core/MenuItem'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
@@ -17,12 +17,11 @@ const foodSearchBar = (props) => {
     }
   }
 
-  const handleReset = (e) => {
-
-    if(bindSearchWord===undefined){
+  useEffect((e) => {
+    if(bindSearchWord){
       console.log('reset the search result to empty///')  
     }
-  }
+  })
 
   if(!open) return null
 
@@ -42,7 +41,6 @@ const foodSearchBar = (props) => {
        onKeyPress={handleSearch}
        margin="normal"
        autoFocus
-       onChange={handleReset}
      />
     </MenuItem>
    </div>
