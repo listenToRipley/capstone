@@ -7,11 +7,11 @@ export default function(state = {...initialState.userPantryList}, action) {
  
   switch(action.type) {
     case YOUR_PANTRY_LIST:
-    return action.payload.userPantryList
+    return [...state, action.payload.userPantryList]
     case ADD_ITEM_TO_PANTRY_LIST: 
     return [...state.list, action.payload.newEntry] //the result of this action should be an amended shop list 
     case UPDATE_ITEM_ON_PANTRY_LIST:
-       const updateList = state.list.filter(item => item.entry=== action.payload.updatedEntry.itemId) //remove item by index id and replace updated information 
+      const updateList = state.list.filter(item => item.entry=== action.payload.updatedEntry.itemId) //remove item by index id and replace updated information 
       const newState = [...updateList, action.payload.updatedEntry]
       return newState
     case REMOVE_FROM_PANTRY_LIST:

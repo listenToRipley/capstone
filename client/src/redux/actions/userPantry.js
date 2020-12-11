@@ -1,7 +1,8 @@
 import {YOUR_PANTRY_LIST} from './types'
 
-export const findPantry = (listId, pass, username) => async dispatch => {
-  let path = `/postLogin/${username}/pantry/items/${listId}`
+export const findPantry = (listId, pass, user) => async dispatch => {
+  let path = `/postLogin/${user}/pantry/items/${listId}`
+  console.log('path', path)
  
   try {
     let res = await fetch(path, {
@@ -12,13 +13,14 @@ export const findPantry = (listId, pass, username) => async dispatch => {
       }
     })
     let getResults = await res.json()
-    
+    console.log('get result')
     let result =[...getResults]
+    console.log('results', result)
     dispatch({
       type: YOUR_PANTRY_LIST,
       payload: {
         userPantry: {
-          call: true,
+          
           list: result
         }
       }

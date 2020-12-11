@@ -104,9 +104,7 @@ const Pantry = (props) =>  {
   const {checked, setChecked} = useState(false)
 
   useEffect(() => {
-    if (call===false) {
       return props.findPantry(pantryId, token, props.user.username)
-    }
   },[])
 
   //click handlers 
