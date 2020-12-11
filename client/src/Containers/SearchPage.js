@@ -1,4 +1,3 @@
-//search bar, results should create the food list 
 import {connect} from 'react-redux'
 import SearchPage from '../Components/SearchPage'
 import {openFoodSearch} from '../redux/actions/openFoodFinder'

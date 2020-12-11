@@ -5,8 +5,6 @@ export const addToPantry = (user,pass,listId, quantity, item, itemId) => async d
   let path = `/postLogin/${user}/pantry/addToList/${listId}`
   let intake = pass.token
 
-  console.log('the path on add item to shop?', path)
-
   let createEntry = JSON.stringify({
     "quantity": quantity, 
     "measure":null, 
