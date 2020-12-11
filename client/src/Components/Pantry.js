@@ -63,6 +63,10 @@ dom.watch()
       table: {
         minWidth: 750,
       },
+      actions:{
+        display: 'flex',
+        justifyContent:"space-evenly",
+      },
       visuallyHidden: {
         border: 0,
         clip: 'rect(0 0 0 0)',
@@ -172,9 +176,9 @@ const Pantry = (props) =>  {
                         </TableCell>
                         <TableCell align="center">{row.item}</TableCell>
                         {/* <TableCell align="right">{row.measId}</TableCell> */}
-                        <TableCell align="center">{row.actions}
+                        <TableCell className={classes.actions} align="center">{row.actions}
                           <DeletePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
-                          {/*<UpdatePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/> */}
+                          <UpdatePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
                           </TableCell>
                       </TableRow>
                     )
