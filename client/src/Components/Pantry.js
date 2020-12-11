@@ -92,7 +92,7 @@ const Pantry = (props) =>  {
   const {pantryId} = props.userDetails
   const {call} = props.userPantryList
   const {token} = props.user.pass
-  const {userPantryList} = props
+  const {userPantry} = props
   const {list} = props.userPantryList
 
   const lLength = list.length 

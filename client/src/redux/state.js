@@ -41,7 +41,7 @@ export default {
     call: false,
     list: []
   },
-  userPantryList: {
+  userPantry: {
     call: false,
     list: []
   },
