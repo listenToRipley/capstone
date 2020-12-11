@@ -69,7 +69,8 @@ Get request comes from: "https://api.spoonacular.com/recipes/complexSearch"
 svg icons to use: 
 pantry merge request: <i class="fas fa-door-open"></i> 
 shopping list merge request: <i class="fas fa-exchange-alt"></i> ? 
-sync: <i class="fas fa-thumbtack"></i> v
+sync: <i class="fas fa-thumbtack"></i> 
+diet: <i class="fas fa-seedling"></i>
 block user: <i class="fas fa-ban"></i>  or <i class="fas fa-user-slash"></i>
 removed friend: <i class="fas fa-house-damage"></i>  
 birthday: <i class="fas fa-birthday-cake"></i> 
@@ -81,9 +82,12 @@ user settings: <i class="fas fa-users-cog"></i>
 remove: <i class="fas fa-trash-alt"></i> 
 reject: <i class="fas fa-thumbs-down"></i> 
 approve: <i class="fas fa-thumbs-up"></i> 
-favorites: <i class="far fa-star"></i> 
+favorites: <i class="fas fa-star"></i> 
 dislike: <i class="fas fa-poop"></i> 
 save: <i class="far fa-save"></i> 
+location: <i class="fas fa-search-location"></i>
+email: <i class="fas fa-envelope-open-text"></i>
+phone: <i class="fas fa-phone-volume"></i>
 send request: <i class="far fa-paper-plane"></i> 
 list owner: <i class="fas fa-house-user"></i> ? <i class="fas fa-hat-wizard"></i> 
 
