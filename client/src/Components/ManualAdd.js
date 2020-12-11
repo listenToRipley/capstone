@@ -7,6 +7,7 @@ import { FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import {useInput} from '../Hooks/inputHook'
 import AddToShoppingList from '../Containers/AddToShoppingList'
+import AddToPantry from '../Containers/AddToShoppingList'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,12 +43,28 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ManualAdd = () => {
+const ManualAdd = (props) => {
   const classes = useStyles()
+
+  const {list} = props
+  console.log('manual add knows the list', list)
 
   const {value: quantity, bind: bindQuantity, reset: resetQuantity} = useInput(1) 
   const {value: item, bind: bindItem, reset: resetItem} = useInput('') 
   const {value: measurement, bind: bindMeasurement, reset: resetMeasurement} = useInput('') 
+
+  const addButton = (need) => {
+    console.log('you seeing the button here?', need)
+    if (need==='pantry') {
+      return (
+        <AddToPantry quantity={bindQuantity} item={bindItem} itemID={0}/>
+      )
+    } else if (need==='shopList') {
+      return (
+        <AddToShoppingList quantity={bindQuantity} item={bindItem} itemID={0}/>
+      )
+    } 
+  }
 
   return (
   <Paper className={classes.root}>
@@ -99,7 +116,7 @@ const ManualAdd = () => {
           
       </FormControl>
       <div className={classes.button}>
-        <AddToShoppingList quantity={bindQuantity} item={bindItem} itemId={0}/>
+       {addButton(list)}
       </div>
     </Box>
   </Paper>

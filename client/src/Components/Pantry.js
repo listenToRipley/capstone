@@ -96,8 +96,6 @@ const Pantry = (props) =>  {
   const {userPantry} = props
   const {list} = props.userPantry
 
-  const lLength = list.length 
-
   const classes = useStyles();
 
   useEffect(() => {
@@ -165,7 +163,7 @@ const Pantry = (props) =>  {
                       <TableRow
                         hover
             
-                        itemId={`${row.entryId} is selected`}
+                        itemID={`${row.entryId} is selected`}
                         key={row.entryId}
                       >
                         <TableCell component="th" id={row.entryId} scope="row" align="center">
