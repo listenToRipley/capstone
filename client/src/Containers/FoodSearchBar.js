@@ -16,4 +16,4 @@ const mapStateToDispatch = (dispatch) => {
   }
 }
 
-export default connect(null, mapStateToDispatch)(FoodSearchBar)
+export default connect(mapStateToProps, mapStateToDispatch)(FoodSearchBar)
