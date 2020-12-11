@@ -28,14 +28,12 @@ const {
 
 const admin = express.Router({mergeParams: false})
 
-//GET
+
 admin.get('/:email', forgotUsername)
 admin.get('/vUsername/:user', verifyUsername)
 admin.get('/vEmail/:email', verifyEmail)
-//maybe protected route
 admin.get('/vUserCreation/:username', newUser)
 
-//POST
 admin.post('/createUser',
 createUsername,
 createUserDetails,
@@ -46,8 +44,7 @@ createPalList,
 createUserLocation,
 createUserAccess)
 
-//PUT
-//protected route, process can only be accessed through link sent to email? Stand alone? 
+
 admin.put('/password/:email',updatePassword)
 
 module.exports = admin

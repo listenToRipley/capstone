@@ -45,12 +45,7 @@ const {
 } = require('../../controller/appFunc/password/password')
 
 const just = express.Router({mergeParams: true})
-//KEEP HERE FOR NOW 
-// const {auth}= require('../../middleware/authentication')
-//NEED TO CONSIDER MODULARIZING 
 
-
-//GET
 just.get('/info', userPersonalInfo)
 just.get('/displayPref', justDisplayPrefer)
 just.get('/location', userLocation)
@@ -60,14 +55,12 @@ just.get('/dislikes', justDislikes)
 just.get('/diets', justDiets)
 just.get('/allergies', justAllergies)
 
-//POST
 just.post('/addLike', addLike)
 just.post('/addDislike', addDislike)
 just.post('/addDiet', addDiet)
 just.post('/addAllergy', addAllergy)
 
 
-//PUT
 just.put('/upPassword', updateFromLogPassword )
 just.put('/upEmail', updateEmail)
 
@@ -83,7 +76,5 @@ just.put('/reLike/:entryId', removeLike)
 just.put('/reDislike/:entryId', removeDislike)
 just.put('/reDiet/:entryId', removeDiet)
 just.put('/reAllergy/:entryId', removeAllergy)
-
-//DELETE
 
 module.exports = just

@@ -14,15 +14,13 @@ const {
   addToShopList
 } = require('../../controller/appFunc/shoppingLists/reqApproved')
 
-//GET 
+
 requests.get('/reqCount', reqCount)
 requests.get('/viewReqs', viewShopRequests)
 requests.get('/viewSent', viewSentRequests)
 
-//POST
 requests.post('/addReq', addShopRequest)
 
-//PUT
 requests.put('/approveReq/:reqId',   approveReq,
 addToShopList)
 requests.put('/declineReq/:reqId', declineShopRequest)

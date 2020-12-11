@@ -23,14 +23,11 @@ const {
 
 const merge = express.Router({mergeParams: true})
 
-//GET
 merge.get('/status', mergeStatus)
 
 
-//POST
 merge.post('/req', sendMergeReq)
 
-//PUT
 merge.put('/accept/:mergeId',   acceptMergeReq,
 acceptAccess,
 deactivateAccess,

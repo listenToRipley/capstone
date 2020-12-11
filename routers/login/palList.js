@@ -25,15 +25,12 @@ const {
 
 const pals = express.Router({mergeParams: true})
 
-//GET
 pals.get('/pals/:user', palList)
 pals.get('/viewSent', viewSentReq)
 pals.get('/viewPending', viewPendingReq)
 
-//POST
 pals.post('/req',sendPalReq)
 
-//PUT
 pals.put('/accept/:reqId', 
 acceptPalReq,
 updateRequesterAccess,
