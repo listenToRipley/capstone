@@ -4,7 +4,7 @@ import state from '../state'
 let initialState = {...state}
 
 export default function(state = [...initialState.searchResults], action){
-  console.log('redicers ',action.payload)
+ 
   switch(action.type) {
     case FIND_FOOD: 
     return [...state,action.payload]
