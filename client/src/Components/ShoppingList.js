@@ -122,7 +122,7 @@ const ShoppingList = (props) =>  {
     
       return props.findShopList(shopListId, token, props.user.username)
     
-  },[])
+  }, [])
 
   //click handlers 
   const handleCheck = (e) => {
