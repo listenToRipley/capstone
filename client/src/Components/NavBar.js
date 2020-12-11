@@ -118,10 +118,7 @@ const NavBar = (props) => {
       let {token} = props.user.pass 
 
       return props.getDetails(token={token}, username={username})
-    } else if (validation === false) {
-      //need to add trigger of some time to reset the store to clear
-      history.push('/')
-    }
+    } 
 
     // if(setOpen) {
     //   drawerState(true)
