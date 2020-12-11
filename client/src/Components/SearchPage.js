@@ -178,7 +178,7 @@ const SearchPage = (props) => {
 
     </List>
 
-    <ManualAdd/>
+    <ManualAdd list={list}/>
 
   </Dialog>
     </div>
