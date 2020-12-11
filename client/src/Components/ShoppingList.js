@@ -207,7 +207,7 @@ const ShoppingList = (props) =>  {
               </Typography>
             )}
               
-              <SearchPage/>
+              <SearchPage list='shopList'/>
                
                {setShopping ? (
               <Tooltip title="Finished Shopping">

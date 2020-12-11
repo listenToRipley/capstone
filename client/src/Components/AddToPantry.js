@@ -25,7 +25,7 @@ const AddToPantry = (props) => {
     <Button
     onClick={handleSubmit}
     ><svg className="fas fa-door-open"/>  
-            Add To Pantry
+        Add To Pantry
     <svg className="fas fa-door-open"/>
     </Button>
   )

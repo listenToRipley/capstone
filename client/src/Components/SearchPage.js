@@ -81,7 +81,9 @@ const useStyles = makeStyles((theme) => ({
 const SearchPage = (props) => {
   // console.log('search page props',props)
   const classes = useStyles();
-  const {searchResults, openFoodSearch, openFoodFinder} = props
+  const {searchResults, openFoodSearch, openFoodFinder, list} = props
+
+  console.log('list your open is ', list)
 
   console.log('tell me about the props in food search', props.searchResults)
 
@@ -95,7 +97,7 @@ const SearchPage = (props) => {
   return (
     <div >
     
-    <Tooltip className="add" title="Add Item to your shopping list">
+    <Tooltip className="add" title="Find items to add">
       <IconButton 
       onClick={() => openFoodSearch(true)}>
         <svg className="fas fa-plus-circle"></svg>
@@ -125,7 +127,6 @@ const SearchPage = (props) => {
             className={classes.resultCard}
             key={item.id}>
             <CardMedia
-              // component="img"
               className={classes.media}
               image={item.image}
               title={item.title}

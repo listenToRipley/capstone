@@ -11,10 +11,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import {  faPlusCircle, faCogs, faHandHoldingWater } from '@fortawesome/free-solid-svg-icons';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -135,7 +132,7 @@ const Pantry = (props) =>  {
             <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
                 Your Pantry List
               </Typography>
-              <SearchPage/>   
+              <SearchPage list='pantry'/>   
            </Toolbar>
           <TableContainer>
             <Table
