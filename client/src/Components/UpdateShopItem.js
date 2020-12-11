@@ -68,8 +68,6 @@ const UpdateShopItem = (props) => {
   const {value: item, bind: bindItem, reset: resetItem} = useInput(it) 
   const {value: measurement, bind: bindMeasurement, reset: resetMeasurement} = useInput(m) 
 
-  console.log('item it', entryId)
-
   const handleUpdateItem = (e) => {
     e.preventDefault()
     props.upShopItem(username, token ,entryId, bindQuantity.value ? bindQuantity.value : q , bindItem.value? bindItem.value : item)
@@ -135,22 +133,6 @@ const UpdateShopItem = (props) => {
             aria-label="item you want"
             defaultValue={item}
           />
-           {/* <TextField
-            {...bindMeasurement}
-            variant="outlined"
-            margin="normal"
-            required
-            id="measurement"
-            label="Unit"
-            name="measurement"
-            type="text"
-            
-            from="measurementsList"
-            autoFocus
-            className={classes.fields}
-            aria-label="unit of measurement"
-          />
-          */}
           </FormControl>
           </DialogContentText>
         </DialogContent>
