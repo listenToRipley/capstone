@@ -24,7 +24,7 @@ import { faOtter, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import Slide from '@material-ui/core/Slide';
 import FoodSearchBar from '../Containers/FoodSearchBar';
 import CloseIcon from '@material-ui/icons/Close';
-import AddToShoppingList from './AddToShoppingList'
+import AddToShoppingList from '../Containers/AddToShoppingList'
 import ManualAdd from './ManualAdd'
 import './toolbar.css'
 
@@ -38,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginLeft: theme.spacing(2),
     flex: 1,
+  },
+  cardContainer: {
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   resultCard: {
     maxWidth: 345,
@@ -77,7 +81,7 @@ const SearchPage = (props) => {
   const classes = useStyles();
   const {searchResults, openFoodSearch, openFoodFinder} = props
 
-  console.log('tell me about the props in food search', props)
+  console.log('tell me about the props in food search', props.searchResults[0])
 
   const [expanded, setExpanded] = useState(true)
 
@@ -109,13 +113,14 @@ const SearchPage = (props) => {
     <FoodSearchBar/>
     <List>
 
-      {searchResults.length-1 !==0  ? 
-      <div>
+      {searchResults[0].length-1 !==0  ? 
+      <div className={classes.cardContainer}>
           {
-           searchResults.map((item, index) => (
+            searchResults[0].map((item, index) => (
   
             <Card className={classes.resultCard}>
             <CardMedia
+              // component="img"
               className={classes.media}
               image={item.image}
               title={item.title}
