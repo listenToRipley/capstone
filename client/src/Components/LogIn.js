@@ -54,7 +54,7 @@ const LogIn = (props) => {
   let {user}= props
 
   let {value: username, bind: bindUsername, reset:resetUsername} = useInput('')
-  let {value: password, bind: bindPassword, reset: resetPassword} = useInput('')
+  let {value: password, bind: bindPassword, reset:resetPassword} = useInput('')
 
     const sendValidation = e => {
       e.preventDefault();
@@ -72,7 +72,6 @@ const LogIn = (props) => {
       }
     })
 
- 
   return (
       <Grid 
       container 

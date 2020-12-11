@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route ,browserHistory} from 'react-router';
+import {Switch, Route} from 'react-router';
 import LogIn from '../Containers/Login'
 import Home from '../Containers/Home';
 import ShoppingList from '../Containers/ShoppingList';
