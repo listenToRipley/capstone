@@ -246,8 +246,8 @@ const Pantry = (props) =>  {
                         <TableCell align="center">{row.item}</TableCell>
                         {/* <TableCell align="right">{row.measId}</TableCell> */}
                         <TableCell align="center">{row.actions}
-                         <DeletePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
-                          <UpdatePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
+                         {/* <DeletePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/>
+                          <UpdatePantryItem q={row.quantity} it={row.item} m={row.measurement} entryId={row.entryId}/> */}
                           </TableCell>
                       </TableRow>
                     )
