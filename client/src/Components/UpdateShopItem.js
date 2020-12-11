@@ -11,6 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField'
 import { FormControl } from '@material-ui/core';
 import Slide from '@material-ui/core/Slide';
+import Tooltip from '@material-ui/core/Tooltip';
 import {useInput} from '../Hooks/inputHook'
 
 const useStyles = makeStyles((theme) => ({
@@ -72,13 +73,15 @@ const UpdateShopItem = (props) => {
 
   return (
     <div>
-    <IconButton
-    // onClick={openEditor}
-    aria-label='update'
-    aria-controls='update-item'
-    >
-      <UpdateIcon />
-    </IconButton>
+    <Tooltip title="update-item">
+      <IconButton
+      // onClick={openEditor}
+      aria-label='update'
+      aria-controls='update-item'
+      >
+        <UpdateIcon />
+      </IconButton>
+    </Tooltip>
 
     {/* <Dialog
         // open={setOpen}
