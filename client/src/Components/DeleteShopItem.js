@@ -6,10 +6,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 const DeleteShopListItem = (props) => {
 
   const {entryId} = props
+  const {username} = props.user
+  const {token} = props.user.pass
 
   const handleDeleteItem = () => {
-    // console.log('delete this item!', entryId)
-    props.removeShopItem(entryId)
+    console.log('delete this item!', entryId)
+    props.removeShopItem(username, token,entryId)
   }
 
   return (

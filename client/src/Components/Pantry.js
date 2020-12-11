@@ -237,7 +237,7 @@ const Pantry = (props) =>  {
                           <Checkbox
                             padding="10"
                             checked={checked}
-                            inputProps={{ 'list item number ': row.entryId }}
+                            inputProps={{ 'number ': row.entryId }}
                             onChange={handleCheck}
                             // onClick={handleSelected}
                           />

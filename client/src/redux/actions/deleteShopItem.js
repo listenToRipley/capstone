@@ -1,9 +1,8 @@
 import {REMOVE_FROM_SHOPPING_LIST} from './types'
 
-export const removeShopItem = (entryId) => async dispatch =>{
-
-let path = `/postLogin/${user}/shopList/remove/${entryId}`
-let intake = pass.token
+export const removeShopItem = (user,pass, itemId) => async dispatch =>{
+  console.log('trying to delete : ',itemId)
+let path = `/postLogin/${user}/shopList/remove/${itemId}`
 
 console.log('the path on add item to shop?', path)
 
@@ -12,7 +11,7 @@ try{
       method: 'PUT',
       headers: {
         Accept: "application/json", "Content-Type": "application/json",
-        token: `${intake}`,
+        token: `${pass}`,
       }
     }
     )
@@ -22,7 +21,7 @@ try{
     console.log('view the results from call', result)
     dispatch({
       type: REMOVE_FROM_SHOPPING_LIST,
-        payload: entryId
+        payload: itemId
     })
   } catch (e) {
     return 'what the error the remove from shop list? ', {e}

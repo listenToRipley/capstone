@@ -10,7 +10,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapStateToDispatch = (dispatch) => {
-   console.log('what is the input you get for the search? ', dispatch)
   return {
     findFood: (input) => dispatch(findFood(input))
   }

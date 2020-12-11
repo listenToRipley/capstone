@@ -118,10 +118,10 @@ const ShoppingList = (props) =>  {
   const {selected, setSelected} = useState(0)
   const {checked, setChecked} = useState(false)
 
-  useEffect( () => {
-    if (call===false) {
+  useEffect(() => {
+    
       return props.findShopList(shopListId, token, props.user.username)
-    }
+    
   },[])
 
   //click handlers 
@@ -274,7 +274,6 @@ const ShoppingList = (props) =>  {
                           <Checkbox
                             padding="10"
                             checked={checked}
-                            inputProps={{ 'list item number ': row.entryId }}
                             onChange={handleCheck}
                             // onClick={handleSelected}
                           />
