@@ -10,13 +10,9 @@ const pantry = require('./pantry')
 const shopList = require('./shopList')
 const requests = require('./requests')
 const util = require('./util')
-// const all = require('./all')
-const {auth, mou}= require('../../middleware/authentication')
+const {auth}= require('../../middleware/authentication')
 
 start.get('/:user/:password', login, createSession)
-
-
-// start.use('/all', mou, all) <- needs work, something up
 
 start.use('/current', auth, user)
 start.use('/merge', auth, merge)

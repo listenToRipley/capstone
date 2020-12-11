@@ -14,9 +14,6 @@ app.get('/', (req, res) => {
   res.send('Welcome to the Pantry Pal Server!')
 })
 
-//need to connect up your sql and have the basic routes
-//remember to have the route protected
-//should be prefixed by your role, MOU
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(express.json())

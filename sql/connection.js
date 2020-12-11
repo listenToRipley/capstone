@@ -3,8 +3,7 @@ const mysql = require('mysql')
 class Connection {
   constructor() {
     if(!this.pool) {
-      console.log('create connection...')
-      //add content for connecting your SQL database 
+ 
       this.pool = mysql.createPool({
         connectionLimit:100,
         host:process.env.MYSQL_HOST,
@@ -14,11 +13,10 @@ class Connection {
         debug:false
       })
       
-      console.log('can you see')
       return this.pool
      
     }
-    console.log('got through the pool')
+
     return this.pool
   }
 }
