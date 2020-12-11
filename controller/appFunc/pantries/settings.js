@@ -2,7 +2,6 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//PUT
 const updateTitle = (req, res) => {
 
   const {pantryId} = req.params

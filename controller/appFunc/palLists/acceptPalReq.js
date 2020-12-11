@@ -2,13 +2,10 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
 
-//PUT
-//this path should only be available for the viewPendingReq, so the pending mean the current using has the pal role on the table.  
 const acceptPalReq = (req, res, next) => {
 
 const { reqId } = req.params
 
-//this will be triggered by the pal role accepting, so all references to the pal will be the current user -> we should already know that the reqId is, so we should be able to pull information that way
 let sql='UPDATE palListsRequests SET approved=1, active=0 WHERE palRequestId= ? '
 
 sql=mysql.format(sql,[reqId])

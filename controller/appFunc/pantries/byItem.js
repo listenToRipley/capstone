@@ -2,9 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//POST
 const autoAddToShopList = (req, res) => {
-  //this will add be triggered when an items gets marked off the list and auto add is on
 
   const { itemId } = req.params
 
@@ -19,9 +17,7 @@ const autoAddToShopList = (req, res) => {
   })
 }
 
-//PUT 
 
-//!~ add front end logic to access if auto add is on. Or refactor this 
 const removeFromPantry = (req, res) => {
 
 let sql='UPDATE pantries SET stock=0 where entryId=?'

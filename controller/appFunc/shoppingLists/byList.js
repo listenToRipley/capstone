@@ -2,21 +2,6 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//GET COMBINE WITH SHOP LIST ITEMS FOR NOW
-// const shopListDetails = (req, res) => {
-
-//   let sql='SELECT a.shopList, sLS.owner, sLS.shopListName, a.username AS pals, a.shopListRole, a.palReq, sLS.autoAdd, sLS.mergeStatus FROM shopListsSettings AS sLS JOIN access AS a ON a.shopList=sLS.shopListSetId WHERE a.active=1 AND sLS.active=1 AND a.username<>sLS.owner AND a.shopList= ? ORDER BY a.username'
-
-//   sql=mysql.format(sql, [req.params.listId])
-
-//   pool.query(sql, (err, row) => {
-//     if(err) return handleSQLError(res, err)
-
-//     return res.json(row);
-//   })
-
-// }
-
 const shopListCount = (req, res) => {
 
   let sql= 'SELECT COUNT(item) FROM shoppingLists WHERE shopList= ?'
@@ -44,7 +29,7 @@ pool.query(sql, (err, row) => {
 
 }
 
-//POST
+
 const addToShopList = (req, res) => {
 
   const { quantity, measure, item, spoon} = req.body

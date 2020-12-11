@@ -2,7 +2,6 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//GET
 const reqCount = (req, res) => {
 
   let sql='SELECT COUNT(reqItId) AS requestCount FROM itemRequest WHERE active=1 AND shopList=? '
@@ -21,7 +20,6 @@ const reqCount = (req, res) => {
   })
 }
 
-//THIS IS ONLY AVAILABLE AS A OWNER OR CO-OWNER  
 const viewShopRequests = (req, res) => {
 
   let sql='SELECT * FROM itemRequest WHERE active=1 AND shopList=? '
@@ -58,9 +56,7 @@ const viewSentRequests = (req, res) => {
   })
 }
 
-//POST 
 
-//CAN ONLY DO AS A REQUESTER
 const addShopRequest = (req, res) => {
 
   const { quantity, measId, item, spoonId} = req.body
@@ -77,7 +73,7 @@ const addShopRequest = (req, res) => {
 
 }
 
-//use this for canceling req
+
 const declineShopRequest = (req, res) => {
   console.log('sorry, we are not going to get that')
 

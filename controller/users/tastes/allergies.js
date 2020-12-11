@@ -3,11 +3,11 @@ const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
 
-//GET
+
 const justAllergies = (req, res) => {
 
   let sql='SELECT al.allergy, al.spoonId FROM  usersAllergies AS uAl JOIN allergies AS al ON uAl.allergy=al.allergyId WHERE uAl.active=1 AND uAl.username=?'
-  //should input be updated to req.body.user? add conditional? 
+
   sql=mysql.format(sql,[req.user])
 
   pool.query(sql, (err, row) => {
@@ -17,7 +17,6 @@ const justAllergies = (req, res) => {
 
 }
 
-//POST
 
 const addAllergy = (req, res) => {
 
@@ -35,7 +34,6 @@ const addAllergy = (req, res) => {
 }
 
 
-//PUT 
 const removeAllergy = (req, res) => {
 
   const { entryId } = req.params

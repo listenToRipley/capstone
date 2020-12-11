@@ -2,11 +2,9 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
 
-//PUT
+
 const acceptMergeReq = (req, res, next) => {
 
-//remember the requesters will the one who whose pantry will now be the primary owner and the person who requests will be come the co-owner. 
-  //must update the role if the merge request is approved. will become co-owner 
   const {mergeId} = req.params
 
   let sql='UPDATE mergeRequests SET active=0, approved=1 WHERE mergeReqId= ?'
@@ -75,7 +73,6 @@ const copyShopList = (req, res, next) => {
   })
 }
 
-//future state, need to verify all people on merge pal's friend's list are currently on requesters list. 
 const updatePalsListAccess = (req, res, next) => {
 
   const {mergeId} = req.params

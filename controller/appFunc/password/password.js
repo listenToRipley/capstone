@@ -3,8 +3,6 @@ const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 const bcrypt = require('bcrypt')
 
-
-//PUT
 const updatePassword = async (req, res) => {
 
   const salt = bcrypt.genSaltSync(10)

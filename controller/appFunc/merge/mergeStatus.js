@@ -1,11 +1,8 @@
 const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
-//items related to merges 
 
-//GET
 const mergeStatus = (req, res) => {
-  //the mergerRequester or mergePal = to user
 
   let sql='SELECT * FROM mergeRequests WHERE approved=1 AND requester=? OR mergePal=?'
 

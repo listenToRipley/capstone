@@ -2,9 +2,6 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//GET
-
-//POST
 const autoAddToPantry = (req, res) => {
 
   const {itemId} = req.params
@@ -19,7 +16,6 @@ const autoAddToPantry = (req, res) => {
   })
 }
 
-//PUT
 const removeFrom = (req, res) => {
 
 let sql='UPDATE shoppingLists SET activeItem=0 where entryId=?'

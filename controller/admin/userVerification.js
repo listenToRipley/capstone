@@ -5,8 +5,6 @@ const bcrypt = require('bcrypt')
 const moment = require('moment')
 const jwt = require('jsonwebtoken')
 
-//search database to validate username and password match the provided input
-//validate login
 const login = (req, res, next) => {
 
   let { user, password } = req.params
@@ -38,9 +36,9 @@ const createSession = (req, res) => {
     day: moment()
   }
 
-  const token =jwt.sign(current, 'other') //second agr needs to be saved in to env
+  const token =jwt.sign(current, 'other') 
 
-  return res.json({token: token }) // this will be a cookie once we get to the front end 
+  return res.json({token: token })
 }
 
 module.exports = { 

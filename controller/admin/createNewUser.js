@@ -4,7 +4,6 @@ const { handleSQLError } = require('../../sql/error')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-//FIRST TWO ONLY NEED TO BE CALLED ONCE SO CANNOT BE USED AS MIDDLEWARE, 
 const verifyUsername = (req, res, next) => {
 
   let sql = 'SELECT COUNT(username) FROM appInfo WHERE active=1 AND username= ? ORDER BY username;'
@@ -21,7 +20,6 @@ const verifyUsername = (req, res, next) => {
   })
 }
 
-
 const verifyEmail = (req, res, next) => {
 
   let sql = 'SELECT COUNT(email) FROM appInfo WHERE active=1 AND email= ? ORDER BY email; '
@@ -32,7 +30,7 @@ const verifyEmail = (req, res, next) => {
     if (err) return handleSQLError(res, err)
     let total = row[0]['COUNT(email)']
     if(total!==0) {
-      res.send('Sorry, you seem to already have a login.') //should get reroute to create a login 
+      res.send('Sorry, you seem to already have a login.') 
     } else {
       next()
     }
@@ -82,7 +80,6 @@ const createUserLocation = (req, res, next) => {
    })  
 }
 
-
 const createDefaultDisplay = (req, res, next) => {
 
    let sql=	'INSERT INTO usersDisplayPreferences (username) VALUES (?)'
@@ -108,7 +105,6 @@ const createPantry = (req, res, next) => {
    })  
 }
 
-
 const createShoppingList = (req, res, next) => {
 
    let sql=	'INSERT INTO shopListsSettings (owner) VALUES (?)'
@@ -120,7 +116,6 @@ const createShoppingList = (req, res, next) => {
     next()
    })  
   }
-
 
 const createPalList = (req, res, next) => {
 

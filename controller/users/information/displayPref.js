@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
-//GET 
+
 const justDisplayPrefer = (req, res) => {
 
   let sql = 'SELECT * FROM usersDisplayPreferences WHERE username=?'
@@ -16,7 +16,7 @@ const justDisplayPrefer = (req, res) => {
 
 }
 
-//PUT 
+
 const updateDisplayPref = (req, res) => {
   
   const {likes, dislikes, diets, allergies, city, state, country, email, dobMonth, dobDate, dobYear, phone} = req.body

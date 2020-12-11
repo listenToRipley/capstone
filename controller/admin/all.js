@@ -4,7 +4,6 @@ const { handleSQLError } = require('../../sql/error')
 
 const allMerges = (req, res) => {
   console.log('my whole merge table')
-//write a query that returns all your merges 
 
   pool.query('SELECT * FROM mergeRequests', (err, rows) => {
     if(err) return handleSQLError(res, err)
@@ -38,8 +37,6 @@ const allShoppingLists = (req, res) => {
   })
 }
 
-
-//counts: 
 const userSummary = (req, res) => {
   console.log('right now tells you how many users you have')
 
