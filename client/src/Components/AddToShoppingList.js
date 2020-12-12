@@ -8,12 +8,9 @@ dom.watch()
 
 const AddToShoppingList = (props) => {
 
-  const {pass} = props.user
-  const {username} = props.user
+  const {pass, username} = props.user
   const {shopListId} = props.userDetails
-  const {item} = props
-  const {quantity} = props
-  const {itemId} = props
+  const {item, quantity, itemId} = props
 
   const handleSubmit = (e) => {
     e.preventDefault()
