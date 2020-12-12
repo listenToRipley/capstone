@@ -25,7 +25,7 @@ app.use('/login', log)
 app.use('/preLogin',preLogin)
 app.use('/postLogin', postLogin)
 
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, "/client/build", "index.html"))
 })
 
