@@ -26,7 +26,7 @@ app.use('/preLogin',preLogin)
 app.use('/postLogin', postLogin)
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build", "index.html"))
+  res.sendFile(path.resolve(__dirname, "/client/build", "index.html"))
 })
 
 app.listen(port, () => {
