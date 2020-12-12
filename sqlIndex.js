@@ -3,8 +3,10 @@ const path = require('path');
 const express = require('express')
 const port = process.env.PORT || 4001
 const bodyParser = require('body-parser')
+var cors = require('cors')
 
 const app = express();
+app.use(cors());
 
 const log = require('./routers/login/logIn')
 const preLogin = require('./routers/pre/admin')
