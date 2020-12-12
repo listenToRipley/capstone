@@ -4,7 +4,8 @@
   "description": "pantry pals web server info",
   "main": "sqlIndex.js",
   "scripts": {
-    "start": "node sqlIndex.js"
+    "start": "node sqlIndex.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "Natalie Kendrick",
   "license": "ISC",
