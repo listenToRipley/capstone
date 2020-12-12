@@ -1,6 +1,8 @@
 require('dotenv').config()
+const path = require('path');
 const express = require('express')
-const port = process.env.PORT || 4001
+const port = process.env.PORT || 3000
+const publicPath = path.join(__dirname, '..', 'public');
 const bodyParser = require('body-parser')
 
 const app = express()
@@ -9,6 +11,7 @@ const log = require('./routers/login/logIn')
 const preLogin = require('./routers/pre/admin')
 const postLogin = require('./routers/login/currentUser')
 
+app.use(express.static("client/build"));
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Pantry Pal Server!')
