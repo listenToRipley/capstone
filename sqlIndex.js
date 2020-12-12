@@ -10,6 +10,8 @@ const log = require('./routers/login/logIn')
 const preLogin = require('./routers/pre/admin')
 const postLogin = require('./routers/login/currentUser')
 
+console.log("Jon's Testing Deploy");
+
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(express.json())
