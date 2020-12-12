@@ -4,7 +4,7 @@
   "description": "pantry pals web server info",
   "main": "sqlIndex.js",
   "scripts": {
-    "server": "nodemon sqlIndex.js"
+    "start": "node sqlIndex.js"
   },
   "author": "Natalie Kendrick",
   "license": "ISC",
