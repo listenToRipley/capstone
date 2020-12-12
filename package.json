@@ -5,7 +5,7 @@
   "main": "sqlIndex.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "node sqlIndex.js",
+    "start": "node sqlIndex/sqlIndex.js",
     "server": "nodemon sqlIndex.js",
     "client": "npm start --prefix client ",
     "dev": "concurrently \"npm run server\" \"npm run client\"  "
