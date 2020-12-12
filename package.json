@@ -8,6 +8,7 @@
     "start": "node sqlIndex.js",
     "server": "nodemon sqlIndex.js",
     "client": "npm start --prefix client ",
+    "build": "node sqlIndex.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"  "
   },
   "author": "Natalie Kendrick",
@@ -34,5 +35,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/listenToRipley/capstone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/listenToRipley/capstone/issues"
+  },
+  "homepage": "https://github.com/listenToRipley/capstone#readme"
 }
