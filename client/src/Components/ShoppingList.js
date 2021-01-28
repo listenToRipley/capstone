@@ -90,7 +90,7 @@ const ShoppingList = (props) =>  {
     
       return props.findShopList(shopListId, token, props.user.username)
     
-  }, [])
+  }, [userShopList])
 
   const handleCheck = (e) => {
     e.preventDefault();
