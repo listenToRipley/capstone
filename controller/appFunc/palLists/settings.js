@@ -2,6 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
 
+//POST
 const updatePalListName = (req, res) => {
 
   const {title} = req.body
@@ -17,7 +18,7 @@ const updatePalListName = (req, res) => {
 
 }
 
-
+//PUT
 const updatePalRole = (req, res) => {
   
   const {accessId} = req.params

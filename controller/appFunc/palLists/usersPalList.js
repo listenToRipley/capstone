@@ -2,6 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const {handleSQLError} = require('../../../sql/error')
 
+//GET
 const palList = (req, res) => {
 
 const {user} = req.params
@@ -15,6 +16,7 @@ pool.query(sql, (err, row) => {
 })  
 
 }
+
 
 module.exports = {
   palList

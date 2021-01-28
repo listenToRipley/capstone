@@ -2,18 +2,16 @@ import {connect} from 'react-redux'
 import Login from '../Components/LogIn'
 import {login}from '../redux/actions/login'
 
-const mapStateToProps = (state) => {
-  
+const mapStateToProps = (user) => {
   return {
-    user: state.user,
-    userInfo: state.userInfo,
-    openDrawer: state.openDrawer
+    user: user
   }
 }
 
 const mapStateToDispatch = (dispatch) => {
+  console.log('hit my dispatcher')
   return {
-    login: (username, password) => dispatch(login(username, password)),
+    login: (username, password) => dispatch(login(username, password))
   }
 }
 

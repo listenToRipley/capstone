@@ -16,7 +16,10 @@ export default function(state = {...initialState.userShopList}, action) {
       return newState
     case REMOVE_FROM_SHOPPING_LIST:
      const amendState = state.list.filter(item => item.entryId=== action.payload)
-    return [...amendState]
+    return { 
+      ...state,
+      useShopList:[...state.list, amendState]
+    }
     default: return state
   }
 }

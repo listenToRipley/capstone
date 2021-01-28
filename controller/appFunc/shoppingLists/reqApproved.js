@@ -2,6 +2,7 @@ const mysql = require('mysql')
 const pool = require('../../../sql/connection')
 const { handleSQLError } = require('../../../sql/error')
 
+//PUT  OWNER OR CO-OWNER
 const approveReq = (req, res, next) => {
 
   const {reqId} = req.params
