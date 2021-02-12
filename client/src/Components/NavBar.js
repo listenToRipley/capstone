@@ -97,8 +97,6 @@ const NavBar = (props) => {
 
   const history = useHistory()
 
-  const cookies = (cookie.parse(document.cookie))
-
   const handleDrawerOpen = () => {
     setOpen(true);
   }; 
@@ -170,6 +168,7 @@ const NavBar = (props) => {
               component={Link} 
               to='/home'
               aria-label='home'
+              onChange={handleDrawerClose}
               >
               <ListItemIcon>
                  <svg className="fas fa-home"></svg>
