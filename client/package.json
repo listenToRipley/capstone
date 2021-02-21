@@ -28,6 +28,7 @@
     "dotenv": "^8.2.0",
     "moment": "^2.29.1",
     "npm": "^6.14.9",
+    "package": "^1.0.1",
     "react": "^17.0.1",
     "react-browser-router": "^2.1.2",
     "react-calendar": "^3.2.1",
