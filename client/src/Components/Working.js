@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     position: 'absolute',
-    marginTop: '70px',
-    marginLeft: `calc(100% - ${window.innerWidth/1.5}px)`,
+    marginTop: '95px',
+    marginLeft: `calc(93% - ${window.innerWidth/1.5}px)`,
   },
   img: {
     marginTop: '70px',
