@@ -15,6 +15,9 @@ const AddToPantry = (props) => {
   const {quantity} = props
   const {itemId} = props
 
+
+  console.log('item.value', item.value)
+
   const handleSubmit = (e) => {
     e.preventDefault()
     

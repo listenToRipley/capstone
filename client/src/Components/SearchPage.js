@@ -164,7 +164,7 @@ const SearchPage = (props) => {
             className={classes.fields}
             aria-label="item you want to buy"
           />
-              <AddToShoppingList itemId={item.id} item={item.title} quantity={bindQuantity} item={item}/>
+              <AddToShoppingList itemId={item.id} item={item.title} quantity={bindQuantity}/>
               </CardContent>
             </Collapse>
            </Card>
