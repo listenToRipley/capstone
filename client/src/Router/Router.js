@@ -7,7 +7,8 @@ import CreateUser from '../Containers/CreateUser';
 import About from '../Components/About'
 import Pantry from '../Containers/Pantry';
 import UserProfile from '../Components/UserProfile';
-import cookie from 'cookie'
+import Working from '../Components/Working'; 
+import cookie from 'cookie';
 
 const checkAuth = () => {
  
