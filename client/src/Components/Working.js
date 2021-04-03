@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: `calc(100% - ${window.innerWidth/1.5}px)`,
   },
   img: {
+    marginTop: '70px',
     marginLeft: `calc(86% - ${window.innerWidth/1.5}px)`,
   }
   })
