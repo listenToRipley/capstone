@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   title:{
     marginLeft: `calc(100% - ${window.innerWidth/1.5}px)`,
   },
+  img: {
+    marginLeft: `calc(86% - ${window.innerWidth/1.5}px)`,
+  }
   })
 );
 
@@ -42,7 +45,7 @@ const Working = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <img src={working}/>
+      <img className={classes.img} src={working}/>
     </div>
   )
 };
