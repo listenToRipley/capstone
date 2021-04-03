@@ -1,9 +1,10 @@
 import React from 'react';
+import working from './Img/work.gif'
 
 const Working = () => {
   return (
     <div>
-      <img />
+      <img src={working}/>
     </div>
   )
 };
