@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   title:{
     marginLeft: `calc(115% - ${window.innerWidth/1.5}px)`,
   },
+  body: {
+    color: 'navyBlue'
+  },
   text1: {
     display: 'block',
     position: 'absolute',
