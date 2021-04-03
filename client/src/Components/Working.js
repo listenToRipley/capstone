@@ -20,17 +20,32 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   title:{
-    marginLeft: `calc(100% - ${window.innerWidth/1.5}px)`,
+    marginLeft: `calc(115% - ${window.innerWidth/1.5}px)`,
   },
-  text: {
+  text1: {
+    display: 'block',
     position: 'absolute',
     marginTop: '95px',
-    marginLeft: `calc(93% - ${window.innerWidth/1.5}px)`,
+    marginLeft: `calc(115% - ${window.innerWidth/1.5}px)`,
+    fontSize: '25px',
+  },
+  text2: {
+    display: 'block',
+    position: 'absolute',
+    marginTop: '150px',
+    marginLeft: `calc(88.5% - ${window.innerWidth/1.5}px)`,
+    fontSize: '25px',
   },
   img: {
     marginTop: '70px',
     marginLeft: `calc(86% - ${window.innerWidth/1.5}px)`,
-  }
+  },
+  text3: {
+    position: 'absolute',
+    marginTop: '-2em',
+    marginLeft: `calc(110% - ${window.innerWidth/1.5}px)`,
+    fontSize: '25px',
+  },
   })
 );
 
@@ -51,8 +66,12 @@ const Working = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <p className={classes.text}>Sorry! We are working on some improvements, Pantry Pals will be back soon and better than every!</p>
-      <img className={classes.img} src={working}/>
+      <div className={classes.body}>
+       <p className={classes.text1}>Sorry!</p>
+       <p className={classes.text2}>Pantry Pals is working on some improvements, we'll be back soon</p>
+       <img className={classes.img} src={working}/>
+       <p className={classes.text3}>Better than ever!</p>
+      </div>
     </div>
   )
 };
