@@ -15,7 +15,7 @@ const App = () => {
     <Provider store={store}>
       <CssBaseline>
          <BrowserRouter>
-          {/* <NavBar /> */}
+          <NavBar />
             <Router/>
         </BrowserRouter>
       </CssBaseline>
