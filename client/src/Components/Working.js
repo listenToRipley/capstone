@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   title:{
     marginLeft: `calc(100% - ${window.innerWidth/1.5}px)`,
   },
+  text: {
+    
+  },
   img: {
     marginTop: '70px',
     marginLeft: `calc(86% - ${window.innerWidth/1.5}px)`,
@@ -46,6 +49,7 @@ const Working = () => {
           </Typography>
         </Toolbar>
       </AppBar>
+      <p className={classes.text}>Sorry! We are working on some improvements, Pantry Pals will be back soon and better than every!</p>
       <img className={classes.img} src={working}/>
     </div>
   )
