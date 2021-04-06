@@ -41,8 +41,8 @@ const Router = () => {
       <Route path="/pantry" component={Pantry}/>
       <Route path="/profile" component={UserProfile}/>
 
-      <Route path="/" component={Working}/>
-      {/* <Route exact path="/" component={LogIn}/> */}
+      {/* <Route path="/" component={Working}/> */}
+      <Route exact path="/" component={LogIn}/>
       <Route path="/createNewUser" component={CreateUser}/>
       <Route path="/about" component={About}/>
 
