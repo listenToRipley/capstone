@@ -7,7 +7,7 @@ import CreateUser from '../Containers/CreateUser';
 import About from '../Components/About'
 import Pantry from '../Containers/Pantry';
 import UserProfile from '../Components/UserProfile';
-import Working from '../Components/Working'; 
+import Maintenance from '../Components/Maintenance'; 
 import cookie from 'cookie';
 
 const checkAuth = () => {
@@ -41,8 +41,8 @@ const Router = () => {
       <Route path="/pantry" component={Pantry}/>
       <Route path="/profile" component={UserProfile}/>
 
-      {/* <Route path="/" component={Working}/> */}
-      <Route exact path="/" component={LogIn}/>
+      <Route path="/" component={Maintenance}/>
+      {/* <Route exact path="/" component={LogIn}/> */}
       <Route path="/createNewUser" component={CreateUser}/>
       <Route path="/about" component={About}/>
 
