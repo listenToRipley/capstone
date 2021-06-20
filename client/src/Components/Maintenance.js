@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import work from "./Img/work.gif";
 import useImgResize from "../Hooks/useImgResize";
+import { StayPrimaryLandscape } from '@material-ui/icons';
 
 const windowWidth = window.innerWidth
 
@@ -22,45 +23,32 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   title:{
-    marginLeft: `calc(115% - ${window.innerWidth/1.5}px)`,
+    marginLeft: `calc(115% - ${windowWidth/1.5}px)`,
   },
   body: {
-    color: 'navyBlue'
+    color: 'navyBlue',
   },
   textBody: {
-    display: 'block',
     position: 'absolute',
-    textAlign: 'center',
-
-  },
-  text: {
-    position: 'relative',
-    top: '50%',
-    left: '-50%',
+    marginTop: '10%',
     fontSize: '25px',
-    transform: 'translate(-50%, -50%)',
-    width: '100%',
-    height: '100%'
+    transform: 'translate(20%, 50%)',  
+    textAlign: 'center',
   },
-  img: {
-    marginTop: '70px',
-    margin: '5%',
-    position: 'relative',
-    zIndex: '-1',
-    overflow: 'hidden',
+  textTop: {
+    marginTop: '-27%'
   },
-  // text3: {
-  //   position: 'absolute',
-  //   marginTop: '-2.75em',
-  //   marginLeft: `calc(${windowWidth - windowWidth * .72 }px)`,
-  //   fontSize: '25px',
-  // },
-  // text4: {
-  //   position: 'absolute',
-  //   marginTop: '-2em',
-  //   marginLeft: `calc(${windowWidth - windowWidth * .68 }px)`,
-  //   fontSize: '15px',
-  // },
+  textMiddle: {
+    marginTop: '-1%'
+  },
+  textBottom: {
+    marginTop: '52%'
+  },
+  textContact: {
+    marginTop: '10%',
+    fontSize: '20px'
+  },
+
   })
 );
 
@@ -84,12 +72,12 @@ const Maintenance = () => {
         </Typography>
       </Toolbar>
     </AppBar>
-    <div className={classes.body} ref={bodyRef}>
+    <div disabled className={classes.body} ref={bodyRef}>
       <div className={classes.textBody}>
-        <p className={classes.text}>Sorry!</p>
-        <p className={classes.text}>Pantry Pals is currently down for some much needed Maintenance</p>
-        <p className={classes.text}>Sorry for any inconveniences this might case.</p>
-        <p className={classes.text}>If you have questions or concerns, please  
+        <p className={classes.textTop}>Sorry!</p>
+        <p className={classes.textMiddle}>Pantry Pals is currently down for some much needed Maintenance</p>
+        <p className={classes.textBottom}>Sorry for any inconveniences this might case.</p>
+        <p className={classes.textContact}>If you have questions or concerns, please  
           <a href="mailto:natalie.m.kendrick@gmail.com?subject=PantryPalsMaintenance"> feel free to reach out</a>
         </p>
       </div>
