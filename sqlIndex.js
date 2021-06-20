@@ -2,6 +2,7 @@ require('dotenv').config()
 const path = require('path');
 const express = require('express')
 const port = process.env.PORT || 4001
+const publicPath = path.join(__dirname, '..', 'public');
 const bodyParser = require('body-parser')
 var cors = require('cors')
 
@@ -12,7 +13,7 @@ const log = require('./routers/login/logIn')
 const preLogin = require('./routers/pre/admin')
 const postLogin = require('./routers/login/currentUser')
 
-console.log("Jon's Testing Deploy");
+app.use(express.static("client/build"));
 
 app.use('/', express.static(path.join(__dirname, "./client/build")));
 

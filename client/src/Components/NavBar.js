@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import clsx from 'clsx';
-import {withRouter} from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -21,7 +20,6 @@ import { faShoppingBasket, faDoorClosed, faUsers, faHome, faUtensils, faSignOutA
 import { faUserCircle }from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
-import { withStyles } from '@material-ui/styles';
 import Logout from '../Containers/Logout'
 import {drawerState} from '../redux/actions/drawerState'
 import cookie from 'cookie'
@@ -97,8 +95,6 @@ const NavBar = (props) => {
 
   const history = useHistory()
 
-  const cookies = (cookie.parse(document.cookie))
-
   const handleDrawerOpen = () => {
     setOpen(true);
   }; 
@@ -170,6 +166,7 @@ const NavBar = (props) => {
               component={Link} 
               to='/home'
               aria-label='home'
+              onChange={handleDrawerClose}
               >
               <ListItemIcon>
                  <svg className="fas fa-home"></svg>

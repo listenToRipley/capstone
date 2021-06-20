@@ -91,6 +91,7 @@ const ShoppingList = (props) =>  {
       return props.findShopList(shopListId, token, props.user.username)
     
   }, [])
+  //need to change this out so it refresh properly on changes
 
   const handleCheck = (e) => {
     e.preventDefault();
