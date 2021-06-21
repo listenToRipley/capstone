@@ -8,6 +8,7 @@ import About from '../Components/About'
 import Pantry from '../Containers/Pantry';
 import UserProfile from '../Components/UserProfile';
 import Maintenance from '../Components/Maintenance'; 
+
 import cookie from 'cookie';
 
 const checkAuth = () => {
@@ -21,20 +22,19 @@ const checkAuth = () => {
   }
 }
 
-const ProtectedRoute = ({component: Component, ...rest}) => {
-  return (
-      <Route
-          {...rest}
-          render={(props) => checkAuth() ? <Component {...props}/> : <Redirect to={{pathname:'/'}}/> }
-      />
-  )
-}
+// const ProtectedRoute = ({component: Component, ...rest}) => {
+//   return (
+//       <Route
+//           {...rest}
+//           render={(props) => checkAuth() ? <Component {...props}/> : <Redirect to={{pathname:'/'}}/> }
+//       />
+//   )
+// }
 
 const Router = () => {
 
   return(
     <Switch>
-    
 
       <Route path="/home" component={Home}/>
       <Route path="/shoppingList" component={ShoppingList}/>
@@ -44,7 +44,7 @@ const Router = () => {
       <Route path="/" component={Maintenance}/>
       {/* <Route exact path="/" component={LogIn}/> */}
       <Route path="/createNewUser" component={CreateUser}/>
-      <Route path="/about" component={About}/>
+      <Route path="/about" component={About}/> */}
 
     </Switch>
   )

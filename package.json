@@ -6,12 +6,14 @@
   "scripts": {
 
     "client-install": "npm install --prefix client",
+    "start": "node sqlIndex/sqlIndex.js",
+    "client-install": "npm install --prefix client",
     "start": "node sqlIndex.js",
+
     "server": "nodemon sqlIndex.js",
     "client": "npm start --prefix client ",
     "dev": "concurrently \"npm run server\" \"npm run client\"  "
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
-
   },
   "author": "Natalie Kendrick",
   "license": "ISC",
